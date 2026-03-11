@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex h-16 items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2">
+<div class="bg-primary p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined block">deployed_code</span>
+</div>
+<h2 class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">NovaKur<span class="text-primary">Base</span></h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">Components</a>
+<a class="text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">Templates</a>
+<a class="text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">Docs</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary w-64" placeholder="Search system..." type="text"/>
+</div>
+<button class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-primary/90 transition-all shadow-sm">Get Theme</button>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+<!-- Hero Section -->
+<div class="mb-16">
+<h1 class="text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4">Component System</h1>
+<p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
+                Ultra-clean SaaS aesthetics designed for high-conversion OpenCart storefronts. Modular, responsive, and performance-focused.
+            </p>
+</div>
+<!-- UI Tokens Section -->
+<section class="mb-20">
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-primary">token</span>
+<h3 class="text-2xl font-bold">Design Tokens</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Color Palette</p>
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-primary shadow-lg shadow-primary/20"></div>
+<div>
+<p class="text-sm font-bold">Primary Blue</p>
+<p class="text-xs text-slate-500">#2463EB</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-slate-900 dark:bg-white"></div>
+<div>
+<p class="text-sm font-bold">Neutral Text</p>
+<p class="text-xs text-slate-500">Slate 900</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Typography (Inter)</p>
+<div class="space-y-1">
+<p class="text-2xl font-black tracking-tight">Bold Display</p>
+<p class="text-lg font-semibold">Medium Subtitle</p>
+<p class="text-sm text-slate-600 leading-relaxed">Body text for descriptions and product details.</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Shadows &amp; Elevation</p>
+<div class="flex gap-4">
+<div class="h-12 w-full bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700"></div>
+<div class="h-12 w-full bg-white dark:bg-slate-800 rounded-lg shadow-md border border-slate-100 dark:border-slate-700"></div>
+<div class="h-12 w-full bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-100 dark:border-slate-700"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Buttons & Forms -->
+<section class="mb-20">
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-primary">ads_click</span>
+<h3 class="text-2xl font-bold">Buttons &amp; Actions</h3>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<!-- Buttons Wrapper -->
+<div class="space-y-8">
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-white px-6 py-3 rounded-lg font-bold text-sm shadow-lg shadow-primary/20 hover:translate-y-[-1px] transition-all">Primary Action</button>
+<button class="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white px-6 py-3 rounded-lg font-bold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">Secondary</button>
+<button class="border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 px-6 py-3 rounded-lg font-bold text-sm hover:border-primary hover:text-primary transition-all">Outline</button>
+</div>
+<div class="flex flex-wrap items-center gap-6">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-400 text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-amber-400 text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-amber-400 text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-amber-400 text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-600 text-sm">star</span>
+<span class="text-xs font-bold text-slate-400 ml-2">(124 Reviews)</span>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded-full text-[10px] font-black uppercase tracking-widest">New</span>
+<span class="px-3 py-1 bg-primary text-white rounded-full text-[10px] font-black uppercase tracking-widest">Sale -20%</span>
+</div>
+</div>
+</div>
+<!-- Inputs Wrapper -->
+<div class="space-y-4">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-500">Input Label</label>
+<input class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Type something..." type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-500">Dropdown Selection</label>
+<select class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-primary">
+<option>Select size</option>
+<option>Small (S)</option>
+<option>Medium (M)</option>
+<option>Large (L)</option>
+</select>
+</div>
+</div>
+<div class="flex items-center gap-4 py-4 border-t border-slate-200 dark:border-slate-800">
+<p class="text-3xl font-black text-slate-900 dark:text-white">$199.00</p>
+<p class="text-lg text-slate-400 line-through font-medium">$249.00</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Components -->
+<section class="mb-20">
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+<h3 class="text-2xl font-bold">Product Cards &amp; Styles</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="group relative bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300">
+<div class="aspect-[4/5] overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
+<img alt="Product" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Minimalist white smart watch on light background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDh0zQJ2TxPcPTSbMmONibZlrey8bWXM4UATp4XZ0XWsAtvXxcMJ3xxhPvBfQyVOE6xf8KP_z1BkjDit6QwW7Yqf93Suk4babov7g-v0yOI94F_-iie4Wmkb_9MoWw2B3xinLfeApA7G4Ll4Q5KNw0lkUIWfTICKM38WEwK_kGcrEFIb5-gxUDFN6WEXWX9DAdLtVpYeJuWksuIt5Z30wFFcz21IrwY_jdGZoWMefu_HMK6wIXbFyT8ZAQcGEGPeuHyWfJbLO4lLcAA"/>
+<div class="absolute top-4 left-4 flex flex-col gap-2">
+<span class="bg-white/90 dark:bg-slate-900/90 backdrop-blur px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest shadow-sm">Featured</span>
+</div>
+<button class="absolute bottom-4 right-4 size-10 bg-white dark:bg-slate-900 rounded-full flex items-center justify-center shadow-lg text-slate-900 dark:text-white hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<p class="text-xs font-bold text-primary uppercase tracking-widest">Electronics</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-400 text-xs fill-current">star</span>
+<span class="text-xs font-bold">4.9</span>
+</div>
+</div>
+<h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4 group-hover:text-primary transition-colors">NovaKur Smart Watch V2</h4>
+<div class="flex items-center justify-between">
+<p class="text-2xl font-black text-slate-900 dark:text-white">$249.00</p>
+<button class="bg-primary/10 text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-lg text-sm font-bold transition-all">Add to Cart</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group relative bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300">
+<div class="aspect-[4/5] overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
+<img alt="Product" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Professional wireless black headphones on wood table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHaeoCiRgfb5wOQLCvCKLFGOKkeGjRAiq0Aru5xA-HezRuWESCYdpTX4rf5-FdwDPVahQFTNN_G-dByPICk6YDh734caiU2I-EKnVgy5CX0rwC3ZGl5a_a4WYEJb8CVkbIENRKJr6GFITUs876ed2mFF-6KKSamWYbcTblWh3M2PQxmZbbxUFZsDL3YNT_TdPGnd5To5boIW8m7UfmTLaYVkEDWabXbEI_a__Xed-Qt1NMSoYkIdEueDQEcK-QlPAeDxcKfBycDzHZ"/>
+<div class="absolute top-4 left-4">
+<span class="bg-primary text-white px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest shadow-sm">Sale 15%</span>
+</div>
+</div>
+<div class="p-6">
+<p class="text-xs font-bold text-primary uppercase tracking-widest mb-2">Audio</p>
+<h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4 group-hover:text-primary transition-colors">Studio ANC Headphones</h4>
+<div class="flex items-center justify-between">
+<div>
+<p class="text-2xl font-black text-slate-900 dark:text-white">$340.00</p>
+<p class="text-xs text-slate-400 line-through">$399.00</p>
+</div>
+<button class="bg-primary/10 text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-lg text-sm font-bold transition-all">Add to Cart</button>
+</div>
+</div>
+</div>
+<!-- Card 3 (Simplified/Minimal) -->
+<div class="group bg-transparent p-0">
+<div class="aspect-square rounded-2xl overflow-hidden bg-slate-200 dark:bg-slate-800 relative mb-4">
+<img alt="Product" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Modern red running shoes aesthetic studio shot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPkRaMBjJ83anffzlOUdK5WPHACOkZhwaeb4020Z8XU0vIrkA9ac2AfU0qXjpSM-7tN_N9hVAaR6MffwA-fIwdWKeNv9FnE6bDybyvv60jX4j6h3gBpp6IStDCOZGkDUF9Qj9V_1yIXBf7cS2D90-YAcXJwU0A0hjfztlLwee76OD160gAQH5dW3P6x3w6Urg5A8iQ8Qlbyx73ZEihWhOLEOod-knZH-sU9abeO_0CsgnZF6VLvLKz6aNROZZEIMXtZfXSxN6xoXY5"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<button class="bg-white text-slate-900 px-6 py-3 rounded-full font-bold shadow-xl">Quick View</button>
+</div>
+</div>
+<h4 class="font-bold text-center text-slate-900 dark:text-white">Velocity Speed Trainers</h4>
+<p class="text-primary font-black text-center">$129.00</p>
+</div>
+</div>
+</section>
+<!-- Newsletter / Modular Section -->
+<section class="relative rounded-[2rem] bg-slate-900 dark:bg-primary overflow-hidden p-8 md:p-16 mb-20 text-center">
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<div class="absolute top-0 left-0 size-64 bg-primary rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
+<div class="absolute bottom-0 right-0 size-96 bg-blue-400 rounded-full blur-[140px] translate-x-1/3 translate-y-1/3"></div>
+</div>
+<div class="relative z-10 max-w-2xl mx-auto">
+<span class="inline-block px-4 py-1 rounded-full bg-primary/20 text-primary dark:bg-white/20 dark:text-white text-xs font-black uppercase tracking-widest mb-6">Join the list</span>
+<h2 class="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">Elevate your storefront.</h2>
+<p class="text-slate-400 dark:text-blue-100 mb-10 text-lg">Receive weekly updates on UI trends, performance tips, and new component releases for NovaKur Base.</p>
+<form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+<input class="flex-1 px-6 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-slate-500 focus:ring-2 focus:ring-white outline-none" placeholder="Enter your email" type="email"/>
+<button class="bg-white text-slate-900 px-8 py-4 rounded-xl font-black hover:bg-slate-100 transition-colors">Subscribe</button>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark py-12">
+<div class="max-w-7xl mx-auto px-4 text-center">
+<div class="flex items-center justify-center gap-2 mb-6">
+<div class="bg-slate-100 dark:bg-slate-800 p-1.5 rounded-lg text-slate-900 dark:text-white">
+<span class="material-symbols-outlined block">deployed_code</span>
+</div>
+<h2 class="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white">NovaKur<span class="text-primary">Base</span></h2>
+</div>
+<div class="flex flex-wrap justify-center gap-8 mb-8">
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">License</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Changelog</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Support</a>
+</div>
+<p class="text-xs text-slate-400">© 2024 NovaKur Design System. Crafted for premium OpenCart experiences.</p>
+</div>
+</footer>
+</body></html>

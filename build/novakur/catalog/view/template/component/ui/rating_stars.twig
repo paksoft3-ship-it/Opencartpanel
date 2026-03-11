@@ -1,0 +1,15 @@
+{# NovaKur Base UI component: rating_stars #}
+{% set rating_value = rating|default(0) %}
+{% set review_count = reviews|default(0) %}
+{% set show_review_count = show_count is defined ? show_count : true %}
+
+<div class="inline-flex items-center gap-1.5">
+  <div class="inline-flex items-center gap-0.5">
+    {% for i in 1..5 %}
+      <span class="material-symbols-outlined text-[16px] {{ i <= rating_value ? 'text-yellow-400' : 'text-slate-200' }}">star</span>
+    {% endfor %}
+  </div>
+  {% if show_review_count and review_count > 0 %}
+    <span class="text-slate-400 text-xs">({{ review_count }} reviews)</span>
+  {% endif %}
+</div>

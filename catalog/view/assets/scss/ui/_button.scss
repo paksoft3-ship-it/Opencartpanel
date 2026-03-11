@@ -1,0 +1,38 @@
+// UI: button
+.nk-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.nk-button--md {
+  padding: 0.625rem 1rem;
+  font-size: 0.9375rem;
+}
+
+.nk-button--sm {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.nk-button--primary {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.nk-button--primary:hover,
+.nk-button--primary:focus-visible {
+  background: #1e3a8a;
+}
+
+.nk-button--ghost {
+  background: transparent;
+  color: #1e3a8a;
+  border-color: #cbd5e1;
+}

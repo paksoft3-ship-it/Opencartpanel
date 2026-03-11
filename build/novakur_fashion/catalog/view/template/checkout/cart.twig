@@ -1,0 +1,48 @@
+{% include 'extension/novakur_fashion/catalog/view/template/common/header.twig' %}
+{% include 'extension/novakur_fashion/catalog/view/template/common/breadcrumb.twig' %}
+<div class="nf-container">
+  {% if products %}
+  <div class="nf-cart-layout">
+    <div>
+      <h1 style="font-family:var(--nf-heading-font);font-size:32px;font-weight:700;margin-bottom:32px;">Shopping Bag</h1>
+      <table class="nf-cart-table">
+        <thead><tr><th style="width:100px;"></th><th>Product</th><th style="width:110px;">Price</th><th style="width:130px;">Qty</th><th style="width:100px;text-align:right;">Total</th><th style="width:40px;"></th></tr></thead>
+        <tbody>
+          {% for product in products %}
+          <tr>
+            <td><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" class="nf-cart-item-img"></a></td>
+            <td>
+              <a href="{{ product.href }}" style="font-family:var(--nf-heading-font);font-size:16px;font-weight:600;display:block;margin-bottom:4px;">{{ product.name }}</a>
+              {% if product.option %}<div style="font-size:12px;color:var(--nf-text-muted);">{% for opt in product.option %}{{ opt.name }}: {{ opt.value }}{% if not loop.last %}, {% endif %}{% endfor %}</div>{% endif %}
+            </td>
+            <td style="font-size:14px;">{{ product.price }}</td>
+            <td>
+              <div class="nf-qty" style="display:inline-flex;">
+                <button type="button" class="nf-qty-btn" data-action="minus">−</button>
+                <input type="number" class="nf-qty-input" value="{{ product.quantity }}" min="1">
+                <button type="button" class="nf-qty-btn" data-action="plus">+</button>
+              </div>
+            </td>
+            <td style="text-align:right;font-size:14px;font-weight:600;">{{ product.price }}</td>
+            <td><a href="{{ product.remove }}" data-nf-remove data-href="{{ product.remove }}" style="color:var(--nf-text-muted);font-size:18px;line-height:1;" title="Remove">×</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div style="margin-top:20px;"><a href="{{ continue }}" class="nf-btn nf-btn-ghost">← Continue Shopping</a></div>
+    </div>
+    <div class="nf-cart-summary">
+      <h2 class="nf-cart-summary-title">Order Summary</h2>
+      {% for total in totals %}<div class="nf-cart-total-row"><span>{{ total.title }}</span><span>{{ total.text }}</span></div>{% endfor %}
+      <a href="{{ checkout }}" class="nf-btn nf-btn-primary nf-btn-full" style="margin-top:20px;">Proceed to Checkout</a>
+    </div>
+  </div>
+  {% else %}
+  <div style="text-align:center;padding:100px 0;">
+    <h1 style="font-family:var(--nf-heading-font);font-size:36px;margin-bottom:16px;">Your Bag is Empty</h1>
+    <p style="color:var(--nf-text-muted);margin-bottom:40px;">Discover our latest collection and add your favourite pieces.</p>
+    <a href="{{ continue }}" class="nf-btn nf-btn-primary">Start Shopping</a>
+  </div>
+  {% endif %}
+</div>
+{% include 'extension/novakur_fashion/catalog/view/template/common/footer.twig' %}

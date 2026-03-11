@@ -1,0 +1,10 @@
+{% include 'extension/novakur_fashion/catalog/view/template/common/header.twig' %}
+{% include 'extension/novakur_fashion/catalog/view/template/common/breadcrumb.twig' %}
+<div class="nf-container nf-listing">
+  <h1 class="nf-listing-title" style="margin-bottom:40px;">{{ heading_1 }}</h1>
+  {% if products %}
+  <div class="nf-product-grid">{% for product in products %}<div class="nf-card"><a href="{{ product.href }}" class="nf-card-image"><img src="{{ product.thumb }}" alt="{{ product.name }}" loading="lazy">{% if product.special %}<span class="nf-card-badge">Sale</span>{% endif %}</a><div class="nf-card-body"><a href="{{ product.href }}" class="nf-card-name">{{ product.name }}</a><div class="nf-card-price">{% if product.special %}<span class="nf-price nf-price-sale">{{ product.special }}</span><span class="nf-price-old">{{ product.price }}</span>{% else %}<span class="nf-price">{{ product.price }}</span>{% endif %}</div></div></div>{% endfor %}</div>
+  {% if pagination %}<div class="nf-pagination">{{ pagination }}</div>{% endif %}
+  {% else %}<p style="color:var(--nf-text-muted);">No products found for this brand.</p>{% endif %}
+</div>
+{% include 'extension/novakur_fashion/catalog/view/template/common/footer.twig' %}

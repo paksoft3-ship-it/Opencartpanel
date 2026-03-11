@@ -1,0 +1,92 @@
+{# NovaKur Base: Product review block (Tailwind) — rendered into product page review tab #}
+<div id="review" class="mb-8">{{ list }}</div>
+
+{% if review_guest %}
+  <div class="border-t border-slate-200 pt-8">
+    <h3 class="text-lg font-bold text-slate-900 mb-6">{{ text_write|default('Write a Review') }}</h3>
+
+    <div id="review-alert" class="hidden mb-4"></div>
+
+    <form id="form-review" class="space-y-5">
+      <div>
+        <label for="input-author" class="block text-sm font-semibold text-slate-700 mb-1.5">{{ entry_author|default('Name') }}</label>
+        <input type="text" name="author" value="{{ customer }}" id="input-author" placeholder="Your name"
+          class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+        <p id="error-author" class="text-red-500 text-xs mt-1 hidden"></p>
+      </div>
+      <div>
+        <label for="input-text" class="block text-sm font-semibold text-slate-700 mb-1.5">{{ entry_review|default('Review') }}</label>
+        <textarea name="text" rows="4" id="input-text" placeholder="Share your experience with this product"
+          class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none resize-none"></textarea>
+        <p id="error-text" class="text-red-500 text-xs mt-1 hidden"></p>
+      </div>
+      <div>
+        <label class="block text-sm font-semibold text-slate-700 mb-2">{{ entry_rating|default('Rating') }}</label>
+        <div id="input-rating" class="flex items-center gap-1">
+          {% for i in 1..5 %}
+            <label class="cursor-pointer">
+              <input type="radio" name="rating" value="{{ i }}" class="sr-only peer"/>
+              <span class="material-symbols-outlined text-2xl text-slate-300 hover:text-yellow-400 peer-checked:text-yellow-400 transition-colors" style="font-variation-settings:'FILL' 1">star</span>
+            </label>
+          {% endfor %}
+        </div>
+        <p id="error-rating" class="text-red-500 text-xs mt-1 hidden"></p>
+      </div>
+      {% if captcha is defined and captcha %}
+        <div>{{ captcha|raw }}</div>
+      {% endif %}
+      <div class="flex justify-end">
+        <button type="submit" id="button-review"
+          class="flex items-center gap-2 bg-primary text-white rounded-xl px-6 py-3 font-bold hover:bg-primary/90 transition-all">
+          <span class="material-symbols-outlined text-[18px]">rate_review</span>
+          {{ button_continue|default('Submit Review') }}
+        </button>
+      </div>
+    </form>
+  </div>
+{% else %}
+  <div class="border-t border-slate-200 pt-6 text-sm text-slate-500">{{ text_login|raw }}</div>
+{% endif %}
+
+<script>
+$('#review').on('click', '.pagination a', function(e) {
+  e.preventDefault();
+  $('#review').load(this.href);
+});
+
+$('#form-review').on('submit', function(e) {
+  e.preventDefault();
+  var btn = document.getElementById('button-review');
+  btn.disabled = true;
+
+  $.ajax({
+    url: 'index.php?route=product/review.write&language={{ language }}&review_token={{ review_token }}&product_id={{ product_id }}',
+    type: 'post',
+    data: $('#form-review').serialize(),
+    dataType: 'json',
+    success: function(json) {
+      $('#error-author, #error-text, #error-rating').addClass('hidden').text('');
+      var alert = document.getElementById('review-alert');
+      alert.className = 'hidden mb-4';
+
+      if (json['error']) {
+        if (json['error']['author']) { $('#error-author').text(json['error']['author']).removeClass('hidden'); }
+        if (json['error']['text'])   { $('#error-text').text(json['error']['text']).removeClass('hidden'); }
+        if (json['error']['rating']) { $('#error-rating').text(json['error']['rating']).removeClass('hidden'); }
+        if (json['error']['warning']) {
+          alert.className = 'mb-4 bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm';
+          alert.textContent = json['error']['warning'];
+        }
+      }
+      if (json['success']) {
+        alert.className = 'mb-4 bg-green-50 border border-green-200 text-green-700 rounded-xl px-4 py-3 text-sm';
+        alert.textContent = json['success'];
+        $('#input-text').val('');
+        $('input[name="rating"]').prop('checked', false);
+      }
+      btn.disabled = false;
+    },
+    error: function() { btn.disabled = false; }
+  });
+});
+</script>

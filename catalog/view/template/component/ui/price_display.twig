@@ -1,0 +1,11 @@
+{# NovaKur Base UI component: price_display #}
+{% set has_special = special is defined and special %}
+{% set current_price = has_special ? special : price|default('$0.00') %}
+{% set old_price = has_special ? price|default('') : '' %}
+
+<div class="nk-price-display" aria-label="Price">
+  <span class="nk-price-display__current">{{ current_price }}</span>
+  {% if old_price %}
+    <span class="nk-price-display__old">{{ old_price }}</span>
+  {% endif %}
+</div>

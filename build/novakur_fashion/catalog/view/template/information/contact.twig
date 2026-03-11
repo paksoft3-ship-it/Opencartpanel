@@ -1,0 +1,24 @@
+{% include 'extension/novakur_fashion/catalog/view/template/common/header.twig' %}
+{% include 'extension/novakur_fashion/catalog/view/template/common/breadcrumb.twig' %}
+<div class="nf-container" style="padding:60px 32px;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:960px;">
+    <div>
+      <h1 style="font-family:var(--nf-heading-font);font-size:40px;font-weight:700;margin-bottom:40px;">Contact Us</h1>
+      <form action="{{ action }}" method="post">
+        <div class="nf-form-group"><label>Your Name *</label><input type="text" name="name" required></div>
+        <div class="nf-form-group"><label>Email *</label><input type="email" name="email" required></div>
+        <div class="nf-form-group"><label>Message *</label><textarea name="enquiry" rows="5" required style="width:100%;padding:12px 14px;border:1px solid var(--nf-border);font-family:inherit;font-size:14px;resize:vertical;background:transparent;outline:none;"></textarea></div>
+        <button type="submit" class="nf-btn nf-btn-primary">Send Message</button>
+      </form>
+    </div>
+    <div>
+      <h2 style="font-family:var(--nf-heading-font);font-size:24px;font-weight:700;margin-bottom:32px;">Get in Touch</h2>
+      {% if store %}<div style="margin-bottom:20px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--nf-secondary);margin-bottom:8px;">Store</div><p style="font-size:14px;color:var(--nf-text-muted);">{{ store }}</p></div>{% endif %}
+      {% if address %}<div style="margin-bottom:20px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--nf-secondary);margin-bottom:8px;">Address</div><p style="font-size:14px;color:var(--nf-text-muted);">{{ address }}</p></div>{% endif %}
+      {% if telephone %}<div style="margin-bottom:20px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--nf-secondary);margin-bottom:8px;">Phone</div><p style="font-size:14px;color:var(--nf-text-muted);">{{ telephone }}</p></div>{% endif %}
+      {% if email %}<div style="margin-bottom:20px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--nf-secondary);margin-bottom:8px;">Email</div><p style="font-size:14px;color:var(--nf-text-muted);">{{ email }}</p></div>{% endif %}
+      {% if opening_times %}<div style="margin-bottom:20px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--nf-secondary);margin-bottom:8px;">Hours</div><p style="font-size:14px;color:var(--nf-text-muted);">{{ opening_times }}</p></div>{% endif %}
+    </div>
+  </div>
+</div>
+{% include 'extension/novakur_fashion/catalog/view/template/common/footer.twig' %}

@@ -1,0 +1,196 @@
+{% include 'extension/novakur_minimal/catalog/view/template/common/header.twig' %}
+
+<!-- ============================================================
+     HOMEPAGE
+     ============================================================ -->
+
+<!-- Hero Banner -->
+{% if nm_enable_hero_banner %}
+<section class="nm-hero" aria-labelledby="nm-hero-heading">
+  <div class="nm-hero-content">
+    <p class="nm-hero-eyebrow">New Collection</p>
+    <h1 id="nm-hero-heading" class="nm-hero-title">
+      Designed to<br>
+      <span class="nm-hero-accent">inspire.</span>
+    </h1>
+    <p class="nm-hero-sub">Curated essentials. Minimal design. Maximum quality.</p>
+    <div class="nm-hero-actions">
+      <a href="{{ base }}index.php?route=product/search" class="nm-btn nm-btn--primary nm-btn--lg">Shop Now</a>
+      <a href="{{ base }}index.php?route=product/special" class="nm-btn nm-btn--ghost nm-btn--lg">View Sale</a>
+    </div>
+  </div>
+  <div class="nm-hero-visual" aria-hidden="true">
+    <div class="nm-hero-shape nm-hero-shape--1"></div>
+    <div class="nm-hero-shape nm-hero-shape--2"></div>
+    <div class="nm-hero-shape nm-hero-shape--3"></div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Benefits Bar -->
+{% if nm_enable_benefits_bar %}
+<section class="nm-benefits" aria-label="Shopping benefits">
+  <div class="nm-container">
+    <ul class="nm-benefits-list">
+      <li class="nm-benefit-item">
+        <span class="nm-benefit-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </span>
+        <div>
+          <strong class="nm-benefit-title">Free Shipping</strong>
+          <span class="nm-benefit-desc">On orders over $50</span>
+        </div>
+      </li>
+      <li class="nm-benefit-item">
+        <span class="nm-benefit-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+          </svg>
+        </span>
+        <div>
+          <strong class="nm-benefit-title">Easy Returns</strong>
+          <span class="nm-benefit-desc">30-day return policy</span>
+        </div>
+      </li>
+      <li class="nm-benefit-item">
+        <span class="nm-benefit-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </span>
+        <div>
+          <strong class="nm-benefit-title">Secure Checkout</strong>
+          <span class="nm-benefit-desc">SSL encrypted payments</span>
+        </div>
+      </li>
+      <li class="nm-benefit-item">
+        <span class="nm-benefit-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </span>
+        <div>
+          <strong class="nm-benefit-title">24/7 Support</strong>
+          <span class="nm-benefit-desc">We're always here to help</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+<!-- Category Grid -->
+{% if nm_enable_category_grid and categories is defined and categories %}
+<section class="nm-section nm-section--categories" aria-labelledby="nm-cat-heading">
+  <div class="nm-container">
+    <header class="nm-section-header">
+      <h2 id="nm-cat-heading" class="nm-section-title">Shop by Category</h2>
+      <a href="{{ base }}index.php?route=product/category" class="nm-section-link">All Categories
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    </header>
+    <div class="nm-cat-grid">
+      {% for category in categories|slice(0, 4) %}
+      <a href="{{ category.href }}" class="nm-cat-card" aria-label="{{ category.name }}">
+        {% if category.thumb is defined and category.thumb %}
+        <div class="nm-cat-card-image">
+          <img src="{{ category.thumb }}" alt="{{ category.name }}" loading="lazy" width="400" height="300">
+        </div>
+        {% else %}
+        <div class="nm-cat-card-image nm-cat-card-image--placeholder" aria-hidden="true"></div>
+        {% endif %}
+        <div class="nm-cat-card-body">
+          <span class="nm-cat-card-name">{{ category.name }}</span>
+          <span class="nm-cat-card-arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Featured Products -->
+{% if nm_enable_featured_products and products is defined and products %}
+<section class="nm-section nm-section--featured" aria-labelledby="nm-featured-heading">
+  <div class="nm-container">
+    <header class="nm-section-header">
+      <h2 id="nm-featured-heading" class="nm-section-title">Featured Products</h2>
+      <a href="{{ base }}index.php?route=product/search" class="nm-section-link">View All
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    </header>
+    <div class="nm-product-grid">
+      {% for product in products %}
+      <article class="nm-card" data-product-id="{{ product.product_id }}">
+        <a href="{{ product.href }}" class="nm-card-image-wrap" tabindex="-1" aria-hidden="true">
+          <div class="nm-card-image">
+            <img
+              src="{{ product.thumb }}"
+              alt="{{ product.name }}"
+              loading="lazy"
+              width="400"
+              height="400"
+            >
+          </div>
+          {% if product.special is defined and product.special %}
+          <span class="nm-badge nm-badge--sale">Sale</span>
+          {% endif %}
+        </a>
+        <div class="nm-card-body">
+          <h3 class="nm-card-title">
+            <a href="{{ product.href }}" class="nm-card-title-link">{{ product.name }}</a>
+          </h3>
+          <div class="nm-card-price">
+            {% if product.special is defined and product.special %}
+            <span class="nm-price nm-price--special">{{ product.special }}</span>
+            <span class="nm-price nm-price--old">{{ product.price }}</span>
+            {% else %}
+            <span class="nm-price">{{ product.price }}</span>
+            {% endif %}
+          </div>
+          {% if product.rating is defined %}
+          <div class="nm-card-rating" aria-label="Rating: {{ product.rating }} out of 5">
+            {% for i in 1..5 %}
+            <span class="nm-star{% if i <= product.rating %} nm-star--filled{% endif %}" aria-hidden="true">&#9733;</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+          <div class="nm-card-actions">
+            <button
+              class="nm-btn nm-btn--primary nm-btn--sm nm-add-to-cart"
+              data-nm-add-to-cart
+              data-product-id="{{ product.product_id }}"
+              aria-label="Add {{ product.name }} to cart"
+            >
+              Add to Cart
+            </button>
+            <a href="{{ base }}index.php?route=account/wishlist&product_id={{ product.product_id }}" class="nm-btn nm-btn--icon nm-wishlist-toggle" aria-label="Add to wishlist">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Content modules injected by OC (banners, etc.) -->
+{{ content_top }}
+{{ content_bottom }}
+
+{% include 'extension/novakur_minimal/catalog/view/template/common/footer.twig' %}

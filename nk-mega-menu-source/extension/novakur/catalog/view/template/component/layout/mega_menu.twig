@@ -1,0 +1,50 @@
+<link href="{{ nk_mega_menu_css }}" rel="stylesheet">
+<style>
+.nk-mega-menu__dropdown { background-color: {{ bg_color|default('#FFFFFF') }}; }
+.nk-mega-menu__item > a:hover { color: {{ hover_color|default('#2563EB') }}; }
+.nk-mega-menu__column > ul > li > a:hover { color: {{ hover_color|default('#2563EB') }}; }
+</style>
+<nav class="nk-mega-menu">
+  <ul class="nk-mega-menu__list">
+    {% for category in novakur_mega_menu_categories %}
+    <li class="nk-mega-menu__item">
+      <a href="{{ category.href }}">{{ category.name }}</a>
+      <div class="nk-mega-menu__dropdown">
+        <div class="nk-mega-menu__columns nk-mega-menu__columns--{{ columns|default('4') }}">
+          {% for child in category.children %}
+          <div class="nk-mega-menu__column">
+            <a class="nk-mega-menu__heading" href="{{ child.href }}">{{ child.name }}</a>
+            <ul>
+              {% for sub in child.children %}
+              <li><a href="{{ sub.href }}">{{ sub.name }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endfor %}
+        </div>
+
+        {% if category.products %}
+        <div class="nk-mega-menu__products">
+          {% for product in category.products %}
+          <div class="nk-mega-menu__product">
+            <a href="{{ product.href }}">
+              <img src="{{ product.thumb }}" alt="{{ product.name }}">
+              <span>{{ product.name }}</span>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if show_promo_column and promo_image %}
+        <div class="nk-mega-menu__promo">
+          <a href="{{ promo_link }}"><img src="{{ promo_image }}" alt="Promotion"></a>
+        </div>
+        {% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</nav>
+
+<script src="{{ nk_mega_menu_js }}"></script>

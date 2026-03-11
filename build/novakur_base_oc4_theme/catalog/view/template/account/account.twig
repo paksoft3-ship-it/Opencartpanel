@@ -1,0 +1,39 @@
+{# NovaKur Base: Account dashboard route #}
+{{ header }}
+
+{% include 'catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+<main id="content" class="nk-account-page">
+  <div class="nk-global-container__inner">
+    <div class="nk-account-layout">
+      <aside class="nk-account-layout__sidebar" aria-label="Account navigation">
+        <details class="nk-account-layout__nav-wrap" open>
+          <summary class="nk-account-layout__nav-toggle">My Account</summary>
+          <nav class="nk-account-layout__nav">
+            <a class="nk-account-layout__link is-active" href="{{ account|default('#') }}">Dashboard</a>
+            <a class="nk-account-layout__link" href="{{ order|default('#') }}">Orders</a>
+            <a class="nk-account-layout__link" href="{{ wishlist|default('#') }}">Wishlist</a>
+            <a class="nk-account-layout__link" href="{{ address|default('#') }}">Address Book</a>
+            <a class="nk-account-layout__link" href="{{ logout|default('#') }}">Logout</a>
+          </nav>
+        </details>
+      </aside>
+
+      <section class="nk-account-layout__content" aria-label="Dashboard content">
+        <header class="nk-account-page__head">
+          <h1 class="nk-account-page__title">{{ heading_title|default('My Account') }}</h1>
+          <p class="nk-account-page__lead">Welcome back{{ customer_name is defined and customer_name ? ', ' ~ customer_name : '' }}.</p>
+        </header>
+
+        <div class="nk-account-page__quick-links">
+          <a class="nk-account-page__quick-link" href="{{ edit|default('#') }}">Edit Account Details</a>
+          <a class="nk-account-page__quick-link" href="{{ password|default('#') }}">Change Password</a>
+          <a class="nk-account-page__quick-link" href="{{ order|default('#') }}">View Orders</a>
+          <a class="nk-account-page__quick-link" href="{{ address|default('#') }}">Manage Addresses</a>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+{{ footer }}

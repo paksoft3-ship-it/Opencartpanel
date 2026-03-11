@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="{{ language }}" dir="{{ direction }}">
+<head>
+  <meta charset="{{ charset }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ description }}">
+  <meta name="keywords" content="{{ keywords }}">
+  <title>{{ title }}</title>
+  <base href="{{ base }}">
+  {% for link in links %}<link rel="{{ link.rel }}" href="{{ link.href }}">{% endfor %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ HTTP_SERVER }}extension/novakur_fashion/catalog/view/assets/dist/css/main.css">
+  {% for style in styles %}<link rel="stylesheet" href="{{ style.href }}" media="{{ style.media }}">{% endfor %}
+  <style>
+    :root {
+      --nf-primary: {{ nf_primary_color|default('#1a1a1a') }};
+      --nf-secondary: {{ nf_secondary_color|default('#c9a96e') }};
+      --nf-accent: {{ nf_accent_color|default('#e8d5b7') }};
+      --nf-width: {{ nf_container_width|default(1400) }}px;
+      --nf-heading-font: '{{ nf_heading_font|default('Playfair Display') }}', Georgia, serif;
+      --nf-font: '{{ nf_base_font|default('Inter') }}', system-ui, sans-serif;
+    }
+  </style>
+</head>
+<body>
+{{ analytics }}
+<div class="nf-wrap">
+
+<div class="nf-announcement">New Collection Arrivals — Shop the Season's Must-Haves</div>
+
+<header class="nf-header">
+  <div class="nf-container">
+    <div class="nf-header-top">
+      <button class="nf-icon-btn nf-hamburger" aria-label="Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+
+      <a href="{{ home }}" class="nf-logo">
+        {% if logo is defined and logo %}<img src="{{ logo }}" alt="{{ store }}">{% else %}{{ store }}{% endif %}
+      </a>
+
+      <form action="{{ action_search|default('index.php?route=product/search') }}" method="get" class="nf-search">
+        <input type="text" name="search" placeholder="Search…" value="{{ filter_name|default('') }}" aria-label="Search">
+        <button type="submit" class="nf-search-btn" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </form>
+
+      <div class="nf-header-actions">
+        <a href="{{ wishlists|default('index.php?route=account/wishlist') }}" class="nf-icon-btn" aria-label="Wishlist">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </a>
+        <a href="{{ account|default('index.php?route=account/account') }}" class="nf-icon-btn" aria-label="Account">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <a href="{{ cart|default('index.php?route=checkout/cart') }}" class="nf-icon-btn" aria-label="Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="nf-cart-badge"{% if cart_count is not defined or cart_count == 0 %} style="display:none"{% endif %}>{{ cart_count|default(0) }}</span>
+        </a>
+      </div>
+    </div>
+
+    <nav>
+      <ul class="nf-nav">
+        <li><a href="{{ home }}">Home</a></li>
+        {% if menu is defined and menu %}
+          {% for item in menu %}<li><a href="{{ item.href }}">{{ item.name }}</a></li>{% endfor %}
+        {% elseif menu_items is defined and menu_items %}
+          {% for item in menu_items %}<li><a href="{{ item.href }}">{{ item.name }}</a></li>{% endfor %}
+        {% endif %}
+        <li><a href="index.php?route=product/special">Sale</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="nf-mobile-nav">
+  <div class="nf-mobile-overlay"></div>
+  <div class="nf-mobile-drawer">
+    <div class="nf-mobile-header">
+      <span class="nf-logo" style="font-size:18px;">{{ store }}</span>
+      <button class="nf-icon-btn nf-mobile-close" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="nf-mobile-links">
+      <a href="{{ home }}">Home</a>
+      {% if menu is defined %}{% for item in menu %}<a href="{{ item.href }}">{{ item.name }}</a>{% endfor %}{% endif %}
+      <a href="index.php?route=product/special">Sale</a>
+      <a href="{{ wishlists|default('index.php?route=account/wishlist') }}">Wishlist</a>
+      <a href="{{ account|default('index.php?route=account/account') }}">Account</a>
+      <a href="{{ cart|default('index.php?route=checkout/cart') }}">Cart</a>
+    </div>
+  </div>
+</div>
+
+<main class="nf-main">
+{% if alert is defined and alert %}<div class="nf-container"><div class="nf-alert nf-alert-error">{{ alert }}</div></div>{% endif %}
+{% if success is defined and success %}<div class="nf-container"><div class="nf-alert nf-alert-success">{{ success }}</div></div>{% endif %}

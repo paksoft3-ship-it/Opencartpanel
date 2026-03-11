@@ -1,0 +1,23 @@
+{# NovaKur Base UI component: dropdown_select #}
+{% set ds_label = label|default('Select') %}
+{% set ds_current = current_text|default('Select') %}
+{% set ds_options = options|default([]) %}
+
+<details class="nk-dropdown-select"{% if open is defined and open %} open{% endif %}>
+  <summary class="nk-dropdown-select__trigger">
+    <span class="nk-dropdown-select__label">{{ ds_label }}</span>
+    <span class="nk-dropdown-select__value">{{ ds_current }}</span>
+  </summary>
+
+  <ul class="nk-dropdown-select__menu" role="listbox" aria-label="{{ ds_label }}">
+    {% for option in ds_options %}
+      <li class="nk-dropdown-select__item">
+        <a class="nk-dropdown-select__link{{ option.active is defined and option.active ? ' is-active' : '' }}" href="{{ option.href|default('#') }}">
+          {{ option.text|default('Option') }}
+        </a>
+      </li>
+    {% else %}
+      <li class="nk-dropdown-select__item nk-dropdown-select__item--empty">No options available.</li>
+    {% endfor %}
+  </ul>
+</details>

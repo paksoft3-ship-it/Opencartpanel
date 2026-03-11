@@ -1,0 +1,13 @@
+{# NovaKur Base UI component: search_input #}
+{% set search_action_value = search_action|default('#') %}
+{% set search_value_value = search_value|default('') %}
+{% set search_placeholder_value = search_placeholder|default('Search products...') %}
+
+<form method="get" action="{{ search_action_value }}" class="flex items-center bg-slate-100 rounded-full overflow-hidden px-4 gap-2">
+  <span class="material-symbols-outlined text-slate-400 text-[20px]">search</span>
+  <input name="search"
+         type="text"
+         value="{{ search_value_value }}"
+         placeholder="{{ search_placeholder_value }}"
+         class="flex-1 bg-transparent py-2.5 text-sm outline-none border-0 focus:ring-0 placeholder:text-slate-400"/>
+</form>

@@ -1,0 +1,28 @@
+{# NovaKur Base commerce component: price_block #}
+{% set price = price|default('') %}
+{% set special = special|default('') %}
+{% set tax = tax|default('') %}
+{% set points = points|default('') %}
+{% set reward = reward|default('') %}
+
+<div>
+  <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+    {% if special %}
+      <span class="text-3xl font-black text-primary">{{ special }}</span>
+      <span class="text-lg line-through text-slate-400">{{ price }}</span>
+    {% else %}
+      <span class="text-3xl font-black text-slate-900">{{ price }}</span>
+    {% endif %}
+  </div>
+
+  {% if tax %}
+    <p class="text-xs text-slate-400 mt-1">{{ tax }}</p>
+  {% endif %}
+
+  {% if reward %}
+    <p class="text-xs text-green-600 flex items-center gap-1 mt-1">
+      <span class="material-symbols-outlined text-[14px]">stars</span>
+      {{ reward }}
+    </p>
+  {% endif %}
+</div>

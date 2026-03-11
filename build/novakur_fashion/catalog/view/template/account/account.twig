@@ -1,0 +1,40 @@
+{% include 'extension/novakur_fashion/catalog/view/template/common/header.twig' %}
+<div class="nf-container">
+  <div class="nf-account-grid">
+    <nav><ul class="nf-account-nav">
+      <li><a href="{{ order_list }}">Orders</a></li>
+      <li><a href="{{ wishlist }}">Wishlist</a></li>
+      <li><a href="{{ edit }}">Edit Account</a></li>
+      <li><a href="{{ password }}">Change Password</a></li>
+      <li><a href="{{ address }}">Addresses</a></li>
+      <li><a href="{{ newsletter }}">Newsletter</a></li>
+      <li><a href="{{ logout }}">Logout</a></li>
+    </ul></nav>
+    <div>
+      <h1 style="font-family:var(--nf-heading-font);font-size:36px;font-weight:700;margin-bottom:32px;">My Account</h1>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <a href="{{ order_list }}" style="border:1px solid var(--nf-border);padding:28px;display:block;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--nf-secondary);margin-bottom:8px;">Orders</div>
+          <div style="font-family:var(--nf-heading-font);font-size:20px;font-weight:700;margin-bottom:4px;">Order History</div>
+          <div style="font-size:13px;color:var(--nf-text-muted);">Track and manage your orders</div>
+        </a>
+        <a href="{{ wishlist }}" style="border:1px solid var(--nf-border);padding:28px;display:block;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--nf-secondary);margin-bottom:8px;">Wishlist</div>
+          <div style="font-family:var(--nf-heading-font);font-size:20px;font-weight:700;margin-bottom:4px;">My Favourites</div>
+          <div style="font-size:13px;color:var(--nf-text-muted);">Saved pieces you love</div>
+        </a>
+        <a href="{{ edit }}" style="border:1px solid var(--nf-border);padding:28px;display:block;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--nf-secondary);margin-bottom:8px;">Profile</div>
+          <div style="font-family:var(--nf-heading-font);font-size:20px;font-weight:700;margin-bottom:4px;">Your Details</div>
+          <div style="font-size:13px;color:var(--nf-text-muted);">Edit your account information</div>
+        </a>
+        <a href="{{ address }}" style="border:1px solid var(--nf-border);padding:28px;display:block;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--nf-secondary);margin-bottom:8px;">Addresses</div>
+          <div style="font-family:var(--nf-heading-font);font-size:20px;font-weight:700;margin-bottom:4px;">Delivery Addresses</div>
+          <div style="font-size:13px;color:var(--nf-text-muted);">Manage your saved addresses</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% include 'extension/novakur_fashion/catalog/view/template/common/footer.twig' %}

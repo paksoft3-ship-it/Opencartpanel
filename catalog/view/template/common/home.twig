@@ -1,0 +1,17 @@
+{# NovaKur Base: Home route shell #}
+{{ header }}
+
+{% set nk_home_sections %}
+  {% include 'catalog/view/template/component/sections/hero_banner.twig' %}
+  {% include 'catalog/view/template/component/sections/category_grid.twig' %}
+  {% include 'catalog/view/template/component/sections/featured_products.twig' %}
+  {% include 'catalog/view/template/component/sections/benefits_bar.twig' %}
+{% endset %}
+
+{% include 'catalog/view/template/component/layout/global_container.twig' with {
+  container_tag: 'main',
+  container_modifier: 'home',
+  content: nk_home_sections
+} only %}
+
+{{ footer }}

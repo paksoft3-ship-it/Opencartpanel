@@ -1,0 +1,77 @@
+// NovaKur Base main stylesheet
+@import "abstracts/variables";
+@import "abstracts/mixins";
+@import "abstracts/functions";
+
+@import "base/reset";
+@import "base/typography";
+@import "base/helpers";
+
+// Global runtime-theme bindings
+:root {
+  --nk-text: #0f172a;
+  --nk-bg: #ffffff;
+}
+
+.nk-global-container__inner {
+  width: min($nk-container-width, calc(100% - 2rem));
+}
+
+// MVP foundation - layout
+@import "layout/global_container";
+@import "layout/header_desktop";
+@import "layout/footer";
+@import "layout/breadcrumb";
+@import "layout/announcement_bar";
+@import "layout/mega_menu";
+@import "layout/mobile_nav_drawer";
+
+// MVP foundation - UI
+@import "ui/button";
+@import "ui/badge";
+@import "ui/price_display";
+@import "ui/form_elements";
+@import "ui/rating_stars";
+@import "ui/search_input";
+@import "ui/dropdown_select";
+@import "ui/tab_bar";
+@import "ui/pagination";
+@import "ui/quantity_selector";
+@import "ui/accordion";
+
+// MVP foundation - commerce
+@import "commerce/product_card_standard";
+@import "commerce/product_card_featured";
+
+// PDP core
+@import "commerce/product_image_gallery";
+@import "commerce/add_to_cart_button";
+@import "commerce/product_tabs";
+
+// Remaining commerce stubs
+@import "commerce/price_block";
+@import "commerce/wishlist_button";
+@import "commerce/stock_badge";
+@import "commerce/discount_badge";
+@import "commerce/related_products_carousel";
+
+// MVP foundation - sections
+@import "sections/hero_banner";
+@import "sections/category_grid";
+@import "sections/featured_products";
+@import "sections/promo_banners";
+@import "sections/benefits_bar";
+@import "sections/newsletter_signup";
+@import "sections/blog_preview";
+@import "sections/brand_logos";
+@import "sections/upsell_grid";
+
+// Route pages
+@import "pages/home";
+@import "pages/category";
+@import "pages/product";
+@import "pages/cart";
+@import "pages/checkout";
+@import "pages/account";
+@import "pages/wishlist";
+@import "pages/information";

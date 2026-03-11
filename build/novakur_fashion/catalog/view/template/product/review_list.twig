@@ -1,0 +1,11 @@
+{% for review in reviews %}
+<div style="padding:24px 0;border-bottom:1px solid var(--nf-border);">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+    <div><strong style="font-family:var(--nf-heading-font);font-size:16px;">{{ review.author }}</strong><div class="nf-stars" style="margin-top:6px;">{% for i in 1..5 %}<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="{{ i <= review.rating ? 'currentColor' : 'none' }}" stroke="currentColor" stroke-width="2" class="{{ i > review.rating ? 'nf-stars-empty' : '' }}"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>{% endfor %}</div></div>
+    <span style="font-size:12px;color:var(--nf-text-muted);">{{ review.date_added }}</span>
+  </div>
+  <p style="font-size:14px;line-height:1.8;color:var(--nf-text-muted);">{{ review.text }}</p>
+</div>
+{% else %}
+<p style="font-size:14px;color:var(--nf-text-muted);">No reviews yet. Be the first to share your thoughts.</p>
+{% endfor %}

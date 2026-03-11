@@ -1,0 +1,57 @@
+{# NovaKur Base: Manufacturer info/product listing (Tailwind) #}
+{{ header }}
+
+<main class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+  {% include 'extension/novakur/catalog/view/template/component/layout/breadcrumb.twig'
+     with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+  <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
+    <h1 class="text-2xl lg:text-3xl font-black text-slate-900">{{ heading_title|default('Brand') }}</h1>
+
+    <div class="flex flex-wrap items-center gap-3 sm:justify-end">
+      <div>
+        <label for="input-sort" class="sr-only">Sort</label>
+        <select id="input-sort" onchange="location = this.value;"
+                class="rounded-xl border border-slate-200 px-4 py-2.5 text-sm bg-white text-slate-700 focus:ring-2 focus:ring-primary/20 outline-none">
+          {% set sort_value = sort|default('') ~ '-' ~ order|default('') %}
+          {% for sort_option in sorts|default([]) %}
+            <option value="{{ sort_option.href|default('#') }}" {{ sort_option.value|default('') == sort_value ? 'selected' : '' }}>
+              {{ sort_option.text|default('Sort') }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div>
+        <label for="input-limit" class="sr-only">Limit</label>
+        <select id="input-limit" onchange="location = this.value;"
+                class="rounded-xl border border-slate-200 px-4 py-2.5 text-sm bg-white text-slate-700 focus:ring-2 focus:ring-primary/20 outline-none">
+          {% for limit_option in limits|default([]) %}
+            <option value="{{ limit_option.href|default('#') }}" {{ limit_option.value|default('') == limit|default('') ? 'selected' : '' }}>
+              {{ limit_option.text|default('Limit') }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+  </div>
+
+  {% if products is defined and products %}
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+      {% for product in products %}
+        {% include 'extension/novakur/catalog/view/template/component/commerce/product_card_standard.twig'
+           with { product: product } only %}
+      {% endfor %}
+    </div>
+
+    <div class="mt-8">
+      {{ pagination|default('') }}
+    </div>
+  {% else %}
+    <div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm text-center">
+      <p class="text-slate-500 font-medium">No products found for this brand.</p>
+    </div>
+  {% endif %}
+</main>
+
+{{ footer }}

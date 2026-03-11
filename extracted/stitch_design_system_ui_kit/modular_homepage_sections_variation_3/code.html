@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NovaKur Base | Luxury Minimalist E-commerce</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563EB",
+                        "primary-dark": "#1E3A8A",
+                        "neutral-text": "#0F172A",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-neutral-text dark:text-slate-100 antialiased font-display">
+<!-- Header / Navigation -->
+<header class="sticky top-0 z-50 w-full bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-12">
+<a class="flex items-center gap-2 text-primary-dark dark:text-white" href="#">
+<span class="material-symbols-outlined text-3xl font-bold">diamond</span>
+<span class="text-xl font-black tracking-tighter uppercase">NovaKur</span>
+</a>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Shop</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Collections</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Journal</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">About</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center bg-slate-100 dark:bg-slate-800 rounded-full px-4 py-2">
+<span class="material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-40 placeholder:text-slate-400" placeholder="Search products..." type="text"/>
+</div>
+<button class="relative p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="absolute top-1 right-1 bg-primary text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">2</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</header>
+<main>
+<!-- Section 1: Hero Banner -->
+<section class="relative h-[90vh] w-full overflow-hidden flex items-center justify-center">
+<div class="absolute inset-0 bg-slate-900/20 z-10"></div>
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="Luxury minimalist retail store interior wide shot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiVHYHtdtU5TwJ1KWWVZszowQKX-ZkS0QQhXNL5NQEWWc1JsAIZLX7CEGEf7-DBSl4htwcWeVw41GkjiWMWHm2mbpkBshcASgkkiR40lQqze4xpZm-WGoU6c-YoLil1GmIuYUVxpk-Hs03xNocFAr5QFHw-nEcjC0g1KfnFCgP64kbJP7aZf5TD7MOsXh2Z1jQgJZTwkJL51d9w4FzTBHPjxCv0X3Q-yJJODmzK4CUdsnm73UsejirU0oGqYF9YyM3uEOGjhCSwwHz"/>
+<div class="relative z-20 text-center max-w-4xl px-6">
+<span class="text-white/80 uppercase tracking-[0.3em] text-sm mb-6 block font-medium">S/S 2025 Collection</span>
+<h1 class="text-white text-5xl md:text-7xl font-light leading-tight mb-10 tracking-tight">Redefining the <br/><span class="font-bold">Minimalist Aesthetic</span></h1>
+<div class="flex flex-col md:flex-row gap-4 justify-center">
+<button class="bg-primary hover:bg-primary-dark text-white px-10 py-4 rounded-full font-bold transition-all transform hover:scale-105">Shop Now</button>
+<button class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 px-10 py-4 rounded-full font-bold transition-all">View Lookbook</button>
+</div>
+</div>
+</section>
+<!-- Section 2: Category Highlight Grid -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+<div>
+<h2 class="text-3xl font-bold tracking-tight">Curated Categories</h2>
+<p class="text-slate-500 mt-2">Explore our hand-picked selections for your lifestyle.</p>
+</div>
+<a class="text-primary font-bold flex items-center gap-2 border-b-2 border-primary/20 hover:border-primary pb-1 transition-all" href="#">View All Categories</a>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12">
+<!-- Category Item -->
+<div class="group cursor-pointer text-center">
+<div class="aspect-square rounded-full overflow-hidden mb-4 border border-slate-100 dark:border-slate-800 p-2 transition-transform duration-500 group-hover:scale-110">
+<img class="w-full h-full object-cover rounded-full" data-alt="Minimalist white watch on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpd42Pw-iJtFUgrjAmuUBEXQMXPau1_s0K10XrYyuqgKA4l2s3aNPz-gYdK-lzlh8EW7Gl2HUwNqXgJP1WEyeTXU-VW7Eypj5sh5fX7bcUI1feETCCY11nQcbwW1D68Rma1JYaxmvls_QJgC3NpJnPujzN7KzJ4_3cY5jj31uD1p2Z4FWbRSwmxdkGsxPsnw9jfahv96p7mWzBvz5KDUD-9BAtGGu7iOqp2CxjDUrogUIJqgLGc58t396o8DWpglAu_BmNCeMdEIdS"/>
+</div>
+<span class="text-sm font-bold group-hover:text-primary transition-colors uppercase tracking-widest">Timepieces</span>
+</div>
+<div class="group cursor-pointer text-center">
+<div class="aspect-square rounded-full overflow-hidden mb-4 border border-slate-100 dark:border-slate-800 p-2 transition-transform duration-500 group-hover:scale-110">
+<img class="w-full h-full object-cover rounded-full" data-alt="Classic white polo shirt folded" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHXTT-6sh_dMr9uRbhFXyhd5O6NmwBHZ1fH5xmt3jvSFM1FxfSOHYQMClLMlagk0YlSGiLSSkoeZsAKM3T5h2_d_7Wy4b74Ud2LGlfAxaE6Ypn6LkLZz_pRy1n5SJFwoDeODX6TE-l31x_7xJ-J5-2H3u2fGCXYRq5R8rNAH6Da9wHEBsjn8VsUVW99yVnfdDmYl0znc3amCzdiF5i5SCks08c6uT8qh9_aNNThN-dvXHkfPL7g44xvsH0v6eQxAUCA1uxIAINf93h"/>
+</div>
+<span class="text-sm font-bold group-hover:text-primary transition-colors uppercase tracking-widest">Apparel</span>
+</div>
+<div class="group cursor-pointer text-center">
+<div class="aspect-square rounded-full overflow-hidden mb-4 border border-slate-100 dark:border-slate-800 p-2 transition-transform duration-500 group-hover:scale-110">
+<img class="w-full h-full object-cover rounded-full" data-alt="Minimalist home decor ceramics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtWS7zKNNB-ahEbHBmC15w3vD98x7UWLRFWXeU951W3-mAzgOACd3D4NUfu0MDL7QN_PV-dxVIuXC5juPfRikOBfDKV4Z6OheeZ11qhI9JDtLc8GMDryIelfL4CCvEmg0X_V8LR_Z11o0NcLzNE--lEHvUuZozaj7XCXfN38T0GracXxj4avppRBKbWmmmxRvnofgUaLruI43eY5qav66vlIUoq6Kry0sdGi69cZwuoLP-NzClfRg_yQJsp0duXnexvA8jc7PEUQ-U"/>
+</div>
+<span class="text-sm font-bold group-hover:text-primary transition-colors uppercase tracking-widest">Living</span>
+</div>
+<div class="group cursor-pointer text-center">
+<div class="aspect-square rounded-full overflow-hidden mb-4 border border-slate-100 dark:border-slate-800 p-2 transition-transform duration-500 group-hover:scale-110">
+<img class="w-full h-full object-cover rounded-full" data-alt="Minimal gold necklace jewelry" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOSf7YVEzg3FfuP_4NTcOkaZ7rEbz0hlHCaf2cnL6FQT3ZFuyFOV1La3_MVv6vDUudHuWBIMFz6jAtUVELu_V2wVYs8YVcpsjWBsRpBcQ15sFQEagEmN6rgEeg_42gxofn2Vm4e3OB_JiASl2JPLOWWGk6VbV31gnNqbmnf5qMf3jdyMnYKUTDzGg0ZOj1rKeu6fSmX0zYc-g5Id2KUbZTN1f5v-uCyVEx8Ye9lIdXuodaD_MTOPYhHhkmCjNH_8ZsHP4XUwwHIYGW"/>
+</div>
+<span class="text-sm font-bold group-hover:text-primary transition-colors uppercase tracking-widest">Jewelry</span>
+</div>
+<div class="group cursor-pointer text-center">
+<div class="aspect-square rounded-full overflow-hidden mb-4 border border-slate-100 dark:border-slate-800 p-2 transition-transform duration-500 group-hover:scale-110">
+<img class="w-full h-full object-cover rounded-full" data-alt="Black luxury leather bag" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpbLoFRXtHtcfDyUhJNFG6Tu0Gz5pUobZLhcu9ImoLaBu56Qsh-fi_iOWtW_bBoysn49Pu20dPdT8pFuGItaLC0wVKosnqs87lP1RFwzGDRf_I0SdjkbHWp1Lt10uBLMI-V-xG1BGZ4h2WDA3NuWEZB80sAyce7dUx2BhZ-9JzDx1X-J9etUSO3bdszBy39qbD2DRYZCTNCQ3Njz3i6UihPA3DEcz6cKVqlXo4sosMr6MCcxgERwElN-NpQ2fnBIicAoPX2XENFZVc"/>
+</div>
+<span class="text-sm font-bold group-hover:text-primary transition-colors uppercase tracking-widest">Leather</span>
+</div>
+<div class="group cursor-pointer text-center">
+<div class="aspect-square rounded-full overflow-hidden mb-4 border border-slate-100 dark:border-slate-800 p-2 transition-transform duration-500 group-hover:scale-110">
+<img class="w-full h-full object-cover rounded-full" data-alt="Minimal skincare bottles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw1OpcsF6gH2p1c0N_jnMBav-FSx73xkzIaByFCyJMha9_lgkleyhsNMkjwNPLTz-kUr1GAEqc2qMJZ6dQJSjfIFVCwnrWxVR1HAdiXm2SMYQGOsSO3tnfCyUiIeBt-R6EfGjl6ldmWLkCiA0ixsfdk7vPfamJTPHnms-Nk4Lu7S9O3gtAKyfdC0g3NZIsTONckx3F0RifwpHPCvyChn2jPYXJ_NtJfW2rIv-QvECtGJeRyaQZtogfXpGSrPJmnSbUZXO974YR9qDG"/>
+</div>
+<span class="text-sm font-bold group-hover:text-primary transition-colors uppercase tracking-widest">Self-Care</span>
+</div>
+</div>
+</section>
+<!-- Section 3: Featured Products (Large Cards) -->
+<section class="py-24 bg-white dark:bg-slate-900/50">
+<div class="max-w-7xl mx-auto px-6">
+<div class="mb-16 text-center">
+<h2 class="text-4xl font-bold tracking-tight mb-4">Featured Selection</h2>
+<p class="text-slate-500 max-w-2xl mx-auto">Masterfully crafted pieces designed to stand the test of time, blending function with uncompromising elegance.</p>
+</div>
+<div class="grid md:grid-cols-2 gap-10">
+<!-- Featured Product Card -->
+<div class="group relative overflow-hidden rounded-xl bg-slate-50 dark:bg-slate-800">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Professional designer headphones on desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAneY4k_QBW952b59z61gi69PMhqg8NvcKRepGHYOUORd23lbR4o4BUEbqvHuDIcR7iOhha3-XomIbp2vSY1Ni8wROxOf0y5CpH97sjJ25QZC1wHoSf6BUOOIDDjussbJMYSH12UTHEEKVTbozexQsuebHcNDrK-8bxgBPL9rNEq1ZFjtwvOdV7pdxRnPal6pNUB2j18L9FVW1ecKCnBhB4MN5L0oi6XLat0XXhbj7dTVJ5tx2Y630qzrIamen7-dSS2DDlR3nN0yuw"/>
+</div>
+<div class="p-8 flex justify-between items-end">
+<div>
+<p class="text-xs uppercase tracking-widest text-primary font-bold mb-2">Tech Series</p>
+<h3 class="text-2xl font-bold mb-1">Studio Core Headphones</h3>
+<p class="text-slate-500">$449.00</p>
+</div>
+<button class="bg-primary text-white p-4 rounded-full shadow-lg transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl bg-slate-50 dark:bg-slate-800">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Bright red performance running shoes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx0m7klCqxYWv7RHHEddq2j_On9E4yQiB186Ffr48dprLEKFOwhsWiAbvkcyYMX6OL3Ae6xRBKm254uzjbcmttp74SPdCFqY3sE4s1Pup8atwT5f9J8pde3t-1F_UdemznVOYNpLd4AODNHC-NO_C1-2u313furILMsCTeU5kj7gPz7PC7RH2151t3eVlMwREVooD6TIZebfi1N-MyyURDs5xla9SktCLMhdmrRVH_8uHkEdr7I2e6bFcI5nThK88ineN5WjCD0Mw-"/>
+</div>
+<div class="p-8 flex justify-between items-end">
+<div>
+<p class="text-xs uppercase tracking-widest text-primary font-bold mb-2">Footwear</p>
+<h3 class="text-2xl font-bold mb-1">Aero-Flow Trainers</h3>
+<p class="text-slate-500">$189.00</p>
+</div>
+<button class="bg-primary text-white p-4 rounded-full shadow-lg transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Best Sellers (Minimal List) -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<h2 class="text-2xl font-bold mb-12 border-l-4 border-primary pl-6">Season's Best Sellers</h2>
+<div class="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
+<!-- Best Seller Item -->
+<div class="flex gap-4 items-center p-4 hover:bg-white dark:hover:bg-slate-800 rounded-xl transition-all group">
+<div class="w-24 h-24 flex-shrink-0 bg-slate-100 dark:bg-slate-700 rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform" data-alt="Minimalist white leather sneakers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3ZRtVXKZ4IVGaIJXKiPqXzOp5eFBAf69YRRqkcO6L5B0uCHAHIc22b-SxnUWc_x7Ud3a1uvfspmKAyBa9emQETBmuvgPipGTDnCd6vE2hLzltDX8gKeqQqFQuXWsuugfVAjbgxLMEyTqGJ_gxHp0WpN8363AOhlsRpRI7ZvE6ugADCK0SA3tmCKCqzzFcCh0s2yt4_70nKZ0iFDBgpbkfmzGEY7uJe61p_AWl48boBrz8DCffWzJxCbu06M3p4t3pBz8_kq4jiusm"/>
+</div>
+<div>
+<h4 class="font-bold text-sm mb-1 line-clamp-1">Classic Canvas High</h4>
+<div class="flex items-center gap-2 mb-2">
+<span class="text-primary font-bold text-sm">$89.00</span>
+<span class="text-xs text-slate-400 line-through">$120.00</span>
+</div>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star_half</span>
+</div>
+</div>
+</div>
+<!-- Repeat 3 more times for grid -->
+<div class="flex gap-4 items-center p-4 hover:bg-white dark:hover:bg-slate-800 rounded-xl transition-all group">
+<div class="w-24 h-24 flex-shrink-0 bg-slate-100 dark:bg-slate-700 rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform" data-alt="Men's classic silver watch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_A2pNOubT6o4he9G7NTfIJf7XMu3uVa4ZKgfrWs5s-_lzMzbqGXqUMk5pXn7pi-kWfpSt8g2N2lOTMq5a6IKc8v5vljM4K2L59iNW1kMS07HGDthrcYaqEvazs6momhm7K9PftTJNRU38r04qIAtU4P9xbfWH-ROLkE48KbrEvP5pO1yG6z_fTWPcwnGRs_UUu9xkmNigxB58QcsHrsJZrBpSx2q2XSXK6hHCivEf_onrjUS5VuE5Y4B-uw9K46IddkTVUCcl2D7c"/>
+</div>
+<div>
+<h4 class="font-bold text-sm mb-1 line-clamp-1">Silver Chrono Watch</h4>
+<div class="flex items-center gap-2 mb-2">
+<span class="text-primary font-bold text-sm">$299.00</span>
+</div>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4 items-center p-4 hover:bg-white dark:hover:bg-slate-800 rounded-xl transition-all group">
+<div class="w-24 h-24 flex-shrink-0 bg-slate-100 dark:bg-slate-700 rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform" data-alt="Brown luxury leather backpack" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaZRuhgFr7vYdiev1rSgA_u4_nAmdREFhoJXf5cdVxgqCFIWdBQWt8TXyAZBc0zaOE9k2yGuxuh4fJIA8iI9HGvGRVxA_RtODfmF5RdnjioALz-UOvk_cfnQJeRsilKIDkSTnRfCdXDhdQYVyo6nT3ijwjk7J6whX01p49Uv76mPPwTluCt-PotnmC1UGyMduI4PJ0HSPhAE0pymm1UKB7LKbooH1T6Y1YghIfCdBP_q2p_uKAOzOyFatLxah9cA_9B77IUNCu2PpR"/>
+</div>
+<div>
+<h4 class="font-bold text-sm mb-1 line-clamp-1">City Leather Backpack</h4>
+<div class="flex items-center gap-2 mb-2">
+<span class="text-primary font-bold text-sm">$155.00</span>
+</div>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4 items-center p-4 hover:bg-white dark:hover:bg-slate-800 rounded-xl transition-all group">
+<div class="w-24 h-24 flex-shrink-0 bg-slate-100 dark:bg-slate-700 rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform" data-alt="Minimalist men's perfume bottle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGB39WfM1AoT4Pauh34RVhalKccLLs5-N45tu2ZJyUrGxHpimxHL6QWSzj_YP5naB0xxyxv9duSpjmi85tdBnh5_kINzW2GokCPHViFmB8mYVb1pTzcXSfPeGOvtN3TK78uk3Njylj5-gWiZn7BLaY23hTjthhGtP2iSrj9H68XOdh-JDN-Yeydx_i4t4XGB7rJBLN_GObnuOJOd1CqjCTQcp2wndDDqeJx8bnImY8-x5uo3OWVHwf67fT969aMWt1t8jxgHD_U0ty"/>
+</div>
+<div>
+<h4 class="font-bold text-sm mb-1 line-clamp-1">Element Noir Parfum</h4>
+<div class="flex items-center gap-2 mb-2">
+<span class="text-primary font-bold text-sm">$125.00</span>
+</div>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Promotion Banner (Parallax Style) -->
+<section class="relative h-[600px] w-full flex items-center overflow-hidden bg-slate-900">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60" data-alt="Modern fashion model editorial shot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAs5BpHcnRgAnv0wJdWjswbpNFFaePBTmWAizTWj08UTr9fYM4z2nLNGTM6toszHK2jyZRZFAsGubHVQbBDiRtEp-BjFTgxDXJ4B16g8V0uBVZSejGjA2lVHkdYALdYL4UigEBHfSBEoDPIHnjrWE4fKh4p_5Zb62YU3QBwzku9SWzwLoZm0Mnjz6ksvcsFyQuPX1DVI6zT2i3xrz6fC--v7qJcrwv2z7pUGDVX6df1xOnfJuWfZcQS1xuwLwUkNOezOn9ln_kulEG3"/>
+<div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+<div class="max-w-xl bg-white/10 backdrop-blur-xl p-12 border border-white/20 rounded-2xl">
+<h2 class="text-white text-5xl font-bold mb-6">Seasonal <br/>Clearance</h2>
+<p class="text-white/80 text-lg mb-8">Elevate your wardrobe with premium essentials at exceptional prices. Up to 40% off selected styles.</p>
+<button class="bg-white text-primary-dark px-8 py-4 rounded-full font-bold hover:bg-primary hover:text-white transition-all">Shop the Sale</button>
+</div>
+</div>
+</section>
+<!-- Section 6: Benefits/Trust Section -->
+<section class="py-20 border-b border-slate-100 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 text-center">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">local_shipping</span>
+<h3 class="font-bold mb-2">Global Shipping</h3>
+<p class="text-xs text-slate-500 uppercase tracking-widest leading-loose">Complimentary on orders over $250</p>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">verified</span>
+<h3 class="font-bold mb-2">Premium Quality</h3>
+<p class="text-xs text-slate-500 uppercase tracking-widest leading-loose">Hand-picked authentic materials</p>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">shield</span>
+<h3 class="font-bold mb-2">Secure Checkout</h3>
+<p class="text-xs text-slate-500 uppercase tracking-widest leading-loose">Military-grade encryption</p>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">cycle</span>
+<h3 class="font-bold mb-2">Sustainable Path</h3>
+<p class="text-xs text-slate-500 uppercase tracking-widest leading-loose">Eco-conscious packaging</p>
+</div>
+</div>
+</section>
+<!-- Section 7: Testimonials -->
+<section class="py-24 bg-background-light dark:bg-background-dark">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<span class="material-symbols-outlined text-6xl text-primary/20 mb-8 italic">format_quote</span>
+<p class="text-2xl md:text-3xl font-light leading-relaxed italic mb-10 text-slate-700 dark:text-slate-300">
+                    "The attention to detail and minimalist aesthetic of NovaKur products is unparalleled. Every piece I've purchased feels intentional and crafted to last generations."
+                </p>
+<div class="flex flex-col items-center">
+<img class="w-16 h-16 rounded-full object-cover mb-4 border-2 border-primary" data-alt="Portrait of a male customer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmpRoMry3Ca6PBHxZQh62b3aBiO60LH4LsW4q7A01XC7O7MEs54UqfVK6dvnhagPGyPeRaCZ-7KO7_6_EXFPdXKEftSMmSU8hVGJiBhCpcCPAdtFsjocVhl84dBcyhkzuYeVJWv-QMY-ZOT3j0ddt5DRvqwLpxLuESUSkNZ4Fq0NCRNyOv4ERDtrODc3zDJPUnimQvkkv8iO1iPlDSn5XdxOi-qTFv38_dJYxGW9slUC2KfZnw7BXlAhjgkKgkAQ3KZGkUCMLAk9V_"/>
+<h4 class="font-bold">Julian Sterling</h4>
+<p class="text-sm text-slate-500 uppercase tracking-widest">Architectural Designer</p>
+</div>
+</div>
+</section>
+<!-- Section 8: Brand Logos -->
+<section class="py-16 border-y border-slate-100 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center md:justify-between items-center gap-12 opacity-40 grayscale hover:grayscale-0 transition-all">
+<span class="text-2xl font-black tracking-widest">LOREAL</span>
+<span class="text-2xl font-black tracking-widest">VOGUE</span>
+<span class="text-2xl font-black tracking-widest">HERMES</span>
+<span class="text-2xl font-black tracking-widest">PRADA</span>
+<span class="text-2xl font-black tracking-widest">GQ</span>
+</div>
+</section>
+<!-- Section 9: Newsletter Subscription -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<div class="bg-primary-dark rounded-3xl p-12 md:p-20 flex flex-col lg:flex-row items-center justify-between gap-12 overflow-hidden relative">
+<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-primary/20 rounded-full blur-3xl"></div>
+<div class="max-w-xl relative z-10">
+<h2 class="text-white text-4xl font-bold mb-4">Join the Inner Circle</h2>
+<p class="text-white/70 text-lg">Receive early access to collections, private events, and editorial insights directly to your inbox.</p>
+</div>
+<div class="w-full max-w-md relative z-10">
+<form class="flex flex-col md:flex-row gap-4">
+<input class="flex-1 bg-white/10 border border-white/20 rounded-full px-6 py-4 text-white placeholder:text-white/40 focus:ring-2 focus:ring-primary outline-none" placeholder="Your email address" type="email"/>
+<button class="bg-white text-primary-dark px-8 py-4 rounded-full font-bold hover:bg-primary hover:text-white transition-all">Subscribe</button>
+</form>
+<p class="text-white/40 text-xs mt-4 px-6 italic">Respecting your privacy. Unsubscribe anytime.</p>
+</div>
+</div>
+</section>
+<!-- Section 10: Blog Preview Section -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<div class="flex justify-between items-center mb-16">
+<h2 class="text-3xl font-bold">The Journal</h2>
+<a class="text-primary font-bold group flex items-center gap-2" href="#">Read Magazine <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span></a>
+</div>
+<div class="grid md:grid-cols-3 gap-10">
+<!-- Blog Post -->
+<article class="group cursor-pointer">
+<div class="aspect-[16/10] rounded-2xl overflow-hidden mb-6">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Minimalist menswear layout" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9LZ-uUPB4VJiuyJ6CMPM0WD6S59cdhmWDZ1L6MSBc6iBAeIm74xp_Rwq7YQSgcPs_tTG7xacoq0vHoy4DHF9TFWWu9J3nn2clZ-Xey_KVI3H2JzJNR4nPlALzmGqKzp_l1bmvxU6hHG-tMvbuO8cN0cIYlOq_4cpFoq5tF1rlfcg0AzzNOJEr2C7aD16ms-G7mSdhOzzbbrhgeFA7rMehWdv1whQd1eAlpAXK3bRK9dMW8l8O48qhG9NSgtsfEsc45lr3lwdyTrV_"/>
+</div>
+<span class="text-xs text-primary font-bold uppercase tracking-widest mb-3 block">Style Guide</span>
+<h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">The Art of Layering: A Minimalist's Guide to Spring</h3>
+<p class="text-slate-500 text-sm leading-relaxed line-clamp-2">Discover how to maintain a clean silhouette while adapting to shifting seasonal temperatures.</p>
+</article>
+<article class="group cursor-pointer">
+<div class="aspect-[16/10] rounded-2xl overflow-hidden mb-6">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Clean desk with minimalist tech" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB56NKB8gwf4qenVEqOew-m6NRVv4nXEZTYaGMh6-XYxnOQ3jciU6FDOcfUWzuUoi-Jps0takE7jknINSO_SfVfRx3ZpSpTT_U8DBe1CnpDZjWrrPVQ_g0OsrEzymVtRaqyjaKDC3Dc2_2uapCEnBRxr3qqrdGljM9GHB0DBH1KtgUPwRsMyldLCPGTBnN8Uti3mBO_oWhorbqFoOQ07SzvEirf67iYn8scGoRj3OzgwT6DsyQxDwe0NzPjGQYNphyTMzXxJC0UlLEf"/>
+</div>
+<span class="text-xs text-primary font-bold uppercase tracking-widest mb-3 block">Lifestyle</span>
+<h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Optimizing Your Workspace for Creative Flow</h3>
+<p class="text-slate-500 text-sm leading-relaxed line-clamp-2">How physical environment impacts mental clarity and high-performance creative output.</p>
+</article>
+<article class="group cursor-pointer">
+<div class="aspect-[16/10] rounded-2xl overflow-hidden mb-6">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Close up of high quality leather texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt8rosmOVfw6Uc0jYOrFL1E6X_I2di72hiiEAsnXx8UR80Ja9g9xmtt_o308mLjCgij4JP5uaAD4Z21w0Tj55k7KE5VKrmT8eIcAjynQI_GBLKYy-_bHUCI14ekunmVrBshffxo1ebmshcfmwpCH3wPWmwQmAl3PDvxYCeH3BPh0oPs35dYXYCpBOlmysDftlrSSF4urfJpCGqCr6ow2hKhpp-4K7sai3BO3VZMzeQDDM37udobATlZNaZ-79fYLxjLJvX2XsyUVsY"/>
+</div>
+<span class="text-xs text-primary font-bold uppercase tracking-widest mb-3 block">Craftsmanship</span>
+<h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Sourcing the World's Finest Italian Leather</h3>
+<p class="text-slate-500 text-sm leading-relaxed line-clamp-2">A deep dive into our partnership with multi-generational tanneries in Tuscany.</p>
+</article>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-900 text-white py-20 px-6">
+<div class="max-w-7xl mx-auto">
+<div class="grid md:grid-cols-4 gap-16 mb-20">
+<div class="col-span-1 md:col-span-1">
+<a class="flex items-center gap-2 text-white mb-8" href="#">
+<span class="material-symbols-outlined text-3xl font-bold">diamond</span>
+<span class="text-xl font-black tracking-tighter uppercase">NovaKur</span>
+</a>
+<p class="text-slate-400 text-sm leading-loose mb-8">
+                        Elevating lifestyle through intentional design and uncompromising quality. Based in London, shipping worldwide.
+                    </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary transition-colors" href="#"><span class="material-symbols-outlined !text-sm">share</span></a>
+<a class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary transition-colors" href="#"><span class="material-symbols-outlined !text-sm">photo_camera</span></a>
+<a class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary transition-colors" href="#"><span class="material-symbols-outlined !text-sm">play_circle</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-bold mb-8 uppercase tracking-widest text-xs">Shop</h4>
+<ul class="space-y-4 text-slate-400 text-sm">
+<li><a class="hover:text-white transition-colors" href="#">New Arrivals</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Best Sellers</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Collections</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Sale</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-8 uppercase tracking-widest text-xs">Company</h4>
+<ul class="space-y-4 text-slate-400 text-sm">
+<li><a class="hover:text-white transition-colors" href="#">Our Story</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Sustainability</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Journal</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-8 uppercase tracking-widest text-xs">Support</h4>
+<ul class="space-y-4 text-slate-400 text-sm">
+<li><a class="hover:text-white transition-colors" href="#">Contact Us</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Shipping &amp; Returns</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Size Guide</a></li>
+<li><a class="hover:text-white transition-colors" href="#">FAQ</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-xs uppercase tracking-widest">
+<p>© 2025 NovaKur Base. All rights reserved.</p>
+<div class="flex gap-8">
+<a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-white transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

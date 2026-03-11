@@ -1,0 +1,31 @@
+{# NovaKur Base UI component: quantity_selector #}
+{% set qty_id_value = qty_id|default('input-quantity') %}
+{% set qty_name_value = qty_name|default('quantity') %}
+{% set qty_value_value = qty_value|default(1) %}
+{% set qty_min_value = qty_min|default(1) %}
+{% set qty_max_value = qty_max|default(9999) %}
+
+<div class="flex items-center rounded-xl border border-slate-200 overflow-hidden w-fit">
+  <button type="button"
+          data-action="decrease"
+          data-qty-target="{{ qty_id_value }}"
+          class="px-3 py-2.5 text-slate-500 hover:text-primary hover:bg-slate-50 transition-colors">
+    -
+  </button>
+
+  <input id="{{ qty_id_value }}"
+         name="{{ qty_name_value }}"
+         value="{{ qty_value_value }}"
+         min="{{ qty_min_value }}"
+         max="{{ qty_max_value }}"
+         type="number"
+         data-qty-target="{{ qty_id_value }}"
+         class="w-14 text-center font-bold text-sm border-0 focus:ring-0 py-2.5 outline-none"/>
+
+  <button type="button"
+          data-action="increase"
+          data-qty-target="{{ qty_id_value }}"
+          class="px-3 py-2.5 text-slate-500 hover:text-primary hover:bg-slate-50 transition-colors">
+    +
+  </button>
+</div>

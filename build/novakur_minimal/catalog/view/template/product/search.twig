@@ -1,0 +1,32 @@
+{% include 'extension/novakur_minimal/catalog/view/template/common/header.twig' %}
+{% include 'extension/novakur_minimal/catalog/view/template/common/breadcrumb.twig' %}
+<div class="nm-container" style="padding:40px 24px;">
+  <h1 style="font-size:28px;font-weight:700;margin-bottom:32px;">Search</h1>
+  <form action="{{ action_search|default('index.php?route=product/search') }}" method="get" style="max-width:480px;margin-bottom:40px;">
+    <div style="display:flex;gap:8px;">
+      <input type="text" name="search" value="{{ search|default(keyword|default('')) }}" placeholder="Search products..." style="flex:1;height:44px;padding:0 14px;border:1px solid var(--nm-border);font-size:14px;font-family:inherit;outline:none;">
+      <button type="submit" class="nm-btn nm-btn-primary">Search</button>
+    </div>
+  </form>
+  {% if products %}
+  <p style="font-size:13px;color:var(--nm-text-muted);margin-bottom:24px;">{{ results }}</p>
+  <div class="nm-product-grid">
+    {% for product in products %}
+    <div class="nm-card">
+      <a href="{{ product.href }}" class="nm-card-image"><img src="{{ product.thumb }}" alt="{{ product.name }}" loading="lazy">{% if product.special %}<span class="nm-card-badge">Sale</span>{% endif %}</a>
+      <div class="nm-card-body">
+        <a href="{{ product.href }}" class="nm-card-name">{{ product.name }}</a>
+        <div class="nm-card-price">{% if product.special %}<span class="nm-price nm-price-sale">{{ product.special }}</span><span class="nm-price-old">{{ product.price }}</span>{% else %}<span class="nm-price">{{ product.price }}</span>{% endif %}</div>
+        <div class="nm-card-cta"><button class="nm-btn nm-btn-primary nm-btn-sm nm-btn-full" data-nm-add-to-cart data-product-id="{{ product.product_id }}">Add to Cart</button></div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% if pagination %}<div class="nm-pagination">{{ pagination }}</div>{% endif %}
+  {% elseif search is defined or keyword is defined %}
+  <div style="text-align:center;padding:60px 0;">
+    <p style="font-size:16px;color:var(--nm-text-muted);">No products found. Try a different search term.</p>
+  </div>
+  {% endif %}
+</div>
+{% include 'extension/novakur_minimal/catalog/view/template/common/footer.twig' %}

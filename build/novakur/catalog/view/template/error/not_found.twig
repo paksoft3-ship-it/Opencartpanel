@@ -1,0 +1,25 @@
+{# NovaKur Base: 404 Not Found (Tailwind) #}
+{{ header }}
+
+<main class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+  {% include 'extension/novakur/catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+  <div class="flex flex-col items-center justify-center py-24 text-center">
+    <div class="text-[120px] font-black text-slate-100 leading-none select-none">404</div>
+    <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center -mt-6 mb-6">
+      <span class="material-symbols-outlined text-primary text-4xl">search_off</span>
+    </div>
+    <h1 class="text-3xl font-black text-slate-900 mb-3">{{ heading_title|default('Page Not Found') }}</h1>
+    <p class="text-slate-500 max-w-md mb-8">{{ text_error|default("Sorry, the page you're looking for doesn't exist or has been moved.")|raw }}</p>
+    <div class="flex flex-wrap items-center justify-center gap-3">
+      <a href="{{ home|default('/') }}" class="flex items-center gap-2 bg-primary text-white rounded-xl px-6 py-3 font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 no-underline">
+        <span class="material-symbols-outlined text-[18px]">home</span> Back to Home
+      </a>
+      <a href="{{ continue|default('/') }}" class="flex items-center gap-2 border border-slate-200 text-slate-700 rounded-xl px-6 py-3 font-bold hover:border-primary hover:text-primary transition-all no-underline">
+        <span class="material-symbols-outlined text-[18px]">arrow_back</span> Go Back
+      </a>
+    </div>
+  </div>
+</main>
+
+{{ footer }}

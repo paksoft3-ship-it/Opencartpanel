@@ -1,0 +1,5 @@
+{# NovaKur Base UI component: badge #}
+{% set badge_variant = badge_variant|default('neutral') %}
+{% set badge_text = badge_text|default(text|default('Badge')) %}
+
+<span class="nk-badge nk-badge--{{ badge_variant }}{{ badge_class is defined and badge_class ? ' ' ~ badge_class : '' }}">{{ badge_text }}</span>

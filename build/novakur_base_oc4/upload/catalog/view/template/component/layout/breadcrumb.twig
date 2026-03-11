@@ -1,0 +1,19 @@
+{# NovaKur Base layout component: breadcrumb #}
+{% set crumbs = breadcrumbs|default([]) %}
+{% if crumbs %}
+  <nav class="nk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nk-global-container__inner">
+      <ol class="nk-breadcrumb__list">
+        {% for crumb in crumbs %}
+          <li class="nk-breadcrumb__item">
+            {% if loop.last %}
+              <span class="nk-breadcrumb__current">{{ crumb.text }}</span>
+            {% else %}
+              <a class="nk-breadcrumb__link" href="{{ crumb.href|default('#') }}">{{ crumb.text|default('') }}</a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </nav>
+{% endif %}

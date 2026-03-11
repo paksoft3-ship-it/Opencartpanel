@@ -1,0 +1,10 @@
+{
+  "name": "opencart-themes",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "sync": "node scripts/sync-to-marketplace.mjs",
+    "sync:dry": "DRY_RUN=1 node scripts/sync-to-marketplace.mjs",
+    "sync:prod": "MARKETPLACE_URL=https://your-marketplace.vercel.app node scripts/sync-to-marketplace.mjs"
+  }
+}

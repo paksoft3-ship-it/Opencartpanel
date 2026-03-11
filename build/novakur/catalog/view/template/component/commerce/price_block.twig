@@ -1,0 +1,24 @@
+{# NovaKur Base commerce component: price_block (Tailwind) #}
+<div class="space-y-1">
+  <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+    {% if special is defined and special %}
+      <span class="text-3xl font-black text-primary">{{ special }}</span>
+      <span class="text-lg line-through text-slate-400">{{ price|default('') }}</span>
+    {% else %}
+      <span class="text-3xl font-black text-slate-900">{{ price|default('') }}</span>
+    {% endif %}
+  </div>
+  {% if tax is defined and tax %}
+    <p class="text-xs text-slate-400">{{ tax }}</p>
+  {% endif %}
+  {% if reward is defined and reward %}
+    <p class="text-xs text-green-600 flex items-center gap-1">
+      <span class="material-symbols-outlined text-[14px]">stars</span>{{ reward }}
+    </p>
+  {% endif %}
+  {% if points is defined and points %}
+    <p class="text-xs text-slate-400 flex items-center gap-1">
+      <span class="material-symbols-outlined text-[14px]">toll</span>{{ points }}
+    </p>
+  {% endif %}
+</div>

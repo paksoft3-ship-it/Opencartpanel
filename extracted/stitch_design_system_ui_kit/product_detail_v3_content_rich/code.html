@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                        "slate-900": "#0F172A",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>NovaKur Base - Premium Performance</title>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl font-bold">bolt</span>
+<h1 class="text-slate-900 dark:text-slate-100 text-xl font-black tracking-tight">NOVAKUR</h1>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Shop</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Tech</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Lifestyle</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Support</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:block relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-full text-sm w-64 focus:ring-2 focus:ring-primary" placeholder="Search tech..." type="text"/>
+</div>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-sm text-slate-500 mb-8">
+<a class="hover:text-primary" href="#">Home</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<a class="hover:text-primary" href="#">Base Series</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">NovaKur Base</span>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<!-- 2-Column Image Grid -->
+<div class="grid grid-cols-2 gap-4">
+<div class="col-span-2 rounded-xl overflow-hidden bg-slate-200 aspect-[4/3]">
+<img class="w-full h-full object-cover" data-alt="Close up of black studio headphones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4DKKVCSQppODtCahf7sLMApZCNpVHA9-Pb_MdxI-2ZUpVOsXuG42DY8kG2BpAGO9cnpWkyaNBOK7OUMJrn223Skjx2YpqiUYTb34TVUhoA_wGvMtVtW3qFZ30_0XlXI3q9NOjhjfuv5qxXHlW2kjUyKC71UC61C4MkIDlqwcGfp0eS_GHWsGT71bcDIp510KifkIQBjDCa75TjSU7QrC8II29pyDK4K-R31Kmzb1A6b66buLq3p33OcqDtidtbs_e7G6fHapjW9y3"/>
+</div>
+<div class="rounded-xl overflow-hidden bg-slate-200 aspect-square">
+<img class="w-full h-full object-cover" data-alt="Minimalist headphones on a wooden desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZeoWFHdsA3truAUY8BQPRYRAqvL1MvjQZD86k_e-QF9YttBoHcNx90NuZcK03d5u_6D0a6MtAE7sYiigGsJxYn2EcmcrodJuM2ls7_8Oewsk9uOtqs_M__Xgl1xEWmrf3lyEjG0l6KbnLiLRiGIebD5gbhFmn6hPuXEDQPPDPJc0q9HUzKfgqwCnUdkoaVC2B1Yjpl9gkJwpepPR-WUtBgDgErM6SIZYZk0CIQS2oNsTu62Gnm5yKzCAvh3SkxHkhmkFv9FWzLQJQ"/>
+</div>
+<div class="rounded-xl overflow-hidden bg-slate-200 aspect-square">
+<img class="w-full h-full object-cover" data-alt="Industrial design of audio equipment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADJEnjUup8O5cXi63TOTPFd3qkjhurKeWl_BMZ7iLUK16rfQjZDhB_RFdmJ8f17F8ALrARHDE5tp3wIWLxWZdo90rY28RBc1Ad90q9BAI1sd9jk5wy5mO36OqC8PKl9wJoWOBqfFqGyyN_XM1C9uMuBvWk-a9jc1ZAxBfDaeYYFnJqJminipOI0XCy8iVOVM1uI0aIBs46uBbJzgEhhHDRmgTOK4eQEO1AfERkrJOGtEn1iPZjQGFoIoTA5Su2-NhKq7qFtgpqHcPw"/>
+</div>
+<div class="col-span-2 rounded-xl overflow-hidden bg-slate-200 aspect-[16/9]">
+<img class="w-full h-full object-cover" data-alt="Person wearing headphones in modern office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnmlt4zoKloc6GKR10YTwgX3YIodwJs3gD1uk0YkMVCM_Z0SoiC5ozV-cstvsYLgigduU-bhfN5xcn_FNcslsWBsug9umVP_0SDx1pxO3xmQoFDvf-cGEsWPiZa2JNY9PHrucnnDs3IEZN-CMe0UH6No9CCsk4bRO7GRhqZSHVKc8qvNTYOioG_Pg2JNN570MUF6qmA9bVDlsX8R44X5yJNr1kokV9lzHmOphXzcjj5Rmp47YXfDOCI-4NTU7krAqZKeuJQl2JRMgz"/>
+</div>
+</div>
+<!-- Product Info Sidebar -->
+<div class="space-y-8">
+<div>
+<span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-4">Limited Edition</span>
+<h2 class="text-4xl lg:text-5xl font-black text-slate-900 dark:text-slate-100 leading-tight">NovaKur Base</h2>
+<p class="text-xl text-slate-500 mt-4">The foundation of modern performance. Engineered for professional sound clarity and ultimate comfort.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex text-yellow-400">
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined">star_half</span>
+</div>
+<span class="text-sm font-medium text-slate-600 underline cursor-pointer">128 Reviews</span>
+</div>
+<div class="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-800">
+<div class="flex justify-between items-end mb-6">
+<div>
+<span class="text-slate-500 line-through text-lg">$349.00</span>
+<div class="text-4xl font-bold text-slate-900 dark:text-slate-100">$299.00</div>
+</div>
+<div class="text-green-600 text-sm font-bold bg-green-100 px-2 py-1 rounded">Save $50.00</div>
+</div>
+<div class="space-y-4">
+<p class="text-sm font-bold uppercase tracking-wider text-slate-500">Choose Edition</p>
+<div class="flex flex-wrap gap-3">
+<button class="px-6 py-3 rounded-lg border-2 border-primary bg-primary/5 text-primary font-bold transition-all">Blue Edition</button>
+<button class="px-6 py-3 rounded-lg border-2 border-transparent bg-white dark:bg-slate-800 hover:border-slate-300 font-bold transition-all">Silver Pro</button>
+<button class="px-6 py-3 rounded-lg border-2 border-transparent bg-white dark:bg-slate-800 hover:border-slate-300 font-bold transition-all">Matte Black</button>
+</div>
+</div>
+<div class="mt-8 space-y-3">
+<button class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary/90 shadow-xl shadow-primary/20 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">shopping_bag</span>
+                            Add to Cart
+                        </button>
+<button class="w-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 py-4 rounded-xl font-bold transition-all">Buy with Apple Pay</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">local_shipping</span>
+</div>
+<span class="text-sm font-medium">Free express delivery</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">verified_user</span>
+</div>
+<span class="text-sm font-medium">2 Year Warranty</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Narrative Lifestyle Section -->
+<section class="mt-32 space-y-24">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div class="order-2 md:order-1">
+<h3 class="text-3xl font-bold mb-6">Designed for Focus</h3>
+<p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Whether you are in a crowded coffee shop or a quiet home office, the NovaKur Base delivers an immersive audio experience. Our proprietary Active Noise Isolation technology blocks out 98% of environmental noise, allowing you to dive deep into your flow state.
+                    </p>
+<ul class="mt-8 space-y-4">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span>Ergonomic memory foam cushions</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span>40mm custom graphene drivers</span>
+</li>
+</ul>
+</div>
+<div class="order-1 md:order-2 rounded-3xl overflow-hidden aspect-video shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="Camera lens focusing on details" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaED_ibYpy4RCRg7Jlxfee2ybu14dwU94Im8KCfcr20NZxQ_-USGecsOJqb-L5ewgaXnriuty-FG4cHYHdQxBHcU2ChzAswK3b0Dtdwb2yZmFemL1OTFHzkQ5S9ZgNWo5UhgldBmZKnl1zTDQVORxCmFp0b5EYa8wCs4EeeOeFL-_01Xc5PWj0hMo2Mqm5NSRIkuoq6AbtmCw7KirA8z80zb5wvGBawU4P9GV-Ahp7hVAmFsJruVj2OQ78GdtaVTTesEssMGEMvfK9"/>
+</div>
+</div>
+<!-- Technical Specifications -->
+<div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-200 dark:border-slate-800">
+<h3 class="text-2xl font-bold mb-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">settings</span>
+                    Technical Specifications
+                </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+<div class="flex justify-between py-4 border-b border-slate-100 dark:border-slate-800">
+<span class="text-slate-500">Driver Type</span>
+<span class="font-semibold">Dynamic Graphene</span>
+</div>
+<div class="flex justify-between py-4 border-b border-slate-100 dark:border-slate-800">
+<span class="text-slate-500">Battery Life</span>
+<span class="font-semibold">Up to 45 Hours</span>
+</div>
+<div class="flex justify-between py-4 border-b border-slate-100 dark:border-slate-800">
+<span class="text-slate-500">Connectivity</span>
+<span class="font-semibold">Bluetooth 5.3 / USB-C</span>
+</div>
+<div class="flex justify-between py-4 border-b border-slate-100 dark:border-slate-800">
+<span class="text-slate-500">Weight</span>
+<span class="font-semibold">245g</span>
+</div>
+<div class="flex justify-between py-4 border-b border-slate-100 dark:border-slate-800">
+<span class="text-slate-500">Frequency Response</span>
+<span class="font-semibold">10Hz - 40kHz</span>
+</div>
+<div class="flex justify-between py-4 border-b border-slate-100 dark:border-slate-800">
+<span class="text-slate-500">Microphones</span>
+<span class="font-semibold">6 Beam-forming mics</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Review Section -->
+<section class="mt-32">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+<div>
+<h3 class="text-3xl font-bold mb-2">Customer Stories</h3>
+<p class="text-slate-500">Real experiences from our global community.</p>
+</div>
+<button class="bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 px-6 py-3 rounded-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined">rate_review</span>
+                    Write a Review
+                </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Review Card -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User avatar profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFahqD7wryUm_uw4L89VzQxnXbuXsno6VrZYCIXNFFBBAStZv6V1sgq_A5VnyYDMDYdNLvsVlqmmaj0F1lUHguO8cWwYGTIRIwXU9wAzEoyoID4QmGzW2z6Ei8xlWbTBgBgEkbJEtOypRhzGhdFlV_PyPsXfyak6GIAywR200gVvwv0A5OPTZWmkoIY4rEktks8y5MwlnwmTSOqkA9RkPNSbHG6MYKYDjxx9XAMoG3irxhiF0dVHPDeiLoZtT8D7CbFxLlXb1vUoSz"/>
+</div>
+<div>
+<h4 class="font-bold">Marcus Chen</h4>
+<div class="flex text-yellow-400 text-sm">
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+</div>
+</div>
+</div>
+<p class="text-slate-600 dark:text-slate-400 italic mb-4">"The audio profile is incredible. I can hear details in my tracks that I never noticed before. The Blue edition looks stunning on my desk."</p>
+<div class="grid grid-cols-2 gap-2">
+<div class="aspect-square rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Customer photo of product" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9_hQoWDgQgWFgbpEf864bXowiZG1RT6av9G_c2GxrR7d4HxlzpquhYdwVfMEwDy9vCmqkAL9kDVpZq0paKlYv6LyIh6xoavdJLIVlY7XJmFPAboKjINC3xNEtTcIPDnYW89ZG1a1C8ImP3uNtTMXZ36tlITH_JyyJnw6jXmCyrterwA5UzLuYBhNS5iGA2kZfRo1yGei1pBkqbDyPUcKMUc8C5hETCAcp0eXNmcITztDKHqdsnhsjRB79vsPkTeC1GAADboCkxNCl"/>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User avatar female profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIY_WIxWHVoF54GHkB_mlReOHU3-25OkBwWMXYtFJu4Vz-gEkGN_63Pt62LFWm3MUNE4VEaPGYDVMjUC27mNEKBNKRN3JKU03jPBlArdShQ5SnTBZHjMjfBRe0PFNn8nMkCz3fQ1JYQi_1IYga3becSNp7NvUQ1PztWutszYPfq1dER2_wlWk4VMd4-N8PfFmddSIuak5fGugzQkdvNCEO1BQqG6AIHwGojTxznAJ6fnDU6CqBfKIWqjdxI1-3wgB3ox6P45vIvGLS"/>
+</div>
+<div>
+<h4 class="font-bold">Sarah Jenkins</h4>
+<div class="flex text-yellow-400 text-sm">
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="material-symbols-outlined text-xs">star</span>
+</div>
+</div>
+</div>
+<p class="text-slate-600 dark:text-slate-400 italic mb-4">"Super comfortable for long sessions. I wear them 8 hours a day for work and they don't feel heavy at all. Highly recommend!"</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User avatar male profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE2MxDVWql4wIfxeKjct_OYSM48A1jgSFmvhUUKo4YEINKPBB-WnWaj8nkemcX-Cql5DEAYsOti46ILecS3zhm6u_TA4jorGPArIBIAIkUsZvIuFKSzVk-mTOfwm6JSFXUkhRdzI07GylijUbt9L6rzMbQgtWzHXT7rHC1KF4x65hUJgFIrxCd0RVrnVQiQkX4UkaBimb5Dpf4uZ0oQqPrEnvMZdAzJJVypbTwifYKw3g8sGJ6VUtDAe_Qeg9dqGuLQXuuBKCA3q1y"/>
+</div>
+<div>
+<h4 class="font-bold">Alex Rivera</h4>
+<div class="flex text-yellow-400 text-sm">
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+</div>
+</div>
+</div>
+<p class="text-slate-600 dark:text-slate-400 italic mb-4">"Best headphones at this price point. The build quality feels very premium and the noise cancellation is top tier."</p>
+<div class="grid grid-cols-2 gap-2">
+<div class="aspect-square rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Product on nightstand" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr0Cq3DmGSwFgd9Di5uwucl54WRnC3NbUgkLyOOhkzGpGmd_sTpGcBGLhIIkQklL-nV1lsWQHNOfOw9JrWDoWCEWRZnDFE1-WseKZ_mP3laqjNF-fLBRrbXzBZZvPPfrBVq-dqeXkxlqWiRM8X6SHRqekB1vfHf2JY0j_Mn2I7gF6T5YNmOfEGSaefc7KycU5NriZ_8KtbhRS_8NjyjywdrHO1UeN6j_SioHtEt9IwWaDzBxF1VxbdzoAlU3rYkUu4MbZwbGf3uKq3"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommendations -->
+<section class="mt-32 pb-24">
+<h3 class="text-3xl font-bold mb-12 text-center">You May Also Like</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Product Card -->
+<div class="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:shadow-2xl transition-all">
+<div class="aspect-square overflow-hidden bg-slate-100 relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Portable speaker" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcM6-PdgvT6CVDg0SuXJBDDo86DJQTBQMBN6wxtMKK6V9UyoJkhw2tHne9l4Y536GRWx_RdYY-jSESK9rIknqa3jR1Wis5di304pC2C1wjy5gEWJD3efjm8x1dErKzKTJbURIaQoVoyW4ad4K7rLkBtOI7UAJq3BGze433h4JsyEHEvFjP9IlUrrpRqM_VN0qz77rq5pjDRFmqjVm87PvKK2_FcejhBi3uuuzeJRDN0eJDmxLpYLm7eSwi-QujN7ZHCifVERwhEBZV"/>
+<button class="absolute top-4 right-4 p-2 bg-white/80 backdrop-blur rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-slate-900">favorite</span>
+</button>
+</div>
+<div class="p-6">
+<h4 class="text-xl font-bold mb-1">NovaKur Move</h4>
+<p class="text-slate-500 mb-4 text-sm">Portable high-fidelity speaker</p>
+<div class="flex justify-between items-center">
+<span class="text-2xl font-black text-primary">$189.00</span>
+<button class="p-3 bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:shadow-2xl transition-all">
+<div class="aspect-square overflow-hidden bg-slate-100 relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Wireless earbuds" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-bmzBa-vUGq56MjTKqkfiJf6C8KBON4Ly-sxfLZxeJTSpdCE_KhVz1RyFmz6iRvkLdjvHgZnw4zWumWKGVnLdAOnHuZQY8kRlK4eaweYiS8-C0Lwt6HQ0LVLQg21Y6_LKzYfW9HFuYAKZvcto99dvhp4Br6XN9tmSaO0inslh5a9E2PrDyCpSNj2PpZ5QHpMiq2V1x31GAfzE0q32mINNuHPDgB_MXI4mEotgCXEERTshTlrJFON9yb62Svqu50dsACTiVW22QoPW"/>
+<button class="absolute top-4 right-4 p-2 bg-white/80 backdrop-blur rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-slate-900">favorite</span>
+</button>
+</div>
+<div class="p-6">
+<h4 class="text-xl font-bold mb-1">NovaKur Air</h4>
+<p class="text-slate-500 mb-4 text-sm">True wireless ANC earbuds</p>
+<div class="flex justify-between items-center">
+<span class="text-2xl font-black text-primary">$149.00</span>
+<button class="p-3 bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:shadow-2xl transition-all">
+<div class="aspect-square overflow-hidden bg-slate-100 relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Professional microphone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwbspud055taWZ9MMH5zY1WxgXVDG9d4XK8hToUZ_O4Fp0ksfyFenFnnff1AkoFLQe0dkJ2OVpbE3EMBYwPqRynwp9WTbvOsAHo2G9ZlHwqa0bcq1yCAa6x7CbkZcbH-s9Fy_eud5k8GOPF4zxasokSXYFfcH7Ss6kRbdV9lcsdsYKhBeJ7dAvecltkw4_if3b4xHAePmdQE5xnzj8eSCSuBHAOctWEQs5rj3Auq6VXmrmYe_tDT4rHd63xGwfXNmTQDwDQvciluUb"/>
+<button class="absolute top-4 right-4 p-2 bg-white/80 backdrop-blur rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-slate-900">favorite</span>
+</button>
+</div>
+<div class="p-6">
+<h4 class="text-xl font-bold mb-1">NovaKur Speak</h4>
+<p class="text-slate-500 mb-4 text-sm">Studio grade cardioid mic</p>
+<div class="flex justify-between items-center">
+<span class="text-2xl font-black text-primary">$219.00</span>
+<button class="p-3 bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Fixed Buy Bar on Scroll (Simulated behavior with CSS) -->
+<div class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 p-4 md:py-3 shadow-2xl">
+<div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+<div class="hidden sm:flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Thumbnail product" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6dw6QmTyPGQJPPFhxtZ3dFyxiJLuhHzn7-4dQxWojLLQnR_E0MJMTsdX_duZSS0KH3jJcswRVvgbPMZOGFucI9sy_LNGXmMqz4PniG5aWtezX3C13t9Mh9SCGnzo8GD9sNgDFPfRQCcEAtf7YobG8TMHlPXX7vePMQSIwA_0ahcVR_QMLiSvM-azlpKM7uMXimQpXvvTizIQxzq6Y6xEPqplvBtFGL9unFv3wTrLN0TgtS_DoHEx2fUNBSDOcDiYkGWnP2cOvS9s9"/>
+</div>
+<div>
+<p class="font-bold text-sm">NovaKur Base</p>
+<p class="text-xs text-slate-500">Blue Edition — In Stock</p>
+</div>
+</div>
+<div class="flex items-center gap-6 w-full sm:w-auto">
+<div class="flex flex-col items-end">
+<span class="text-xs text-slate-500 line-through">$349.00</span>
+<span class="text-xl font-black text-slate-900 dark:text-slate-100">$299.00</span>
+</div>
+<button class="flex-1 sm:flex-none bg-primary text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">shopping_cart</span>
+                    Add to Cart
+                </button>
+</div>
+</div>
+</div>
+</body></html>

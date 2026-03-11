@@ -1,0 +1,31 @@
+{# NovaKur Base section: related_products_carousel #}
+{# Expects: products (array), heading (string), language (string) #}
+{% set product_list = products|default([]) %}
+{% if product_list %}
+<section class="py-12 border-t border-slate-100">
+
+  {# Section header #}
+  <div class="flex items-end justify-between mb-8">
+    <div>
+      <h2 class="text-2xl font-black text-slate-900">{{ heading|default('You May Also Like') }}</h2>
+      <p class="text-slate-500 text-sm mt-1">Handpicked products just for you</p>
+    </div>
+  </div>
+
+  {# Desktop: 4-col grid | Mobile: 2-col grid #}
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    {% for product in product_list|slice(0, 8) %}
+      {% include 'extension/novakur/catalog/view/template/component/commerce/product_card_standard.twig' with {
+        product_name:    product.name|default(''),
+        product_href:    product.href|default('#'),
+        product_thumb:   product.thumb|default(''),
+        product_price:   product.price|default(''),
+        product_special: product.special|default(''),
+        product_id:      product.product_id|default(0),
+        product_lang:    language|default('en-gb')
+      } only %}
+    {% endfor %}
+  </div>
+
+</section>
+{% endif %}

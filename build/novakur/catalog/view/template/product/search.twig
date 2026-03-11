@@ -1,0 +1,75 @@
+{# NovaKur Base: Search results (Tailwind) #}
+{{ header }}
+
+<main class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+  {% include 'extension/novakur/catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+  <h1 class="text-3xl font-black text-slate-900 mb-2">{{ heading_title|default('Search') }}</h1>
+
+  {# Search form #}
+  <div class="bg-white rounded-2xl border border-slate-200 p-6 mb-8 shadow-sm">
+    <form action="{{ action|default('#') }}" method="get" class="space-y-4">
+      <div class="flex gap-3">
+        <div class="flex-1">
+          <input type="text" name="search" value="{{ search|default('') }}" placeholder="Search products..."
+            class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+        </div>
+        <button type="submit" class="flex items-center gap-2 bg-primary text-white rounded-xl px-5 py-3 font-bold hover:bg-primary/90 transition-all shrink-0">
+          <span class="material-symbols-outlined text-[18px]">search</span>
+          <span class="hidden sm:inline">Search</span>
+        </button>
+      </div>
+      {% if categories is defined and categories %}
+      <details class="group">
+        <summary class="flex items-center gap-2 text-sm font-semibold text-slate-600 cursor-pointer list-none">
+          <span class="material-symbols-outlined text-[18px]">tune</span>
+          Advanced Options
+          <span class="material-symbols-outlined text-[16px] group-open:rotate-180 transition-transform ml-auto">expand_more</span>
+        </summary>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4 pt-4 border-t border-slate-100">
+          <div>
+            <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5">Category</label>
+            <select name="category_id" class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm focus:ring-2 focus:ring-primary/20 outline-none">
+              <option value="0">All Categories</option>
+              {% for category in categories %}
+                <option value="{{ category.category_id }}" {{ category_id is defined and category_id == category.category_id ? 'selected' : '' }}>{{ category.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5">Search In</label>
+            <label class="flex items-center gap-2 text-sm text-slate-600 cursor-pointer mt-3">
+              <input type="checkbox" name="description" value="1" {{ description is defined and description ? 'checked' : '' }} class="rounded border-slate-300 text-primary"/>
+              Also search in product descriptions
+            </label>
+          </div>
+        </div>
+      </details>
+      {% endif %}
+    </form>
+  </div>
+
+  {# Results #}
+  {% set product_list = products|default([]) %}
+  {% if search is defined and search %}
+    {% if product_list %}
+      <p class="text-slate-500 text-sm mb-5">{{ product_list|length }} result{{ product_list|length != 1 ? 's' : '' }} for <strong class="text-slate-900">"{{ search }}"</strong></p>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-8">
+        {% for product in product_list %}
+          {% include 'extension/novakur/catalog/view/template/component/commerce/product_card_standard.twig' with { product: product } only %}
+        {% endfor %}
+      </div>
+      {% if pagination is defined and pagination %}
+        <div class="flex justify-center">{{ pagination|raw }}</div>
+      {% endif %}
+    {% else %}
+      <div class="flex flex-col items-center justify-center py-20 bg-white rounded-2xl border border-slate-200 text-center">
+        <span class="material-symbols-outlined text-7xl text-slate-200 mb-4">search_off</span>
+        <h2 class="text-xl font-bold text-slate-900 mb-2">No results found</h2>
+        <p class="text-slate-500">Try different keywords or browse our categories.</p>
+      </div>
+    {% endif %}
+  {% endif %}
+</main>
+
+{{ footer }}

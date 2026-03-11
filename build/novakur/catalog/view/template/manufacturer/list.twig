@@ -1,0 +1,49 @@
+{# NovaKur Base: Manufacturer list (Tailwind) #}
+{{ header }}
+
+<main class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+  {% include 'extension/novakur/catalog/view/template/component/layout/breadcrumb.twig'
+     with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+  <h1 class="text-2xl lg:text-3xl font-black text-slate-900 mb-6">{{ heading_title|default('Brands') }}</h1>
+
+  {% if manufacturers is defined and manufacturers %}
+    <div class="space-y-8">
+      {% for group in manufacturers %}
+        {% if group.manufacturers is defined and group.manufacturers %}
+          <section>
+            <div class="mb-4">
+              <span class="inline-flex items-center rounded-xl bg-primary/10 text-primary text-xs font-bold px-3 py-1.5">
+                {{ group.tag|default('#') }}
+              </span>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+              {% for manufacturer in group.manufacturers %}
+                <a href="{{ manufacturer.href|default('#') }}"
+                   class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:border-primary/40 hover:shadow-md transition-all text-center no-underline">
+                  {% if manufacturer.image is defined and manufacturer.image %}
+                    <img src="{{ manufacturer.image }}"
+                         alt="{{ manufacturer.name|default('Brand') }}"
+                         class="h-16 w-full object-contain mx-auto mb-4"/>
+                  {% else %}
+                    <div class="h-16 w-full flex items-center justify-center mb-4 text-slate-400">
+                      <span class="material-symbols-outlined text-4xl">storefront</span>
+                    </div>
+                  {% endif %}
+                  <p class="text-sm font-semibold text-slate-800">{{ manufacturer.name|default('Brand') }}</p>
+                </a>
+              {% endfor %}
+            </div>
+          </section>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm text-center">
+      <p class="text-slate-500 font-medium">No brands found.</p>
+    </div>
+  {% endif %}
+</main>
+
+{{ footer }}

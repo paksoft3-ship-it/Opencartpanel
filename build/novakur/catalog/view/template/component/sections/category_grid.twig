@@ -1,0 +1,49 @@
+{# NovaKur Base section: category_grid (Tailwind) #}
+{% set items = categories|default([]) %}
+<section class="mb-12">
+  <div class="flex items-end justify-between mb-8">
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight text-slate-900">{{ category_grid_title|default('Shop by Category') }}</h2>
+      <p class="text-slate-500 mt-1">Curated collections for every lifestyle</p>
+    </div>
+    <a href="{{ home|default('/') }}" class="text-sm font-bold text-primary flex items-center gap-1 hover:gap-2 transition-all no-underline">
+      View All <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+    </a>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+    {% if items %}
+      {% for item in items %}
+        <a href="{{ item.href|default('#') }}" class="group cursor-pointer no-underline">
+          <div class="aspect-square bg-slate-100 rounded-2xl mb-3 overflow-hidden border border-transparent group-hover:border-primary/30 transition-all">
+            {% if item.thumb is defined and item.thumb %}
+              <img src="{{ item.thumb }}" alt="{{ item.name|default('Category') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
+            {% else %}
+              <div class="w-full h-full flex items-center justify-center">
+                <span class="material-symbols-outlined text-4xl text-slate-400 group-hover:text-primary transition-colors">category</span>
+              </div>
+            {% endif %}
+          </div>
+          <p class="text-center font-bold text-sm text-slate-800">{{ item.name|default('Category') }}</p>
+        </a>
+      {% endfor %}
+    {% else %}
+      {% set demo_cats = [
+        { name: 'Electronics',  thumb: 'image/catalog/novakur/categories/tech_flat_lay.png' },
+        { name: 'Fashion',      thumb: 'image/catalog/novakur/categories/fashion_flat_lay.png' },
+        { name: 'Home & Living',thumb: 'image/catalog/novakur/categories/home_decor_flat_lay.png' },
+        { name: 'Beauty',       thumb: 'image/catalog/novakur/categories/skincare_flat_lay.png' },
+        { name: 'Sports',       thumb: 'image/catalog/novakur/categories/sports_flat_lay.png' },
+        { name: 'All Products', thumb: 'image/catalog/novakur/categories/tech_flat_lay.png' }
+      ] %}
+      {% for cat in demo_cats %}
+        <a href="{{ home|default('/') }}" class="group cursor-pointer no-underline">
+          <div class="aspect-square bg-slate-100 rounded-2xl mb-3 overflow-hidden border border-transparent group-hover:border-primary/30 transition-all">
+            <img src="{{ cat.thumb }}" alt="{{ cat.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
+          </div>
+          <p class="text-center font-bold text-sm text-slate-800">{{ cat.name }}</p>
+        </a>
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>

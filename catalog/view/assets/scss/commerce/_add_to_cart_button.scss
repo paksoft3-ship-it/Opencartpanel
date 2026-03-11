@@ -1,0 +1,85 @@
+// Commerce: add_to_cart_button
+.nk-add-to-cart-button {
+  border: 1px solid #dbeafe;
+  border-radius: 0.75rem;
+  padding: 0.875rem;
+  background: #ffffff;
+}
+
+.nk-add-to-cart-button__form {
+  display: grid;
+  gap: 0.875rem;
+}
+
+.nk-add-to-cart-button__stock {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.nk-add-to-cart-button__stock.is-in-stock {
+  color: #1e3a8a;
+}
+
+.nk-add-to-cart-button__stock.is-out-of-stock {
+  color: #b91c1c;
+}
+
+.nk-add-to-cart-button__controls {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.nk-add-to-cart-button__qty-label {
+  color: #0f172a;
+  font-size: 0.875rem;
+}
+
+.nk-add-to-cart-button__qty-wrap {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.nk-add-to-cart-button__qty-btn {
+  border: 0;
+  background: #f8fafc;
+  color: #1e3a8a;
+  width: 2rem;
+  height: 2rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.nk-add-to-cart-button__qty-input {
+  width: 3.5rem;
+  border: 0;
+  text-align: center;
+  color: #0f172a;
+  font-size: 0.9375rem;
+  padding: 0.375rem;
+}
+
+.nk-add-to-cart-button__actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.nk-add-to-cart-button__submit,
+.nk-add-to-cart-button__wishlist {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .nk-add-to-cart-button__actions {
+    grid-template-columns: 1fr auto;
+  }
+
+  .nk-add-to-cart-button__wishlist {
+    width: auto;
+    min-width: 8.5rem;
+  }
+}

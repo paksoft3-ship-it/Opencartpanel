@@ -1,0 +1,11 @@
+{# NovaKur Base layout component: global_container #}
+{% set container_tag = container_tag|default('div') %}
+<{{ container_tag }} class="nk-global-container{{ container_modifier is defined and container_modifier ? ' nk-global-container--' ~ container_modifier : '' }}">
+  <div class="nk-global-container__inner">
+    {% if content is defined %}
+      {{ content }}
+    {% else %}
+      {% block nk_global_container_content %}{% endblock %}
+    {% endif %}
+  </div>
+</{{ container_tag }}>

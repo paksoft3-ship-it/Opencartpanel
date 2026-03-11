@@ -1,0 +1,80 @@
+{# NovaKur Base: Edit account details (Tailwind) #}
+{{ header }}
+
+<main class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+  {% include 'extension/novakur/catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+  <div class="flex flex-col lg:flex-row gap-8">
+
+    {# Sidebar nav #}
+    <aside class="w-full lg:w-56 shrink-0">
+      <nav class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+        <div class="px-4 py-4 border-b border-slate-100">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-400">My Account</p>
+        </div>
+        {% set account_links = [
+          { label: 'Dashboard', href: account|default('#'), icon: 'dashboard', active: false },
+          { label: 'Orders', href: order|default('#'), icon: 'receipt_long', active: false },
+          { label: 'Wishlist', href: wishlist|default('#'), icon: 'favorite', active: false },
+          { label: 'Address Book', href: address|default('#'), icon: 'location_on', active: false },
+          { label: 'Edit Details', href: edit|default('#'), icon: 'edit', active: true },
+          { label: 'Change Password', href: password|default('#'), icon: 'lock', active: false },
+          { label: 'Logout', href: logout|default('#'), icon: 'logout', active: false }
+        ] %}
+        {% for link in account_links %}
+          <a href="{{ link.href }}" class="flex items-center gap-3 px-4 py-3 text-sm font-medium {{ link.active ? 'text-primary bg-primary/5' : 'text-slate-600 hover:text-primary hover:bg-slate-50' }} transition-colors no-underline">
+            <span class="material-symbols-outlined text-[18px]">{{ link.icon }}</span>
+            {{ link.label }}
+          </a>
+        {% endfor %}
+      </nav>
+    </aside>
+
+    {# Main content #}
+    <section class="flex-1 min-w-0">
+      <h1 class="text-2xl font-black text-slate-900 mb-6">{{ heading_title|default('Edit Account') }}</h1>
+
+      {% if error_warning is defined and error_warning %}
+        <div class="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm mb-6">{{ error_warning }}</div>
+      {% endif %}
+
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+        <form action="{{ action|default('#') }}" method="post" class="space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="input-firstname" class="block text-sm font-semibold text-slate-700 mb-1.5">First Name <span class="text-red-500">*</span></label>
+              <input type="text" id="input-firstname" name="firstname" value="{{ firstname|default('') }}" placeholder="First name"
+                class="w-full rounded-xl border {{ error_firstname is defined and error_firstname ? 'border-red-400' : 'border-slate-200' }} px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+              {% if error_firstname is defined and error_firstname %}<p class="text-red-500 text-xs mt-1">{{ error_firstname }}</p>{% endif %}
+            </div>
+            <div>
+              <label for="input-lastname" class="block text-sm font-semibold text-slate-700 mb-1.5">Last Name <span class="text-red-500">*</span></label>
+              <input type="text" id="input-lastname" name="lastname" value="{{ lastname|default('') }}" placeholder="Last name"
+                class="w-full rounded-xl border {{ error_lastname is defined and error_lastname ? 'border-red-400' : 'border-slate-200' }} px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+              {% if error_lastname is defined and error_lastname %}<p class="text-red-500 text-xs mt-1">{{ error_lastname }}</p>{% endif %}
+            </div>
+          </div>
+          <div>
+            <label for="input-email" class="block text-sm font-semibold text-slate-700 mb-1.5">Email Address <span class="text-red-500">*</span></label>
+            <input type="email" id="input-email" name="email" value="{{ email|default('') }}" placeholder="name@example.com"
+              class="w-full rounded-xl border {{ error_email is defined and error_email ? 'border-red-400' : 'border-slate-200' }} px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+            {% if error_email is defined and error_email %}<p class="text-red-500 text-xs mt-1">{{ error_email }}</p>{% endif %}
+          </div>
+          <div>
+            <label for="input-telephone" class="block text-sm font-semibold text-slate-700 mb-1.5">Phone</label>
+            <input type="tel" id="input-telephone" name="telephone" value="{{ telephone|default('') }}" placeholder="+1 555 123 4567"
+              class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+          </div>
+          <div class="pt-2">
+            <button type="submit" class="bg-primary text-white rounded-xl px-8 py-3 font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+              {{ button_continue|default('Save Changes') }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+{{ footer }}

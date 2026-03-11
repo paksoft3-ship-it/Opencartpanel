@@ -1,0 +1,159 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="float-end">
+        <button type="button" id="button-save" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> {{ text_edit }}</button>
+        <a href="{{ back }}" class="btn btn-light"><i class="fa-solid fa-reply"></i> Back</a>
+      </div>
+      <h1>{{ heading_title }}</h1>
+      <ol class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    {% if error_warning %}
+    <div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> {{ error_warning }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    {% endif %}
+
+    <div class="card">
+      <div class="card-header"><i class="fa-solid fa-sliders"></i> NovaKur Minimal — Theme Settings</div>
+      <div class="card-body">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-branding">{{ tab_branding }}</a></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-colors">{{ tab_colors }}</a></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-layout">{{ tab_layout }}</a></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-homepage">{{ tab_homepage }}</a></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-typography">{{ tab_typography }}</a></li>
+        </ul>
+
+        <div class="tab-content pt-3">
+
+          {# ── Branding ── #}
+          <div id="tab-branding" class="tab-pane active">
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label">{{ entry_logo }}</label>
+              <div class="col-sm-10">
+                <div class="input-group">
+                  <input type="text" name="theme_novakur_minimal_logo" value="{{ theme_novakur_minimal_logo }}" class="form-control" />
+                  <button type="button" class="btn btn-outline-secondary" onclick="document.getElementById('novakur-logo-thumb').src='{{ placeholder }}'; document.querySelector('[name=theme_novakur_minimal_logo]').value='';">Clear</button>
+                </div>
+                <div class="mt-2"><img id="novakur-logo-thumb" src="{{ thumb_logo }}" style="max-height:80px;" /></div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label">{{ entry_favicon }}</label>
+              <div class="col-sm-10">
+                <input type="text" name="theme_novakur_minimal_favicon" value="{{ theme_novakur_minimal_favicon }}" class="form-control" />
+                <div class="mt-2"><img src="{{ thumb_favicon }}" style="max-height:40px;" /></div>
+              </div>
+            </div>
+          </div>
+
+          {# ── Colors ── #}
+          <div id="tab-colors" class="tab-pane">
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label">{{ entry_accent_color }}</label>
+              <div class="col-sm-4">
+                <div class="input-group">
+                  <span class="input-group-text"><input type="color" id="accent-picker" value="{{ theme_novakur_minimal_accent_color }}" style="width:30px;height:24px;border:none;padding:0;cursor:pointer;" /></span>
+                  <input type="text" name="theme_novakur_minimal_accent_color" id="accent-hex" value="{{ theme_novakur_minimal_accent_color }}" class="form-control" placeholder="#111111" />
+                </div>
+                <small class="text-muted">{{ help_color }}</small>
+              </div>
+            </div>
+          </div>
+
+          {# ── Layout ── #}
+          <div id="tab-layout" class="tab-pane">
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label">{{ entry_container_width }}</label>
+              <div class="col-sm-4">
+                <input type="number" name="theme_novakur_minimal_container_width" value="{{ theme_novakur_minimal_container_width }}" class="form-control" min="800" max="1600" step="20" />
+                <small class="text-muted">{{ help_container_width }}</small>
+              </div>
+            </div>
+          </div>
+
+          {# ── Homepage ── #}
+          <div id="tab-homepage" class="tab-pane">
+            {% set toggles = [
+              {key: 'enable_hero_banner', label: entry_enable_hero_banner},
+              {key: 'enable_featured_products', label: entry_enable_featured_products},
+              {key: 'enable_category_grid', label: entry_enable_category_grid},
+              {key: 'enable_benefits_bar', label: entry_enable_benefits_bar}
+            ] %}
+            {% for t in toggles %}
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label">{{ t.label }}</label>
+              <div class="col-sm-10">
+                <div class="form-check form-switch mt-2">
+                  <input class="form-check-input" type="checkbox" name="theme_novakur_minimal_{{ t.key }}" value="1"
+                    {{ attribute(_context, 'theme_novakur_minimal_' ~ t.key) == '1' ? 'checked' : '' }} />
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
+          {# ── Typography ── #}
+          <div id="tab-typography" class="tab-pane">
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label">{{ entry_base_font }}</label>
+              <div class="col-sm-4">
+                <select name="theme_novakur_minimal_base_font" class="form-select">
+                  {% for opt in font_options %}
+                  <option value="{{ opt.value }}" {{ theme_novakur_minimal_base_font == opt.value ? 'selected' : '' }}>{{ opt.text }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+          </div>
+
+        </div>{# /tab-content #}
+      </div>{# /card-body #}
+    </div>{# /card #}
+
+    <input type="hidden" name="theme_novakur_minimal_status" value="{{ theme_novakur_minimal_status }}" />
+  </div>
+</div>
+{{ footer }}
+
+<script>
+(function(){
+  const picker = document.getElementById('accent-picker');
+  const hex    = document.getElementById('accent-hex');
+  if (picker && hex) {
+    picker.addEventListener('input', () => hex.value = picker.value);
+    hex.addEventListener('input', () => { if (/^#[0-9a-fA-F]{6}$/.test(hex.value)) picker.value = hex.value; });
+  }
+
+  document.getElementById('button-save').addEventListener('click', function () {
+    const form = {};
+    document.querySelectorAll('[name^="theme_novakur_minimal_"]').forEach(el => {
+      if (el.type === 'checkbox') { if (el.checked) form[el.name] = el.value; }
+      else form[el.name] = el.value;
+    });
+
+    fetch('{{ save }}', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(form).toString()
+    })
+    .then(r => r.json())
+    .then(json => {
+      if (json.success) {
+        location.href = '{{ back }}';
+      } else if (json.error) {
+        alert(Object.values(json.error).join('\n'));
+      }
+    });
+  });
+})();
+</script>

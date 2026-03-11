@@ -1,0 +1,63 @@
+{# NovaKur Base: Sitemap page (Tailwind) #}
+{{ header }}
+
+<main class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+  {% include 'extension/novakur/catalog/view/template/component/layout/breadcrumb.twig'
+     with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+  <h1 class="text-2xl lg:text-3xl font-black text-slate-900 mb-6">{{ heading_title|default('Sitemap') }}</h1>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+      <h2 class="text-lg font-bold text-slate-900 mb-4">Categories</h2>
+
+      {% if categories is defined and categories %}
+        <ul class="space-y-3">
+          {% for category in categories %}
+            <li>
+              <a href="{{ category.href|default('#') }}" class="text-sm font-semibold text-slate-800 hover:text-primary transition-colors no-underline">
+                {{ category.name|default('Category') }}
+              </a>
+
+              {% if category.children is defined and category.children %}
+                <ul class="mt-2 ml-4 space-y-1.5 border-l border-slate-200 pl-3">
+                  {% for child in category.children %}
+                    <li>
+                      <a href="{{ child.href|default('#') }}" class="text-sm text-slate-600 hover:text-primary transition-colors no-underline">
+                        {{ child.name|default('Sub-category') }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="text-sm text-slate-500">No categories available.</p>
+      {% endif %}
+    </section>
+
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+      <h2 class="text-lg font-bold text-slate-900 mb-4">Information Pages</h2>
+
+      {% if informations is defined and informations %}
+        <ul class="divide-y divide-slate-100">
+          {% for information in informations %}
+            <li>
+              <a href="{{ information.href|default('#') }}"
+                 class="flex items-center justify-between gap-3 py-3 text-sm font-medium text-slate-700 hover:text-primary transition-colors no-underline">
+                <span>{{ information.name|default('Information') }}</span>
+                <span class="material-symbols-outlined text-[18px] text-slate-400">chevron_right</span>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="text-sm text-slate-500">No information pages available.</p>
+      {% endif %}
+    </section>
+  </div>
+</main>
+
+{{ footer }}

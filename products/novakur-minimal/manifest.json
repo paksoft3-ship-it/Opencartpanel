@@ -1,0 +1,36 @@
+{
+  "slug": "novakur-minimal",
+  "name": "NovaKur Minimal Theme",
+  "shortDescription": "Ultra-clean, whitespace-driven OpenCart 4 theme for premium brands. Monochromatic, typographic, distraction-free.",
+  "description": "NovaKur Minimal is designed for stores that let their products speak. Inspired by Muji and Apple's design philosophy — maximum whitespace, minimal color, sharp typography. Rectangular buttons, borderless cards, generous spacing. Everything is monochromatic with a single warm accent. Install via OCMOD, configure from admin panel.",
+  "price": 34.99,
+  "categoryId": "themes",
+  "developerId": "novakur",
+  "compatibility": [
+    "OpenCart 4.0",
+    "OpenCart 4.1"
+  ],
+  "images": [],
+  "features": [
+    "Monochromatic design system",
+    "Inter / system-ui typography",
+    "Rectangular 2px border-radius buttons",
+    "No card shadows — border only",
+    "Generous 48px+ section spacing",
+    "Editorial typographic homepage",
+    "OCMOD — one-click install",
+    "Admin color and font configuration"
+  ],
+  "tags": [
+    "theme",
+    "minimal",
+    "clean",
+    "premium",
+    "opencart4",
+    "ocmod"
+  ],
+  "version": "1.0.1",
+  "status": "published",
+  "demoUrl": "",
+  "buildFile": "novakur_minimal.ocmod.zip"
+}

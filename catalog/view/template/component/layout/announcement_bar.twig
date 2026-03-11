@@ -1,0 +1,15 @@
+{# NovaKur Base layout component: announcement_bar #}
+{% set message = message|default('Free shipping on orders over $50') %}
+{% set link = link|default('') %}
+{% set link_text = link_text|default('Shop now') %}
+{% set bg_color = bg_color|default('bg-primary') %}
+
+<div id="nk-announcement-bar" class="{{ bg_color }} text-white text-xs font-medium py-2 px-4 text-center relative">
+  <span>{{ message|raw }}</span>
+  {% if link %}
+    <a href="{{ link }}" class="underline font-bold ml-2 hover:opacity-80 transition-opacity">{{ link_text }}</a>
+  {% endif %}
+  <button onclick="this.parentElement.remove()" class="absolute right-3 top-1/2 -translate-y-1/2 opacity-70 hover:opacity-100 transition-opacity" aria-label="Dismiss">
+    <span class="material-symbols-outlined text-[16px]">close</span>
+  </button>
+</div>

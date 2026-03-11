@@ -1,0 +1,196 @@
+{# NovaKur Base: Product detail page (Tailwind) #}
+{{ header }}
+
+<main class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+
+  {% include 'extension/novakur/catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+  {# Product hero #}
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+
+    {# Image gallery #}
+    <div class="flex flex-col-reverse md:flex-row gap-4">
+      {# Thumbnails #}
+      {% if images is defined and images %}
+      <div class="flex md:flex-col gap-3 overflow-x-auto md:overflow-y-auto md:h-[520px] w-full md:w-20 shrink-0">
+        <button class="border-2 border-primary rounded-xl overflow-hidden shrink-0 w-16 h-16 md:w-20 md:h-20">
+          <img src="{{ thumb|default('') }}" alt="{{ heading_title }}" class="w-full h-full object-cover"/>
+        </button>
+        {% for image in images %}
+          <button class="border-2 border-transparent hover:border-primary/50 rounded-xl overflow-hidden shrink-0 w-16 h-16 md:w-20 md:h-20 transition-colors">
+            <img src="{{ image.thumb|default('') }}" alt="{{ heading_title }}" class="w-full h-full object-cover"/>
+          </button>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {# Main image #}
+      <div class="flex-1 bg-white rounded-2xl border border-slate-200 overflow-hidden relative aspect-square md:aspect-auto">
+        {% if thumb is defined and thumb %}
+          <img src="{{ thumb }}" alt="{{ heading_title }}" class="w-full h-full object-cover"/>
+        {% else %}
+          <div class="w-full h-full flex items-center justify-center text-slate-200 min-h-[400px]">
+            <span class="material-symbols-outlined text-8xl">image</span>
+          </div>
+        {% endif %}
+        {% if special is defined and special %}
+          <span class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase">Sale</span>
+        {% endif %}
+      </div>
+    </div>
+
+    {# Product info #}
+    <div class="flex flex-col">
+      <h1 class="text-3xl font-black text-slate-900 mb-3 leading-tight">{{ heading_title|default('Product') }}</h1>
+
+      {# Rating placeholder #}
+      <div class="flex items-center gap-3 mb-6">
+        <div class="flex text-yellow-400">
+          {% for i in 1..5 %}<span class="material-symbols-outlined text-xl" style="font-variation-settings:'FILL' 1">star</span>{% endfor %}
+        </div>
+        {% if review_status is defined and review_status %}
+          <a href="#tab-review" class="text-sm text-slate-500 hover:text-primary no-underline">Reviews</a>
+        {% endif %}
+        <span class="text-sm font-semibold {{ stock is defined and stock ? 'text-green-600' : 'text-red-500' }}">{{ stock|default('') }}</span>
+      </div>
+
+      {# Price #}
+      <div class="flex items-baseline gap-4 mb-8">
+        {% if special is defined and special %}
+          <span class="text-4xl font-black text-primary">{{ special }}</span>
+          <span class="text-xl text-slate-400 line-through">{{ price|default('') }}</span>
+        {% else %}
+          <span class="text-4xl font-black text-primary">{{ price|default('$0.00') }}</span>
+        {% endif %}
+      </div>
+
+      {# Add to cart form #}
+      <form id="form-product" class="space-y-4">
+        <input type="hidden" name="product_id" value="{{ product_id|default('0') }}"/>
+
+        {# Options #}
+        {% if options is defined and options %}
+          {% for option in options %}
+            <div class="space-y-2">
+              <label class="block text-sm font-semibold text-slate-900">
+                {{ option.name }}{% if option.required %} <span class="text-red-500">*</span>{% endif %}
+              </label>
+              {% if option.type == 'select' %}
+                <select name="option[{{ option.product_option_id }}]" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none bg-white">
+                  <option value="">--- Please select ---</option>
+                  {% for value in option.product_option_value %}
+                    <option value="{{ value.product_option_value_id }}">{{ value.name }}{% if value.price %} ({{ value.price_prefix }}{{ value.price }}){% endif %}</option>
+                  {% endfor %}
+                </select>
+              {% elseif option.type == 'radio' %}
+                <div class="flex flex-wrap gap-2">
+                  {% for value in option.product_option_value %}
+                    <label class="cursor-pointer">
+                      <input type="radio" name="option[{{ option.product_option_id }}]" value="{{ value.product_option_value_id }}" class="sr-only peer"/>
+                      <span class="px-4 py-2 rounded-lg border-2 border-slate-200 text-sm font-medium peer-checked:border-primary peer-checked:text-primary hover:border-primary/50 transition-colors block">{{ value.name }}</span>
+                    </label>
+                  {% endfor %}
+                </div>
+              {% elseif option.type == 'text' %}
+                <input type="text" name="option[{{ option.product_option_id }}]" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+              {% elseif option.type == 'textarea' %}
+                <textarea name="option[{{ option.product_option_id }}]" rows="3" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none resize-none"></textarea>
+              {% endif %}
+            </div>
+          {% endfor %}
+        {% endif %}
+
+        {# Quantity + Add to cart #}
+        <div class="flex items-center gap-4 pt-2">
+          <div class="flex items-center rounded-xl border border-slate-200 overflow-hidden">
+            <button type="button" class="px-4 py-3 text-slate-500 hover:text-primary hover:bg-slate-50 transition-colors" onclick="this.nextElementSibling.stepDown()">
+              <span class="material-symbols-outlined text-sm">remove</span>
+            </button>
+            <input type="number" name="quantity" value="{{ minimum|default(1) }}" min="{{ minimum|default(1) }}" class="w-14 border-0 text-center font-bold text-slate-900 focus:ring-0 py-3"/>
+            <button type="button" class="px-4 py-3 text-slate-500 hover:text-primary hover:bg-slate-50 transition-colors" onclick="this.previousElementSibling.stepUp()">
+              <span class="material-symbols-outlined text-sm">add</span>
+            </button>
+          </div>
+          <button id="button-cart" type="button"
+            onclick="nkCartAdd('form-product', '{{ language|default('en-gb') }}')"
+            class="flex-1 flex items-center justify-center gap-2 bg-primary text-white rounded-xl py-3 px-6 font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+            <span class="material-symbols-outlined">shopping_bag</span>
+            {{ button_cart|default('Add to Cart') }}
+          </button>
+          {% if product_id is defined and product_id %}
+          <button type="button" onclick="nkWishlistAdd({{ product_id }}, '{{ language|default('en-gb') }}')"
+            title="{{ button_wishlist|default('Add to Wishlist') }}"
+            class="p-3 rounded-xl border border-slate-200 text-slate-500 hover:text-red-500 hover:border-red-200 transition-colors">
+            <span class="material-symbols-outlined">favorite</span>
+          </button>
+          {% endif %}
+        </div>
+      </form>
+
+      {# Meta info #}
+      <div class="mt-8 pt-6 border-t border-slate-100 space-y-2 text-sm text-slate-500">
+        {% if model is defined and model %}<p><span class="font-semibold text-slate-700">Model:</span> {{ model }}</p>{% endif %}
+        {% if manufacturer is defined and manufacturer %}<p><span class="font-semibold text-slate-700">Brand:</span> {{ manufacturer }}</p>{% endif %}
+      </div>
+    </div>
+  </div>
+
+  {# Product tabs #}
+  <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+    <div class="flex border-b border-slate-200 overflow-x-auto">
+      <button id="tab-btn-description" onclick="switchTab('description')" class="px-6 py-4 text-sm font-semibold text-primary border-b-2 border-primary whitespace-nowrap">{{ tab_description|default('Description') }}</button>
+      {% if attribute_groups is defined and attribute_groups %}<button id="tab-btn-attribute" onclick="switchTab('attribute')" class="px-6 py-4 text-sm font-semibold text-slate-500 hover:text-primary border-b-2 border-transparent whitespace-nowrap">{{ tab_attribute|default('Specifications') }}</button>{% endif %}
+      {% if review_status is defined and review_status %}<button id="tab-btn-review" onclick="switchTab('review')" class="px-6 py-4 text-sm font-semibold text-slate-500 hover:text-primary border-b-2 border-transparent whitespace-nowrap">{{ tab_review|default('Reviews') }}</button>{% endif %}
+    </div>
+
+    <div id="tab-description" class="p-8 prose max-w-none text-slate-600 leading-relaxed">{{ description|default('')|raw }}</div>
+
+    {% if attribute_groups is defined and attribute_groups %}
+    <div id="tab-attribute" class="p-8 hidden">
+      {% for attribute_group in attribute_groups %}
+        <h3 class="font-bold text-slate-900 mb-4">{{ attribute_group.name }}</h3>
+        <table class="w-full mb-6 text-sm">
+          {% for attribute in attribute_group.attribute %}
+            <tr class="border-b border-slate-100">
+              <td class="py-3 pr-6 font-medium text-slate-700 w-1/3">{{ attribute.name }}</td>
+              <td class="py-3 text-slate-600">{{ attribute.text }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if review_status is defined and review_status %}
+    <div id="tab-review" class="p-8 hidden">
+      <div id="review">{{ review|default('')|raw }}</div>
+    </div>
+    {% endif %}
+  </div>
+
+</main>
+
+<script>
+function switchTab(tab) {
+  ['description', 'attribute', 'review'].forEach(function(t) {
+    var el = document.getElementById('tab-' + t);
+    var btn = document.getElementById('tab-btn-' + t);
+    if (el) el.classList.toggle('hidden', t !== tab);
+    if (btn) {
+      btn.classList.toggle('text-primary', t === tab);
+      btn.classList.toggle('border-primary', t === tab);
+      btn.classList.toggle('text-slate-500', t !== tab);
+      btn.classList.toggle('border-transparent', t !== tab);
+    }
+  });
+}
+</script>
+
+{% if products_related is defined and products_related %}
+  <div class="max-w-7xl mx-auto px-4 lg:px-8 pb-12">
+    {% include 'extension/novakur/catalog/view/template/component/sections/related_products_carousel.twig'
+       with { heading: 'You May Also Like', products: products_related, language: language|default('en-gb') } only %}
+  </div>
+{% endif %}
+
+{{ footer }}

@@ -1,0 +1,10 @@
+{% include 'extension/novakur_minimal/catalog/view/template/common/header.twig' %}
+<div class="nm-container" style="padding:80px 24px; text-align:center;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin:0 auto 24px; display:block; color:#16a34a;">
+    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+  </svg>
+  <h1 style="font-size:28px; font-weight:700; margin-bottom:12px;">{{ heading_1 }}</h1>
+  <div style="font-size:16px; color:var(--nm-text-muted); margin-bottom:32px;">{{ text_message }}</div>
+  <a href="{{ continue }}" class="nm-btn nm-btn-primary">Continue Shopping</a>
+</div>
+{% include 'extension/novakur_minimal/catalog/view/template/common/footer.twig' %}

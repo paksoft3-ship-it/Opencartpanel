@@ -1,0 +1,119 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="float-end">
+        <button type="submit" form="form-module" data-bs-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa-solid fa-save"></i></button>
+        <a href="{{ cancel }}" data-bs-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-light"><i class="fa-solid fa-reply"></i></a>
+      </div>
+      <h1>{{ heading_title }}</h1>
+      <ol class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+          <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+      <div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> {{ error_warning }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+    {% endif %}
+    <div class="card">
+      <div class="card-header"><i class="fa-solid fa-pencil"></i> {{ text_edit }}</div>
+      <div class="card-body">
+        <form id="form-module" action="{{ action }}" method="post" data-oc-toggle="ajax">
+          
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="input-status">{{ entry_status }}</label>
+            <div class="col-sm-10">
+              <div class="form-check form-switch form-switch-lg">
+                <input type="hidden" name="module_mega_menu_status" value="0"/>
+                <input type="checkbox" name="module_mega_menu_status" value="1" id="input-status" class="form-check-input"{% if module_mega_menu_status %} checked{% endif %}/>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="input-depth">{{ entry_depth }}</label>
+            <div class="col-sm-10">
+              <select name="module_mega_menu_depth" id="input-depth" class="form-select">
+                <option value="2"{% if module_mega_menu_depth == 2 %} selected{% endif %}>2 Levels</option>
+                <option value="3"{% if module_mega_menu_depth == 3 %} selected{% endif %}>3 Levels</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="input-columns">{{ entry_columns }}</label>
+            <div class="col-sm-10">
+              <select name="module_mega_menu_columns" id="input-columns" class="form-select">
+                <option value="3"{% if module_mega_menu_columns == 3 %} selected{% endif %}>3 Columns</option>
+                <option value="4"{% if module_mega_menu_columns == 4 %} selected{% endif %}>4 Columns</option>
+                <option value="5"{% if module_mega_menu_columns == 5 %} selected{% endif %}>5 Columns</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="input-show-product-thumbnails">{{ entry_show_product_thumbnails }}</label>
+            <div class="col-sm-10">
+              <div class="form-check form-switch form-switch-lg">
+                <input type="hidden" name="module_mega_menu_show_product_thumbnails" value="0"/>
+                <input type="checkbox" name="module_mega_menu_show_product_thumbnails" value="1" id="input-show-product-thumbnails" class="form-check-input"{% if module_mega_menu_show_product_thumbnails %} checked{% endif %}/>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="input-show-promo">{{ entry_show_promo_column }}</label>
+            <div class="col-sm-10">
+              <div class="form-check form-switch form-switch-lg">
+                <input type="hidden" name="module_mega_menu_show_promo_column" value="0"/>
+                <input type="checkbox" name="module_mega_menu_show_promo_column" value="1" id="input-show-promo" class="form-check-input"{% if module_mega_menu_show_promo_column %} checked{% endif %}/>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="input-promo-image">{{ entry_promo_image }}</label>
+            <div class="col-sm-10">
+              <div class="card image">
+                <img src="{{ thumb }}" alt="" title="" id="thumb-image" data-oc-placeholder="{{ placeholder }}" class="card-img-top"/>
+                <input type="hidden" name="module_mega_menu_promo_image" value="{{ module_mega_menu_promo_image }}" id="input-promo-image"/>
+                <div class="card-body">
+                  <button type="button" data-oc-toggle="image" data-oc-target="#input-promo-image" data-oc-thumb="#thumb-image" class="btn btn-primary btn-sm"><i class="fa-solid fa-pencil"></i></button>
+                  <button type="button" data-oc-toggle="clear" data-oc-target="#input-promo-image" data-oc-thumb="#thumb-image" class="btn btn-warning btn-sm"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="input-promo-link">{{ entry_promo_link }}</label>
+            <div class="col-sm-10">
+              <input type="text" name="module_mega_menu_promo_link" value="{{ module_mega_menu_promo_link }}" placeholder="{{ entry_promo_link }}" id="input-promo-link" class="form-control" />
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="input-bg-color">{{ entry_background_color }}</label>
+            <div class="col-sm-10">
+              <input type="color" name="module_mega_menu_background_color" value="{{ module_mega_menu_background_color }}" id="input-bg-color" class="form-control form-control-color" />
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="input-hover-color">{{ entry_hover_color }}</label>
+            <div class="col-sm-10">
+              <input type="color" name="module_mega_menu_hover_color" value="{{ module_mega_menu_hover_color }}" id="input-hover-color" class="form-control form-control-color" />
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{{ footer }}

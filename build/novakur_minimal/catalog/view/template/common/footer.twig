@@ -1,0 +1,162 @@
+  </main><!-- /.nm-main -->
+
+  <!-- Newsletter Section -->
+  <section class="nm-newsletter" aria-labelledby="nm-newsletter-heading">
+    <div class="nm-container">
+      <div class="nm-newsletter-inner">
+        <div class="nm-newsletter-copy">
+          <h2 id="nm-newsletter-heading" class="nm-newsletter-title">Stay in the loop</h2>
+          <p class="nm-newsletter-sub">Get new arrivals, exclusive deals, and early access to sales.</p>
+        </div>
+        <form class="nm-newsletter-form" action="{{ base }}index.php?route=account/newsletter" method="post" novalidate>
+          <input type="hidden" name="{{ api_token|default('') }}" value="">
+          <div class="nm-newsletter-fields">
+            <input
+              type="email"
+              name="email"
+              class="nm-input"
+              placeholder="Your email address"
+              required
+              aria-label="Email address for newsletter"
+            >
+            <button type="submit" class="nm-btn nm-btn--primary">Subscribe</button>
+          </div>
+          <p class="nm-newsletter-note">No spam, ever. Unsubscribe at any time.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="nm-footer" role="contentinfo">
+    <div class="nm-container">
+      <div class="nm-footer-grid">
+
+        <!-- Brand Column -->
+        <div class="nm-footer-col nm-footer-brand">
+          <a href="{{ home }}" class="nm-footer-logo">{{ store }}</a>
+          <p class="nm-footer-tagline">Ultra-clean. Monochromatic. Minimal.</p>
+          <div class="nm-footer-social">
+            <a href="#" class="nm-social-link" aria-label="Facebook" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="#" class="nm-social-link" aria-label="Instagram" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+            <a href="#" class="nm-social-link" aria-label="Twitter / X" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Information Links -->
+        <div class="nm-footer-col">
+          <h3 class="nm-footer-heading">Company</h3>
+          <ul class="nm-footer-links">
+            {% if informations is defined %}
+              {% for information in informations %}
+              <li><a href="{{ information.href }}" class="nm-footer-link">{{ information.title }}</a></li>
+              {% endfor %}
+            {% else %}
+              <li><a href="{{ base }}index.php?route=information/information&information_id=4" class="nm-footer-link">About Us</a></li>
+              <li><a href="{{ base }}index.php?route=information/information&information_id=3" class="nm-footer-link">Privacy Policy</a></li>
+              <li><a href="{{ base }}index.php?route=information/information&information_id=5" class="nm-footer-link">Terms &amp; Conditions</a></li>
+              <li><a href="{{ base }}index.php?route=information/sitemap" class="nm-footer-link">Sitemap</a></li>
+            {% endif %}
+            <li><a href="{{ base }}index.php?route=information/contact" class="nm-footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Account Links -->
+        <div class="nm-footer-col">
+          <h3 class="nm-footer-heading">Account</h3>
+          <ul class="nm-footer-links">
+            <li><a href="{{ base }}index.php?route=account/login" class="nm-footer-link">Sign In</a></li>
+            <li><a href="{{ base }}index.php?route=account/register" class="nm-footer-link">Register</a></li>
+            <li><a href="{{ base }}index.php?route=account/order" class="nm-footer-link">Order History</a></li>
+            <li><a href="{{ base }}index.php?route=account/wishlist" class="nm-footer-link">Wishlist</a></li>
+            <li><a href="{{ base }}index.php?route=account/newsletter" class="nm-footer-link">Newsletter</a></li>
+            <li><a href="{{ base }}index.php?route=account/returns.add" class="nm-footer-link">Returns</a></li>
+          </ul>
+        </div>
+
+        <!-- Shop Links -->
+        <div class="nm-footer-col">
+          <h3 class="nm-footer-heading">Shop</h3>
+          <ul class="nm-footer-links">
+            <li><a href="{{ base }}index.php?route=product/special" class="nm-footer-link">Sale</a></li>
+            <li><a href="{{ base }}index.php?route=product/search" class="nm-footer-link">All Products</a></li>
+            <li><a href="{{ base }}index.php?route=manufacturer/list" class="nm-footer-link">Brands</a></li>
+            <li><a href="{{ base }}index.php?route=information/contact" class="nm-footer-link">Help &amp; Support</a></li>
+          </ul>
+        </div>
+
+      </div><!-- /.nm-footer-grid -->
+
+      <!-- Footer Bottom -->
+      <div class="nm-footer-bottom">
+        <p class="nm-footer-copy">
+          &copy; {{ "now"|date("Y") }} {{ store }}. All rights reserved.
+        </p>
+        <div class="nm-footer-payments" aria-label="Accepted payment methods">
+          <!-- Payment method icons (SVG placeholders) -->
+          <span class="nm-payment-icon" title="Visa">
+            <svg width="38" height="24" viewBox="0 0 38 24" aria-hidden="true" role="img">
+              <rect width="38" height="24" rx="3" fill="#f0f0f0"/>
+              <text x="50%" y="16" text-anchor="middle" font-size="9" font-family="sans-serif" fill="#1a1f71" font-weight="bold">VISA</text>
+            </svg>
+          </span>
+          <span class="nm-payment-icon" title="Mastercard">
+            <svg width="38" height="24" viewBox="0 0 38 24" aria-hidden="true" role="img">
+              <rect width="38" height="24" rx="3" fill="#f0f0f0"/>
+              <circle cx="15" cy="12" r="7" fill="#EB001B" opacity=".9"/>
+              <circle cx="23" cy="12" r="7" fill="#F79E1B" opacity=".9"/>
+            </svg>
+          </span>
+          <span class="nm-payment-icon" title="PayPal">
+            <svg width="38" height="24" viewBox="0 0 38 24" aria-hidden="true" role="img">
+              <rect width="38" height="24" rx="3" fill="#f0f0f0"/>
+              <text x="50%" y="16" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#003087" font-weight="bold">PayPal</text>
+            </svg>
+          </span>
+        </div>
+        {% if currencies is defined %}
+        <div class="nm-currency-wrap">
+          <form action="{{ base }}index.php?route=common/currency" method="post" class="nm-currency-form">
+            <label for="nm-currency-select" class="nm-visually-hidden">Currency</label>
+            <select id="nm-currency-select" name="code" class="nm-select nm-select--sm" onchange="this.form.submit()" aria-label="Select currency">
+              {% for currency in currencies %}
+              <option value="{{ currency.code }}"{% if currency_code == currency.code %} selected{% endif %}>
+                {{ currency.code }} {{ currency.symbol_left }}{{ currency.symbol_right }}
+              </option>
+              {% endfor %}
+            </select>
+          </form>
+        </div>
+        {% endif %}
+      </div><!-- /.nm-footer-bottom -->
+
+    </div><!-- /.nm-container -->
+  </footer><!-- /.nm-footer -->
+
+</div><!-- /.nm-wrap -->
+
+<!-- NovaKur Minimal Theme JS -->
+<script src="{{ HTTP_SERVER }}extension/novakur_minimal/catalog/view/assets/dist/js/novakur_minimal.js" defer></script>
+
+{% for script in scripts %}
+<script src="{{ script.href }}" type="text/javascript"></script>
+{% endfor %}
+
+{% if footer_scripts is defined %}{{ footer_scripts }}{% endif %}
+
+</body>
+</html>

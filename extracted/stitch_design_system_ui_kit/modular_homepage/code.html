@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<title>NovaKur Base | Premium OpenCart Theme</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<!-- Announcement Bar -->
+<div class="bg-primary text-white text-xs font-medium py-2 px-4 flex justify-center items-center gap-4">
+<span>Free express shipping on orders over $150</span>
+<span class="hidden md:inline text-white/60">|</span>
+<span class="hidden md:inline">Summer Sale: Save up to 40% with code NOVA40</span>
+</div>
+<!-- Header & Navigation -->
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 lg:px-8">
+<div class="flex items-center justify-between h-20 gap-8">
+<!-- Logo -->
+<div class="flex items-center gap-3 shrink-0">
+<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">layers</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">NovaKur<span class="text-primary">Base</span></h1>
+</div>
+<!-- Predictive Search -->
+<div class="hidden md:flex flex-1 max-w-2xl">
+<div class="relative w-full group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="w-full bg-slate-100 dark:bg-slate-800/50 border-none rounded-2xl py-3 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 text-sm transition-all outline-none" placeholder="Search for products, brands and more..." type="text"/>
+</div>
+</div>
+<!-- User Actions -->
+<div class="flex items-center gap-2">
+<button class="p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+<button class="p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors relative">
+<span class="material-symbols-outlined">favorite</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-xl font-semibold text-sm hover:bg-slate-800 dark:hover:bg-white transition-all shadow-sm">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+<span>$0.00</span>
+</button>
+</div>
+</div>
+<!-- Mega Menu Links -->
+<nav class="flex items-center gap-8 h-12 border-t border-slate-100 dark:border-slate-800 overflow-x-auto no-scrollbar">
+<a class="text-sm font-semibold text-primary flex items-center gap-1.5 whitespace-nowrap" href="#">
+<span class="material-symbols-outlined text-[18px]">menu</span>
+                    All Categories
+                </a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors whitespace-nowrap" href="#">New Arrivals</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors whitespace-nowrap" href="#">Laptops &amp; Tech</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors whitespace-nowrap" href="#">Smart Home</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors whitespace-nowrap" href="#">Audio</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors whitespace-nowrap" href="#">Wearables</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors whitespace-nowrap" href="#">Gaming</a>
+<a class="text-sm font-medium text-rose-500 font-bold whitespace-nowrap" href="#">Clearance</a>
+</nav>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 lg:px-8 space-y-16 py-8">
+<!-- Hero Slider Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6 h-[500px]">
+<div class="lg:col-span-8 relative overflow-hidden rounded-2xl bg-slate-900 group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Modern high-tech workspace with futuristic gadgets" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBt9aXuAoDcuuGW1s7WmMbwwNHvOL5qz52raFew5K_L7nlJVGOZ847Im9IsPwSdVNfQNjetc-FQ0aTiDOSpwMDn-s3UpYrstQU8HJQTeUjzOiPMj-sxo8ZVqpSB8I8eDguWLp6nKsPE7g7PfDGYrpggH3Vy5h1Wo3Fn6_ia7O4kPwxeDhwdtLkrpvoEm2s_xTnqobLYL48H539QSK2wOlOJ1iiJS4QkWN7254gNgN9viohPIlkFMp3sx3TPpf6hlrrwKSSWQcRna-Ge')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-slate-900/80 to-transparent"></div>
+<div class="relative h-full flex flex-col justify-center px-12 text-white space-y-6">
+<span class="bg-primary/20 text-primary border border-primary/30 px-3 py-1 rounded-full text-xs font-bold w-fit uppercase tracking-widest">Limited Edition</span>
+<h2 class="text-5xl font-extrabold leading-tight max-w-lg">Next-Gen Home <br/><span class="text-primary">Ecosystems.</span></h2>
+<p class="text-slate-300 max-w-md text-lg">Revolutionize your daily routine with NovaKur AI-integrated hardware.</p>
+<div class="flex gap-4">
+<button class="px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all shadow-xl shadow-primary/20">Explore Now</button>
+<button class="px-8 py-4 bg-white/10 backdrop-blur-md text-white font-bold rounded-xl hover:bg-white/20 transition-all">View Demo</button>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 grid grid-rows-2 gap-6">
+<div class="relative overflow-hidden rounded-2xl bg-primary/10 border border-primary/20 flex items-center p-8 group">
+<div class="relative z-10 space-y-2">
+<p class="text-primary font-bold text-xs uppercase">Save 20%</p>
+<h3 class="text-xl font-bold">Audio Pro Max</h3>
+<button class="text-sm font-semibold text-primary border-b border-primary/30">Shop Series</button>
+</div>
+<div class="absolute right-[-20px] bottom-[-20px] w-48 h-48 bg-cover bg-center rotate-[-15deg] group-hover:rotate-0 transition-transform duration-500" data-alt="Premium wireless noise cancelling headphones" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCRZsPd-hV2oRkv7m0jYF4wZNrDEJuclscvt4d4MCZ6vRBc8dbDWFKkuyUfD5rn7cVGmzK1UAIFwd4QEzM9xKcGD157bkhmJhWpPc7CZWRjABOFgTIJWhxX1KLY0-LEa50yLFlkJLzYIJxeTi10RCQSlJ3C2xErnpTfwlyjpSNmmIs6TleOGuD-W4nczjbnTBnufJJRuIG5RI9czxBRXKHxWsqSJKNsGN0TbZARxcV22BAsJ7H9wXP0Wf4-mKB1ScwxdGpYjH5gCw9I')"></div>
+</div>
+<div class="relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800/50 p-8 flex items-center group">
+<div class="relative z-10 space-y-2">
+<p class="text-slate-500 font-bold text-xs uppercase">New Trend</p>
+<h3 class="text-xl font-bold">Minimalist Desk</h3>
+<button class="text-sm font-semibold border-b border-slate-300 dark:border-slate-700">Explore</button>
+</div>
+<div class="absolute right-[-20px] bottom-[-20px] w-48 h-48 bg-cover bg-center rotate-[-5deg] group-hover:rotate-0 transition-transform duration-500" data-alt="Modern minimalist aesthetic desk lamp" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD3UWx8kdQrSLJGim0s5sW_r15s4CULAGCKOvQTgvfny2aVLuflUenZXqFIPBw0Tw7KX1qToMCkbF3Toy0rAhPFCPejG0ypJ1m7mzXysZW6eu2m6y8IFJyYRiQdwKLTrpUahHv0dDZIj_oPlsYceGHTPE4vjNvWZM-cTqtm9ZF9r-1TKmEca4i9IHByYzLeW_2Fll28hEHNJ0jOoQA3xPlJ_qw2ECMONzMijmGJBKQnMUihznD4kY74lhH5cbWmHHcrygxfwerTtEmF')"></div>
+</div>
+</div>
+</section>
+<!-- Category Highlights -->
+<section>
+<div class="flex items-end justify-between mb-8">
+<div>
+<h2 class="text-2xl font-bold tracking-tight">Shop by Category</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Curated collections for every lifestyle</p>
+</div>
+<button class="text-sm font-bold text-primary flex items-center gap-1 hover:gap-2 transition-all">
+                    View All <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+<!-- Category Cards -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-slate-100 dark:bg-slate-800 rounded-2xl mb-4 flex items-center justify-center overflow-hidden border border-transparent group-hover:border-primary/20 transition-all">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="Laptop and technology accessories category" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD8wEyKqiR5Cqhq2VYy4bOp_d8bTypa2aUMC56RdqVuiCMaDlwA8h-fEFPv1Gxsie2Hi408pM3DTi0WSOhMDyJ8dNXdy62xlP5Y5r9s4SECL2o13nNmuBCJopqAQagXZ8J8212pRCS-eKkRmoT_Q29R5Z__CbuKc3gcX_L24yo7fjdgRoDpOzIlwUwMhgbPTZQLJTJbU6sCeA2jsAvdMEn96gyE3huW7wuBTaL5_CRStE117EZlCo9pcK0IRWYcFwwnNS7pgbumuu-N')"></div>
+</div>
+<p class="text-center font-bold text-sm">Computing</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-square bg-slate-100 dark:bg-slate-800 rounded-2xl mb-4 flex items-center justify-center overflow-hidden border border-transparent group-hover:border-primary/20 transition-all">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="Smart home automation devices category" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDPHft4g1_BKlE-Ku_XZvZOa5MSivFoMPif1hILg_vWziwIYthiQWDZu12yAOYbLSlae1LrY5b_s8JelmngQnFajMohQ3BFNdK8fwB8KrBnGcAPC7hSp0Nc8J1IZC2aUZq9zA17wPLxoFAobcPMMH9zbgLEwTdj8n6hrMlbj15tbf-CZ-_9uZVGlnXY0YNPxtk_dWrYtT4fS2HRPCrw5fiLnMf23nuRzjDB-UYSJBHsCMk7DFBEDMjIJFbN4G9Pod601frolsEFf4kV')"></div>
+</div>
+<p class="text-center font-bold text-sm">Smart Home</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-square bg-slate-100 dark:bg-slate-800 rounded-2xl mb-4 flex items-center justify-center overflow-hidden border border-transparent group-hover:border-primary/20 transition-all">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="Professional camera and lens equipment category" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJ_Z72r8wt6RLJWIhFWZHgtLh2_o-CzRobd93w7_CDkvA8C4iYaND-ovfj2IPRxIRdJNU7wJTh8nCbTk_iZEQnmkaoo2bGI5YVqvXw2y2YA6zmxrC93fzpTGsOzq0ph-dDKyZbARfJsd_SXxY4xc1bJRt3g8EIE42nqKx-tmJxUCwnmK-ROB2ED5BKdPCgiegO1Q1WHFVi65di4oxWoyEd4aElfxznZ8xyjH_VcUngoEjrId4Kf6f5yWxG3jqMnOjxjsSnlhTpVrXg')"></div>
+</div>
+<p class="text-center font-bold text-sm">Photography</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-square bg-slate-100 dark:bg-slate-800 rounded-2xl mb-4 flex items-center justify-center overflow-hidden border border-transparent group-hover:border-primary/20 transition-all">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="Fitness trackers and smartwatches category" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAuHw0k9b8NizFnsGEzLK1-mElTN26qM5FUJwvsdfBTybrwTbm795W6dc9urm3MqxIxfdgft5kR-uD9hNQREsaegDfnVUBWc4PLe4i35JVVeIbG10NfU4rbOwyV6SERys1jQAFkidSzNcEF3NUCCQlVbjuMzJpk6sOVy2CqP63IO8JT8oDyrlZ0jni70NmF9XWpxge-gF27zMHrXrHBDurpgOUHy4pSPXpCbysOkDFfQI674IDNnRSkXBztlR0lFaqQ8eNPC2Q89Clc')"></div>
+</div>
+<p class="text-center font-bold text-sm">Wearables</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-square bg-slate-100 dark:bg-slate-800 rounded-2xl mb-4 flex items-center justify-center overflow-hidden border border-transparent group-hover:border-primary/20 transition-all">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="Gaming consoles and high performance peripherals category" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDPyeQDNuwVru7Mkt8_fH3TZj_p_UrujGeY-X0pE4z4hp0orORkleQ7ft2JEPR5zcQwNj0a3FOlvAi_5U2XMxSFnwh6WGSYNSVavjTiokTgcGDQxH-_kg80U7ewXnpNLpptwvfhf4KZGADlMv0GjuqS3YBh_JnLQIGhxPW2tCcfrkGHvCzKFYrqljqK2kpLolGbh7vBNRYppsEDppEOYXCqPMcbm9zgl9ibsP1_iIJJIaMoHbEkJLRZ5Ed_R2o0-cmiVxWtn2yeuHh7')"></div>
+</div>
+<p class="text-center font-bold text-sm">Gaming</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-square bg-slate-100 dark:bg-slate-800 rounded-2xl mb-4 flex items-center justify-center overflow-hidden border border-transparent group-hover:border-primary/20 transition-all">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="Wireless headphones and speakers category" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCRyiF3jXQhW07hL4gr83deWCP6gjM2XYKxliO8O3azPcuj_nDu14hNTwxCxslF-i3fnrenzGQbo6moSzxsUrhtlU1Ie2q2VxEsH7vM3mUucX3691fVjZMoy7unMTbGb2e7xTDoNfbEfM7fWP_96UXI1HVkRn58sC8igPAvtavY0wNEHe_rF8nA3-CQkWC7qeVO7YYDOcLptDNwt00oDjZThM7fCDVVyltUf9569plDqa05eqGGQA6tPY0lUSTuA2YQoVp82BfAV60Q')"></div>
+</div>
+<p class="text-center font-bold text-sm">Audio</p>
+</div>
+</div>
+</section>
+<!-- Tabbed Section & Featured Products -->
+<section>
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-6">
+<div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800/80 p-1 rounded-xl w-fit">
+<button class="px-6 py-2 bg-white dark:bg-slate-700 text-sm font-bold rounded-lg shadow-sm">New Arrivals</button>
+<button class="px-6 py-2 text-slate-500 hover:text-slate-900 dark:hover:text-white text-sm font-bold rounded-lg transition-colors">Best Sellers</button>
+<button class="px-6 py-2 text-slate-500 hover:text-slate-900 dark:hover:text-white text-sm font-bold rounded-lg transition-colors">On Sale</button>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-800 hover:bg-white dark:hover:bg-slate-800 transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-800 hover:bg-white dark:hover:bg-slate-800 transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Product Card 1 -->
+<div class="group bg-white dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800 rounded-xl p-4 hover:shadow-2xl hover:shadow-slate-200 dark:hover:shadow-none transition-all">
+<div class="relative aspect-square rounded-lg overflow-hidden bg-slate-50 dark:bg-slate-900 mb-4">
+<div class="absolute top-3 left-3 z-10">
+<span class="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded uppercase">New</span>
+</div>
+<button class="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center bg-white/80 backdrop-blur rounded-full text-slate-400 hover:text-rose-500 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Modern tablet with stylus pencil on desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO1f6WAzwmDml4oabtUiAuSHzlyulTGBrLIKaVBJMM57FCsXI058g2vOigILLu7xG6Ju8xZyNcX251p7tgw1O4r5qHDhwUjievVfO-MY1hKTnYJRWwnlTzSCugUR4tEK7ZGLUqy8GGrVBP8ijh7SDHN9LWOPCI9FvbFnEAz_DQkxKcBOU0Xs2vVdSDZwljAKTEYk6VsSILgys22q4IAT8VxEp2aGd5hgXO8GqZwzn7qQ5qXxFGabUxXms4NCQ6UjQfoAsNKYyPO-Jo"/>
+</div>
+<div class="space-y-2">
+<p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Tablets</p>
+<h4 class="font-bold text-slate-900 dark:text-white line-clamp-1">NovaPad Pro Gen 4 (256GB)</h4>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-400 text-[16px] fill-current">star</span>
+<span class="text-xs font-bold">4.9</span>
+<span class="text-xs text-slate-400">(128 reviews)</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="text-xl font-bold text-primary">$899.00</span>
+<button class="p-2 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-lg hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group bg-white dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800 rounded-xl p-4 hover:shadow-2xl hover:shadow-slate-200 dark:hover:shadow-none transition-all">
+<div class="relative aspect-square rounded-lg overflow-hidden bg-slate-50 dark:bg-slate-900 mb-4">
+<div class="absolute top-3 left-3 z-10 flex flex-col gap-2">
+<span class="bg-rose-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase">Sale</span>
+</div>
+<button class="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center bg-white/80 backdrop-blur rounded-full text-slate-400 hover:text-rose-500 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Sleek silver noise cancelling headphones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD86Lzqi0n1C9kyX7v8Jti0fyGNwHkl2oPAyqvxRAtOXmQZMbbviroi70BJ656IO1RFGs-JBMhAZ2o29ss2NSUbNoB6F7ffJL0RUZRMKVXZOmHWdD00OYT8IFlsdGOwqXqJjZtms6zTBE3_gc01hkPhhgkOOFgI1hiBhbsuod4-m8krPlKNdziAM3NliUEh06OoN5zVdVYUMmL2l_6tMVqayINXo0Fe16pgUZg5RP2MK7CHHXJZKp92qYUK-5JREB7NEOVRqx-59ugO"/>
+</div>
+<div class="space-y-2">
+<p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Audio</p>
+<h4 class="font-bold text-slate-900 dark:text-white line-clamp-1">SonicFlow Wireless X1</h4>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-400 text-[16px] fill-current">star</span>
+<span class="text-xs font-bold">4.8</span>
+<span class="text-xs text-slate-400">(2.4k reviews)</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="flex flex-col">
+<span class="text-xl font-bold text-primary">$249.00</span>
+<span class="text-xs text-slate-400 line-through">$320.00</span>
+</div>
+<button class="p-2 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-lg hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group bg-white dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800 rounded-xl p-4 hover:shadow-2xl hover:shadow-slate-200 dark:hover:shadow-none transition-all">
+<div class="relative aspect-square rounded-lg overflow-hidden bg-slate-50 dark:bg-slate-900 mb-4">
+<button class="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center bg-white/80 backdrop-blur rounded-full text-slate-400 hover:text-rose-500 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Minimalist luxury white wristwatch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoDC-0ZR9rkCW5Cs0wyeKk3z-AMjk67QrWWILFL3os_7lLhIxF8k0eFnbDDMKYmMOsxrikBmHy7SllgxREKBZjTnI8fCLJPJygFimLhA9Y1jSkW01WmwabPzReT-A9nZNfMwF6YBlYVHE730tT64qm1kweCATt_zefLu6HmYdPeW3klSToTtam5vhKxY8b1vfzXroaQCdHiuD3OIFPVxaNNT3JX29QKJwpXsBe7Ji2YBqcGIzWEyZ2rCYao3H-nniEdF1AOu0Y5OkY"/>
+</div>
+<div class="space-y-2">
+<p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Wearables</p>
+<h4 class="font-bold text-slate-900 dark:text-white line-clamp-1">Nova Chrono S2 Edition</h4>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-400 text-[16px] fill-current">star</span>
+<span class="text-xs font-bold">5.0</span>
+<span class="text-xs text-slate-400">(56 reviews)</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="text-xl font-bold text-primary">$415.00</span>
+<button class="p-2 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-lg hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group bg-white dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800 rounded-xl p-4 hover:shadow-2xl hover:shadow-slate-200 dark:hover:shadow-none transition-all">
+<div class="relative aspect-square rounded-lg overflow-hidden bg-slate-50 dark:bg-slate-900 mb-4">
+<div class="absolute top-3 left-3 z-10">
+<span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-1 rounded uppercase">Hot</span>
+</div>
+<button class="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center bg-white/80 backdrop-blur rounded-full text-slate-400 hover:text-rose-500 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Modern high speed wireless router" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWxyD0419i6lXK2QPZqQT4JeEOUXxwueS4FOUa28wr5sVtpsZSU1mUhGL2wpghCnQIvcfuI4Z80hf3ZmR1qpY7vws9fHri8npUHfbwHNjtXyBfBBNnmLnNhbe1q_aXWC-x7ezNs79XoN6ScsqrxNC3mZ-JHmZ7Mla6kIXLXMDh2OsuYn7Xd1ETXxo_ru5t3S__N2rn36YpAVE6JKr0bQBP8eah5qcs8EMrOL8sxyT0NCCQUl0mUGk_otCGSQnCP9Ob6rKeRCgH89oy"/>
+</div>
+<div class="space-y-2">
+<p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Connectivity</p>
+<h4 class="font-bold text-slate-900 dark:text-white line-clamp-1">LinkHub 6E Router System</h4>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-400 text-[16px] fill-current">star</span>
+<span class="text-xs font-bold">4.7</span>
+<span class="text-xs text-slate-400">(412 reviews)</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="text-xl font-bold text-primary">$189.00</span>
+<button class="p-2 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-lg hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Promotion Banners -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="relative h-80 rounded-2xl overflow-hidden bg-background-dark group">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-1000" data-alt="Futuristic electronic components close up" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvZnHBXFMrIiErkVcmhAbBGrWvkEhhcdVleT5u2sOpVfZqsy9OAm6SXUEKxcpX8jxnEOcrCDM_NgmRoOAGIttnJWbYeNqeDW-JGvGzc29tcf2RPZMcmOpRO3zp6k3pFqWy7BTkXoeqGcSlFeolm8TH5KQebqvajJQ1ix-Y3JDe_zoHO5Xc5kiquUGRVpEGzGYXFgM0OFz46WIOLvtx50QsOaoZPxcfG8wDqiDGqKHYF2UA8r-tSsNZNZcFC_NliDmut5qvjliLSLf5')"></div>
+<div class="absolute inset-0 bg-primary/40 mix-blend-multiply"></div>
+<div class="absolute inset-0 flex flex-col justify-center px-12 text-white">
+<p class="font-bold text-sm tracking-[0.2em] mb-2 uppercase">Trade-In Offer</p>
+<h3 class="text-3xl font-extrabold mb-4">Get up to $500 back <br/>for your old device.</h3>
+<button class="w-fit px-6 py-2.5 bg-white text-slate-900 font-bold rounded-lg hover:bg-slate-100 transition-colors">Start Appraisal</button>
+</div>
+</div>
+<div class="relative h-80 rounded-2xl overflow-hidden bg-slate-200 group">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-1000" data-alt="Person wearing high end smartwatch" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1SZ8J-YavO3s6Oc3pxw9hJsF9z5CWVAvYa3DxyM6mIST5BAbuY_xjDvXWoSA6OFsDh6Ea_GLGKddcBcMZlfcZf2OBXWMnHURD2zTHTNMgz07Oql6fVTamUldXFPepgMrZkn29v6WE1S_El3tmZbq9I99D1IrZCm9O_Hc6p7dh_5_cWhLqKwPn_0CB2Pq8LhSJaCir3ohbi3oZwxuzqzEQwM6v7zswcI5Eggrg7lEVl-34bEO_PTdFNQcWogam6YQ-eHSx724oqthf')"></div>
+<div class="absolute inset-0 bg-slate-900/40"></div>
+<div class="absolute inset-0 flex flex-col justify-center px-12 text-white">
+<p class="font-bold text-sm tracking-[0.2em] mb-2 uppercase">Join NovaClub</p>
+<h3 class="text-3xl font-extrabold mb-4">Exclusive Early Access <br/>to Seasonal Drops.</h3>
+<button class="w-fit px-6 py-2.5 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 transition-colors">Join for Free</button>
+</div>
+</div>
+</section>
+<!-- Benefits Bar -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 py-10 border-y border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-4 group">
+<div class="w-12 h-12 flex items-center justify-center rounded-2xl bg-primary/10 text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-[28px]">local_shipping</span>
+</div>
+<div>
+<h5 class="font-bold text-sm">Free Express Shipping</h5>
+<p class="text-xs text-slate-500 dark:text-slate-400">On all orders over $150.00</p>
+</div>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="w-12 h-12 flex items-center justify-center rounded-2xl bg-primary/10 text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-[28px]">verified_user</span>
+</div>
+<div>
+<h5 class="font-bold text-sm">Secured Payments</h5>
+<p class="text-xs text-slate-500 dark:text-slate-400">100% protection with SSL</p>
+</div>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="w-12 h-12 flex items-center justify-center rounded-2xl bg-primary/10 text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-[28px]">cached</span>
+</div>
+<div>
+<h5 class="font-bold text-sm">30-Day Free Return</h5>
+<p class="text-xs text-slate-500 dark:text-slate-400">Hassle-free money back guarantee</p>
+</div>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="w-12 h-12 flex items-center justify-center rounded-2xl bg-primary/10 text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-[28px]">support_agent</span>
+</div>
+<div>
+<h5 class="font-bold text-sm">24/7 Premium Support</h5>
+<p class="text-xs text-slate-500 dark:text-slate-400">Real-time chat with our experts</p>
+</div>
+</div>
+</section>
+<!-- Newsletter Section -->
+<section class="bg-primary/5 rounded-3xl p-8 lg:p-16 flex flex-col lg:flex-row items-center gap-12">
+<div class="lg:w-1/2 space-y-4">
+<h2 class="text-3xl font-extrabold">Stay in the loop with NovaKur.</h2>
+<p class="text-slate-600 dark:text-slate-400 max-w-md">Join over 50,000+ tech enthusiasts and get weekly updates on new arrivals, flash sales, and tech guides.</p>
+</div>
+<div class="lg:w-1/2 w-full max-w-md">
+<form class="flex flex-col sm:flex-row gap-3">
+<input class="flex-1 bg-white dark:bg-slate-800 border-none rounded-2xl py-4 px-6 focus:ring-2 focus:ring-primary text-sm shadow-sm outline-none" placeholder="Enter your email address" type="email"/>
+<button class="bg-primary text-white font-bold px-8 py-4 rounded-2xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">Subscribe</button>
+</form>
+<p class="text-[10px] text-slate-400 mt-4 px-2">By subscribing, you agree to our <a class="underline" href="#">Privacy Policy</a> and <a class="underline" href="#">Terms of Service</a>.</p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-background-dark pt-20 pb-10 border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 lg:px-8">
+<div class="grid grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+<!-- Brand Info -->
+<div class="col-span-2 space-y-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[18px]">layers</span>
+</div>
+<h1 class="text-lg font-bold tracking-tight">NovaKur<span class="text-primary">Base</span></h1>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 max-w-xs leading-relaxed">
+                        The ultimate OpenCart theme experience. Engineered for speed, designed for conversions, and built for the future of commerce.
+                    </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+<a class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">smart_display</span></a>
+</div>
+</div>
+<!-- Footer Links 1 -->
+<div class="space-y-6">
+<h6 class="font-bold text-sm">Shop Services</h6>
+<ul class="space-y-4">
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Catalog</a></li>
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Special Offers</a></li>
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Corporate Sales</a></li>
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Gift Cards</a></li>
+</ul>
+</div>
+<!-- Footer Links 2 -->
+<div class="space-y-6">
+<h6 class="font-bold text-sm">Help &amp; Support</h6>
+<ul class="space-y-4">
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Order Tracking</a></li>
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Return Policy</a></li>
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Shipping Info</a></li>
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Contact Us</a></li>
+</ul>
+</div>
+<!-- Footer Links 3 -->
+<div class="space-y-6">
+<h6 class="font-bold text-sm">Company</h6>
+<ul class="space-y-4">
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">About NovaKur</a></li>
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Careers</a></li>
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Press Center</a></li>
+<li><a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Terms of Use</a></li>
+</ul>
+</div>
+</div>
+<!-- Copyright & Payment -->
+<div class="pt-10 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-xs text-slate-400">© 2024 NovaKur Base. Powered by OpenCart. All Rights Reserved.</p>
+<div class="flex items-center gap-4 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="flex gap-2">
+<div class="w-10 h-6 bg-slate-200 dark:bg-slate-700 rounded-sm"></div>
+<div class="w-10 h-6 bg-slate-200 dark:bg-slate-700 rounded-sm"></div>
+<div class="w-10 h-6 bg-slate-200 dark:bg-slate-700 rounded-sm"></div>
+<div class="w-10 h-6 bg-slate-200 dark:bg-slate-700 rounded-sm"></div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

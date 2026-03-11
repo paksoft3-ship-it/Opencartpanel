@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NovaKur Base Design System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "deep-blue": "#1E3A8A",
+                        "accent-blue": "#38BDF8",
+                        "neutral-dark": "#0F172A",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "soft": "0 4px 20px -2px rgba(0, 0, 0, 0.05)",
+                        "medium": "0 10px 30px -4px rgba(0, 0, 0, 0.08)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .sidebar-link-active { background-color: #f0f1f4; color: #2463eb; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex h-auto min-screen w-full flex-col bg-white dark:bg-background-dark group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-6 py-3 sticky top-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">NovaKur Base</h2>
+</div>
+<label class="hidden md:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-100 dark:bg-slate-800">
+<div class="text-slate-400 flex items-center justify-center pl-4 rounded-l-lg">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:ring-0 text-slate-900 dark:text-white placeholder:text-slate-400 px-4 pl-2 text-sm font-normal" placeholder="Search documentation..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Foundations</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Components</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Tokens</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Guidelines</a>
+</nav>
+<button class="flex min-w-[100px] cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-primary text-white text-sm font-bold tracking-tight hover:bg-primary/90 transition-all shadow-sm">
+<span class="truncate">v2.1.0 Kit</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8 border border-slate-200 dark:border-slate-700" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB33TaXzy5Xzkf2H6lTn52EHR2eGZvZob7ER5z2RVolMu0h5OKfZYXLg2iZciscmA7_SoRXeuKDqF_lQnbvTI8glHngOICs1pIZbPQTnAaRNkf5CJ7YCIvVrwZxLNVXR66-qubahDNo5ZQayfkYN3VnThrMf4n9fMBHNvFBcjZ0g2IUjrNfrt4DOX2LD0y0E6YEZk3NQimgf6DvmgdsuU5D7NHL1TYZmDplCNKyhd9EQUZ7lkNZJox-VMr2rM_g8Da7MCaCcbq_rdII");'></div>
+</div>
+</header>
+<div class="flex flex-1">
+<!-- Sidebar -->
+<aside class="hidden md:flex w-64 flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark p-6 sticky top-16 h-[calc(100vh-64px)] overflow-y-auto">
+<div class="flex flex-col gap-6">
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-3 px-3">Foundations</p>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg sidebar-link-active transition-all" href="#colors">
+<span class="material-symbols-outlined text-xl">palette</span>
+<span class="text-sm font-medium">Brand Colors</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all" href="#typography">
+<span class="material-symbols-outlined text-xl">text_fields</span>
+<span class="text-sm font-medium">Typography</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all" href="#tokens">
+<span class="material-symbols-outlined text-xl">token</span>
+<span class="text-sm font-medium">UI Tokens</span>
+</a>
+</nav>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-3 px-3">Elements</p>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all" href="#buttons">
+<span class="material-symbols-outlined text-xl">smart_button</span>
+<span class="text-sm font-medium">Buttons</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all" href="#forms">
+<span class="material-symbols-outlined text-xl">input</span>
+<span class="text-sm font-medium">Form Elements</span>
+</a>
+</nav>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-3 px-3">Components</p>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all" href="#product">
+<span class="material-symbols-outlined text-xl">shopping_bag</span>
+<span class="text-sm font-medium">Product UI</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all" href="#badges">
+<span class="material-symbols-outlined text-xl">label</span>
+<span class="text-sm font-medium">Badges &amp; Ratings</span>
+</a>
+</nav>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-6 lg:p-12 max-w-5xl mx-auto scroll-smooth">
+<!-- Intro -->
+<section class="mb-16">
+<h1 class="text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4">NovaKur Base Documentation</h1>
+<p class="text-xl text-slate-500 dark:text-slate-400 leading-relaxed max-w-2xl">A comprehensive guide to the foundations, tokens, and components powering the NovaKur OpenCart ecosystem.</p>
+</section>
+<!-- Section: Colors -->
+<section class="mb-20 scroll-mt-20" id="colors">
+<div class="flex items-center gap-2 mb-8">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Brand Colors</h2>
+<span class="h-px flex-1 bg-slate-200 dark:bg-slate-800 ml-4"></span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="flex flex-col gap-3 group">
+<div class="h-32 rounded-xl bg-primary shadow-soft ring-1 ring-black/5 flex items-end p-4">
+<span class="text-white font-bold text-xs uppercase tracking-widest">Primary</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white">Primary Blue</h4>
+<code class="text-xs text-primary font-mono bg-primary/10 px-2 py-1 rounded">#2463EB</code>
+<p class="text-sm text-slate-500 mt-2">Main action color, links, and active states.</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="h-32 rounded-xl bg-deep-blue shadow-soft ring-1 ring-black/5 flex items-end p-4">
+<span class="text-white font-bold text-xs uppercase tracking-widest">Deep</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white">Deep Blue</h4>
+<code class="text-xs text-primary font-mono bg-deep-blue/10 px-2 py-1 rounded">#1E3A8A</code>
+<p class="text-sm text-slate-500 mt-2">Header backgrounds and dark UI navigation.</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="h-32 rounded-xl bg-accent-blue shadow-soft ring-1 ring-black/5 flex items-end p-4">
+<span class="text-slate-900 font-bold text-xs uppercase tracking-widest">Accent</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white">Accent Blue</h4>
+<code class="text-xs text-primary font-mono bg-accent-blue/10 px-2 py-1 rounded">#38BDF8</code>
+<p class="text-sm text-slate-500 mt-2">Highlights, hover accents, and soft alerts.</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="h-32 rounded-xl bg-neutral-dark shadow-soft ring-1 ring-black/5 flex items-end p-4">
+<span class="text-white font-bold text-xs uppercase tracking-widest">Neutral</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white">Neutral Text</h4>
+<code class="text-xs text-primary font-mono bg-slate-200 px-2 py-1 rounded">#0F172A</code>
+<p class="text-sm text-slate-500 mt-2">Body copy, headers, and primary content.</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="h-32 rounded-xl bg-white dark:bg-slate-700 shadow-soft border border-slate-200 dark:border-slate-800 flex items-end p-4">
+<span class="text-slate-400 font-bold text-xs uppercase tracking-widest">Surface</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white">Background</h4>
+<code class="text-xs text-primary font-mono bg-slate-100 px-2 py-1 rounded">#FFFFFF</code>
+<p class="text-sm text-slate-500 mt-2">Base surface color for cards and page body.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Typography -->
+<section class="mb-20 scroll-mt-20" id="typography">
+<div class="flex items-center gap-2 mb-8">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Typography</h2>
+<span class="h-px flex-1 bg-slate-200 dark:bg-slate-800 ml-4"></span>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-soft">
+<div class="p-8 space-y-12">
+<div class="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12">
+<span class="text-[10px] font-bold uppercase text-slate-400 w-24">Heading 1</span>
+<h1 class="text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">Modern Commerce</h1>
+</div>
+<div class="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12">
+<span class="text-[10px] font-bold uppercase text-slate-400 w-24">Heading 2</span>
+<h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Powerful Infrastructure</h2>
+</div>
+<div class="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12">
+<span class="text-[10px] font-bold uppercase text-slate-400 w-24">Heading 3</span>
+<h3 class="text-xl font-semibold text-slate-900 dark:text-white">Subheading Detail</h3>
+</div>
+<div class="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12">
+<span class="text-[10px] font-bold uppercase text-slate-400 w-24">Body Text</span>
+<p class="text-base text-slate-600 dark:text-slate-400 max-w-xl">NovaKur is designed for speed and flexibility. Our Inter-based typography ensures maximum readability across all screen sizes from mobile to desktop.</p>
+</div>
+<div class="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12">
+<span class="text-[10px] font-bold uppercase text-slate-400 w-24">UI Labels</span>
+<div class="flex gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-primary">In Stock</span>
+<span class="text-sm font-medium text-slate-500">Add to Cart</span>
+</div>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<span class="text-xs text-slate-500 font-mono">Font Family: Inter (sans-serif)</span>
+<span class="text-xs text-slate-500 font-mono">Weights: 400, 500, 600, 700, 800</span>
+</div>
+</div>
+</section>
+<!-- Section: Tokens -->
+<section class="mb-20 scroll-mt-20" id="tokens">
+<div class="flex items-center gap-2 mb-8">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">UI Tokens</h2>
+<span class="h-px flex-1 bg-slate-200 dark:bg-slate-800 ml-4"></span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Spacing -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-soft">
+<h4 class="font-bold text-slate-900 dark:text-white mb-6">Spacing System</h4>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<div class="w-1 bg-primary h-1"></div>
+<span class="text-xs font-mono text-slate-400">4px (0.25rem)</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-2 bg-primary h-2"></div>
+<span class="text-xs font-mono text-slate-400">8px (0.5rem)</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-4 bg-primary h-4"></div>
+<span class="text-xs font-mono text-slate-400">16px (1rem)</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 bg-primary h-8"></div>
+<span class="text-xs font-mono text-slate-400">32px (2rem)</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-16 bg-primary h-16"></div>
+<span class="text-xs font-mono text-slate-400">64px (4rem)</span>
+</div>
+</div>
+</div>
+<!-- Radius & Shadows -->
+<div class="space-y-8">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-soft">
+<h4 class="font-bold text-slate-900 dark:text-white mb-6">Border Radius</h4>
+<div class="flex flex-wrap gap-4">
+<div class="size-16 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center text-[10px] text-slate-400 font-bold">8px</div>
+<div class="size-16 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-[10px] text-slate-400 font-bold">12px</div>
+<div class="size-16 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center text-[10px] text-slate-400 font-bold">16px</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-soft">
+<h4 class="font-bold text-slate-900 dark:text-white mb-6">Soft Shadows</h4>
+<div class="flex flex-wrap gap-6">
+<div class="w-24 h-12 bg-white dark:bg-slate-800 shadow-soft rounded-lg border border-slate-100 dark:border-slate-700"></div>
+<div class="w-24 h-12 bg-white dark:bg-slate-800 shadow-medium rounded-lg border border-slate-100 dark:border-slate-700"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Buttons -->
+<section class="mb-20 scroll-mt-20" id="buttons">
+<div class="flex items-center gap-2 mb-8">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Buttons</h2>
+<span class="h-px flex-1 bg-slate-200 dark:bg-slate-800 ml-4"></span>
+</div>
+<div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-soft">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="space-y-6">
+<p class="text-[10px] font-bold uppercase text-slate-400">Default</p>
+<button class="w-full py-2.5 px-6 bg-primary text-white text-sm font-bold rounded-lg shadow-sm hover:bg-primary/90 transition-all">Primary</button>
+<button class="w-full py-2.5 px-6 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white text-sm font-bold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">Secondary</button>
+<button class="w-full py-2.5 px-6 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-sm font-bold rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">Outline</button>
+</div>
+<div class="space-y-6 opacity-80">
+<p class="text-[10px] font-bold uppercase text-slate-400">Hover</p>
+<button class="w-full py-2.5 px-6 bg-primary/90 text-white text-sm font-bold rounded-lg shadow-md ring-4 ring-primary/10 transition-all">Primary</button>
+<button class="w-full py-2.5 px-6 bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white text-sm font-bold rounded-lg transition-all">Secondary</button>
+<button class="w-full py-2.5 px-6 border border-primary text-primary text-sm font-bold rounded-lg transition-all">Outline</button>
+</div>
+<div class="space-y-6">
+<p class="text-[10px] font-bold uppercase text-slate-400">Icon &amp; Small</p>
+<div class="flex gap-3">
+<button class="size-10 flex items-center justify-center bg-primary text-white rounded-lg"><span class="material-symbols-outlined text-xl">shopping_cart</span></button>
+<button class="size-10 flex items-center justify-center bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 rounded-lg"><span class="material-symbols-outlined text-xl">favorite</span></button>
+</div>
+<button class="py-1.5 px-4 bg-primary text-white text-xs font-bold rounded-md">Mini Action</button>
+</div>
+<div class="space-y-6 grayscale opacity-50 pointer-events-none">
+<p class="text-[10px] font-bold uppercase text-slate-400">Disabled</p>
+<button class="w-full py-2.5 px-6 bg-slate-200 text-slate-400 text-sm font-bold rounded-lg">Disabled</button>
+<button class="w-full py-2.5 px-6 border border-slate-200 text-slate-300 text-sm font-bold rounded-lg">Disabled</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Forms -->
+<section class="mb-20 scroll-mt-20" id="forms">
+<div class="flex items-center gap-2 mb-8">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Form Elements</h2>
+<span class="h-px flex-1 bg-slate-200 dark:bg-slate-800 ml-4"></span>
+</div>
+<div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-soft">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="space-y-6">
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">Email Address</label>
+<input class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all placeholder:text-slate-400" placeholder="e.g. hello@novakur.com" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">Select Category</label>
+<select class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all appearance-none">
+<option>Consumer Electronics</option>
+<option>Home Appliances</option>
+<option>Kitchenware</option>
+</select>
+</div>
+</div>
+<div class="space-y-6">
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">Quantity Selector</label>
+<div class="flex items-center w-32 border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden bg-white dark:bg-slate-800">
+<button class="px-3 py-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"><span class="material-symbols-outlined text-sm">remove</span></button>
+<input class="w-full text-center border-none bg-transparent focus:ring-0 text-sm font-bold text-slate-900 dark:text-white" type="text" value="1"/>
+<button class="px-3 py-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"><span class="material-symbols-outlined text-sm">add</span></button>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">Focus State</label>
+<input class="w-full px-4 py-3 border-2 border-primary bg-primary/5 rounded-lg focus:ring-0 outline-none transition-all" type="text" value="Active interaction..."/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Components -->
+<section class="mb-20 scroll-mt-20" id="product">
+<div class="flex items-center gap-2 mb-8">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Components &amp; Product UI</h2>
+<span class="h-px flex-1 bg-slate-200 dark:bg-slate-800 ml-4"></span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<!-- Product Card Showcase -->
+<div class="space-y-6">
+<h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest">Sample Product Card</h4>
+<div class="max-w-sm bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-soft group">
+<div class="relative h-64 bg-slate-50 dark:bg-slate-800 flex items-center justify-center p-8 overflow-hidden">
+<img alt="Premium Smart Headphones" class="object-contain size-full transition-transform duration-500 group-hover:scale-110" data-alt="Premium sleek wireless headphones in white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLJ23ZxPdoSAT2U5pa_94nLgj3FCaE3iBwdh4Y6duppU0DyxCYa6KtWWZnfJXtjpVAFwYpKd6_OTNySaVupzBdFal7Lqs1cs1coAHlSv_AA4Hu7Rv2g6kPFiDrwETqvx61nacAHLfr5m-r8DvYUnDd226pnUy1wcuVXfyRutTpApb2xWR5vpf-K7DmA4p7kPMBMlHTFSjeHQFaKRSeQ6n25x3vP1JUb6s04GTXwIyIUXUbpoq5qDs6FjP2bUtoY3l3S7qPCxpfVbpc"/>
+<div class="absolute top-4 left-4 flex flex-col gap-2">
+<span class="px-2 py-1 bg-red-500 text-white text-[10px] font-black uppercase rounded">Sale -20%</span>
+<span class="px-2 py-1 bg-accent-blue text-slate-900 text-[10px] font-black uppercase rounded">New</span>
+</div>
+<button class="absolute top-4 right-4 size-9 bg-white dark:bg-slate-700 rounded-full flex items-center justify-center text-slate-400 hover:text-red-500 shadow-sm transition-colors">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<p class="text-[10px] font-bold text-primary uppercase">Audio &amp; Sound</p>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="material-symbols-outlined text-xs">star</span>
+</div>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3">NovaKur SoundSync Pro</h3>
+<div class="flex items-center gap-3">
+<span class="text-xl font-black text-slate-900 dark:text-white">$299.00</span>
+<span class="text-sm text-slate-400 line-through">$375.00</span>
+</div>
+<button class="w-full mt-6 py-3 bg-primary text-white font-bold text-sm rounded-xl hover:bg-deep-blue transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">shopping_bag</span>
+                                            Add to Cart
+                                        </button>
+</div>
+</div>
+</div>
+<!-- Badges & Ratings -->
+<div class="space-y-12">
+<div>
+<h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Badges &amp; Status</h4>
+<div class="flex flex-wrap gap-4">
+<span class="px-3 py-1.5 bg-green-100 text-green-700 text-xs font-bold rounded-full flex items-center gap-1.5">
+<span class="size-1.5 bg-green-500 rounded-full"></span>
+                                            In Stock
+                                        </span>
+<span class="px-3 py-1.5 bg-orange-100 text-orange-700 text-xs font-bold rounded-full flex items-center gap-1.5">
+<span class="size-1.5 bg-orange-500 rounded-full"></span>
+                                            Low Stock
+                                        </span>
+<span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold rounded-full flex items-center gap-1.5">
+<span class="size-1.5 bg-slate-400 rounded-full"></span>
+                                            Out of Stock
+                                        </span>
+</div>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Rating Stars</h4>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+</div>
+<span class="text-sm font-bold text-slate-900 dark:text-white">5.0</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star_half</span>
+<span class="material-symbols-outlined">star</span>
+</div>
+<span class="text-sm font-bold text-slate-900 dark:text-white">3.5 (1,240 reviews)</span>
+</div>
+</div>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Price Displays</h4>
+<div class="space-y-4">
+<div class="flex flex-col">
+<span class="text-3xl font-black text-primary">$49.99</span>
+<span class="text-xs text-slate-400">Standard Price</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-2xl font-black text-red-500">$19.99</span>
+<span class="text-lg text-slate-400 line-through">$24.99</span>
+<span class="px-1.5 py-0.5 bg-red-100 text-red-600 text-[10px] font-bold rounded">SAVE 20%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Simple Footer -->
+<footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark p-8 text-center">
+<p class="text-sm text-slate-500">© 2024 NovaKur Base Design System. Built for modern OpenCart storefronts.</p>
+</footer>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,16 @@
+{% for review in reviews %}
+<div style="padding:20px 0;border-bottom:1px solid var(--nm-border);">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+    <div>
+      <strong style="font-size:14px;">{{ review.author }}</strong>
+      <div class="nm-stars" style="margin-top:4px;">
+        {% for i in 1..5 %}<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="{{ i <= review.rating ? 'currentColor' : 'none' }}" stroke="currentColor" stroke-width="2" class="{{ i > review.rating ? 'nm-stars-empty' : '' }}"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>{% endfor %}
+      </div>
+    </div>
+    <span style="font-size:12px;color:var(--nm-text-muted);">{{ review.date_added }}</span>
+  </div>
+  <p style="font-size:14px;line-height:1.7;color:var(--nm-text-muted);">{{ review.text }}</p>
+</div>
+{% else %}
+<p style="font-size:14px;color:var(--nm-text-muted);">No reviews yet.</p>
+{% endfor %}

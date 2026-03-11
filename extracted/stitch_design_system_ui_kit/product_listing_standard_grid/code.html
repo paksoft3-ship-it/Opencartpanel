@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NovaKur Base - Premium Electronics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563EB",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl">diamond</span>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold tracking-tight">NovaKur Base</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary transition-colors" href="#">Shop</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary transition-colors" href="#">Deals</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary transition-colors" href="#">Support</a>
+</nav>
+</div>
+<div class="flex items-center gap-4 flex-1 justify-end">
+<div class="hidden sm:flex relative w-full max-w-xs">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/20 transition-all outline-none" placeholder="Search premium products..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<button class="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+<div class="size-9 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChIeW5-PFGaudQppBxMXQw0cbaoc4xE6pkyeaLrBdaFQXOW-hvpXUH0bhRvfxat7fk72QZiXNc5UAaxUqh2pkYy9rRwsZ0DO2WOFOKiEAsKMnY-cI7BOwU_RgFfFhHuDdpMfSr2C1uI2w2Xw6_xZH8bDP6N1wvZnUjKqRLuVmlWBeHlsneuJGpH8FoGvMx2UQ0uQL8VQaJrXq4VVOWvft_7wFn_wRF2O3hah8q2scWbzu6PwxTpm8Cg7p3j8c3pMDaf91K4RTSWM6n"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 py-8">
+<!-- Breadcrumb & Title Section -->
+<div class="mb-8">
+<nav class="flex items-center gap-2 text-sm text-slate-500 mb-4">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Electronics</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-slate-900 dark:text-white font-medium">Smartphones</span>
+</nav>
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white">Premium Smartphones</h1>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Sidebar Filters -->
+<aside class="w-full lg:w-64 flex-shrink-0 space-y-8">
+<!-- Price Range -->
+<div class="border-b border-slate-200 dark:border-slate-800 pb-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">payments</span>
+                            Price Range
+                        </h3>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">expand_more</span>
+</div>
+<div class="px-2">
+<div class="relative h-1.5 w-full bg-slate-200 dark:bg-slate-800 rounded-full">
+<div class="absolute left-1/4 right-1/4 h-full bg-primary rounded-full"></div>
+<div class="absolute left-1/4 top-1/2 -translate-y-1/2 size-4 bg-white border-2 border-primary rounded-full shadow-sm cursor-pointer"></div>
+<div class="absolute right-1/4 top-1/2 -translate-y-1/2 size-4 bg-white border-2 border-primary rounded-full shadow-sm cursor-pointer"></div>
+</div>
+<div class="flex justify-between mt-4 text-xs font-medium text-slate-500">
+<span>$400</span>
+<span>$1200</span>
+</div>
+</div>
+</div>
+<!-- Brands -->
+<div class="border-b border-slate-200 dark:border-slate-800 pb-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">branding_watermark</span>
+                            Brands
+                        </h3>
+</div>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary/20 size-4" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Apple</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary/20 size-4" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Samsung</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-primary focus:ring-primary/20 size-4" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Google</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-primary focus:ring-primary/20 size-4" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">OnePlus</span>
+</label>
+</div>
+</div>
+<!-- Ratings -->
+<div class="border-b border-slate-200 dark:border-slate-800 pb-6">
+<h3 class="font-semibold flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-xl">star</span>
+                        Customer Ratings
+                    </h3>
+<div class="space-y-2">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="text-primary focus:ring-primary/20" name="rating" type="radio"/>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star_half</span>
+</div>
+<span class="text-xs text-slate-500">4.5 &amp; up</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="text-primary focus:ring-primary/20" name="rating" type="radio"/>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star_outline</span>
+</div>
+<span class="text-xs text-slate-500">4.0 &amp; up</span>
+</label>
+</div>
+</div>
+<!-- Availability -->
+<div>
+<h3 class="font-semibold flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-xl">inventory_2</span>
+                        Availability
+                    </h3>
+<div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50">
+<span class="text-sm text-slate-600 dark:text-slate-400">In Stock Only</span>
+<div class="relative inline-flex h-6 w-11 items-center rounded-full bg-primary cursor-pointer">
+<span class="inline-block h-4 w-4 translate-x-6 rounded-full bg-white transition-transform"></span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Product Grid Section -->
+<div class="flex-1">
+<!-- Grid Controls -->
+<div class="flex flex-col sm:flex-row justify-between items-center bg-white dark:bg-slate-800/50 p-4 rounded-2xl mb-6 gap-4 border border-slate-200 dark:border-slate-800">
+<p class="text-sm text-slate-600 dark:text-slate-400">Showing <span class="font-semibold text-slate-900 dark:text-white">1–12</span> of 48 results</p>
+<div class="flex items-center gap-3">
+<span class="text-sm text-slate-500 whitespace-nowrap">Sort by:</span>
+<select class="bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm px-4 py-2 focus:ring-2 focus:ring-primary/20 transition-all cursor-pointer">
+<option>Featured</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+<option>Newest Arrivals</option>
+</select>
+</div>
+</div>
+<!-- Product Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Product Card 1 -->
+<div class="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div class="relative aspect-square bg-slate-100 dark:bg-slate-800 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Sleek black high-end smartphone product photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-d--qZqnam8NX1EIVKrLWFn6VDjANl__CnOpmO6PEANiN52lDXE51QImXr0joRu1PyAJweIIE5a7ilDTGbEPypB9tv178JXsGPek088brTJtcqw2Ww3mk-UCD9ZMr6eCubeSVxjBaducKCvEo6glyxzJQu4PyXDQTn2vpWQybnl-yHVtKZN41CW0V9XSQZ99lDcyBc1yglQvdA5X1QXbOZWedmRDVOk9BoMaJFPUhWAaJ_XwnhmdnWL1xZ8ud9uXUIFq4AVMnf7jY"/>
+<div class="absolute top-4 left-4">
+<span class="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">New</span>
+</div>
+<button class="absolute top-4 right-4 p-2 bg-white/80 backdrop-blur rounded-full opacity-0 group-hover:opacity-100 transition-all hover:bg-white text-slate-900">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+</div>
+<div class="p-5">
+<p class="text-xs text-slate-500 font-medium mb-1">Apple</p>
+<h3 class="font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">iPhone 15 Pro Max</h3>
+<div class="flex items-center gap-1 mb-4">
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+</div>
+<span class="text-xs text-slate-400">(128)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xl font-bold text-slate-900 dark:text-white">$1,199.00</span>
+<button class="flex items-center justify-center p-2 rounded-xl bg-primary text-white hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div class="relative aspect-square bg-slate-100 dark:bg-slate-800 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Modern titanium grey flagship smartphone display" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdFYmcOlGhuF1dbUGU-8HadpCm6omFT8wokUxo_90KfIk-nSu7uat3ropc1oZyhpgrKdYaY4AiqkebKSkbgnQF1xdW-U1fwYkjv4NaQzhg4kz6n_kyC_gCL9oTbJBs-F1m7n2jKXobcaw6Ce3xRIVe86EEees_1tZoP-bEpQUG6FQ9RriCMzbHdpKcDdi7xfLcaD6nOGdp65jnm5vzSl0x3eVg4l8Yf3C9ylesEBAnOG2WEWJzkblPLj7okaVGt_8ll1ZguKD9LRln"/>
+<button class="absolute top-4 right-4 p-2 bg-white/80 backdrop-blur rounded-full opacity-0 group-hover:opacity-100 transition-all hover:bg-white text-slate-900">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+</div>
+<div class="p-5">
+<p class="text-xs text-slate-500 font-medium mb-1">Samsung</p>
+<h3 class="font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">Galaxy S24 Ultra</h3>
+<div class="flex items-center gap-1 mb-4">
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star_half</span>
+</div>
+<span class="text-xs text-slate-400">(94)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xl font-bold text-slate-900 dark:text-white">$1,299.00</span>
+<button class="flex items-center justify-center p-2 rounded-xl bg-primary text-white hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div class="relative aspect-square bg-slate-100 dark:bg-slate-800 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Clean minimalist smartphone in porcelain white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXihzy5LWCgQ_B4stXj7dM51QuRlQS2lQMx2mYqoNiWPHBx_Gmjgfhj72pSbXlJLT1RsI_3Bzeb5WGm6Z27ADGgSKa5vSg9NH4JSuCofbbXItALIHpvIuHpkuxcuePNR9yEd8L1pBhjSEWrhtdGvRVEy96olcxpnbJfu0JvjFOybmYz0ZPuG1anwr3hG_MNxdwZyVK0eS2pHbbfgpsSYgetKSwM_XCDzvzr-j-FVPrioq2A4XRb8lEnk8cy9k8qgLsVa8qW4VBT0tn"/>
+<div class="absolute top-4 left-4">
+<span class="bg-emerald-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Sale</span>
+</div>
+<button class="absolute top-4 right-4 p-2 bg-white/80 backdrop-blur rounded-full opacity-0 group-hover:opacity-100 transition-all hover:bg-white text-slate-900">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+</div>
+<div class="p-5">
+<p class="text-xs text-slate-500 font-medium mb-1">Google</p>
+<h3 class="font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">Pixel 8 Pro</h3>
+<div class="flex items-center gap-1 mb-4">
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star_outline</span>
+</div>
+<span class="text-xs text-slate-400">(210)</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xl font-bold text-slate-900 dark:text-white">$899.00</span>
+<span class="text-xs text-slate-400 line-through">$999.00</span>
+</div>
+<button class="flex items-center justify-center p-2 rounded-xl bg-primary text-white hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Additional Grid Placeholder Rows -->
+<div class="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div class="relative aspect-square bg-slate-100 dark:bg-slate-800 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Blue colored sleek premium smartphone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE763b8F5hwxRkFmnVYu0yIuqWey5HKkzdMKY-BukO4aeZy4nnGe3ODr_qEe7QugH5UzpuWWiDcFEwPl5-f1Rv6it3fuOSL8bNZBljleLoQ7flm401pVzIewM7yTjdlFHxA1zR95kT4TJi5_mgRh0mfx7ypA0VDXPwGeDbS3jkKqFhroWHlBYmCQAJI-rQtaigu3lvZhHqwRpgvKUQpPFtbVw46UCef4DtGWDN4D2r-G6NfSL7ZxBYeLxvMbWwY_pek1HT_elhA0iF"/>
+</div>
+<div class="p-5">
+<p class="text-xs text-slate-500 font-medium mb-1">Apple</p>
+<h3 class="font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">iPhone 15</h3>
+<div class="flex items-center gap-1 mb-4">
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+</div>
+<span class="text-xs text-slate-400">(456)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xl font-bold text-slate-900 dark:text-white">$799.00</span>
+<button class="flex items-center justify-center p-2 rounded-xl bg-primary text-white hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div class="relative aspect-square bg-slate-100 dark:bg-slate-800 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Cream colored flagship smartphone front and back view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqmSHTJUAXgGzG2jt3koF9tq-nJwWDFFCc12Z76HhcxIkUv7SdiKoN0CyEeunUvqlXEr4Vh2ftrew6IfejvZAj8P0SyeLg1V9883_WKAQfb0b5RqQGWJTQAEpMJmayWNmCwgJZgH8SU10YZylbMVNu0JmIWR6ID5Jaa_IVvQ_Ii5UX_sHrexgSaK_Rn9Cg_7GsbgmTxk-_zOsmn5z-xg66A3mkFXa8X00O26Ms8rGHHTP6mVIIA-Z5trU_GdKBjarHj98jjr6pFwdF"/>
+</div>
+<div class="p-5">
+<p class="text-xs text-slate-500 font-medium mb-1">Samsung</p>
+<h3 class="font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">Galaxy S24+</h3>
+<div class="flex items-center gap-1 mb-4">
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+</div>
+<span class="text-xs text-slate-400">(67)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xl font-bold text-slate-900 dark:text-white">$999.00</span>
+<button class="flex items-center justify-center p-2 rounded-xl bg-primary text-white hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div class="relative aspect-square bg-slate-100 dark:bg-slate-800 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Forest green premium android smartphone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh9p6ZA5WFsBFZuV_snMZYB9_8dGQE-Ya7CaCgMWe2D0ZuiTQr72NTtUBST_PfibFlbzDZUPVMsDIQc1lV9pLdHM955D4MgpatF-37xQfXpnmXcOT-exSOzR0BhLe21TPd7eL6JhKKRk7TYg0qBe3LiHGEhscWDtJk1F_FxsVS6yc5df2xa55ba6_emO4UpxWoOATkJKaS16Vah5BeRhu7pijT9d779nIsl0qND7Hsi_Rh_rAqxUsrfryFT7R6Nc6aWDp6NEEcmzus"/>
+</div>
+<div class="p-5">
+<p class="text-xs text-slate-500 font-medium mb-1">OnePlus</p>
+<h3 class="font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">OnePlus 12</h3>
+<div class="flex items-center gap-1 mb-4">
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star_outline</span>
+</div>
+<span class="text-xs text-slate-400">(42)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xl font-bold text-slate-900 dark:text-white">$799.00</span>
+<button class="flex items-center justify-center p-2 rounded-xl bg-primary text-white hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex justify-center items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary text-white font-bold shadow-lg shadow-primary/20">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-primary hover:border-primary transition-all">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-primary hover:border-primary transition-all">3</button>
+<span class="px-2 text-slate-400">...</span>
+<button class="px-4 h-10 flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-primary hover:border-primary transition-all gap-1">
+                        Next
+                        <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 mt-20 py-12">
+<div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="col-span-2 md:col-span-1">
+<div class="flex items-center gap-2 text-primary mb-6">
+<span class="material-symbols-outlined text-2xl">diamond</span>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold">NovaKur Base</h2>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Defining the next generation of premium electronics through minimalist design and superior technology.</p>
+</div>
+<div>
+<h4 class="font-bold mb-4 text-slate-900 dark:text-white">Shop</h4>
+<ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary" href="#">Smartphones</a></li>
+<li><a class="hover:text-primary" href="#">Laptops</a></li>
+<li><a class="hover:text-primary" href="#">Audio</a></li>
+<li><a class="hover:text-primary" href="#">Accessories</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-4 text-slate-900 dark:text-white">Support</h4>
+<ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary" href="#">Contact Us</a></li>
+<li><a class="hover:text-primary" href="#">Shipping</a></li>
+<li><a class="hover:text-primary" href="#">Returns</a></li>
+<li><a class="hover:text-primary" href="#">FAQ</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-4 text-slate-900 dark:text-white">Newsletter</h4>
+<p class="text-xs text-slate-500 mb-4">Stay updated with our latest releases.</p>
+<div class="flex gap-2">
+<input class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-xs px-3 py-2" placeholder="Email" type="email"/>
+<button class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-lg">Join</button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-4 mt-12 pt-8 border-t border-slate-100 dark:border-slate-900 flex justify-between items-center text-xs text-slate-400">
+<p>© 2024 NovaKur Base. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="hover:text-primary" href="#">Privacy Policy</a>
+<a class="hover:text-primary" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+</body></html>

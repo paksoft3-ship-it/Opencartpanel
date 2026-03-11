@@ -1,0 +1,32 @@
+{% include 'extension/novakur_fashion/catalog/view/template/common/header.twig' %}
+<div class="nf-container" style="padding:48px 32px;">
+  <h1 style="font-family:var(--nf-heading-font);font-size:36px;font-weight:700;margin-bottom:40px;">My Wishlist</h1>
+  {% if products %}
+  <div class="nf-product-grid">
+    {% for product in products %}
+    <div class="nf-card">
+      <a href="{{ product.href }}" class="nf-card-image">
+        <img src="{{ product.thumb }}" alt="{{ product.name }}" loading="lazy">
+        {% if product.special %}<span class="nf-card-badge">Sale</span>{% endif %}
+      </a>
+      <div class="nf-card-body">
+        <a href="{{ product.href }}" class="nf-card-name">{{ product.name }}</a>
+        <div class="nf-card-price">{% if product.special %}<span class="nf-price nf-price-sale">{{ product.special }}</span><span class="nf-price-old">{{ product.price }}</span>{% else %}<span class="nf-price">{{ product.price }}</span>{% endif %}</div>
+        <span style="font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:{% if product.stock == 'In Stock' %}#16a34a{% else %}var(--nf-text-muted){% endif %};">{{ product.stock }}</span>
+        <div style="display:flex;gap:8px;margin-top:12px;">
+          <button class="nf-btn nf-btn-primary nf-btn-sm" style="flex:1;" data-nf-add-to-cart data-product-id="{{ product.product_id }}">Add to Bag</button>
+          <a href="index.php?route=account/wishlist.remove&wishlist_id={{ product.product_id }}" class="nf-btn nf-btn-ghost nf-btn-sm">✕</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div style="text-align:center;padding:80px 0;">
+    <h2 style="font-family:var(--nf-heading-font);font-size:28px;margin-bottom:16px;">Your Wishlist is Empty</h2>
+    <p style="color:var(--nf-text-muted);margin-bottom:32px;">Save pieces you love for later.</p>
+    <a href="{{ home }}" class="nf-btn nf-btn-outline">Explore Collection</a>
+  </div>
+  {% endif %}
+</div>
+{% include 'extension/novakur_fashion/catalog/view/template/common/footer.twig' %}

@@ -1,0 +1,39 @@
+{
+  "slug": "novakur-fashion",
+  "name": "NovaKur Fashion Theme",
+  "shortDescription": "Bold editorial OpenCart 4 theme for fashion, clothing, and lifestyle stores. Full-bleed imagery, magazine-style grid.",
+  "description": "NovaKur Fashion brings a ZARA/H&M-level editorial experience to OpenCart 4. Features a lookbook grid, full-bleed hero banners, product card image swap on hover, color swatches, size selector with availability, and an Instagram-style photo grid section. Built for clothing and lifestyle stores that need a fashion-forward presence.",
+  "price": 39.99,
+  "categoryId": "themes",
+  "developerId": "novakur",
+  "compatibility": [
+    "OpenCart 4.0",
+    "OpenCart 4.1"
+  ],
+  "images": [],
+  "features": [
+    "Editorial fashion layout",
+    "Lookbook grid section",
+    "Product card image swap on hover",
+    "Color swatches on cards",
+    "Size selector with availability dots",
+    "Instagram-style photo grid",
+    "Playfair Display serif headings",
+    "Full-bleed collection banners",
+    "Mobile sticky Add to Cart bar",
+    "OCMOD — one-click install"
+  ],
+  "tags": [
+    "theme",
+    "fashion",
+    "clothing",
+    "editorial",
+    "lookbook",
+    "opencart4",
+    "ocmod"
+  ],
+  "version": "1.0.1",
+  "status": "published",
+  "demoUrl": "",
+  "buildFile": "novakur_fashion.ocmod.zip"
+}

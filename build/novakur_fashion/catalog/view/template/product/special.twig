@@ -1,0 +1,13 @@
+{% include 'extension/novakur_fashion/catalog/view/template/common/header.twig' %}
+{% include 'extension/novakur_fashion/catalog/view/template/common/breadcrumb.twig' %}
+<div class="nf-container nf-listing">
+  <div class="nf-listing-header">
+    <div><h1 class="nf-listing-title">{{ heading_1 }}</h1>{% if results %}<p class="nf-listing-count" style="margin-top:8px;">{{ results }}</p>{% endif %}</div>
+    <div class="nf-listing-controls">{% if sorts %}<select class="nf-listing-select" onchange="location=this.value">{% for sort in sorts %}<option value="{{ sort.href }}" {% if sort.selected %}selected{% endif %}>{{ sort.text }}</option>{% endfor %}</select>{% endif %}</div>
+  </div>
+  {% if products %}
+  <div class="nf-product-grid">{% for product in products %}<div class="nf-card"><a href="{{ product.href }}" class="nf-card-image"><img src="{{ product.thumb }}" alt="{{ product.name }}" loading="lazy"><span class="nf-card-badge">Sale</span></a><div class="nf-card-body"><a href="{{ product.href }}" class="nf-card-name">{{ product.name }}</a><div class="nf-card-price"><span class="nf-price nf-price-sale">{{ product.special }}</span><span class="nf-price-old">{{ product.price }}</span></div></div></div>{% endfor %}</div>
+  {% if pagination %}<div class="nf-pagination">{{ pagination }}</div>{% endif %}
+  {% else %}<div style="text-align:center;padding:80px 0;"><p style="font-family:var(--nf-heading-font);font-size:24px;color:var(--nf-text-muted);">No current offers.</p></div>{% endif %}
+</div>
+{% include 'extension/novakur_fashion/catalog/view/template/common/footer.twig' %}

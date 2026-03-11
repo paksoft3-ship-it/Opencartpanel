@@ -1,0 +1,74 @@
+{# NovaKur Base: Address book (Tailwind) #}
+{{ header }}
+
+<main class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+  {% include 'extension/novakur/catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+  <div class="flex flex-col lg:flex-row gap-8">
+
+    {# Sidebar nav #}
+    <aside class="w-full lg:w-56 shrink-0">
+      <nav class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+        <div class="px-4 py-4 border-b border-slate-100">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-400">My Account</p>
+        </div>
+        {% set account_links = [
+          { label: 'Dashboard', href: account|default('#'), icon: 'dashboard', active: false },
+          { label: 'Orders', href: order|default('#'), icon: 'receipt_long', active: false },
+          { label: 'Wishlist', href: wishlist|default('#'), icon: 'favorite', active: false },
+          { label: 'Address Book', href: address|default('#'), icon: 'location_on', active: true },
+          { label: 'Edit Details', href: edit|default('#'), icon: 'edit', active: false },
+          { label: 'Change Password', href: password|default('#'), icon: 'lock', active: false },
+          { label: 'Logout', href: logout|default('#'), icon: 'logout', active: false }
+        ] %}
+        {% for link in account_links %}
+          <a href="{{ link.href }}" class="flex items-center gap-3 px-4 py-3 text-sm font-medium {{ link.active ? 'text-primary bg-primary/5' : 'text-slate-600 hover:text-primary hover:bg-slate-50' }} transition-colors no-underline">
+            <span class="material-symbols-outlined text-[18px]">{{ link.icon }}</span>
+            {{ link.label }}
+          </a>
+        {% endfor %}
+      </nav>
+    </aside>
+
+    {# Main content #}
+    <section class="flex-1 min-w-0">
+      <div class="flex items-center justify-between mb-6">
+        <h1 class="text-2xl font-black text-slate-900">{{ heading_title|default('Address Book') }}</h1>
+        <a href="{{ add|default('#') }}" class="flex items-center gap-2 bg-primary text-white rounded-xl px-4 py-2 text-sm font-bold hover:bg-primary/90 transition-all no-underline">
+          <span class="material-symbols-outlined text-[18px]">add</span> Add Address
+        </a>
+      </div>
+
+      {% if addresses|default([]) %}
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {% for address_item in addresses %}
+            <div class="bg-white rounded-2xl border border-slate-200 p-5 flex flex-col gap-4">
+              <div class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-primary mt-0.5">location_on</span>
+                <p class="text-slate-700 text-sm leading-relaxed">{{ address_item.address|default('')|raw }}</p>
+              </div>
+              <div class="flex items-center gap-2 pt-2 border-t border-slate-100">
+                <a href="{{ address_item.update|default('#') }}" class="flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-primary transition-colors no-underline">
+                  <span class="material-symbols-outlined text-[16px]">edit</span> Edit
+                </a>
+                <a href="{{ address_item.delete|default('#') }}" class="flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-red-500 transition-colors no-underline ml-auto">
+                  <span class="material-symbols-outlined text-[16px]">delete</span> Remove
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="flex flex-col items-center justify-center py-20 bg-white rounded-2xl border border-slate-200 text-center">
+          <span class="material-symbols-outlined text-6xl text-slate-200 mb-3">location_off</span>
+          <h2 class="text-lg font-bold text-slate-900 mb-1">No addresses saved</h2>
+          <p class="text-slate-500 text-sm mb-5">Add a delivery address to speed up checkout.</p>
+          <a href="{{ add|default('#') }}" class="px-5 py-2.5 bg-primary text-white rounded-xl text-sm font-bold hover:bg-primary/90 transition-all no-underline">Add Address</a>
+        </div>
+      {% endif %}
+    </section>
+
+  </div>
+</main>
+
+{{ footer }}

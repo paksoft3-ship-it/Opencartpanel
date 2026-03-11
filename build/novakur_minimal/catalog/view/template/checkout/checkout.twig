@@ -1,0 +1,110 @@
+{% include 'extension/novakur_minimal/catalog/view/template/common/header.twig' %}
+
+<div class="nm-container">
+  <h1 style="font-size:28px;font-weight:700;letter-spacing:-0.02em;padding:32px 0 24px;">Checkout</h1>
+  <div class="nm-checkout-layout">
+
+    {# Steps #}
+    <div>
+      {# Step 1: Account #}
+      <div class="nm-checkout-step">
+        <div class="nm-checkout-step-header">
+          <div class="nm-checkout-step-num">1</div>
+          <h2 class="nm-checkout-step-title">Account</h2>
+        </div>
+        <div class="nm-checkout-step-body">
+          {% if logged %}
+          <div class="nm-alert nm-alert-success" style="margin-bottom:0;">You are logged in. <a href="{{ logout|default('#') }}" style="text-decoration:underline;">Logout</a></div>
+          {% else %}
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+            <div>
+              <h3 style="font-size:14px;font-weight:700;margin-bottom:16px;text-transform:uppercase;letter-spacing:0.06em;">Login</h3>
+              <div class="nm-form-group"><label>Email</label><input type="email" id="input-email" placeholder="your@email.com"></div>
+              <div class="nm-form-group"><label>Password</label><input type="password" id="input-password"></div>
+              <button class="nm-btn nm-btn-primary" id="button-login">Login</button>
+            </div>
+            <div>
+              <h3 style="font-size:14px;font-weight:700;margin-bottom:16px;text-transform:uppercase;letter-spacing:0.06em;">Guest Checkout</h3>
+              <div class="nm-form-group"><label>Email</label><input type="email" id="input-guest-email" placeholder="your@email.com"></div>
+              <button class="nm-btn nm-btn-outline" id="button-guest">Continue as Guest</button>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+      {# Step 2: Shipping Address #}
+      <div class="nm-checkout-step">
+        <div class="nm-checkout-step-header">
+          <div class="nm-checkout-step-num">2</div>
+          <h2 class="nm-checkout-step-title">Shipping Address</h2>
+        </div>
+        <div class="nm-checkout-step-body">
+          <div class="nm-form-row">
+            <div class="nm-form-group"><label>First Name *</label><input type="text" name="firstname" required></div>
+            <div class="nm-form-group"><label>Last Name *</label><input type="text" name="lastname" required></div>
+          </div>
+          <div class="nm-form-group"><label>Company</label><input type="text" name="company"></div>
+          <div class="nm-form-group"><label>Address Line 1 *</label><input type="text" name="address_1" required></div>
+          <div class="nm-form-group"><label>Address Line 2</label><input type="text" name="address_2"></div>
+          <div class="nm-form-row">
+            <div class="nm-form-group"><label>City *</label><input type="text" name="city" required></div>
+            <div class="nm-form-group"><label>Postcode *</label><input type="text" name="postcode" required></div>
+          </div>
+          <div class="nm-form-row">
+            <div class="nm-form-group"><label>Country *</label>
+              <select name="country_id" id="input-payment-country" class="nm-option-select">
+                {% if countries is defined %}{% for country in countries %}<option value="{{ country.country_id }}">{{ country.name }}</option>{% endfor %}{% endif %}
+              </select>
+            </div>
+            <div class="nm-form-group"><label>Region / State *</label>
+              <select name="zone_id" id="input-payment-zone" class="nm-option-select"><option value="">Select Region</option></select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {# Step 3: Payment / Confirm #}
+      <div class="nm-checkout-step">
+        <div class="nm-checkout-step-header">
+          <div class="nm-checkout-step-num">3</div>
+          <h2 class="nm-checkout-step-title">Payment & Confirm</h2>
+        </div>
+        <div class="nm-checkout-step-body">
+          <div id="payment-methods" style="margin-bottom:24px;">
+            <p style="font-size:14px;color:var(--nm-text-muted);">Payment methods will load here.</p>
+          </div>
+          <div id="shipping-methods" style="margin-bottom:24px;">
+            <p style="font-size:14px;color:var(--nm-text-muted);">Shipping methods will load here.</p>
+          </div>
+          <button class="nm-btn nm-btn-primary nm-btn-full" id="button-confirm">Place Order</button>
+        </div>
+      </div>
+    </div>
+
+    {# Order Summary #}
+    <div class="nm-order-summary">
+      <h2 style="font-size:16px;font-weight:700;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--nm-border);">Order Summary</h2>
+      {% if products %}
+      {% for product in products %}
+      <div class="nm-order-item">
+        <img src="{{ product.thumb }}" alt="{{ product.name }}" class="nm-order-item-img">
+        <div class="nm-order-item-name">{{ product.name }}</div>
+        <div class="nm-order-item-qty">×{{ product.quantity }}</div>
+        <div class="nm-order-item-price">{{ product.price }}</div>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% if totals %}
+      {% for total in totals %}
+      <div class="nm-cart-total-row">
+        <span>{{ total.title }}</span>
+        <span>{{ total.text }}</span>
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+
+  </div>
+</div>
+{% include 'extension/novakur_minimal/catalog/view/template/common/footer.twig' %}

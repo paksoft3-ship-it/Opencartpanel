@@ -1,0 +1,21 @@
+{# NovaKur Base section component: category_grid #}
+{% set items = categories|default([]) %}
+<section class="nk-category-grid" aria-labelledby="nk-category-grid-title">
+  <div class="nk-global-container__inner">
+    <h2 id="nk-category-grid-title" class="nk-category-grid__title">{{ category_grid_title|default('Shop by Category') }}</h2>
+
+    <div class="nk-category-grid__list">
+      {% if items %}
+        {% for item in items %}
+          <a class="nk-category-grid__card" href="{{ item.href|default('#') }}">
+            <span class="nk-category-grid__name">{{ item.name|default('Category') }}</span>
+          </a>
+        {% endfor %}
+      {% else %}
+        <a class="nk-category-grid__card" href="#"><span class="nk-category-grid__name">New Arrivals</span></a>
+        <a class="nk-category-grid__card" href="#"><span class="nk-category-grid__name">Best Sellers</span></a>
+        <a class="nk-category-grid__card" href="#"><span class="nk-category-grid__name">Accessories</span></a>
+      {% endif %}
+    </div>
+  </div>
+</section>

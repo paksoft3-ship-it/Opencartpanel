@@ -1,0 +1,135 @@
+{# NovaKur Base: Checkout route shell #}
+{{ header }}
+
+{% import 'catalog/view/template/component/ui/form_elements.twig' as form %}
+
+{% include 'catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+<main id="content" class="nk-checkout-page">
+  <div class="nk-global-container__inner">
+    <header class="nk-checkout-page__head">
+      <h1 class="nk-checkout-page__title">{{ heading_title|default('Checkout') }}</h1>
+    </header>
+
+    {% set shipping_options = [] %}
+    {% for shipping_group in shipping_methods|default([]) %}
+      {% if shipping_group.quote is defined %}
+        {% for quote in shipping_group.quote %}
+          {% set shipping_options = shipping_options|merge([{
+            value: quote.code|default(''),
+            text: quote.title|default('Shipping') ~ (quote.text is defined and quote.text ? ' - ' ~ quote.text : '')
+          }]) %}
+        {% endfor %}
+      {% else %}
+        {% set shipping_options = shipping_options|merge([{
+          value: shipping_group.code|default(''),
+          text: shipping_group.title|default('Shipping') ~ (shipping_group.text is defined and shipping_group.text ? ' - ' ~ shipping_group.text : '')
+        }]) %}
+      {% endif %}
+    {% endfor %}
+
+    {% set payment_options = [] %}
+    {% for method in payment_methods|default([]) %}
+      {% set payment_options = payment_options|merge([{
+        value: method.code|default(''),
+        text: method.title|default('Payment Method')
+      }]) %}
+    {% endfor %}
+
+    <form action="{{ action|default('#') }}" method="post" class="nk-checkout-page__form" id="nk-checkout-form">
+      <div class="nk-checkout-page__layout">
+        <section class="nk-checkout-page__main" aria-label="Checkout form">
+          <section class="nk-checkout-page__section">
+            <h2 class="nk-checkout-page__section-title">Billing / Shipping Address</h2>
+            <div class="nk-checkout-page__grid">
+              {{ form.input('input-firstname', 'firstname', 'Name', firstname|default(''), 'text', true, '', error_firstname|default(''), 'Full name') }}
+              {{ form.input('input-email', 'email', 'Email', email|default(''), 'email', true, '', error_email|default(''), 'name@example.com') }}
+              {{ form.input('input-telephone', 'telephone', 'Phone', telephone|default(''), 'tel', true, '', error_telephone|default(''), '+1 555 123 4567') }}
+              <div class="nk-checkout-page__field--full">{{ form.input('input-address-1', 'address_1', 'Address', address_1|default(''), 'text', true, '', error_address_1|default(''), 'Street address') }}</div>
+              {{ form.input('input-city', 'city', 'City', city|default(''), 'text', true, '', error_city|default(''), 'City') }}
+              {{ form.input('input-postcode', 'postcode', 'Postcode', postcode|default(''), 'text', true, '', error_postcode|default(''), 'Postcode') }}
+
+              <div class="nk-checkout-page__field--full nk-checkout-page__hook">
+                {{ form.select('input-country', 'country_id', 'Country', countries|default([]), country_id|default(''), true, 'Select your country.', error_country|default('')) }}
+              </div>
+              <div class="nk-checkout-page__field--full nk-checkout-page__hook">
+                {{ form.select('input-zone', 'zone_id', 'Region / State', zones|default([]), zone_id|default(''), true, 'Select your region/state.', error_zone|default('')) }}
+              </div>
+
+              <div class="nk-checkout-page__field--full nk-checkout-page__custom-fields">
+                <div class="nk-checkout-page__custom-fields-head">Custom Fields</div>
+                <div class="nk-checkout-page__custom-fields-body">
+                  {% if custom_fields is defined and custom_fields %}
+                    {{ custom_fields }}
+                  {% else %}
+                    <p class="nk-checkout-page__custom-placeholder">Custom checkout fields render here.</p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="nk-checkout-page__section">
+            <h2 class="nk-checkout-page__section-title">Shipping Method</h2>
+            {{ form.radio_group('shipping_method', 'Choose shipping method', shipping_options, shipping_method|default(''), true, '', error_shipping|default('')) }}
+          </section>
+
+          <section class="nk-checkout-page__section">
+            <h2 class="nk-checkout-page__section-title">Payment Method</h2>
+            {{ form.radio_group('payment_method', 'Choose payment method', payment_options, payment_method|default(''), true, '', error_payment|default('')) }}
+            {{ form.textarea('input-comment', 'comment', 'Order Notes', comment|default(''), 4, false, 'Optional note for delivery.', '', 'Add delivery notes') }}
+            {{ form.checkbox('input-agree', 'agree', text_agree|default('I agree to the terms and conditions'), agree|default(false), '1', true, '', error_agree|default('')) }}
+          </section>
+        </section>
+
+        <aside class="nk-checkout-page__summary" aria-label="Order summary">
+          <h2 class="nk-checkout-page__summary-title">Order Summary</h2>
+
+          <div class="nk-checkout-page__products">
+            {% for product in products|default([]) %}
+              <article class="nk-checkout-page__product">
+                {% if product.thumb is defined and product.thumb %}
+                  <img class="nk-checkout-page__product-thumb" src="{{ product.thumb }}" alt="{{ product.name|default('Product') }}" loading="lazy" width="72" height="72" />
+                {% endif %}
+                <div class="nk-checkout-page__product-meta">
+                  <h3 class="nk-checkout-page__product-name">{{ product.name|default('Product') }}</h3>
+                  <p class="nk-checkout-page__product-qty">Qty: {{ product.quantity|default(1) }}</p>
+                </div>
+                <div class="nk-checkout-page__product-price">
+                  {% include 'catalog/view/template/component/ui/price_display.twig' with { price: product.total|default(product.price|default('$0.00')) } only %}
+                </div>
+              </article>
+            {% else %}
+              <p class="nk-checkout-page__empty">No items in order summary.</p>
+            {% endfor %}
+          </div>
+
+          <dl class="nk-checkout-page__totals">
+            {% for row in totals|default([]) %}
+              <div class="nk-checkout-page__total-row{{ loop.last ? ' is-grand-total' : '' }}">
+                <dt>{{ row.title|default('Total') }}</dt>
+                <dd>{{ row.text|default('$0.00') }}</dd>
+              </div>
+            {% else %}
+              <div class="nk-checkout-page__total-row"><dt>Subtotal</dt><dd>$0.00</dd></div>
+              <div class="nk-checkout-page__total-row"><dt>Shipping</dt><dd>$0.00</dd></div>
+              <div class="nk-checkout-page__total-row"><dt>Tax</dt><dd>$0.00</dd></div>
+              <div class="nk-checkout-page__total-row is-grand-total"><dt>Total</dt><dd>$0.00</dd></div>
+            {% endfor %}
+          </dl>
+
+          {% include 'catalog/view/template/component/ui/button.twig' with {
+            button_tag: 'button',
+            type: 'submit',
+            button_label: 'Place Order',
+            button_variant: 'primary',
+            button_size: 'md',
+            button_class: 'nk-checkout-page__submit'
+          } only %}
+        </aside>
+      </div>
+    </form>
+  </div>
+</main>
+
+{{ footer }}

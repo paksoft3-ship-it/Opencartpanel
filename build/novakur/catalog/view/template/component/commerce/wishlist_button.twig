@@ -1,0 +1,12 @@
+{# NovaKur Base commerce component: wishlist_button #}
+{% set product_id_value = product_id|default('') %}
+{% set wishlist_href_value = wishlist_href|default('#') %}
+{% set in_wishlist_value = in_wishlist|default(false) %}
+{% set size_value = size|default('md') %}
+
+<a href="{{ wishlist_href_value }}"
+   data-product-id="{{ product_id_value }}"
+   title="{{ in_wishlist_value ? 'Remove from wishlist' : 'Add to wishlist' }}"
+   class="inline-flex items-center justify-center rounded-xl transition-colors no-underline bg-white border border-slate-200 hover:border-red-200 {{ in_wishlist_value ? 'text-red-500' : 'text-slate-400 hover:text-red-400' }} {{ size_value == 'sm' ? 'p-1.5 text-[18px]' : 'p-2 text-[22px]' }}">
+  <span class="material-symbols-outlined">{{ in_wishlist_value ? 'favorite' : 'favorite_border' }}</span>
+</a>

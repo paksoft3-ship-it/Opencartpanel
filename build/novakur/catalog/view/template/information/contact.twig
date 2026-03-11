@@ -1,0 +1,111 @@
+{# NovaKur Base: Contact page (Tailwind) #}
+{{ header }}
+
+<main class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+  {% include 'extension/novakur/catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+  <div class="max-w-4xl">
+    <h1 class="text-3xl font-black text-slate-900 mb-2">{{ heading_title|default('Contact Us') }}</h1>
+    <p class="text-slate-500 mb-8">We'd love to hear from you. Fill in the form and we'll get back to you shortly.</p>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      {# Contact form #}
+      <div class="lg:col-span-2">
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+
+          {% if error_warning is defined and error_warning %}
+            <div class="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm mb-6">{{ error_warning }}</div>
+          {% endif %}
+
+          <form action="{{ action|default('#') }}" method="post" class="space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="input-name" class="block text-sm font-semibold text-slate-700 mb-1.5">Your Name <span class="text-red-500">*</span></label>
+                <input type="text" id="input-name" name="name" value="{{ name|default('') }}" placeholder="Full name"
+                  class="w-full rounded-xl border {{ error_name is defined and error_name ? 'border-red-400' : 'border-slate-200' }} px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+                {% if error_name is defined and error_name %}<p class="text-red-500 text-xs mt-1">{{ error_name }}</p>{% endif %}
+              </div>
+              <div>
+                <label for="input-email" class="block text-sm font-semibold text-slate-700 mb-1.5">Email Address <span class="text-red-500">*</span></label>
+                <input type="email" id="input-email" name="email" value="{{ email|default('') }}" placeholder="name@example.com"
+                  class="w-full rounded-xl border {{ error_email is defined and error_email ? 'border-red-400' : 'border-slate-200' }} px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+                {% if error_email is defined and error_email %}<p class="text-red-500 text-xs mt-1">{{ error_email }}</p>{% endif %}
+              </div>
+            </div>
+            <div>
+              <label for="input-enquiry" class="block text-sm font-semibold text-slate-700 mb-1.5">Message <span class="text-red-500">*</span></label>
+              <textarea id="input-enquiry" name="enquiry" rows="6" placeholder="How can we help you?"
+                class="w-full rounded-xl border {{ error_enquiry is defined and error_enquiry ? 'border-red-400' : 'border-slate-200' }} px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none resize-none">{{ enquiry|default('') }}</textarea>
+              {% if error_enquiry is defined and error_enquiry %}<p class="text-red-500 text-xs mt-1">{{ error_enquiry }}</p>{% endif %}
+            </div>
+            <button type="submit" class="flex items-center gap-2 bg-primary text-white rounded-xl px-8 py-3 font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+              <span class="material-symbols-outlined text-[18px]">send</span>
+              {{ button_submit|default('Send Message') }}
+            </button>
+          </form>
+        </div>
+      </div>
+
+      {# Contact info sidebar #}
+      <div class="space-y-4">
+        {% if address is defined and address %}
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Address</p>
+              <p class="text-sm text-slate-700 leading-relaxed">{{ address|raw }}</p>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if telephone is defined and telephone %}
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-primary text-[18px]">phone</span>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Phone</p>
+              <a href="tel:{{ telephone }}" class="text-sm font-medium text-slate-700 hover:text-primary no-underline">{{ telephone }}</a>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if open is defined and open %}
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-primary text-[18px]">schedule</span>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Hours</p>
+              <p class="text-sm text-slate-700 leading-relaxed">{{ open }}</p>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if comment is defined and comment %}
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-primary text-[18px]">info</span>
+            </div>
+            <div>
+              <p class="text-sm text-slate-700 leading-relaxed">{{ comment|raw }}</p>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</main>
+
+{{ footer }}

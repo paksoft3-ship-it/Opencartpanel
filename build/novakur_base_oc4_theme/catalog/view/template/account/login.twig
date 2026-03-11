@@ -1,0 +1,37 @@
+{# NovaKur Base: Account login route #}
+{{ header }}
+
+{% import 'catalog/view/template/component/ui/form_elements.twig' as form %}
+
+{% include 'catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+<main id="content" class="nk-auth-page nk-auth-page--login">
+  <div class="nk-global-container__inner nk-auth-page__inner">
+    <section class="nk-auth-page__card" aria-label="Login form">
+      <header class="nk-auth-page__head">
+        <h1 class="nk-auth-page__title">{{ heading_title|default('Account Login') }}</h1>
+      </header>
+
+      <form action="{{ action|default('#') }}" method="post" class="nk-auth-page__form">
+        {{ form.input('input-email', 'email', 'Email', email|default(''), 'email', true, '', error_email|default(''), 'name@example.com') }}
+        {{ form.input('input-password', 'password', 'Password', '', 'password', true, '', error_password|default(''), 'Enter password') }}
+
+        {% include 'catalog/view/template/component/ui/button.twig' with {
+          button_tag: 'button',
+          type: 'submit',
+          button_label: button_login|default('Login'),
+          button_variant: 'primary',
+          button_size: 'md',
+          button_class: 'nk-auth-page__submit'
+        } only %}
+      </form>
+
+      <div class="nk-auth-page__links">
+        <a href="{{ forgotten|default('#') }}">Forgotten Password</a>
+        <a href="{{ register|default('#') }}">Create Account</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+{{ footer }}

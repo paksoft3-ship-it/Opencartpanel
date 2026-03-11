@@ -1,0 +1,73 @@
+{# NovaKur Base: Wishlist route shell #}
+{{ header }}
+
+{% include 'catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+<main id="content" class="nk-wishlist-page">
+  <div class="nk-global-container__inner">
+    <header class="nk-wishlist-page__head">
+      <h1 class="nk-wishlist-page__title">{{ heading_title|default('My Wishlist') }}</h1>
+    </header>
+
+    {% set wishlist_products = products|default([]) %}
+
+    {% if wishlist_products %}
+      <section class="nk-wishlist-page__grid" aria-label="Wishlist products">
+        {% for product in wishlist_products %}
+          {% set stock_text = product.stock|default('Stock status unavailable') %}
+          {% set in_stock = product.quantity is defined ? (product.quantity > 0) : ('out' not in stock_text|lower) %}
+          {% set add_to_cart_href = product.cart|default(product.href|default('#')) %}
+          <article class="nk-wishlist-page__item">
+            {% include 'catalog/view/template/component/commerce/product_card_standard.twig' with { product: product } only %}
+
+            <div class="nk-wishlist-page__meta">
+              <div class="nk-wishlist-page__stock {{ in_stock ? 'is-in-stock' : 'is-out-of-stock' }}">
+                {{ stock_text }}
+              </div>
+
+              <div class="nk-wishlist-page__price">
+                {% include 'catalog/view/template/component/ui/price_display.twig' with {
+                  price: product.price|default('$0.00'),
+                  special: product.special|default('')
+                } only %}
+              </div>
+
+              <div class="nk-wishlist-page__actions">
+                {% include 'catalog/view/template/component/ui/button.twig' with {
+                  button_tag: 'a',
+                  href: add_to_cart_href,
+                  button_label: button_cart|default('Add to Cart'),
+                  button_variant: 'primary',
+                  button_size: 'sm',
+                  button_class: 'nk-wishlist-page__add'
+                } only %}
+
+                {% include 'catalog/view/template/component/ui/button.twig' with {
+                  button_tag: 'a',
+                  href: product.remove|default('#'),
+                  button_label: 'Remove',
+                  button_variant: 'ghost',
+                  button_size: 'sm',
+                  button_class: 'nk-wishlist-page__remove'
+                } only %}
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </section>
+    {% else %}
+      <section class="nk-wishlist-page__empty" aria-live="polite">
+        <p class="nk-wishlist-page__empty-text">You have no items in your wishlist.</p>
+        {% include 'catalog/view/template/component/ui/button.twig' with {
+          button_tag: 'a',
+          href: continue|default(home|default('/')),
+          button_label: 'Continue Shopping',
+          button_variant: 'primary',
+          button_size: 'md'
+        } only %}
+      </section>
+    {% endif %}
+  </div>
+</main>
+
+{{ footer }}

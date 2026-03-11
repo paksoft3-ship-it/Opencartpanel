@@ -1,0 +1,5 @@
+// NovaKur Base mixins
+@mixin nk-container {
+  width: min(1200px, 100% - 2rem);
+  margin-inline: auto;
+}

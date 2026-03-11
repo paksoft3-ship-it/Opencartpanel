@@ -1,0 +1,13 @@
+{% include 'extension/novakur_fashion/catalog/view/template/common/header.twig' %}
+<div class="nf-container">
+  <div class="nf-auth">
+    <h1 class="nf-auth-title">Reset Password</h1>
+    <p class="nf-auth-subtitle">Enter your email and we'll send you a reset link.</p>
+    <form action="{{ action }}" method="post">
+      <div class="nf-form-group"><label>Email *</label><input type="email" name="email" required autofocus></div>
+      <button type="submit" class="nf-btn nf-btn-primary nf-btn-full">Send Reset Link</button>
+    </form>
+    <p style="text-align:center;font-size:13px;color:var(--nf-text-muted);margin-top:20px;"><a href="{{ login|default('index.php?route=account/login') }}" style="color:var(--nf-text);">← Back to Sign In</a></p>
+  </div>
+</div>
+{% include 'extension/novakur_fashion/catalog/view/template/common/footer.twig' %}

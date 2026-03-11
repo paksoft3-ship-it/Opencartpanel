@@ -1,0 +1,40 @@
+{# NovaKur Base commerce component: product_card_standard #}
+{% set p = product|default({}) %}
+{% set product_name = product_name|default(p.name|default('Starter Product')) %}
+{% set product_href = product_href|default(p.href|default('#')) %}
+{% set product_thumb = product_thumb|default(p.thumb|default('')) %}
+{% set product_price = product_price|default(p.price|default('$0.00')) %}
+{% set product_special = product_special|default(p.special|default('')) %}
+{% set product_description = product_description|default(p.description|default('')) %}
+
+<article class="nk-product-card-standard">
+  <a class="nk-product-card-standard__media" href="{{ product_href }}" aria-label="{{ product_name }}">
+    {% if product_thumb %}
+      <img class="nk-product-card-standard__image" src="{{ product_thumb }}" alt="{{ product_name }}" loading="lazy" width="420" height="420" />
+    {% else %}
+      <div class="nk-product-card-standard__image-placeholder">No image</div>
+    {% endif %}
+
+    {% if product_special %}
+      <span class="nk-product-card-standard__badge">
+        {% include 'catalog/view/template/component/ui/badge.twig' with { badge_variant: 'accent', badge_text: 'Sale' } only %}
+      </span>
+    {% endif %}
+  </a>
+
+  <div class="nk-product-card-standard__body">
+    <h3 class="nk-product-card-standard__title">
+      <a class="nk-product-card-standard__title-link" href="{{ product_href }}">{{ product_name }}</a>
+    </h3>
+
+    {% if product_description %}
+      <p class="nk-product-card-standard__description">{{ product_description|striptags }}</p>
+    {% endif %}
+
+    {% include 'catalog/view/template/component/ui/price_display.twig' with { price: product_price, special: product_special } only %}
+
+    <div class="nk-product-card-standard__actions">
+      {% include 'catalog/view/template/component/ui/button.twig' with { href: product_href, button_label: 'View Product', button_variant: 'primary', button_size: 'sm' } only %}
+    </div>
+  </div>
+</article>

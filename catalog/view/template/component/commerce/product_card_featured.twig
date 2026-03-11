@@ -1,0 +1,54 @@
+{# NovaKur Base commerce component: product_card_featured #}
+{% set product = product|default({}) %}
+
+<div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-lg hover:border-primary/20 transition-all group">
+  {# Image #}
+  <a href="{{ product.href|default('#') }}" class="block aspect-video overflow-hidden relative">
+    {% if product.thumb|default('') %}
+      <img
+        src="{{ product.thumb }}"
+        alt="{{ product.name|default('') }}"
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        loading="lazy"
+      >
+    {% else %}
+      <div class="w-full h-full bg-slate-100 flex items-center justify-center">
+        <span class="material-symbols-outlined text-4xl text-slate-300">image</span>
+      </div>
+    {% endif %}
+  </a>
+
+  {# Content #}
+  <div class="px-5 py-4">
+    {# Name #}
+    <a href="{{ product.href|default('#') }}" class="block font-bold text-base text-slate-900 hover:text-primary transition-colors line-clamp-1 no-underline">
+      {{ product.name|default('Product Name') }}
+    </a>
+
+    {# Description #}
+    {% if product.description|default('') %}
+      <p class="text-slate-500 text-xs line-clamp-2 mt-1">{{ product.description }}</p>
+    {% endif %}
+
+    {# Rating #}
+    {% include 'component/ui/rating_stars.twig' with {
+      rating: product.rating|default(0),
+      reviews: product.reviews|default(0)
+    } only %}
+
+    {# Price #}
+    <div class="flex items-baseline gap-2 mt-2">
+      {% if product.special|default('') %}
+        <span class="text-lg font-black text-primary">{{ product.special }}</span>
+        <span class="text-sm line-through text-slate-400">{{ product.price|default('') }}</span>
+      {% else %}
+        <span class="text-lg font-black text-slate-900">{{ product.price|default('') }}</span>
+      {% endif %}
+    </div>
+
+    {# CTA #}
+    <a href="{{ product.href|default('#') }}" class="w-full bg-primary text-white rounded-xl py-2.5 text-sm font-bold mt-3 hover:bg-primary/90 transition-all text-center block no-underline">
+      View Product
+    </a>
+  </div>
+</div>

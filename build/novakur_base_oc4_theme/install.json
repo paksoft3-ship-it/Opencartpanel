@@ -1,0 +1,9 @@
+{
+  "name": "NovaKur Base Theme",
+  "description": "NovaKur Base storefront theme for OpenCart 4 with component-based Twig templates and assets.",
+  "version": "1.0.1",
+  "author": "NovaKur",
+  "type": "theme",
+  "code": "novakur_base",
+  "link": "https://example.com/novakur-base"
+}

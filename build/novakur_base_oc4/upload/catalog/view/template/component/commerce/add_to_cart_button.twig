@@ -1,0 +1,37 @@
+{# NovaKur Base commerce component: add_to_cart_button #}
+{% set qty_min = minimum|default(1) %}
+{% set qty_value = qty_min %}
+{% set is_in_stock = quantity is defined ? (quantity > 0) : true %}
+
+<section class="nk-add-to-cart-button" aria-label="Purchase controls">
+  <form id="product" class="nk-add-to-cart-button__form" method="post" enctype="multipart/form-data" action="{{ action|default('#') }}">
+    <input type="hidden" name="product_id" value="{{ product_id|default('0') }}" />
+
+    <div class="nk-add-to-cart-button__stock {{ is_in_stock ? 'is-in-stock' : 'is-out-of-stock' }}">
+      {% if stock is defined and stock %}
+        {{ stock }}
+      {% else %}
+        {{ is_in_stock ? 'In stock' : 'Out of stock' }}
+      {% endif %}
+    </div>
+
+    <div class="nk-add-to-cart-button__controls">
+      <label class="nk-add-to-cart-button__qty-label" for="input-quantity">{{ entry_qty|default('Qty') }}</label>
+      <div class="nk-add-to-cart-button__qty-wrap">
+        <button class="nk-add-to-cart-button__qty-btn" type="button" aria-label="Decrease quantity">-</button>
+        <input id="input-quantity" class="nk-add-to-cart-button__qty-input" type="number" name="quantity" value="{{ qty_value }}" min="{{ qty_min }}" step="1" inputmode="numeric" />
+        <button class="nk-add-to-cart-button__qty-btn" type="button" aria-label="Increase quantity">+</button>
+      </div>
+    </div>
+
+    <div class="nk-add-to-cart-button__actions">
+      <button id="button-cart" type="button" class="nk-button nk-button--primary nk-button--md nk-add-to-cart-button__submit" {{ is_in_stock ? '' : 'disabled' }}>
+        {{ button_cart|default('Add to Cart') }}
+      </button>
+
+      <button type="button" class="nk-button nk-button--ghost nk-button--md nk-add-to-cart-button__wishlist" title="{{ button_wishlist|default('Add to Wishlist') }}" aria-label="{{ button_wishlist|default('Add to Wishlist') }}" data-product-id="{{ product_id|default('0') }}">
+        {{ button_wishlist|default('Wishlist') }}
+      </button>
+    </div>
+  </form>
+</section>

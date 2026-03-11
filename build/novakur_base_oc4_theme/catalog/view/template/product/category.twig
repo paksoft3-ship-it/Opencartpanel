@@ -1,0 +1,221 @@
+{# NovaKur Base: Category route shell #}
+{{ header }}
+
+{% include 'catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+<main id="content" class="nk-category-page">
+  <div class="nk-global-container__inner">
+    <header class="nk-category-page__head">
+      <h1 class="nk-category-page__title">{{ heading_title|default('Category') }}</h1>
+      {% if description is defined and description %}
+        <div class="nk-category-page__description">{{ description }}</div>
+      {% endif %}
+    </header>
+
+    {% set product_list = products|default([]) %}
+    {% set current_sort = sort|default('p.sort_order') %}
+    {% set current_order = order|default('ASC') %}
+    {% set current_sort_key = current_sort ~ '-' ~ current_order %}
+    {% set current_limit = limit|default('') %}
+    {% set current_manufacturer = manufacturer_id|default(filter_manufacturer|default('')) %}
+    {% set current_price_min = price_min|default(filter_price_min|default('')) %}
+    {% set current_price_max = price_max|default(filter_price_max|default('')) %}
+    {% set current_rating = rating|default(filter_rating|default('')) %}
+    {% set current_availability = availability|default(filter_availability|default('')) %}
+
+    {% set sort_options = [] %}
+    {% set sort_current_text = 'Default' %}
+    {% for sort_option in sorts|default([]) %}
+      {% set is_active = sort_option.value is defined and sort_option.value == current_sort_key %}
+      {% if is_active %}
+        {% set sort_current_text = sort_option.text|default('Default') %}
+      {% endif %}
+      {% set sort_options = sort_options|merge([{
+        href: sort_option.href|default('#'),
+        text: sort_option.text|default('Default'),
+        active: is_active
+      }]) %}
+    {% endfor %}
+
+    {% set limit_options = [] %}
+    {% set limit_current_text = current_limit ? current_limit : 'Show' %}
+    {% for limit_option in limits|default([]) %}
+      {% set option_limit_value = limit_option.value|default('') %}
+      {% set is_active = current_limit and option_limit_value == current_limit %}
+      {% if is_active %}
+        {% set limit_current_text = limit_option.text|default(option_limit_value) %}
+      {% endif %}
+      {% set limit_options = limit_options|merge([{
+        href: limit_option.href|default('#'),
+        text: limit_option.text|default(option_limit_value),
+        active: is_active
+      }]) %}
+    {% endfor %}
+
+    {% set manufacturer_list = manufacturers|default([]) %}
+    {% if not manufacturer_list %}
+      {% set seen_manufacturers = [] %}
+      {% for product in product_list %}
+        {% set mid = product.manufacturer_id|default('') %}
+        {% if mid and mid not in seen_manufacturers %}
+          {% set seen_manufacturers = seen_manufacturers|merge([mid]) %}
+          {% set manufacturer_list = manufacturer_list|merge([{
+            manufacturer_id: mid,
+            name: product.manufacturer|default('Manufacturer')
+          }]) %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    {% set link_parts_base = [] %}
+    {% if path is defined and path %}{% set link_parts_base = link_parts_base|merge(['path=' ~ path]) %}{% endif %}
+    {% if current_sort %}{% set link_parts_base = link_parts_base|merge(['sort=' ~ current_sort]) %}{% endif %}
+    {% if current_order %}{% set link_parts_base = link_parts_base|merge(['order=' ~ current_order]) %}{% endif %}
+    {% if current_limit %}{% set link_parts_base = link_parts_base|merge(['limit=' ~ current_limit]) %}{% endif %}
+    {% if current_price_min != '' %}{% set link_parts_base = link_parts_base|merge(['price_min=' ~ current_price_min]) %}{% endif %}
+    {% if current_price_max != '' %}{% set link_parts_base = link_parts_base|merge(['price_max=' ~ current_price_max]) %}{% endif %}
+    {% if current_manufacturer %}{% set link_parts_base = link_parts_base|merge(['manufacturer_id=' ~ current_manufacturer]) %}{% endif %}
+    {% if current_rating %}{% set link_parts_base = link_parts_base|merge(['rating=' ~ current_rating]) %}{% endif %}
+    {% if current_availability %}{% set link_parts_base = link_parts_base|merge(['availability=' ~ current_availability]) %}{% endif %}
+
+    {% set base_without_manufacturer = [] %}
+    {% if path is defined and path %}{% set base_without_manufacturer = base_without_manufacturer|merge(['path=' ~ path]) %}{% endif %}
+    {% if current_sort %}{% set base_without_manufacturer = base_without_manufacturer|merge(['sort=' ~ current_sort]) %}{% endif %}
+    {% if current_order %}{% set base_without_manufacturer = base_without_manufacturer|merge(['order=' ~ current_order]) %}{% endif %}
+    {% if current_limit %}{% set base_without_manufacturer = base_without_manufacturer|merge(['limit=' ~ current_limit]) %}{% endif %}
+    {% if current_price_min != '' %}{% set base_without_manufacturer = base_without_manufacturer|merge(['price_min=' ~ current_price_min]) %}{% endif %}
+    {% if current_price_max != '' %}{% set base_without_manufacturer = base_without_manufacturer|merge(['price_max=' ~ current_price_max]) %}{% endif %}
+    {% if current_rating %}{% set base_without_manufacturer = base_without_manufacturer|merge(['rating=' ~ current_rating]) %}{% endif %}
+    {% if current_availability %}{% set base_without_manufacturer = base_without_manufacturer|merge(['availability=' ~ current_availability]) %}{% endif %}
+
+    {% set base_without_rating = [] %}
+    {% if path is defined and path %}{% set base_without_rating = base_without_rating|merge(['path=' ~ path]) %}{% endif %}
+    {% if current_sort %}{% set base_without_rating = base_without_rating|merge(['sort=' ~ current_sort]) %}{% endif %}
+    {% if current_order %}{% set base_without_rating = base_without_rating|merge(['order=' ~ current_order]) %}{% endif %}
+    {% if current_limit %}{% set base_without_rating = base_without_rating|merge(['limit=' ~ current_limit]) %}{% endif %}
+    {% if current_price_min != '' %}{% set base_without_rating = base_without_rating|merge(['price_min=' ~ current_price_min]) %}{% endif %}
+    {% if current_price_max != '' %}{% set base_without_rating = base_without_rating|merge(['price_max=' ~ current_price_max]) %}{% endif %}
+    {% if current_manufacturer %}{% set base_without_rating = base_without_rating|merge(['manufacturer_id=' ~ current_manufacturer]) %}{% endif %}
+    {% if current_availability %}{% set base_without_rating = base_without_rating|merge(['availability=' ~ current_availability]) %}{% endif %}
+
+    {% set base_without_availability = [] %}
+    {% if path is defined and path %}{% set base_without_availability = base_without_availability|merge(['path=' ~ path]) %}{% endif %}
+    {% if current_sort %}{% set base_without_availability = base_without_availability|merge(['sort=' ~ current_sort]) %}{% endif %}
+    {% if current_order %}{% set base_without_availability = base_without_availability|merge(['order=' ~ current_order]) %}{% endif %}
+    {% if current_limit %}{% set base_without_availability = base_without_availability|merge(['limit=' ~ current_limit]) %}{% endif %}
+    {% if current_price_min != '' %}{% set base_without_availability = base_without_availability|merge(['price_min=' ~ current_price_min]) %}{% endif %}
+    {% if current_price_max != '' %}{% set base_without_availability = base_without_availability|merge(['price_max=' ~ current_price_max]) %}{% endif %}
+    {% if current_manufacturer %}{% set base_without_availability = base_without_availability|merge(['manufacturer_id=' ~ current_manufacturer]) %}{% endif %}
+    {% if current_rating %}{% set base_without_availability = base_without_availability|merge(['rating=' ~ current_rating]) %}{% endif %}
+
+    <div class="nk-category-page__layout">
+      <aside class="nk-category-page__sidebar" aria-label="Category filters">
+        {% include 'catalog/view/template/component/ui/accordion.twig' %}
+
+        <details class="nk-category-page__filters" open>
+          <summary class="nk-category-page__filters-summary">Filters</summary>
+
+          <form class="nk-category-page__filter-group" method="get" action="">
+            <h2 class="nk-category-page__filter-title">Price Range</h2>
+
+            {% if path is defined and path %}<input type="hidden" name="path" value="{{ path }}">{% endif %}
+            {% if current_sort %}<input type="hidden" name="sort" value="{{ current_sort }}">{% endif %}
+            {% if current_order %}<input type="hidden" name="order" value="{{ current_order }}">{% endif %}
+            {% if current_limit %}<input type="hidden" name="limit" value="{{ current_limit }}">{% endif %}
+            {% if current_manufacturer %}<input type="hidden" name="manufacturer_id" value="{{ current_manufacturer }}">{% endif %}
+            {% if current_rating %}<input type="hidden" name="rating" value="{{ current_rating }}">{% endif %}
+            {% if current_availability %}<input type="hidden" name="availability" value="{{ current_availability }}">{% endif %}
+
+            <div class="nk-category-page__filter-field">
+              <label class="nk-category-page__label" for="nk-price-min">Min</label>
+              <input id="nk-price-min" class="nk-category-page__input" type="number" min="0" name="price_min" value="{{ current_price_min }}" placeholder="0" />
+            </div>
+            <div class="nk-category-page__filter-field">
+              <label class="nk-category-page__label" for="nk-price-max">Max</label>
+              <input id="nk-price-max" class="nk-category-page__input" type="number" min="0" name="price_max" value="{{ current_price_max }}" placeholder="1000" />
+            </div>
+            <button type="submit" class="nk-category-page__apply">Apply Price</button>
+          </form>
+
+          <div class="nk-category-page__filter-group">
+            <h2 class="nk-category-page__filter-title">Brand</h2>
+            <div class="nk-category-page__filter-options nk-category-page__filter-options--links">
+              <a class="nk-category-page__filter-link{{ current_manufacturer ? '' : ' is-active' }}" href="?{{ base_without_manufacturer|join('&') }}">All Brands</a>
+              {% for manufacturer in manufacturer_list %}
+                {% set m_id = manufacturer.manufacturer_id|default('') %}
+                {% if manufacturer.href is defined and manufacturer.href %}
+                  {% set m_href = manufacturer.href %}
+                {% else %}
+                  {% set m_href = '?' ~ (base_without_manufacturer|join('&')) ~ (base_without_manufacturer|length ? '&' : '') ~ 'manufacturer_id=' ~ m_id %}
+                {% endif %}
+                <a class="nk-category-page__filter-link{{ m_id and m_id == current_manufacturer ? ' is-active' : '' }}" href="{{ m_href }}">
+                  {{ manufacturer.name|default(manufacturer.text|default('Manufacturer')) }}
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="nk-category-page__filter-group">
+            <h2 class="nk-category-page__filter-title">Rating</h2>
+            <div class="nk-category-page__filter-options nk-category-page__filter-options--links">
+              <a class="nk-category-page__filter-link{{ current_rating ? '' : ' is-active' }}" href="?{{ base_without_rating|join('&') }}">All Ratings</a>
+              {% for rating_value in [4, 3, 2, 1] %}
+                <a class="nk-category-page__filter-link{{ current_rating == rating_value ? ' is-active' : '' }}" href="?{{ base_without_rating|join('&') }}{{ base_without_rating|length ? '&' : '' }}rating={{ rating_value }}">
+                  {{ rating_value }} stars & up
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="nk-category-page__filter-group">
+            <h2 class="nk-category-page__filter-title">Availability</h2>
+            <div class="nk-category-page__filter-options nk-category-page__filter-options--links">
+              <a class="nk-category-page__filter-link{{ current_availability ? '' : ' is-active' }}" href="?{{ base_without_availability|join('&') }}">All</a>
+              <a class="nk-category-page__filter-link{{ current_availability == 'in_stock' ? ' is-active' : '' }}" href="?{{ base_without_availability|join('&') }}{{ base_without_availability|length ? '&' : '' }}availability=in_stock">In stock</a>
+              <a class="nk-category-page__filter-link{{ current_availability == 'out_of_stock' ? ' is-active' : '' }}" href="?{{ base_without_availability|join('&') }}{{ base_without_availability|length ? '&' : '' }}availability=out_of_stock">Out of stock</a>
+            </div>
+          </div>
+        </details>
+      </aside>
+
+      <section class="nk-category-page__content">
+        <div class="nk-category-page__controls">
+          <p class="nk-category-page__results">{{ results|default('No results') }}</p>
+
+          <div class="nk-category-page__control-row">
+            {% include 'catalog/view/template/component/ui/dropdown_select.twig' with {
+              label: 'Sort',
+              current_text: sort_current_text,
+              options: sort_options
+            } only %}
+
+            {% include 'catalog/view/template/component/ui/dropdown_select.twig' with {
+              label: 'Show',
+              current_text: limit_current_text,
+              options: limit_options
+            } only %}
+
+            <div class="nk-category-page__view-toggle" role="group" aria-label="View mode">
+              <a class="nk-category-page__view-btn is-active" href="{{ url_grid|default('#') }}">Grid</a>
+              <a class="nk-category-page__view-btn" href="{{ url_list|default('#') }}">List</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="nk-category-page__grid">
+          {% for product in product_list %}
+            {% include 'catalog/view/template/component/commerce/product_card_standard.twig' with { product: product } only %}
+          {% else %}
+            <p class="nk-category-page__empty">No products found in this category.</p>
+          {% endfor %}
+        </div>
+
+        <div class="nk-category-page__pagination-wrap">
+          {% include 'catalog/view/template/component/ui/pagination.twig' with { pagination_html: pagination|default('') } only %}
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+{{ footer }}

@@ -1,0 +1,64 @@
+</main>
+
+<div class="nf-newsletter">
+  <div class="nf-container" style="max-width:600px;">
+    <h2>Join The Edit</h2>
+    <p>Be the first to hear about new arrivals, exclusive offers, and style inspiration.</p>
+    <form class="nf-newsletter-form" onsubmit="return false;">
+      <input type="email" placeholder="your@email.com" aria-label="Email for newsletter">
+      <button type="submit" class="nf-btn nf-btn-gold">Subscribe</button>
+    </form>
+  </div>
+</div>
+
+<footer class="nf-footer">
+  <div class="nf-container">
+    <div class="nf-footer-top">
+      <div>
+        <div class="nf-footer-brand-name">{{ store }}</div>
+        <p class="nf-footer-brand-desc">Curated fashion for the discerning shopper. Quality over quantity, always.</p>
+      </div>
+      <div>
+        <div class="nf-footer-col-title">Shop</div>
+        <ul class="nf-footer-links">
+          <li><a href="{{ home }}">Home</a></li>
+          <li><a href="index.php?route=product/special">Sale</a></li>
+          <li><a href="index.php?route=product/search">Search</a></li>
+          <li><a href="index.php?route=manufacturer/list">Brands</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="nf-footer-col-title">Account</div>
+        <ul class="nf-footer-links">
+          <li><a href="{{ account|default('index.php?route=account/account') }}">My Account</a></li>
+          <li><a href="{{ wishlists|default('index.php?route=account/wishlist') }}">Wishlist</a></li>
+          <li><a href="index.php?route=account/order">Orders</a></li>
+          <li><a href="{{ cart|default('index.php?route=checkout/cart') }}">Cart</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="nf-footer-col-title">Information</div>
+        <ul class="nf-footer-links">
+          {% if informations is defined %}{% for information in informations %}<li><a href="{{ information.href }}">{{ information.title }}</a></li>{% endfor %}{% endif %}
+          <li><a href="index.php?route=information/contact">Contact Us</a></li>
+          <li><a href="index.php?route=information/sitemap">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nf-footer-bottom">
+      <span class="nf-footer-copy">&copy; {{ 'now'|date('Y') }} {{ store }}. All rights reserved.</span>
+      <div class="nf-footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Returns</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>{# /nf-wrap #}
+
+{% for script in scripts %}<script src="{{ script.href }}"></script>{% endfor %}
+<script src="{{ HTTP_SERVER }}extension/novakur_fashion/catalog/view/assets/dist/js/novakur_fashion.js"></script>
+</body>
+</html>

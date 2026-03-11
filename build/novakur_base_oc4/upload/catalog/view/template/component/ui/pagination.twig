@@ -1,0 +1,7 @@
+{# NovaKur Base UI component: pagination #}
+{% set pagination_html = pagination_html|default(pagination|default('')) %}
+{% if pagination_html %}
+  <nav class="nk-pagination" aria-label="Pagination">
+    {{ pagination_html }}
+  </nav>
+{% endif %}

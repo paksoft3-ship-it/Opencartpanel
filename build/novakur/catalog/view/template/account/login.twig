@@ -1,0 +1,88 @@
+{# NovaKur Base: Login page (Tailwind) #}
+{{ header }}
+
+<main class="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+  {% include 'extension/novakur/catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+  <div class="max-w-md mx-auto">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+      <div class="text-center mb-8">
+        <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <span class="material-symbols-outlined text-primary text-3xl">person</span>
+        </div>
+        <h1 class="text-2xl font-black text-slate-900">{{ heading_title|default('Sign In') }}</h1>
+        <p class="text-slate-500 text-sm mt-1">Welcome back — sign in to your account</p>
+      </div>
+
+      <div id="login-alert" class="hidden bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm mb-6"></div>
+      {% if error_warning is defined and error_warning %}
+        <div class="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm mb-6">{{ error_warning }}</div>
+      {% endif %}
+
+      <form id="form-login" action="{{ login }}" class="space-y-4">
+        <div>
+          <label for="input-email" class="block text-sm font-semibold text-slate-700 mb-1.5">Email Address</label>
+          <input type="email" id="input-email" name="email" value="{{ email|default('') }}" placeholder="name@example.com"
+            class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+        </div>
+        <div>
+          <label for="input-password" class="block text-sm font-semibold text-slate-700 mb-1.5">Password</label>
+          <input type="password" id="input-password" name="password" placeholder="Enter password"
+            class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+        </div>
+        <div class="flex items-center justify-between text-sm">
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer">
+            <input type="checkbox" name="remember" class="rounded border-slate-300 text-primary focus:ring-primary"/> Remember me
+          </label>
+          <a href="{{ forgotten|default('#') }}" class="text-primary font-semibold hover:underline no-underline">Forgot password?</a>
+        </div>
+        <button id="button-login" type="submit"
+          class="w-full bg-primary text-white rounded-xl py-3 font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 mt-2 flex items-center justify-center gap-2">
+          {{ button_login|default('Sign In') }}
+        </button>
+      </form>
+
+      <p class="text-center text-sm text-slate-500 mt-6">
+        Don't have an account?
+        <a href="{{ register|default('#') }}" class="text-primary font-semibold hover:underline no-underline">Create one</a>
+      </p>
+    </div>
+  </div>
+</main>
+
+<script>
+document.getElementById('form-login').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var btn = document.getElementById('button-login');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[18px]">progress_activity</span> Signing in...';
+
+  var formData = new FormData(this);
+
+  fetch(document.getElementById('form-login').action, {
+    method: 'POST',
+    body: formData
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.redirect) {
+      window.location = data.redirect;
+    } else if (data.error && data.error.warning) {
+      var alert = document.getElementById('login-alert');
+      alert.textContent = data.error.warning;
+      alert.classList.remove('hidden');
+      btn.disabled = false;
+      btn.innerHTML = '{{ button_login|default("Sign In") }}';
+    } else {
+      btn.disabled = false;
+      btn.innerHTML = '{{ button_login|default("Sign In") }}';
+    }
+  })
+  .catch(function() {
+    btn.disabled = false;
+    btn.innerHTML = '{{ button_login|default("Sign In") }}';
+  });
+});
+</script>
+
+{{ footer }}

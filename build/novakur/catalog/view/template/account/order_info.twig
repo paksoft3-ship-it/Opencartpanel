@@ -1,0 +1,163 @@
+{# NovaKur Base: Order detail (Tailwind) #}
+{{ header }}
+
+<main class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+  {% include 'extension/novakur/catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+  <div class="flex flex-col lg:flex-row gap-8">
+
+    {# Sidebar nav #}
+    <aside class="w-full lg:w-56 shrink-0">
+      <nav class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+        <div class="px-4 py-4 border-b border-slate-100">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-400">My Account</p>
+        </div>
+        {% set account_links = [
+          { label: 'Dashboard', href: account|default('#'), icon: 'dashboard', active: false },
+          { label: 'Orders', href: order|default('#'), icon: 'receipt_long', active: true },
+          { label: 'Wishlist', href: wishlist|default('#'), icon: 'favorite', active: false },
+          { label: 'Address Book', href: address|default('#'), icon: 'location_on', active: false },
+          { label: 'Edit Details', href: edit|default('#'), icon: 'edit', active: false },
+          { label: 'Change Password', href: password|default('#'), icon: 'lock', active: false },
+          { label: 'Logout', href: logout|default('#'), icon: 'logout', active: false }
+        ] %}
+        {% for link in account_links %}
+          <a href="{{ link.href }}" class="flex items-center gap-3 px-4 py-3 text-sm font-medium {{ link.active ? 'text-primary bg-primary/5' : 'text-slate-600 hover:text-primary hover:bg-slate-50' }} transition-colors no-underline">
+            <span class="material-symbols-outlined text-[18px]">{{ link.icon }}</span>
+            {{ link.label }}
+          </a>
+        {% endfor %}
+      </nav>
+    </aside>
+
+    {# Main content #}
+    <section class="flex-1 min-w-0">
+      <div class="flex items-center gap-3 mb-6">
+        <a href="{{ order|default('#') }}" class="text-slate-400 hover:text-primary transition-colors no-underline">
+          <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <h1 class="text-2xl font-black text-slate-900">{{ heading_title|default('Order Details') }}</h1>
+      </div>
+
+      {# Order info header #}
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 mb-6 shadow-sm">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+          <div>
+            <p class="text-slate-400 text-xs uppercase tracking-wider font-bold mb-1">Order #</p>
+            <p class="font-bold text-slate-900">{{ order_id|default('—') }}</p>
+          </div>
+          <div>
+            <p class="text-slate-400 text-xs uppercase tracking-wider font-bold mb-1">Date</p>
+            <p class="font-medium text-slate-700">{{ date_added|default('—') }}</p>
+          </div>
+          <div>
+            <p class="text-slate-400 text-xs uppercase tracking-wider font-bold mb-1">Status</p>
+            {% if order_status is defined and order_status %}
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary/10 text-primary">{{ order_status }}</span>
+            {% else %}
+              <p class="font-medium text-slate-700">—</p>
+            {% endif %}
+          </div>
+          <div>
+            <p class="text-slate-400 text-xs uppercase tracking-wider font-bold mb-1">Total</p>
+            <p class="font-bold text-primary">{{ total|default('—') }}</p>
+          </div>
+        </div>
+      </div>
+
+      {# Products #}
+      {% if products|default([]) %}
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden mb-6">
+        <div class="px-6 py-4 border-b border-slate-100">
+          <h2 class="font-bold text-slate-900">Items Ordered</h2>
+        </div>
+        <table class="w-full text-left">
+          <thead class="bg-slate-50 border-b border-slate-200">
+            <tr>
+              <th class="px-6 py-3 text-xs font-bold uppercase tracking-wider text-slate-500">Product</th>
+              <th class="px-6 py-3 text-xs font-bold uppercase tracking-wider text-slate-500 text-center">Qty</th>
+              <th class="px-6 py-3 text-xs font-bold uppercase tracking-wider text-slate-500 text-right">Price</th>
+              <th class="px-6 py-3 text-xs font-bold uppercase tracking-wider text-slate-500 text-right">Total</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            {% for product in products %}
+              <tr>
+                <td class="px-6 py-4">
+                  <p class="font-medium text-slate-900 text-sm">{{ product.name|default('') }}</p>
+                  {% if product.option is defined and product.option %}
+                    {% for option in product.option %}
+                      <p class="text-xs text-slate-500 mt-0.5">{{ option.name }}: {{ option.value }}</p>
+                    {% endfor %}
+                  {% endif %}
+                </td>
+                <td class="px-6 py-4 text-center text-sm text-slate-700">{{ product.quantity|default('') }}</td>
+                <td class="px-6 py-4 text-right text-sm text-slate-700">{{ product.price|default('') }}</td>
+                <td class="px-6 py-4 text-right text-sm font-bold text-slate-900">{{ product.total|default('') }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+
+      {# Totals + Addresses #}
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {# Totals #}
+        {% if totals|default([]) %}
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+          <h2 class="font-bold text-slate-900 mb-4">Order Totals</h2>
+          <dl class="space-y-2">
+            {% for total in totals %}
+              <div class="flex justify-between {{ loop.last ? 'border-t border-slate-200 pt-2 mt-2' : '' }}">
+                <dt class="{{ loop.last ? 'font-bold text-slate-900' : 'text-slate-500 text-sm' }}">{{ total.title }}</dt>
+                <dd class="{{ loop.last ? 'font-bold text-primary' : 'text-sm font-medium text-slate-900' }}">{{ total.text }}</dd>
+              </div>
+            {% endfor %}
+          </dl>
+        </div>
+        {% endif %}
+
+        {# Shipping address #}
+        {% if shipping_address is defined and shipping_address %}
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+          <h2 class="font-bold text-slate-900 mb-3">Shipping Address</h2>
+          <p class="text-slate-600 text-sm leading-relaxed">{{ shipping_address|raw }}</p>
+          {% if shipping_method is defined and shipping_method %}
+            <p class="text-xs text-slate-400 mt-2 flex items-center gap-1">
+              <span class="material-symbols-outlined text-[16px]">local_shipping</span>
+              {{ shipping_method }}
+            </p>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+
+      {# Order history #}
+      {% if histories|default([]) %}
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden mt-6">
+        <div class="px-6 py-4 border-b border-slate-100">
+          <h2 class="font-bold text-slate-900">Order History</h2>
+        </div>
+        <div class="divide-y divide-slate-100">
+          {% for history in histories %}
+            <div class="px-6 py-4 flex items-start gap-4">
+              <div class="w-2 h-2 rounded-full bg-primary mt-1.5 shrink-0"></div>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium text-slate-900">{{ history.status|default('') }}</p>
+                {% if history.comment is defined and history.comment %}
+                  <p class="text-xs text-slate-500 mt-0.5">{{ history.comment }}</p>
+                {% endif %}
+              </div>
+              <p class="text-xs text-slate-400 shrink-0">{{ history.date_added|default('') }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </section>
+
+  </div>
+</main>
+
+{{ footer }}

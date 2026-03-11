@@ -1,0 +1,136 @@
+{# NovaKur Base UI component: form_elements (reusable macros) #}
+
+{% macro input(id, name, label, value, type, required, help, error, placeholder) %}
+  {% set control_type = type|default('text') %}
+  {% set is_required = required|default(false) %}
+  {% set has_error = error is defined and error %}
+  {% set described_by = id ~ '-help ' ~ id ~ '-error' %}
+
+  <div class="nk-form-field nk-form-field--{{ control_type }}{{ is_required ? ' is-required' : '' }}{{ has_error ? ' has-error' : '' }}">
+    <label class="nk-form-field__label" for="{{ id }}">
+      {{ label }}
+      {% if is_required %}<span class="nk-form-field__required" aria-hidden="true">*</span>{% endif %}
+    </label>
+
+    <div class="nk-form-field__control">
+      <input
+        class="nk-form-field__input"
+        id="{{ id }}"
+        name="{{ name }}"
+        type="{{ control_type }}"
+        value="{{ value|default('') }}"
+        placeholder="{{ placeholder|default('') }}"
+        {{ is_required ? 'required' : '' }}
+        aria-describedby="{{ described_by }}"
+      />
+    </div>
+
+    <p id="{{ id }}-help" class="nk-form-field__help">{{ help|default('') }}</p>
+    <p id="{{ id }}-error" class="nk-form-field__error" role="alert">{{ error|default('') }}</p>
+  </div>
+{% endmacro %}
+
+{% macro textarea(id, name, label, value, rows, required, help, error, placeholder) %}
+  {% set is_required = required|default(false) %}
+  {% set has_error = error is defined and error %}
+  {% set described_by = id ~ '-help ' ~ id ~ '-error' %}
+
+  <div class="nk-form-field nk-form-field--textarea{{ is_required ? ' is-required' : '' }}{{ has_error ? ' has-error' : '' }}">
+    <label class="nk-form-field__label" for="{{ id }}">
+      {{ label }}
+      {% if is_required %}<span class="nk-form-field__required" aria-hidden="true">*</span>{% endif %}
+    </label>
+
+    <div class="nk-form-field__control">
+      <textarea
+        class="nk-form-field__textarea"
+        id="{{ id }}"
+        name="{{ name }}"
+        rows="{{ rows|default(4) }}"
+        placeholder="{{ placeholder|default('') }}"
+        {{ is_required ? 'required' : '' }}
+        aria-describedby="{{ described_by }}"
+      >{{ value|default('') }}</textarea>
+    </div>
+
+    <p id="{{ id }}-help" class="nk-form-field__help">{{ help|default('') }}</p>
+    <p id="{{ id }}-error" class="nk-form-field__error" role="alert">{{ error|default('') }}</p>
+  </div>
+{% endmacro %}
+
+{% macro select(id, name, label, options, selected, required, help, error) %}
+  {% set is_required = required|default(false) %}
+  {% set has_error = error is defined and error %}
+  {% set described_by = id ~ '-help ' ~ id ~ '-error' %}
+
+  <div class="nk-form-field nk-form-field--select{{ is_required ? ' is-required' : '' }}{{ has_error ? ' has-error' : '' }}">
+    <label class="nk-form-field__label" for="{{ id }}">
+      {{ label }}
+      {% if is_required %}<span class="nk-form-field__required" aria-hidden="true">*</span>{% endif %}
+    </label>
+
+    <div class="nk-form-field__control">
+      <select class="nk-form-field__select" id="{{ id }}" name="{{ name }}" {{ is_required ? 'required' : '' }} aria-describedby="{{ described_by }}">
+        {% for option in options|default([]) %}
+          {% set option_value = option.value|default(option.code|default('')) %}
+          {% set option_text = option.name|default(option.text|default(option.title|default('Option'))) %}
+          <option value="{{ option_value }}"{{ option_value == selected ? ' selected' : '' }}>{{ option_text }}</option>
+        {% else %}
+          <option value="">Select</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <p id="{{ id }}-help" class="nk-form-field__help">{{ help|default('') }}</p>
+    <p id="{{ id }}-error" class="nk-form-field__error" role="alert">{{ error|default('') }}</p>
+  </div>
+{% endmacro %}
+
+{% macro radio_group(name, label, options, selected, required, help, error) %}
+  {% set is_required = required|default(false) %}
+  {% set has_error = error is defined and error %}
+  {% set group_id = name|replace({'[': '-', ']': '', '.': '-'}) %}
+
+  <fieldset class="nk-form-field nk-form-field--radio-group{{ is_required ? ' is-required' : '' }}{{ has_error ? ' has-error' : '' }}">
+    <legend class="nk-form-field__label">
+      {{ label }}
+      {% if is_required %}<span class="nk-form-field__required" aria-hidden="true">*</span>{% endif %}
+    </legend>
+
+    <div class="nk-form-field__options" aria-describedby="{{ group_id }}-help {{ group_id }}-error">
+      {% for option in options|default([]) %}
+        {% set option_value = option.value|default(option.code|default('')) %}
+        {% set option_text = option.text|default(option.title|default(option.name|default('Option'))) %}
+        <label class="nk-form-field__option">
+          <input class="nk-form-field__radio" type="radio" name="{{ name }}" value="{{ option_value }}"{{ option_value == selected or (selected is empty and loop.first) ? ' checked' : '' }} {{ is_required ? 'required' : '' }} />
+          <span>{{ option_text }}</span>
+        </label>
+      {% else %}
+        <label class="nk-form-field__option">
+          <input class="nk-form-field__radio" type="radio" name="{{ name }}" value="" {{ is_required ? 'required' : '' }} />
+          <span>No options available</span>
+        </label>
+      {% endfor %}
+    </div>
+
+    <p id="{{ group_id }}-help" class="nk-form-field__help">{{ help|default('') }}</p>
+    <p id="{{ group_id }}-error" class="nk-form-field__error" role="alert">{{ error|default('') }}</p>
+  </fieldset>
+{% endmacro %}
+
+{% macro checkbox(id, name, label, checked, value, required, help, error) %}
+  {% set is_required = required|default(false) %}
+  {% set has_error = error is defined and error %}
+
+  <div class="nk-form-field nk-form-field--checkbox{{ is_required ? ' is-required' : '' }}{{ has_error ? ' has-error' : '' }}">
+    <div class="nk-form-field__control nk-form-field__control--inline">
+      <label class="nk-form-field__option" for="{{ id }}">
+        <input class="nk-form-field__checkbox" id="{{ id }}" type="checkbox" name="{{ name }}" value="{{ value|default('1') }}" {{ checked|default(false) ? 'checked' : '' }} {{ is_required ? 'required' : '' }} />
+        <span>{{ label }}{% if is_required %}<span class="nk-form-field__required" aria-hidden="true">*</span>{% endif %}</span>
+      </label>
+    </div>
+
+    <p id="{{ id }}-help" class="nk-form-field__help">{{ help|default('') }}</p>
+    <p id="{{ id }}-error" class="nk-form-field__error" role="alert">{{ error|default('') }}</p>
+  </div>
+{% endmacro %}

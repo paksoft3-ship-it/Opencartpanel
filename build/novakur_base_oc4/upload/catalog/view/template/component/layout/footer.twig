@@ -1,0 +1,20 @@
+{# NovaKur Base layout component: footer #}
+{% set footer_layout_map = {
+  'standard': 'layout-1',
+  'minimal': 'layout-2',
+  'columns': 'layout-2'
+} %}
+{% set footer_layout_raw = novakur_footer_layout|default('layout-1') %}
+{% set footer_layout_key = footer_layout_map[footer_layout_raw] is defined ? footer_layout_map[footer_layout_raw] : footer_layout_raw %}
+{% set footer_layout = footer_layout_key in ['layout-1', 'layout-2'] ? footer_layout_key : 'layout-1' %}
+
+<footer class="nk-footer nk-footer--{{ footer_layout }}" role="contentinfo">
+  <div class="nk-global-container__inner nk-footer__inner">
+    <p class="nk-footer__copy">&copy; {{ 'now'|date('Y') }} {{ store_name|default('NovaKur Base') }}. All rights reserved.</p>
+    <nav class="nk-footer__nav" aria-label="Footer navigation">
+      <a class="nk-footer__link" href="#">Privacy</a>
+      <a class="nk-footer__link" href="#">Terms</a>
+      <a class="nk-footer__link" href="#">Support</a>
+    </nav>
+  </div>
+</footer>

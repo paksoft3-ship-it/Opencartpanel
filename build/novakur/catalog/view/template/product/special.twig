@@ -1,0 +1,52 @@
+{# NovaKur Base: Special offers / sale products (Tailwind) #}
+{{ header }}
+
+<main class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+  {% include 'extension/novakur/catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+  {# Hero banner for specials #}
+  <div class="bg-gradient-to-r from-primary to-primary/80 rounded-2xl p-8 mb-8 text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-white rounded-full -translate-y-1/2 translate-x-1/4"></div>
+    </div>
+    <div class="relative">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="material-symbols-outlined FILL-1">local_offer</span>
+        <span class="text-white/80 text-sm font-semibold uppercase tracking-wider">Limited Time</span>
+      </div>
+      <h1 class="text-3xl font-black mb-1">{{ heading_title|default('Special Offers') }}</h1>
+      <p class="text-white/70">Exclusive deals — don't miss out</p>
+    </div>
+  </div>
+
+  {% set product_list = products|default([]) %}
+  {% if product_list %}
+    <div class="flex items-center justify-between mb-5">
+      <p class="text-slate-500 text-sm">{{ product_list|length }} offer{{ product_list|length != 1 ? 's' : '' }} available</p>
+      {% if sorts is defined and sorts %}
+        <select onchange="location = this.value" class="rounded-xl border border-slate-200 px-4 py-2 text-sm focus:ring-2 focus:ring-primary/20 outline-none">
+          {% for sort_opt in sorts %}
+            <option value="{{ sort_opt.href }}" {{ sort_opt.value is defined and sort == sort_opt.value ? 'selected' : '' }}>{{ sort_opt.text }}</option>
+          {% endfor %}
+        </select>
+      {% endif %}
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-8">
+      {% for product in product_list %}
+        {% include 'extension/novakur/catalog/view/template/component/commerce/product_card_standard.twig' with { product: product } only %}
+      {% endfor %}
+    </div>
+    {% if pagination is defined and pagination %}
+      <div class="flex justify-center">{{ pagination|raw }}</div>
+    {% endif %}
+  {% else %}
+    <div class="flex flex-col items-center justify-center py-20 bg-white rounded-2xl border border-slate-200 text-center">
+      <span class="material-symbols-outlined text-7xl text-slate-200 mb-4">local_offer</span>
+      <h2 class="text-xl font-bold text-slate-900 mb-2">No special offers right now</h2>
+      <p class="text-slate-500 mb-6">Check back soon for deals and promotions.</p>
+      <a href="{{ home|default('/') }}" class="px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors no-underline">Shop All Products</a>
+    </div>
+  {% endif %}
+</main>
+
+{{ footer }}

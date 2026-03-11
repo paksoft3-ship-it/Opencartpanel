@@ -1,0 +1,18 @@
+{% include 'extension/novakur_fashion/catalog/view/template/common/header.twig' %}
+<div class="nf-container">
+  <div style="max-width:560px;margin:80px auto;">
+    <h1 class="nf-auth-title">Create Account</h1>
+    <p class="nf-auth-subtitle">Join {{ store }} for an exclusive shopping experience.</p>
+    <form action="{{ action }}" method="post">
+      <div class="nf-form-row"><div class="nf-form-group"><label>First Name *</label><input type="text" name="firstname" required></div><div class="nf-form-group"><label>Last Name *</label><input type="text" name="lastname" required></div></div>
+      <div class="nf-form-group"><label>Email *</label><input type="email" name="email" required></div>
+      <div class="nf-form-group"><label>Phone</label><input type="tel" name="telephone"></div>
+      <div class="nf-form-row"><div class="nf-form-group"><label>Password *</label><input type="password" name="password" required></div><div class="nf-form-group"><label>Confirm *</label><input type="password" name="confirm" required></div></div>
+      <div style="margin:16px 0;"><label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:13px;"><input type="checkbox" name="newsletter" value="1" style="margin-top:2px;"><span>Subscribe to our newsletter for new arrivals and exclusive offers.</span></label></div>
+      {% if agree %}<div style="margin:16px 0;"><label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:13px;"><input type="checkbox" name="agree" value="1" required style="margin-top:2px;"><span>{{ text_agree }}</span></label></div>{% endif %}
+      <button type="submit" class="nf-btn nf-btn-primary nf-btn-full" style="margin-top:8px;">Create Account</button>
+      <p style="text-align:center;font-size:13px;color:var(--nf-text-muted);margin-top:16px;">Already a member? <a href="{{ login|default('index.php?route=account/login') }}" style="color:var(--nf-text);text-decoration:underline;">Sign in</a></p>
+    </form>
+  </div>
+</div>
+{% include 'extension/novakur_fashion/catalog/view/template/common/footer.twig' %}

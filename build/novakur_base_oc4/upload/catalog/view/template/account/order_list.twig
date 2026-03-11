@@ -1,0 +1,66 @@
+{# NovaKur Base: Account order list route #}
+{{ header }}
+
+{% include 'catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+<main id="content" class="nk-account-page nk-account-page--orders">
+  <div class="nk-global-container__inner">
+    <div class="nk-account-layout">
+      <aside class="nk-account-layout__sidebar" aria-label="Account navigation">
+        <details class="nk-account-layout__nav-wrap" open>
+          <summary class="nk-account-layout__nav-toggle">My Account</summary>
+          <nav class="nk-account-layout__nav">
+            <a class="nk-account-layout__link" href="{{ account|default('#') }}">Dashboard</a>
+            <a class="nk-account-layout__link is-active" href="{{ order|default('#') }}">Orders</a>
+            <a class="nk-account-layout__link" href="{{ wishlist|default('#') }}">Wishlist</a>
+            <a class="nk-account-layout__link" href="{{ address|default('#') }}">Address Book</a>
+            <a class="nk-account-layout__link" href="{{ logout|default('#') }}">Logout</a>
+          </nav>
+        </details>
+      </aside>
+
+      <section class="nk-account-layout__content" aria-label="Order history">
+        <header class="nk-account-page__head">
+          <h1 class="nk-account-page__title">{{ heading_title|default('Order History') }}</h1>
+        </header>
+
+        {% if orders|default([]) %}
+          <table class="nk-account-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Status</th>
+                <th>Total</th>
+                <th>Date Added</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for order_item in orders %}
+                <tr>
+                  <td data-label="Order ID">#{{ order_item.order_id|default(order_item.order_id|default('')) }}</td>
+                  <td data-label="Status">{{ order_item.status|default('Pending') }}</td>
+                  <td data-label="Total">{{ order_item.total|default('$0.00') }}</td>
+                  <td data-label="Date Added">{{ order_item.date_added|default('') }}</td>
+                  <td data-label="View">
+                    {% include 'catalog/view/template/component/ui/button.twig' with {
+                      button_tag: 'a',
+                      href: order_item.view|default('#'),
+                      button_label: 'View Order',
+                      button_variant: 'ghost',
+                      button_size: 'sm'
+                    } only %}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p class="nk-account-page__empty">No orders found.</p>
+        {% endif %}
+      </section>
+    </div>
+  </div>
+</main>
+
+{{ footer }}

@@ -1,0 +1,32 @@
+// Sections: hero_banner
+.nk-hero-banner {
+  background: linear-gradient(135deg, #eff6ff 0%, #ffffff 65%);
+  padding: 2rem 0;
+}
+
+.nk-hero-banner__inner {
+  display: grid;
+  gap: 0.875rem;
+}
+
+.nk-hero-banner__eyebrow {
+  margin: 0;
+  color: #2563eb;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.nk-hero-banner__title {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(1.6rem, 6vw, 2.5rem);
+  line-height: 1.15;
+}
+
+.nk-hero-banner__lead {
+  margin: 0;
+  color: #334155;
+  max-width: 60ch;
+}

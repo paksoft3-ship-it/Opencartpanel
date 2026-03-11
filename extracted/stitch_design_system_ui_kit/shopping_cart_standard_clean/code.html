@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Shopping Cart - NovaKur Base</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="flex h-16 items-center justify-between gap-8">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl font-bold">polymer</span>
+<h2 class="text-slate-900 dark:text-white text-xl font-extrabold tracking-tight">NovaKur<span class="text-primary">Base</span></h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Shop</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Categories</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Deals</a>
+</nav>
+</div>
+<div class="flex flex-1 items-center justify-end gap-4">
+<div class="hidden sm:block w-full max-w-xs">
+<div class="relative">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="block w-full rounded-lg border-0 bg-slate-100 dark:bg-slate-800 py-2 pl-10 pr-3 text-slate-900 dark:text-slate-100 placeholder:text-slate-500 focus:ring-2 focus:ring-primary sm:text-sm" placeholder="Search products..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="relative rounded-lg p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">3</span>
+</button>
+<button class="rounded-lg p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="mx-auto w-full max-w-7xl grow px-4 py-8 sm:px-6 lg:px-8">
+<!-- Breadcrumbs -->
+<nav class="mb-8 flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-100">Shopping Cart</span>
+</nav>
+<div class="mb-10">
+<h1 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white sm:text-4xl">Your Shopping Cart</h1>
+<p class="mt-2 text-slate-600 dark:text-slate-400">You have 3 items in your bag. Review and checkout.</p>
+</div>
+<div class="grid grid-cols-1 gap-x-12 gap-y-10 lg:grid-cols-12">
+<!-- Product List -->
+<div class="lg:col-span-8">
+<div class="overflow-hidden bg-white dark:bg-slate-900 shadow-sm ring-1 ring-slate-200 dark:ring-slate-800 rounded-xl">
+<table class="w-full text-left border-collapse">
+<thead class="hidden border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 sm:table-header-group">
+<tr>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Product</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Price</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 text-center">Quantity</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 text-right">Total</th>
+<th class="px-6 py-4 w-10"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<!-- Item 1 -->
+<tr class="group flex flex-col sm:table-row p-4 sm:p-0">
+<td class="sm:px-6 sm:py-6">
+<div class="flex items-center gap-4">
+<div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800">
+<div class="h-full w-full bg-cover bg-center" data-alt="Premium white cotton t-shirt flat lay" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAOv0VtHKj8Lvbk4YYkBdbxtk7Maj5mdL_Z9zLP_eWK017N3v4NcYhUJ9NT8fdmgErWh_B--posJ9J6wKnOYFybuXKy3Z5GUm63LMo3IUtmIAL_p8o0WYqx6NpWETSVyOWso5OSnt73Cu2NbdSQiwcPOBJPPw1Hc0MWIqMTD0KS1-5H_DDdp93lkeNwSHBAC38DYsU4t8LqgatawCOUM8L5VyQp7JRHeqTcVj5zGxELwYvEGDpqxuHJRYE8UNyyQw6WcX6JHtvMXHFv");'></div>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Essential Crewneck</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">White / Large</p>
+</div>
+</div>
+</td>
+<td class="mt-4 sm:mt-0 sm:px-6 sm:py-6">
+<div class="flex justify-between sm:block">
+<span class="sm:hidden text-sm text-slate-500">Unit Price</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">$45.00</span>
+</div>
+</td>
+<td class="mt-4 sm:mt-0 sm:px-6 sm:py-6">
+<div class="flex items-center justify-between sm:justify-center">
+<span class="sm:hidden text-sm text-slate-500">Quantity</span>
+<div class="flex items-center rounded-lg border border-slate-200 dark:border-slate-700">
+<button class="flex h-8 w-8 items-center justify-center text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<input class="w-10 border-0 bg-transparent p-0 text-center text-sm font-bold text-slate-900 dark:text-white focus:ring-0" type="number" value="1"/>
+<button class="flex h-8 w-8 items-center justify-center text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+</td>
+<td class="mt-4 sm:mt-0 sm:px-6 sm:py-6 text-right font-bold text-slate-900 dark:text-white">
+<div class="flex justify-between sm:block">
+<span class="sm:hidden text-sm text-slate-500">Total</span>
+<span>$45.00</span>
+</div>
+</td>
+<td class="mt-4 sm:mt-0 sm:px-6 sm:py-6 text-right">
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+<!-- Item 2 -->
+<tr class="group flex flex-col sm:table-row p-4 sm:p-0">
+<td class="sm:px-6 sm:py-6">
+<div class="flex items-center gap-4">
+<div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800">
+<div class="h-full w-full bg-cover bg-center" data-alt="Classic tan trench coat" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAya8TbVMjadq7GKXJsExZmjLYNG4rPETsxvoi81YTqxqibgBFXZxYdsW0aiZ97C03cxBzlyM6e1jiloOUT1UCdTrNSir-FaM1ZMr1du4HDM4w2Z1N7WKfgY_yC4HNtcllZ2eOx_vuD-gljeFKQeRZKqTQJKz0P3dCEw6X0XGjn1JYYzyWs6W4qj8fhoPgUwYWyC37_o6seOnjf0R4bJnawe62wPQBSLR3JxMLudNFVbMNyssHUUEmTrTWLj0IuyNBpp1Y_1YJcUVGp");'></div>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Heritage Trench</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Tan / Medium</p>
+</div>
+</div>
+</td>
+<td class="mt-4 sm:mt-0 sm:px-6 sm:py-6">
+<div class="flex justify-between sm:block">
+<span class="sm:hidden text-sm text-slate-500">Unit Price</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">$220.00</span>
+</div>
+</td>
+<td class="mt-4 sm:mt-0 sm:px-6 sm:py-6">
+<div class="flex items-center justify-between sm:justify-center">
+<span class="sm:hidden text-sm text-slate-500">Quantity</span>
+<div class="flex items-center rounded-lg border border-slate-200 dark:border-slate-700">
+<button class="flex h-8 w-8 items-center justify-center text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<input class="w-10 border-0 bg-transparent p-0 text-center text-sm font-bold text-slate-900 dark:text-white focus:ring-0" type="number" value="1"/>
+<button class="flex h-8 w-8 items-center justify-center text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+</td>
+<td class="mt-4 sm:mt-0 sm:px-6 sm:py-6 text-right font-bold text-slate-900 dark:text-white">
+<div class="flex justify-between sm:block">
+<span class="sm:hidden text-sm text-slate-500">Total</span>
+<span>$220.00</span>
+</div>
+</td>
+<td class="mt-4 sm:mt-0 sm:px-6 sm:py-6 text-right">
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+<!-- Item 3 -->
+<tr class="group flex flex-col sm:table-row p-4 sm:p-0">
+<td class="sm:px-6 sm:py-6">
+<div class="flex items-center gap-4">
+<div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800">
+<div class="h-full w-full bg-cover bg-center" data-alt="Modern black and silver wristwatch" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAGht7RFGOLJ6C6zPqUl6jlnFjKLgbVV9aAJ31LOA6OB8bpkkI2caxETyqkMFNLSjrYjfQw_Fui2Pj_3dQY8NEaOh02-7F9Vl_IR9DI9lL74iI5W9mtbxzZmnLEgfwG4sRHCXDPxzemIsLdm-mhN1UJk5rL1FzF7ZjJ2TcndUB7_RMClg6tC7l5ECiE6kYwi4NUBDBuVDTVisNIwSgGaYkaKPOQtTDvQpLbpzNAk0ne0eTolHvyo6OnE2aze5I2QvCTrF-L6dznYKOv");'></div>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Chronos Watch</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Silver / Black</p>
+</div>
+</div>
+</td>
+<td class="mt-4 sm:mt-0 sm:px-6 sm:py-6">
+<div class="flex justify-between sm:block">
+<span class="sm:hidden text-sm text-slate-500">Unit Price</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">$150.00</span>
+</div>
+</td>
+<td class="mt-4 sm:mt-0 sm:px-6 sm:py-6">
+<div class="flex items-center justify-between sm:justify-center">
+<span class="sm:hidden text-sm text-slate-500">Quantity</span>
+<div class="flex items-center rounded-lg border border-slate-200 dark:border-slate-700">
+<button class="flex h-8 w-8 items-center justify-center text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<input class="w-10 border-0 bg-transparent p-0 text-center text-sm font-bold text-slate-900 dark:text-white focus:ring-0" type="number" value="1"/>
+<button class="flex h-8 w-8 items-center justify-center text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+</td>
+<td class="mt-4 sm:mt-0 sm:px-6 sm:py-6 text-right font-bold text-slate-900 dark:text-white">
+<div class="flex justify-between sm:block">
+<span class="sm:hidden text-sm text-slate-500">Total</span>
+<span>$150.00</span>
+</div>
+</td>
+<td class="mt-4 sm:mt-0 sm:px-6 sm:py-6 text-right">
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-6">
+<a class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline group" href="#">
+<span class="material-symbols-outlined text-lg transition-transform group-hover:-translate-x-1">arrow_back</span>
+                        Continue Shopping
+                    </a>
+</div>
+</div>
+<!-- Summary Sidebar -->
+<div class="lg:col-span-4">
+<div class="sticky top-24 rounded-xl bg-white dark:bg-slate-900 p-6 shadow-sm ring-1 ring-slate-200 dark:ring-slate-800">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Order Summary</h2>
+<div class="mt-6 space-y-4">
+<div class="flex items-center justify-between">
+<p class="text-sm text-slate-600 dark:text-slate-400">Subtotal</p>
+<p class="text-sm font-medium text-slate-900 dark:text-white">$415.00</p>
+</div>
+<div class="flex items-center justify-between">
+<p class="text-sm text-slate-600 dark:text-slate-400">Estimated Shipping</p>
+<p class="text-sm font-medium text-slate-900 dark:text-white">$12.00</p>
+</div>
+<div class="flex items-center justify-between pb-4">
+<p class="text-sm text-slate-600 dark:text-slate-400">Tax</p>
+<p class="text-sm font-medium text-slate-900 dark:text-white">$33.20</p>
+</div>
+<div class="border-t border-slate-200 dark:border-slate-800 pt-4">
+<div class="flex items-center justify-between">
+<p class="text-base font-bold text-slate-900 dark:text-white">Order Total</p>
+<p class="text-xl font-black text-slate-900 dark:text-white">$460.20</p>
+</div>
+</div>
+</div>
+<button class="mt-8 flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-4 text-sm font-bold text-white shadow-lg shadow-primary/25 hover:bg-primary/90 transition-all active:scale-[0.98]">
+                        Proceed to Checkout
+                        <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+<div class="mt-6 flex flex-col gap-4">
+<div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-primary text-base">verified</span>
+<span>Secure SSL encrypted checkout</span>
+</div>
+<div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-primary text-base">local_shipping</span>
+<span>Free returns within 30 days</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recommended / Upsell Section (Optional, added for spacing/modern feel) -->
+<div class="mt-20">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Frequently Bought Together</h2>
+<div class="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-4">
+<div class="group cursor-pointer">
+<div class="aspect-square overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 mb-3">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Red Nike running sneakers" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCZidIgozejIUwnqMLeU3xLKtsGmWz0AbhRDnUgyN3TQMigpJ7WVMMb-9dLImiQfFxhsb6KSrkKSrgbunR_OM7eaYRTeSkiPN4E9i8Hf9aMu85czB5ve1Wc2rAIPa5YarHxwkXy45rNcjVGdGINSj0jjHmdWAUCXFo3wNk9akDGVOe4TuqingxPCWWfkEmkJsjNf_YFdXeF4n0e7lnY2sEmDo_LGwfLb_AevajhR1dm4YTfTnuCA-nTkRcq6fFr0zeli2WVRVenqBPf");'></div>
+</div>
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">Swift Runner 3.0</h4>
+<p class="text-sm text-slate-500">$89.00</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-square overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 mb-3">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Leather designer handbag" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBOPjin_4trWX8u77IJ0FCvLm1BrzhIec1fsynQHROD-Xd2IlyXMOvZeljB54y4_t8e1cncv42PNLaPjw0UyLAkHgRzAOQfFjYxZru5KQGpCPmt2n6TigmN2IP8xRIPUjFbmYZdoiU4imIsb9hVNUzCWsZi6mgPgdbB8ZYWD2c4nrFJAx5B7WYJx5FRBNIbd8pHCJFy6SDfpidITDaIPYjam9ARloflz8c-F6LIuCS9afcluq-2pWBf1Uf51UohUfj_qP-0Q0c62Ksk");'></div>
+</div>
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">Avenue Tote</h4>
+<p class="text-sm text-slate-500">$125.00</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-square overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 mb-3">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Black minimal t-shirt pack" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuACtrOjULebVFCWkMEgWDm-q4ptNJxp-miLyLGCTTC7U1w_KdVgjbdjjyg5pSvro4Rdrs0f2fM9xStloL3VWjv6ArZh450z12dJtXzGsrm3t-A38imiyx7784Sv4WJ6a-RxZIoqo5TzXJJAR2EoCveFcCD3vnqn80vj_k62kpI4ap0ZeJ73EsjOWe1rcw7ofyYfftzEbVGxI59kOL0TdXtgE0ImAanmUFoHO1YC5dqdTR72KychRfZbuAGJF6YlMCYBxD4I1iJ3jOov");'></div>
+</div>
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">Basic Tee Pack</h4>
+<p class="text-sm text-slate-500">$35.00</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-square overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 mb-3">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Classic canvas backpack" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC3TItzqva3KtmKlMaz5W7Ki90zQ9ZB-BYy2ANLwCf4GV29VDt5tocD9NttGV_3YBekcXDrhR9pOSRc3hkmBWhJUTRWgk_D-0DdoQcubaofdxqU1Ofg5swsSUS-zxxzBloijXIoOn28byYFFmu_xP4vbXcDx4A8DzvYo2C1--xCozWv9sToakT1n4H9rphvz7ngmKKORBZiropSw1LaIV-fa7AU5gFCkHlcIG9MEIWDBW0jogIiLtIeC_tXrzyb0yWQvyhvvfYY1UZg");'></div>
+</div>
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">Venture Pack</h4>
+<p class="text-sm text-slate-500">$55.00</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-20 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark py-12">
+<div class="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+<div class="flex flex-col items-center gap-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-2xl font-bold">polymer</span>
+<span class="text-lg font-bold text-slate-900 dark:text-white">NovaKur Base</span>
+</div>
+<p class="text-sm text-slate-500">© 2024 NovaKur Base E-commerce. All rights reserved.</p>
+<div class="flex gap-6 mt-2">
+<a class="text-sm text-slate-500 hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-sm text-slate-500 hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-sm text-slate-500 hover:text-primary transition-colors" href="#">Contact Support</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,13 @@
+// Layout: global_container
+.nk-global-container {
+  --nk-color-primary: #2563eb;
+  --nk-color-deep: #1e3a8a;
+  --nk-color-accent: #38bdf8;
+  --nk-color-text: #0f172a;
+  --nk-color-background: #ffffff;
+}
+
+.nk-global-container__inner {
+  width: min(1200px, calc(100% - 2rem));
+  margin-inline: auto;
+}

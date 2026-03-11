@@ -1,0 +1,18 @@
+// UI: price_display
+.nk-price-display {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.nk-price-display__current {
+  color: #1e3a8a;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.nk-price-display__old {
+  color: #64748b;
+  font-size: 0.875rem;
+  text-decoration: line-through;
+}

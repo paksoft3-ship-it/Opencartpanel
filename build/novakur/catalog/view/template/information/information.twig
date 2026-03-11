@@ -1,0 +1,15 @@
+{# NovaKur Base: Information/static page (Tailwind) #}
+{{ header }}
+
+<main class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+  {% include 'extension/novakur/catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+  <div class="max-w-3xl">
+    <h1 class="text-3xl font-bold text-slate-900 mb-8">{{ heading_title|default('Information') }}</h1>
+    <div class="bg-white rounded-2xl border border-slate-200 p-8 prose max-w-none text-slate-600 leading-relaxed">
+      {{ description|default('')|raw }}
+    </div>
+  </div>
+</main>
+
+{{ footer }}

@@ -1,0 +1,11 @@
+{# NovaKur Base section component: hero_banner #}
+<section class="nk-hero-banner" aria-labelledby="nk-hero-title">
+  <div class="nk-global-container__inner nk-hero-banner__inner">
+    <p class="nk-hero-banner__eyebrow">{{ hero_eyebrow|default('NovaKur Base') }}</p>
+    <h1 id="nk-hero-title" class="nk-hero-banner__title">{{ hero_title|default('Build your commercial OpenCart storefront faster.') }}</h1>
+    <p class="nk-hero-banner__lead">{{ hero_lead|default('A modular foundation theme for scalable variants and clean maintenance.') }}</p>
+    <div class="nk-hero-banner__actions">
+      {% include 'catalog/view/template/component/ui/button.twig' with { href: hero_cta_href|default('#'), button_label: hero_cta_text|default('Start Shopping'), button_variant: 'primary' } only %}
+    </div>
+  </div>
+</section>

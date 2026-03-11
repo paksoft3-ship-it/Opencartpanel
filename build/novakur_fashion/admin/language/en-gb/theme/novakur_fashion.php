@@ -1,0 +1,25 @@
+<?php
+$_['heading_title']   = 'NovaKur Fashion Theme';
+$_['text_edit']       = 'Edit NovaKur Fashion Settings';
+$_['text_success']    = 'Settings saved successfully!';
+$_['tab_branding']    = 'Branding';
+$_['tab_colors']      = 'Colors';
+$_['tab_layout']      = 'Layout';
+$_['tab_homepage']    = 'Homepage';
+$_['tab_typography']  = 'Typography';
+$_['entry_logo']                      = 'Logo';
+$_['entry_favicon']                   = 'Favicon';
+$_['entry_primary_color']             = 'Primary Color';
+$_['entry_secondary_color']           = 'Secondary / Gold Color';
+$_['entry_accent_color']              = 'Accent / Warm Tone';
+$_['entry_container_width']           = 'Container Width (px)';
+$_['entry_heading_font']              = 'Heading Font (Serif)';
+$_['entry_base_font']                 = 'Body Font';
+$_['entry_enable_hero_banner']        = 'Enable Hero Banner';
+$_['entry_enable_lookbook']           = 'Enable Lookbook Grid';
+$_['entry_enable_featured_products']  = 'Enable Featured Products';
+$_['entry_enable_category_grid']      = 'Enable Category Grid';
+$_['entry_enable_instagram_grid']     = 'Enable Instagram-style Grid';
+$_['help_container_width']            = 'Maximum content width in pixels (1200–1600). Fashion themes look best at 1400.';
+$_['text_layout_standard']            = 'Standard';
+$_['error_permission']                = 'Warning: You do not have permission to modify this theme.';

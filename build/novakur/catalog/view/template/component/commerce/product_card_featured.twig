@@ -1,0 +1,45 @@
+{# NovaKur Base commerce component: product_card_featured (Tailwind) #}
+{% set p = product|default({}) %}
+{% set p_name = p.name|default('Product') %}
+{% set p_href = p.href|default('#') %}
+{% set p_thumb = p.thumb|default('') %}
+{% set p_price = p.price|default('') %}
+{% set p_special = p.special|default('') %}
+{% set p_desc = p.description|default('') %}
+{% set p_rating = p.rating|default(0) %}
+{% set p_reviews = p.reviews|default(0) %}
+
+<article class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg hover:border-primary/20 transition-all">
+  <a href="{{ p_href }}" class="block relative overflow-hidden aspect-video bg-slate-100 no-underline">
+    {% if p_thumb %}
+      <img src="{{ p_thumb }}" alt="{{ p_name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"/>
+    {% else %}
+      <div class="w-full h-full flex items-center justify-center text-slate-300">
+        <span class="material-symbols-outlined text-6xl">image</span>
+      </div>
+    {% endif %}
+    {% if p_special %}
+      <span class="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full">Sale</span>
+    {% endif %}
+  </a>
+  <div class="p-5">
+    <h3 class="font-bold text-slate-900 text-base mb-1 line-clamp-1">
+      <a href="{{ p_href }}" class="hover:text-primary transition-colors no-underline">{{ p_name }}</a>
+    </h3>
+    {% if p_desc %}
+      <p class="text-slate-500 text-xs line-clamp-2 mb-3">{{ p_desc|striptags }}</p>
+    {% endif %}
+    {% include 'extension/novakur/catalog/view/template/component/ui/rating_stars.twig' with { rating: p_rating, reviews: p_reviews } only %}
+    <div class="flex items-baseline gap-2 mt-2 mb-4">
+      {% if p_special %}
+        <span class="text-lg font-black text-primary">{{ p_special }}</span>
+        <span class="text-sm line-through text-slate-400">{{ p_price }}</span>
+      {% else %}
+        <span class="text-lg font-black text-slate-900">{{ p_price }}</span>
+      {% endif %}
+    </div>
+    <a href="{{ p_href }}" class="flex items-center justify-center gap-2 w-full bg-primary text-white rounded-xl py-2.5 text-sm font-bold hover:bg-primary/90 transition-all no-underline">
+      <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span> View Product
+    </a>
+  </div>
+</article>

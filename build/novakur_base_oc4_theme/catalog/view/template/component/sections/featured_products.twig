@@ -1,0 +1,19 @@
+{# NovaKur Base section component: featured_products #}
+{% set items = products|default([]) %}
+<section class="nk-featured-products" aria-labelledby="nk-featured-products-title">
+  <div class="nk-global-container__inner">
+    <div class="nk-featured-products__head">
+      <h2 id="nk-featured-products-title" class="nk-featured-products__title">{{ section_title|default('Featured Products') }}</h2>
+    </div>
+
+    <div class="nk-featured-products__grid">
+      {% if items %}
+        {% for product in items %}
+          {% include 'catalog/view/template/component/commerce/product_card_standard.twig' with { product: product } only %}
+        {% endfor %}
+      {% else %}
+        {% include 'catalog/view/template/component/commerce/product_card_standard.twig' with { product_name: 'Starter Product', product_price: '$99.00', product_description: 'Replace this with OpenCart featured module data.' } only %}
+      {% endif %}
+    </div>
+  </div>
+</section>

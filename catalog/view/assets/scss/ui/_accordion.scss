@@ -1,0 +1,22 @@
+// UI: accordion
+.nk-accordion {
+  display: block;
+}
+
+.nk-accordion details {
+  border: 1px solid #dbeafe;
+  border-radius: 0.75rem;
+  background: #ffffff;
+}
+
+.nk-accordion summary {
+  cursor: pointer;
+  padding: 0.875rem 1rem;
+  color: #1e3a8a;
+  font-weight: 600;
+  background: #f8fafc;
+}
+
+.nk-accordion summary::-webkit-details-marker {
+  color: #2563eb;
+}

@@ -1,0 +1,68 @@
+{% include 'extension/novakur_minimal/catalog/view/template/common/header.twig' %}
+{% include 'extension/novakur_minimal/catalog/view/template/common/breadcrumb.twig' %}
+
+<div class="nm-container nm-listing">
+
+  <div class="nm-listing-header">
+    <div>
+      <h1 class="nm-listing-title">{{ heading_1 }}</h1>
+      {% if description %}<div style="font-size:14px;color:var(--nm-text-muted);margin-top:6px;max-width:600px;">{{ description }}</div>{% endif %}
+      {% if results %}<p class="nm-listing-count" style="margin-top:6px;">{{ results }}</p>{% endif %}
+    </div>
+    <div class="nm-listing-controls">
+      {% if sorts %}
+      <select class="nm-listing-select" onchange="location=this.value">
+        {% for sort in sorts %}<option value="{{ sort.href }}" {% if sort.selected %}selected{% endif %}>{{ sort.text }}</option>{% endfor %}
+      </select>
+      {% endif %}
+      {% if limits %}
+      <select class="nm-listing-select" onchange="location=this.value">
+        {% for limit in limits %}<option value="{{ limit.href }}" {% if limit.selected %}selected{% endif %}>{{ limit.text }}</option>{% endfor %}
+      </select>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if products %}
+  <div class="nm-product-grid">
+    {% for product in products %}
+    <div class="nm-card">
+      <a href="{{ product.href }}" class="nm-card-image">
+        <img src="{{ product.thumb }}" alt="{{ product.name }}" loading="lazy">
+        {% if product.special %}<span class="nm-card-badge">Sale</span>{% endif %}
+        <div class="nm-card-actions">
+          <button class="nm-card-action" data-nm-wishlist data-product-id="{{ product.product_id }}" title="Add to Wishlist" aria-label="Add to Wishlist">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+      </a>
+      <div class="nm-card-body">
+        <a href="{{ product.href }}" class="nm-card-name">{{ product.name }}</a>
+        <div class="nm-card-price">
+          {% if product.special %}
+            <span class="nm-price nm-price-sale">{{ product.special }}</span>
+            <span class="nm-price-old">{{ product.price }}</span>
+          {% else %}
+            <span class="nm-price">{{ product.price }}</span>
+          {% endif %}
+        </div>
+        <div class="nm-card-cta">
+          <button class="nm-btn nm-btn-primary nm-btn-sm nm-btn-full" data-nm-add-to-cart data-product-id="{{ product.product_id }}">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div style="text-align:center;padding:80px 0;">
+    <p style="font-size:18px;color:var(--nm-text-muted);">No products found in this category.</p>
+    <a href="{{ home }}" class="nm-btn nm-btn-outline" style="margin-top:24px;">Back to Home</a>
+  </div>
+  {% endif %}
+
+  {% if pagination %}
+  <div class="nm-pagination">{{ pagination }}</div>
+  {% endif %}
+
+</div>
+{% include 'extension/novakur_minimal/catalog/view/template/common/footer.twig' %}

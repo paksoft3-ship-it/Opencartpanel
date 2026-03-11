@@ -1,0 +1,56 @@
+{# NovaKur Base section: featured_products (Tailwind) #}
+{% set items = products|default([]) %}
+<section class="mb-12">
+  <div class="flex items-end justify-between mb-8">
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight text-slate-900">{{ section_title|default('Featured Products') }}</h2>
+      <p class="text-slate-500 mt-1">Hand-picked favourites</p>
+    </div>
+    <a href="{{ home|default('/') }}" class="text-sm font-bold text-primary flex items-center gap-1 hover:gap-2 transition-all no-underline">
+      View All <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+    </a>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    {% if items %}
+      {% for product in items %}
+        {% include 'extension/novakur/catalog/view/template/component/commerce/product_card_standard.twig' with { product: product } only %}
+      {% endfor %}
+    {% else %}
+      {% set demo_items = [
+        { id: 50, name: 'Wireless Headphones',   price: '$149.00', thumb: 'image/catalog/novakur/products/wireless_headphones.png' },
+        { id: 51, name: 'Smartwatch',            price: '$199.00', thumb: 'image/catalog/novakur/products/smartwatch.png' },
+        { id: 52, name: 'Mechanical Keyboard',   price: '$129.00', thumb: 'image/catalog/novakur/products/mechanical_keyboard.png' },
+        { id: 53, name: 'Wireless Earbuds',      price: '$99.00',  thumb: 'image/catalog/novakur/products/wireless_earbuds.png' },
+        { id: 54, name: 'Laptop',                price: '$899.00', thumb: 'image/catalog/novakur/products/laptop.png' },
+        { id: 55, name: 'Portable Speaker',      price: '$89.00',  thumb: 'image/catalog/novakur/products/portable_speaker.png' },
+        { id: 56, name: "Men's Sneakers",        price: '$119.00', thumb: 'image/catalog/novakur/products/mens_sneakers.png' },
+        { id: 57, name: "Women's Handbag",       price: '$139.00', thumb: 'image/catalog/novakur/products/womens_handbag.png' },
+        { id: 58, name: 'Minimalist Watch',      price: '$109.00', thumb: 'image/catalog/novakur/products/minimalist_watch.png' },
+        { id: 59, name: 'Sunglasses',            price: '$69.00',  thumb: 'image/catalog/novakur/products/sunglasses.png' },
+        { id: 60, name: 'Scented Candle',        price: '$24.00',  thumb: 'image/catalog/novakur/products/scented_candle.png' },
+        { id: 61, name: 'Ceramic Coffee Mug',    price: '$18.00',  thumb: 'image/catalog/novakur/products/ceramic_coffee_mug.png' },
+        { id: 62, name: 'Desk Lamp',             price: '$79.00',  thumb: 'image/catalog/novakur/products/desk_lamp.png' },
+        { id: 63, name: 'Throw Pillow',          price: '$29.00',  thumb: 'image/catalog/novakur/products/throw_pillow.png' },
+        { id: 64, name: 'Skincare Serum',        price: '$34.00',  thumb: 'image/catalog/novakur/products/skincare_serum_bottle.png' },
+        { id: 65, name: 'Perfume Bottle',        price: '$59.00',  thumb: 'image/catalog/novakur/products/perfume_bottle.png' },
+        { id: 66, name: 'Lipstick',              price: '$22.00',  thumb: 'image/catalog/novakur/products/lipstick.png' },
+        { id: 67, name: 'Water Bottle',          price: '$29.00',  thumb: 'image/catalog/novakur/products/water_bottle.png' },
+        { id: 68, name: 'Yoga Mat',              price: '$49.00',  thumb: 'image/catalog/novakur/products/yoga_mat.png' },
+        { id: 69, name: 'Backpack',              price: '$79.00',  thumb: 'image/catalog/novakur/products/backpack.png' },
+        { id: 70, name: 'Coffee Bag',            price: '$19.00',  thumb: 'image/catalog/novakur/products/coffee_bag.png' },
+        { id: 71, name: 'Chocolate Bar',         price: '$9.00',   thumb: 'image/catalog/novakur/products/chocolate_bar.png' }
+      ] %}
+
+      {% for item in demo_items %}
+        {% include 'extension/novakur/catalog/view/template/component/commerce/product_card_standard.twig' with {
+          product_name: item.name,
+          product_price: item.price,
+          product_thumb: item.thumb,
+          product_href: 'index.php?route=product/product&product_id=' ~ item.id,
+          product_id: item.id
+        } only %}
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>

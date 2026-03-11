@@ -1,0 +1,13 @@
+{# NovaKur Base UI component: accordion (Tailwind) #}
+{% set variant = variant|default('default') %}
+<div class="{{ variant == 'bordered' ? 'bg-white rounded-2xl border border-slate-200 px-6' : 'divide-y divide-slate-200' }}">
+  {% for item in items|default([]) %}
+    <details class="group {{ item.open|default(false) ? 'open' : '' }}">
+      <summary class="flex items-center justify-between py-4 cursor-pointer text-sm font-semibold text-slate-900 list-none select-none">
+        {{ item.title|default('') }}
+        <span class="material-symbols-outlined text-slate-400 text-[20px] group-open:rotate-180 transition-transform duration-200 shrink-0 ml-4">expand_more</span>
+      </summary>
+      <div class="pb-4 text-sm text-slate-600 leading-relaxed">{{ item.content|default('')|raw }}</div>
+    </details>
+  {% endfor %}
+</div>

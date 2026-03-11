@@ -1,0 +1,14 @@
+{# NovaKur Base: Breadcrumb component (Tailwind) #}
+{% set crumbs = breadcrumbs|default([]) %}
+{% if crumbs %}
+<nav class="flex items-center gap-2 text-sm text-slate-500 mb-6 overflow-x-auto whitespace-nowrap" aria-label="Breadcrumb">
+  {% for crumb in crumbs %}
+    {% if not loop.last %}
+      <a href="{{ crumb.href|default('#') }}" class="hover:text-primary transition-colors no-underline">{{ crumb.text }}</a>
+      <span class="material-symbols-outlined text-sm">chevron_right</span>
+    {% else %}
+      <span class="text-slate-900 font-medium">{{ crumb.text }}</span>
+    {% endif %}
+  {% endfor %}
+</nav>
+{% endif %}

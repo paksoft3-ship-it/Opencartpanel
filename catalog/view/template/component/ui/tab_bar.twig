@@ -1,0 +1,38 @@
+{# NovaKur Base UI component: tab_bar #}
+{% set tabs = tabs|default([]) %}
+{% set target_prefix = target_prefix|default('tab-panel') %}
+
+<div role="tablist" class="flex border-b border-slate-200 gap-1">
+  {% for tab in tabs %}
+    <button
+      type="button"
+      role="tab"
+      data-tab="{{ tab.id|default('') }}"
+      data-target-prefix="{{ target_prefix }}"
+      aria-selected="{{ tab.active|default(false) ? 'true' : 'false' }}"
+      class="inline-flex items-center gap-1.5 px-4 py-3 text-sm cursor-pointer transition-all border-b-2 -mb-px whitespace-nowrap {{ tab.active|default(false) ? 'border-primary text-primary font-bold' : 'border-transparent text-slate-500 hover:text-slate-700' }}"
+      onclick="(function(btn){
+        var prefix = btn.getAttribute('data-target-prefix');
+        var tabId = btn.getAttribute('data-tab');
+        btn.closest('[role=tablist]').querySelectorAll('[role=tab]').forEach(function(t){
+          t.classList.remove('border-primary','text-primary','font-bold');
+          t.classList.add('border-transparent','text-slate-500');
+          t.setAttribute('aria-selected','false');
+        });
+        btn.classList.remove('border-transparent','text-slate-500');
+        btn.classList.add('border-primary','text-primary','font-bold');
+        btn.setAttribute('aria-selected','true');
+        document.querySelectorAll('[id^=&quot;'+prefix+'-&quot;]').forEach(function(p){
+          p.classList.add('hidden');
+        });
+        var panel = document.getElementById(prefix+'-'+tabId);
+        if(panel) panel.classList.remove('hidden');
+      })(this)"
+    >
+      {% if tab.icon|default('') %}
+        <span class="material-symbols-outlined text-[16px]">{{ tab.icon }}</span>
+      {% endif %}
+      {{ tab.label|default('') }}
+    </button>
+  {% endfor %}
+</div>

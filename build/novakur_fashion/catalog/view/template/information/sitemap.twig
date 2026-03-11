@@ -1,0 +1,10 @@
+{% include 'extension/novakur_fashion/catalog/view/template/common/header.twig' %}
+{% include 'extension/novakur_fashion/catalog/view/template/common/breadcrumb.twig' %}
+<div class="nf-container" style="padding:60px 32px;">
+  <h1 style="font-family:var(--nf-heading-font);font-size:36px;font-weight:700;margin-bottom:40px;">Sitemap</h1>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:48px;">
+    {% if categories %}<div><h2 style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--nf-secondary);margin-bottom:16px;">Categories</h2><ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">{% for category in categories %}<li><a href="{{ category.href }}" style="font-size:14px;">{{ category.name }}</a></li>{% endfor %}</ul></div>{% endif %}
+    {% if informations %}<div><h2 style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--nf-secondary);margin-bottom:16px;">Information</h2><ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">{% for information in informations %}<li><a href="{{ information.href }}" style="font-size:14px;">{{ information.title }}</a></li>{% endfor %}</ul></div>{% endif %}
+  </div>
+</div>
+{% include 'extension/novakur_fashion/catalog/view/template/common/footer.twig' %}

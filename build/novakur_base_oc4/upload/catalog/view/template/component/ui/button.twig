@@ -1,0 +1,13 @@
+{# NovaKur Base UI component: button #}
+{% set button_tag = button_tag|default(href is defined ? 'a' : 'button') %}
+{% set button_variant = button_variant|default('primary') %}
+{% set button_size = button_size|default('md') %}
+{% set button_label = button_label|default(text|default('Action')) %}
+
+<{{ button_tag }}
+  class="nk-button nk-button--{{ button_variant }} nk-button--{{ button_size }}{{ button_class is defined and button_class ? ' ' ~ button_class : '' }}"
+  {% if href is defined %}href="{{ href }}"{% endif %}
+  {% if type is defined and button_tag == 'button' %}type="{{ type }}"{% elseif button_tag == 'button' %}type="button"{% endif %}
+>
+  <span class="nk-button__label">{{ button_label }}</span>
+</{{ button_tag }}>

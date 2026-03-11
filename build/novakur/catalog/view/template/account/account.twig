@@ -1,0 +1,61 @@
+{# NovaKur Base: Account dashboard (Tailwind) #}
+{{ header }}
+
+<main class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+  {% include 'extension/novakur/catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+  <div class="flex flex-col lg:flex-row gap-8">
+
+    {# Sidebar nav #}
+    <aside class="w-full lg:w-56 shrink-0">
+      <nav class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+        <div class="px-4 py-4 border-b border-slate-100">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-400">My Account</p>
+        </div>
+        {% set account_links = [
+          { label: 'Dashboard', href: account|default('#'), icon: 'dashboard' },
+          { label: 'Orders', href: order|default('#'), icon: 'receipt_long' },
+          { label: 'Wishlist', href: wishlist|default('#'), icon: 'favorite' },
+          { label: 'Address Book', href: address|default('#'), icon: 'location_on' },
+          { label: 'Edit Details', href: edit|default('#'), icon: 'edit' },
+          { label: 'Change Password', href: password|default('#'), icon: 'lock' },
+          { label: 'Logout', href: logout|default('#'), icon: 'logout' }
+        ] %}
+        {% for link in account_links %}
+          <a href="{{ link.href }}" class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-600 hover:text-primary hover:bg-slate-50 transition-colors no-underline {{ loop.first ? 'text-primary bg-primary/5' : '' }}">
+            <span class="material-symbols-outlined text-[18px]">{{ link.icon }}</span>
+            {{ link.label }}
+          </a>
+        {% endfor %}
+      </nav>
+    </aside>
+
+    {# Main content #}
+    <section class="flex-1 min-w-0">
+      <h1 class="text-2xl font-black text-slate-900 mb-2">{{ heading_title|default('My Account') }}</h1>
+      <p class="text-slate-500 mb-8">Welcome back{% if customer_name is defined and customer_name %}, <strong>{{ customer_name }}</strong>{% endif %}.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {% for item in [
+          { label: 'My Orders', desc: 'Track and manage orders', href: order|default('#'), icon: 'receipt_long' },
+          { label: 'Wishlist', desc: 'Products you have saved', href: wishlist|default('#'), icon: 'favorite' },
+          { label: 'Address Book', desc: 'Manage delivery addresses', href: address|default('#'), icon: 'location_on' },
+          { label: 'Edit Account', desc: 'Update your personal info', href: edit|default('#'), icon: 'edit' }
+        ] %}
+          <a href="{{ item.href }}" class="flex items-start gap-4 bg-white rounded-2xl border border-slate-200 p-5 hover:border-primary/30 hover:shadow-sm transition-all no-underline group">
+            <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
+              <span class="material-symbols-outlined text-primary group-hover:text-white text-[20px] transition-colors">{{ item.icon }}</span>
+            </div>
+            <div>
+              <p class="font-bold text-slate-900 text-sm">{{ item.label }}</p>
+              <p class="text-slate-500 text-xs mt-0.5">{{ item.desc }}</p>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </section>
+
+  </div>
+</main>
+
+{{ footer }}

@@ -1,0 +1,24 @@
+{
+  "slug": "novakur-theme",
+  "name": "NovaKur Theme for OpenCart 4",
+  "shortDescription": "A modern, responsive OpenCart 4 theme with dark mode, clean layout, and full customization via the admin panel.",
+  "description": "NovaKur is a professional OpenCart 4 theme designed for performance and aesthetics. It includes a responsive layout, dark mode variant, custom header/footer, and deep integration with the OpenCart 4 extension system. Easily installed as an OCMOD package — no core file edits required.",
+  "price": 29.99,
+  "categoryId": "themes",
+  "developerId": "novakur",
+  "compatibility": ["OpenCart 4.0", "OpenCart 4.1"],
+  "images": [],
+  "features": [
+    "OpenCart 4.0 & 4.1 compatible",
+    "OCMOD package — one-click install",
+    "Responsive layout (mobile, tablet, desktop)",
+    "Dark mode variant included",
+    "Admin panel configuration",
+    "No core file modifications"
+  ],
+  "tags": ["theme", "opencart4", "responsive", "dark-mode", "ocmod"],
+  "version": "1.0.0",
+  "status": "published",
+  "demoUrl": "http://localhost/opencart/",
+  "buildFile": "../../build/novakur.ocmod.zip"
+}

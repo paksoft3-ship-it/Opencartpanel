@@ -1,0 +1,160 @@
+{% include 'extension/novakur_minimal/catalog/view/template/common/header.twig' %}
+{% include 'extension/novakur_minimal/catalog/view/template/common/breadcrumb.twig' %}
+
+<div class="nm-container">
+  <div class="nm-product-layout">
+
+    {# Gallery #}
+    <div class="nm-gallery">
+      <div class="nm-gallery-main">
+        <img id="nm-main-img" src="{{ images[0].popup|default(image) }}" alt="{{ heading_1 }}" loading="eager">
+      </div>
+      {% if images|length > 1 %}
+      <div class="nm-gallery-thumbs">
+        {% for img in images %}
+        <div class="nm-gallery-thumb {% if loop.first %}active{% endif %}" data-full="{{ img.popup }}">
+          <img src="{{ img.thumb }}" alt="{{ heading_1 }} {{ loop.index }}" loading="lazy">
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    {# Product Info #}
+    <div class="nm-product-info">
+      {% if manufacturer %}<div class="nm-product-brand"><a href="{{ manufacturer_href|default('#') }}">{{ manufacturer }}</a></div>{% endif %}
+      <h1 class="nm-product-title">{{ heading_1 }}</h1>
+
+      {% if rating is defined %}
+      <div class="nm-stars" aria-label="{{ rating }} out of 5 stars">
+        {% for i in 1..5 %}
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="{{ i <= rating ? 'currentColor' : 'none' }}" stroke="currentColor" stroke-width="2" class="{{ i > rating ? 'nm-stars-empty' : '' }}">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+        {% endfor %}
+        {% if reviews is defined and reviews %}<span style="font-size:12px;color:var(--nm-text-muted);margin-left:6px;">{{ reviews }} reviews</span>{% endif %}
+      </div>
+      {% endif %}
+
+      <div class="nm-product-price">
+        {% if special %}
+          <span class="nm-product-price-main nm-price-sale">{{ special }}</span>
+          <span class="nm-product-price-old">{{ price }}</span>
+        {% else %}
+          <span class="nm-product-price-main">{{ price }}</span>
+        {% endif %}
+        {% if tax %}<span style="font-size:12px;color:var(--nm-text-muted);">{{ tax }}</span>{% endif %}
+      </div>
+
+      <hr class="nm-product-divider">
+
+      {# Stock #}
+      {% if stock %}
+      <div>
+        <span style="font-size:13px;font-weight:600;color:{% if stock == 'In Stock' %}#16a34a{% else %}var(--nm-text-muted){% endif %};">
+          {{ stock }}
+        </span>
+      </div>
+      {% endif %}
+
+      {# Options #}
+      {% if options %}
+      {% for option in options %}
+      <div class="nm-option">
+        <label class="nm-option-label" for="option-{{ option.product_option_id }}">
+          {{ option.name }}{% if option.required %} <span style="color:#dc2626;">*</span>{% endif %}
+        </label>
+        {% if option.type == 'select' %}
+        <select name="option[{{ option.product_option_id }}]" id="option-{{ option.product_option_id }}" class="nm-option-select" {% if option.required %}required{% endif %}>
+          <option value="">— Select {{ option.name }} —</option>
+          {% for value in option.product_option_value %}
+          <option value="{{ value.product_option_value_id }}" {% if value.quantity == 0 %}disabled{% endif %}>
+            {{ value.name }}{% if value.price_prefix is defined and value.price %} ({{ value.price_prefix }}{{ value.price }}){% endif %}
+            {% if value.quantity == 0 %} — Out of Stock{% endif %}
+          </option>
+          {% endfor %}
+        </select>
+        {% elseif option.type == 'radio' %}
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          {% for value in option.product_option_value %}
+          <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+            <input type="radio" name="option[{{ option.product_option_id }}]" value="{{ value.product_option_value_id }}" {% if option.required %}required{% endif %}>
+            <span style="font-size:14px;">{{ value.name }}</span>
+          </label>
+          {% endfor %}
+        </div>
+        {% elseif option.type == 'checkbox' %}
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          {% for value in option.product_option_value %}
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+            <input type="checkbox" name="option[{{ option.product_option_id }}][]" value="{{ value.product_option_value_id }}">
+            <span style="font-size:14px;">{{ value.name }}</span>
+          </label>
+          {% endfor %}
+        </div>
+        {% elseif option.type in ['text','textarea','date','time','datetime'] %}
+        {% if option.type == 'textarea' %}
+        <textarea name="option[{{ option.product_option_id }}]" rows="3" style="width:100%;border:1px solid var(--nm-border);padding:10px;font-family:inherit;font-size:14px;" {% if option.required %}required{% endif %}></textarea>
+        {% else %}
+        <input type="{{ option.type == 'text' ? 'text' : option.type }}" name="option[{{ option.product_option_id }}]" class="nm-option-select" {% if option.required %}required{% endif %}>
+        {% endif %}
+        {% endif %}
+      </div>
+      {% endfor %}
+      {% endif %}
+
+      {# Quantity + Add to Cart #}
+      <div class="nm-add-to-cart">
+        <div class="nm-qty">
+          <button type="button" class="nm-qty-btn" data-action="minus" aria-label="Decrease quantity">−</button>
+          <input type="number" id="nm-qty-{{ product_id }}" class="nm-qty-input" name="quantity" value="{{ minimum|default(1) }}" min="{{ minimum|default(1) }}" aria-label="Quantity">
+          <button type="button" class="nm-qty-btn" data-action="plus" aria-label="Increase quantity">+</button>
+        </div>
+        <button class="nm-btn nm-btn-primary" style="flex:1;" data-nm-add-to-cart data-product-id="{{ product_id }}">
+          Add to Cart
+        </button>
+        <button class="nm-icon-btn" data-nm-wishlist data-product-id="{{ product_id }}" title="Add to Wishlist" aria-label="Add to Wishlist" style="border:1px solid var(--nm-border);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+
+      {# Meta #}
+      <hr class="nm-product-divider">
+      <div style="font-size:12px;color:var(--nm-text-muted);display:flex;flex-direction:column;gap:4px;">
+        {% if model is defined and model %}<span>Model: {{ model }}</span>{% endif %}
+        {% if manufacturer %}<span>Brand: <a href="{{ manufacturer_href|default('#') }}" style="color:var(--nm-text);">{{ manufacturer }}</a></span>{% endif %}
+        {% if tags %}<span>Tags: {% for tag in tags %}<a href="{{ tag.href }}" style="color:var(--nm-text);">{{ tag.text }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}
+      </div>
+    </div>
+  </div>
+
+  {# Tabs: Description / Reviews #}
+  <div class="nm-product-tabs" style="margin:40px 0;">
+    <div class="nm-tabs" style="display:flex;border-bottom:1px solid var(--nm-border);margin-bottom:32px;">
+      <button class="nm-page-btn active" data-tab="nm-tab-desc" style="border:none;border-bottom:2px solid var(--nm-accent);margin-bottom:-1px;border-radius:0;">Description</button>
+      {% if reviews is defined %}<button class="nm-page-btn" data-tab="nm-tab-reviews" style="border:none;border-bottom:2px solid transparent;margin-bottom:-1px;border-radius:0;">Reviews</button>{% endif %}
+    </div>
+    <div id="nm-tab-desc">
+      {% if description %}<div style="font-size:15px;line-height:1.8;color:var(--nm-text-muted);">{{ description }}</div>{% endif %}
+    </div>
+    {% if reviews is defined %}
+    <div id="nm-tab-reviews" class="nm-hidden">
+      {% if reviews %}
+        {% for review in reviews %}
+        <div style="padding:20px 0;border-bottom:1px solid var(--nm-border);">
+          <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+            <strong style="font-size:14px;">{{ review.author }}</strong>
+            <span style="font-size:12px;color:var(--nm-text-muted);">{{ review.date_added }}</span>
+          </div>
+          <p style="font-size:14px;color:var(--nm-text-muted);">{{ review.text }}</p>
+        </div>
+        {% endfor %}
+      {% else %}
+      <p style="color:var(--nm-text-muted);font-size:14px;">No reviews yet. Be the first to review this product.</p>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+
+</div>
+{% include 'extension/novakur_minimal/catalog/view/template/common/footer.twig' %}

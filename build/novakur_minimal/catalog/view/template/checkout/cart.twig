@@ -1,0 +1,81 @@
+{% include 'extension/novakur_minimal/catalog/view/template/common/header.twig' %}
+{% include 'extension/novakur_minimal/catalog/view/template/common/breadcrumb.twig' %}
+
+<div class="nm-container">
+  {% if products %}
+  <div class="nm-cart-layout">
+
+    {# Cart Items #}
+    <div>
+      <h1 style="font-size:24px;font-weight:700;margin-bottom:24px;letter-spacing:-0.02em;">Shopping Cart</h1>
+      <table class="nm-cart-table">
+        <thead>
+          <tr>
+            <th style="width:80px;"></th>
+            <th>Product</th>
+            <th style="width:120px;">Price</th>
+            <th style="width:130px;">Quantity</th>
+            <th style="width:100px;text-align:right;">Total</th>
+            <th style="width:40px;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for product in products %}
+          <tr>
+            <td><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" class="nm-cart-item-img"></a></td>
+            <td>
+              <a href="{{ product.href }}" class="nm-cart-item-name">{{ product.name }}</a>
+              {% if product.option %}
+              <div class="nm-cart-item-opt">
+                {% for option in product.option %}{{ option.name }}: {{ option.value }}{% if not loop.last %}, {% endif %}{% endfor %}
+              </div>
+              {% endif %}
+            </td>
+            <td style="font-size:14px;">{{ product.price }}</td>
+            <td>
+              <div class="nm-qty" style="display:inline-flex;">
+                <button type="button" class="nm-qty-btn" data-action="minus" style="font-size:16px;">−</button>
+                <input type="number" class="nm-qty-input" value="{{ product.quantity }}" min="1" style="width:42px;">
+                <button type="button" class="nm-qty-btn" data-action="plus" style="font-size:16px;">+</button>
+              </div>
+            </td>
+            <td style="text-align:right;font-size:14px;font-weight:600;">{{ product.price }}</td>
+            <td>
+              <a href="{{ product.remove }}" class="nm-icon-btn" data-nm-remove data-href="{{ product.remove }}" title="Remove item" aria-label="Remove {{ product.name }}" style="color:var(--nm-text-muted);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div style="margin-top:16px;">
+        <a href="{{ continue }}" class="nm-btn nm-btn-ghost">← Continue Shopping</a>
+      </div>
+    </div>
+
+    {# Summary #}
+    <div class="nm-cart-summary">
+      <h2 class="nm-cart-summary-title">Order Summary</h2>
+      {% for total in totals %}
+      <div class="nm-cart-total-row">
+        <span>{{ total.title }}</span>
+        <span>{{ total.text }}</span>
+      </div>
+      {% endfor %}
+      <a href="{{ checkout }}" class="nm-btn nm-btn-primary nm-btn-full">Proceed to Checkout</a>
+    </div>
+
+  </div>
+  {% else %}
+  <div style="text-align:center;padding:80px 0;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin:0 auto 24px;display:block;color:var(--nm-text-muted);">
+      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+    </svg>
+    <h1 style="font-size:24px;font-weight:700;margin-bottom:12px;">Your cart is empty</h1>
+    <p style="color:var(--nm-text-muted);margin-bottom:32px;">Add some products to your cart and they'll appear here.</p>
+    <a href="{{ continue }}" class="nm-btn nm-btn-primary">Start Shopping</a>
+  </div>
+  {% endif %}
+</div>
+{% include 'extension/novakur_minimal/catalog/view/template/common/footer.twig' %}

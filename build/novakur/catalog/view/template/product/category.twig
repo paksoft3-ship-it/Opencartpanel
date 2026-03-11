@@ -1,0 +1,97 @@
+{# NovaKur Base: Category/product listing page (Tailwind) #}
+{{ header }}
+
+<main class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+
+  {% include 'extension/novakur/catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-slate-900">{{ heading_title|default('Products') }}</h1>
+    {% if description is defined and description %}
+      <div class="text-slate-500 mt-2">{{ description }}</div>
+    {% endif %}
+  </div>
+
+  <div class="flex flex-col lg:flex-row gap-8">
+
+    {# Sidebar filters #}
+    <aside class="w-full lg:w-64 shrink-0 space-y-6">
+
+      {# Price filter #}
+      <div class="bg-white rounded-2xl border border-slate-200 p-5">
+        <h3 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-xl">payments</span> Price Range
+        </h3>
+        <form method="get" action="" class="space-y-3">
+          {% if path is defined and path %}<input type="hidden" name="path" value="{{ path }}">{% endif %}
+          {% if sort is defined %}<input type="hidden" name="sort" value="{{ sort }}">{% endif %}
+          {% if order is defined %}<input type="hidden" name="order" value="{{ order }}">{% endif %}
+          {% if limit is defined %}<input type="hidden" name="limit" value="{{ limit }}">{% endif %}
+          <div class="flex gap-2">
+            <input type="number" name="price_min" value="{{ filter_price_min|default('') }}" placeholder="Min" class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+            <input type="number" name="price_max" value="{{ filter_price_max|default('') }}" placeholder="Max" class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+          </div>
+          <button type="submit" class="w-full bg-primary text-white rounded-lg py-2 text-sm font-semibold hover:bg-primary/90 transition-colors">Apply</button>
+        </form>
+      </div>
+
+      {# Sort #}
+      {% if sorts is defined and sorts %}
+      <div class="bg-white rounded-2xl border border-slate-200 p-5">
+        <h3 class="font-bold text-slate-900 mb-4">Sort By</h3>
+        <div class="space-y-1">
+          {% for sort_option in sorts %}
+            <a href="{{ sort_option.href }}" class="block px-3 py-2 rounded-lg text-sm {{ sort_option.value is defined and sort_option.value == (sort|default('') ~ '-' ~ order|default('')) ? 'bg-primary/10 text-primary font-semibold' : 'text-slate-600 hover:bg-slate-100' }} transition-colors no-underline">
+              {{ sort_option.text }}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+    </aside>
+
+    {# Product grid #}
+    <section class="flex-1 min-w-0">
+
+      {# Controls bar #}
+      <div class="flex items-center justify-between mb-6">
+        <p class="text-sm text-slate-500">{{ results|default('') }}</p>
+        <div class="flex items-center gap-3">
+          {% if limits is defined and limits %}
+          <select class="rounded-lg border border-slate-200 px-3 py-2 text-sm focus:ring-2 focus:ring-primary/20 outline-none bg-white" onchange="window.location=this.value">
+            {% for limit_option in limits %}
+              <option value="{{ limit_option.href }}" {{ limit_option.value is defined and limit_option.value == limit|default('') ? 'selected' : '' }}>Show {{ limit_option.text }}</option>
+            {% endfor %}
+          </select>
+          {% endif %}
+        </div>
+      </div>
+
+      {# Grid #}
+      {% set product_list = products|default([]) %}
+      {% if product_list %}
+        <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
+          {% for product in product_list %}
+            {% include 'extension/novakur/catalog/view/template/component/commerce/product_card_standard.twig' with { product: product } only %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="flex flex-col items-center justify-center py-24 text-center">
+          <span class="material-symbols-outlined text-6xl text-slate-300 mb-4">inventory_2</span>
+          <p class="text-slate-500 font-medium">No products found in this category.</p>
+        </div>
+      {% endif %}
+
+      {# Pagination #}
+      {% if pagination is defined and pagination %}
+        <div class="mt-10 flex justify-center">
+          {{ pagination|raw }}
+        </div>
+      {% endif %}
+
+    </section>
+  </div>
+</main>
+
+{{ footer }}

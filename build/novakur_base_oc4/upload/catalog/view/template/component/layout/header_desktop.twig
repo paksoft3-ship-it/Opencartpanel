@@ -1,0 +1,40 @@
+{# NovaKur Base layout component: header_desktop #}
+{% set items = menu_items|default([]) %}
+{% set header_layout_map = {
+  'standard': 'layout-1',
+  'centered': 'layout-2',
+  'split': 'layout-3'
+} %}
+{% set header_layout_raw = novakur_header_layout|default('layout-1') %}
+{% set header_layout_key = header_layout_map[header_layout_raw] is defined ? header_layout_map[header_layout_raw] : header_layout_raw %}
+{% set header_layout = header_layout_key in ['layout-1', 'layout-2', 'layout-3'] ? header_layout_key : 'layout-1' %}
+
+<header class="nk-header nk-header--{{ header_layout }} nk-header-desktop" role="banner">
+  <div class="nk-global-container__inner nk-header-desktop__inner">
+    <a class="nk-header-desktop__brand" href="{{ home|default('/') }}">
+      <span class="nk-header-desktop__brand-text">{{ store_name|default('NovaKur Base') }}</span>
+    </a>
+
+    <nav class="nk-header-desktop__nav" aria-label="Primary navigation">
+      <ul class="nk-header-desktop__menu">
+        {% if items %}
+          {% for item in items %}
+            <li class="nk-header-desktop__item">
+              <a class="nk-header-desktop__link" href="{{ item.href|default('#') }}">{{ item.text|default('Menu') }}</a>
+            </li>
+          {% endfor %}
+        {% else %}
+          <li class="nk-header-desktop__item"><a class="nk-header-desktop__link" href="#">Shop</a></li>
+          <li class="nk-header-desktop__item"><a class="nk-header-desktop__link" href="#">Collections</a></li>
+          <li class="nk-header-desktop__item"><a class="nk-header-desktop__link" href="#">About</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+
+    <div class="nk-header-desktop__icons" aria-label="Header quick links">
+      <a class="nk-header-desktop__icon-link" href="{{ account|default('#') }}" title="Account">Account</a>
+      <a class="nk-header-desktop__icon-link" href="{{ wishlist|default('#') }}" title="Wishlist">Wishlist</a>
+      <a class="nk-header-desktop__icon-link" href="{{ shopping_cart|default('#') }}" title="Cart">Cart</a>
+    </div>
+  </div>
+</header>

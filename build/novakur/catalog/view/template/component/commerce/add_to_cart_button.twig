@@ -1,0 +1,102 @@
+{# NovaKur Base commerce component: add_to_cart_button (Tailwind) #}
+{% set qty_min = minimum|default(1) %}
+{% set is_in_stock = quantity is defined ? (quantity > 0) : true %}
+{% set lang = language|default('en-gb') %}
+
+<div class="space-y-4">
+
+  {# Stock badge #}
+  {% if is_in_stock %}
+    <p class="flex items-center gap-1.5 text-sm font-semibold text-green-600">
+      <span class="material-symbols-outlined text-[18px]">check_circle</span>
+      {{ stock|default('In Stock') }}
+    </p>
+  {% else %}
+    <p class="flex items-center gap-1.5 text-sm font-semibold text-red-500">
+      <span class="material-symbols-outlined text-[18px]">cancel</span>
+      {{ stock|default('Out of Stock') }}
+    </p>
+  {% endif %}
+
+  <form id="form-product" enctype="multipart/form-data">
+    <input type="hidden" name="product_id" value="{{ product_id|default('0') }}"/>
+
+    {# Options if any #}
+    {% if options is defined and options %}
+      {% for option in options %}
+        <div class="mb-4">
+          <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+            {{ option.name }}{% if option.required %} <span class="text-red-500">*</span>{% endif %}
+          </label>
+          {% if option.type == 'select' %}
+            <select name="option[{{ option.product_option_id }}]"
+              class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm focus:ring-2 focus:ring-primary/20 outline-none">
+              <option value="">-- Please Select --</option>
+              {% for value in option.product_option_value %}
+                <option value="{{ value.product_option_value_id }}">{{ value.name }}{% if value.price %} ({{ value.price_prefix }}{{ value.price }}){% endif %}</option>
+              {% endfor %}
+            </select>
+          {% elseif option.type == 'radio' %}
+            {% for value in option.product_option_value %}
+              <label class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer mb-1">
+                <input type="radio" name="option[{{ option.product_option_id }}]" value="{{ value.product_option_value_id }}" class="text-primary focus:ring-primary"/>
+                {{ value.name }}{% if value.price %} ({{ value.price_prefix }}{{ value.price }}){% endif %}
+              </label>
+            {% endfor %}
+          {% elseif option.type == 'checkbox' %}
+            {% for value in option.product_option_value %}
+              <label class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer mb-1">
+                <input type="checkbox" name="option[{{ option.product_option_id }}][]" value="{{ value.product_option_value_id }}" class="rounded text-primary focus:ring-primary"/>
+                {{ value.name }}{% if value.price %} ({{ value.price_prefix }}{{ value.price }}){% endif %}
+              </label>
+            {% endfor %}
+          {% elseif option.type == 'text' %}
+            <input type="text" name="option[{{ option.product_option_id }}]"
+              class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+          {% endif %}
+          <div id="error-option-{{ option.product_option_id }}" class="text-red-500 text-xs mt-1 hidden"></div>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    {# Quantity + Add to Cart row #}
+    <div class="flex items-center gap-3">
+      {# Qty selector #}
+      <div class="flex items-center rounded-xl border border-slate-200 overflow-hidden">
+        <button type="button" data-action="decrease" data-qty-target="input-quantity"
+          class="px-3 py-2.5 text-slate-500 hover:text-primary hover:bg-slate-50 transition-colors">
+          <span class="material-symbols-outlined text-sm">remove</span>
+        </button>
+        <input type="number" id="input-quantity" name="quantity" value="{{ qty_min }}" min="{{ qty_min }}"
+          class="w-14 text-center font-bold text-sm border-0 focus:ring-0 py-2.5 outline-none"/>
+        <button type="button" data-action="increase" data-qty-target="input-quantity"
+          class="px-3 py-2.5 text-slate-500 hover:text-primary hover:bg-slate-50 transition-colors">
+          <span class="material-symbols-outlined text-sm">add</span>
+        </button>
+      </div>
+
+      {# Add to cart button #}
+      <button id="button-cart" type="button" {{ not is_in_stock ? 'disabled' : '' }}
+        onclick="nkCartAdd('form-product', '{{ lang }}')"
+        class="flex-1 flex items-center justify-center gap-2 bg-primary text-white rounded-xl py-3 font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed">
+        <span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+        {{ button_cart|default('Add to Cart') }}
+      </button>
+    </div>
+  </form>
+
+  {# Wishlist + Compare row #}
+  <div class="flex items-center gap-3 pt-1">
+    {% if wishlist_add is defined and wishlist_add %}
+      <a href="{{ wishlist_add }}" class="flex items-center gap-1.5 text-sm text-slate-500 hover:text-red-500 transition-colors no-underline">
+        <span class="material-symbols-outlined text-[18px]">favorite_border</span> {{ button_wishlist|default('Wishlist') }}
+      </a>
+    {% endif %}
+    {% if compare_add is defined and compare_add %}
+      <a href="{{ compare_add }}" class="flex items-center gap-1.5 text-sm text-slate-500 hover:text-primary transition-colors no-underline">
+        <span class="material-symbols-outlined text-[18px]">compare</span> {{ button_compare|default('Compare') }}
+      </a>
+    {% endif %}
+  </div>
+
+</div>

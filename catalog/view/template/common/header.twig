@@ -1,0 +1,26 @@
+{# NovaKur Base: Common header route template #}
+<link href="{{ novakur_main_css|default(base ~ 'catalog/view/assets/dist/css/main.css') }}" rel="stylesheet">
+<style>
+  :root {
+    --nk-primary: {{ novakur_primary_color|default('#2563EB') }};
+    --nk-secondary: {{ novakur_secondary_color|default('#1E3A8A') }};
+    --nk-container-width: {{ novakur_container_width|default(1200) }}px;
+    --nk-base-font: '{{ novakur_base_font|default('Segoe UI') }}', sans-serif;
+    --nk-heading-font: '{{ novakur_heading_font|default('Segoe UI') }}', sans-serif;
+  }
+
+  body {
+    font-family: var(--nk-base-font);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--nk-heading-font);
+  }
+</style>
+
+{% include 'catalog/view/template/component/layout/header_desktop.twig' with {
+  store_name: name|default('NovaKur Base'),
+  home: home|default('/'),
+  menu_items: menu_items|default([]),
+  novakur_header_layout: novakur_header_layout|default('standard')
+} only %}

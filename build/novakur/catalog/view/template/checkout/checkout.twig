@@ -1,0 +1,84 @@
+{# NovaKur Base: Checkout page (Tailwind shell — OC4 step blocks) #}
+{{ header }}
+
+<main class="max-w-5xl mx-auto px-4 lg:px-8 py-8">
+  {% include 'extension/novakur/catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+  <h1 class="text-3xl font-black text-slate-900 mb-8">{{ heading_title|default('Checkout') }}</h1>
+
+  {{ content_top }}
+
+  <div class="space-y-4">
+
+    {# Step: Guest / Register / Login #}
+    {% if register is defined and register %}
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="px-6 py-4 border-b border-slate-100 flex items-center gap-3">
+          <span class="w-7 h-7 bg-primary text-white rounded-full flex items-center justify-center text-xs font-black shrink-0">1</span>
+          <h2 class="font-bold text-slate-900">Account</h2>
+        </div>
+        <div class="p-6">{{ register|raw }}</div>
+      </div>
+    {% endif %}
+
+    {# Step: Payment Address #}
+    {% if payment_address is defined and payment_address %}
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="px-6 py-4 border-b border-slate-100 flex items-center gap-3">
+          <span class="w-7 h-7 bg-primary text-white rounded-full flex items-center justify-center text-xs font-black shrink-0">2</span>
+          <h2 class="font-bold text-slate-900">Billing Address</h2>
+        </div>
+        <div class="p-6">{{ payment_address|raw }}</div>
+      </div>
+    {% endif %}
+
+    {# Step: Shipping Address #}
+    {% if shipping_address is defined and shipping_address %}
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="px-6 py-4 border-b border-slate-100 flex items-center gap-3">
+          <span class="w-7 h-7 bg-primary text-white rounded-full flex items-center justify-center text-xs font-black shrink-0">3</span>
+          <h2 class="font-bold text-slate-900">Shipping Address</h2>
+        </div>
+        <div class="p-6">{{ shipping_address|raw }}</div>
+      </div>
+    {% endif %}
+
+    {# Step: Shipping Method #}
+    {% if shipping_method is defined and shipping_method %}
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="px-6 py-4 border-b border-slate-100 flex items-center gap-3">
+          <span class="w-7 h-7 bg-primary text-white rounded-full flex items-center justify-center text-xs font-black shrink-0">4</span>
+          <h2 class="font-bold text-slate-900">Shipping Method</h2>
+        </div>
+        <div class="p-6">{{ shipping_method|raw }}</div>
+      </div>
+    {% endif %}
+
+    {# Step: Payment Method #}
+    {% if payment_method is defined and payment_method %}
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="px-6 py-4 border-b border-slate-100 flex items-center gap-3">
+          <span class="w-7 h-7 bg-primary text-white rounded-full flex items-center justify-center text-xs font-black shrink-0">5</span>
+          <h2 class="font-bold text-slate-900">Payment Method</h2>
+        </div>
+        <div class="p-6">{{ payment_method|raw }}</div>
+      </div>
+    {% endif %}
+
+    {# Step: Confirm / Order Summary #}
+    {% if confirm is defined and confirm %}
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="px-6 py-4 border-b border-slate-100 flex items-center gap-3">
+          <span class="w-7 h-7 bg-primary text-white rounded-full flex items-center justify-center text-xs font-black shrink-0">6</span>
+          <h2 class="font-bold text-slate-900">Confirm Order</h2>
+        </div>
+        <div class="p-6">{{ confirm|raw }}</div>
+      </div>
+    {% endif %}
+
+  </div>
+
+  {{ content_bottom }}
+</main>
+
+{{ footer }}

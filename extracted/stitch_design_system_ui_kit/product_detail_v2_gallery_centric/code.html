@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NovaKur Base - Premium UI Kit</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "secondary": "#1E3A8A",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="flex h-16 items-center justify-between gap-8">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-primary">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">layers</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold tracking-tight">NovaKur</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Shop</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Categories</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Deals</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Support</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end items-center gap-4">
+<label class="hidden lg:flex items-center relative w-full max-w-xs">
+<span class="absolute left-3 text-slate-400 material-symbols-outlined text-xl">search</span>
+<input class="w-full rounded-full border-none bg-slate-100 dark:bg-slate-800 py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20" placeholder="Search products..." type="text"/>
+</label>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">3</span>
+</button>
+<button class="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-8">
+<a class="hover:text-primary" href="#">Home</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<a class="hover:text-primary" href="#">E-commerce Themes</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-slate-900 dark:text-white font-medium">NovaKur Base</span>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Gallery Section (Left) -->
+<div class="lg:col-span-7 space-y-6">
+<div class="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800">
+<img alt="NovaKur Base" class="h-full w-full object-cover" data-alt="Main product showcase of NovaKur Base digital interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_8pK-c12fllwDod8Nx6Nk1xedRJS5FE944CiByJa0hLh1aTasf5zDmUkXQgkFWHfL30G2yK5jxGEBcNZ0md-e6iFYzFhnJpDvQgG50Ok3OAHuMZpoxT5PI6nN_jdVcKl8BvLr9YtE5ffQpv_5PQujuP0hkpH6fen1Vi2ynM3s3O-Vi712kxLhioyAnlwdjRc1RGCcIyHUlxQPT1pT7HWa3vM0comWZp8nFadRfkqUyv-Qfa2B6J24VVyn-slpYLl0H1wH_1rdydbL"/>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-2 no-scrollbar">
+<button class="shrink-0 rounded-xl border-2 border-primary overflow-hidden w-24 h-24 bg-slate-100">
+<img class="w-full h-full object-cover" data-alt="Product thumbnail main view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGcyCHmgdNP8xs41gONUkPM-_lAZ4fVK2h8vuNHSDboUhW40-CddLQ9h_B3XgLvEzXF1Rudq6Tful9eKi5IO7JhoLMNfMKvpPW3h1PayQVTYqPzgSeCD7LPN9fK6jLDOPYAldQsFXtYFR4Tynf2VhgOZ6vdBX-4hBdHF2a_Y-1hIjgl61grR7iGxvIzW8fbf82yehwTtwfxiLIDwKgONUZePQDlvkyXn2P792HI6n_ORwJXKu8Sv-RuNlJFC8283hWHJe0rNZQgJCd"/>
+</button>
+<button class="shrink-0 rounded-xl border-2 border-transparent hover:border-slate-300 transition-colors overflow-hidden w-24 h-24 bg-slate-100">
+<img class="w-full h-full object-cover" data-alt="Product thumbnail dashboard view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ_i5_knRMw9xxK8i4mh04bG4gLz0X--kn9WhBqoVf1SF_DIMjXbcLv74xAIJwYtS4LtF05398iyJ5Qjhc4IKRzdn9DwlUxDT-akl1GjDUMPmCZ7yackjn0-tQ_ll18vGy3UHfpgGlGqxkwkPx95qhf2IqPjGn9rPYazADgkqUDv2349-OOtpBhXhYs_lJ7rJuDl-v-86ZyEzMWk2EtDmHsM7-kGAAK0k0T4_4XguZP90vBdpTrW12YgD_sUPRSFFh-CVuhwjetUcx"/>
+</button>
+<button class="shrink-0 rounded-xl border-2 border-transparent hover:border-slate-300 transition-colors overflow-hidden w-24 h-24 bg-slate-100">
+<img class="w-full h-full object-cover" data-alt="Product thumbnail code structure" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKT_wDw34Q5ZYTYl0hNPu_DhCJ2COaYO6d_98WDZSDfPo0lGRH-Kzne6QItH6P9tHAig_k6kZmDHBmIrQ9kiZ5yMbTGqHVuOS9-_cDSHTlhMSjlhddWBeGOmm9YWbO8Al_5bZqtrEJF0IC4kN52XqBJQwHxyYoxAFJnIiuCVEMHusdd_KSIDCWHwiudSadjjSMV14llGjidypIRqkzkg_1P7pJE9KiCEtBCIEmfVC8HUkeGD6_SNkjOwgqc4ccmezSLO69V0cRTsCv"/>
+</button>
+<button class="shrink-0 rounded-xl border-2 border-transparent hover:border-slate-300 transition-colors overflow-hidden w-24 h-24 bg-slate-100">
+<img class="w-full h-full object-cover" data-alt="Product thumbnail mobile responsiveness" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7eqIGj4Eu_oh6o2zEMRX12ollkCIpPAWRIveOzS1ZdyGkpXf4zmIe3l09EcaVWcPxIdYzSczq7R7NcODvMHfR4-Y_TcZ0GMFNZiBZ6ldkjoe6e7lagExYzrZRjbalTwHgm7zsQwQlBLsFbqMIrEwT9-baHun3ZcSfzihhPuDCjvGSiH2LpVcGkvKNT4qBfY99VzvVwLITLlG2rVmUVaX8nbkN-KDPPPpd2d71NXNlkfIq7XvsMbnKoJDJeUEYq_OLtzsOwPNur4wY"/>
+</button>
+<button class="shrink-0 rounded-xl border-2 border-transparent hover:border-slate-300 transition-colors overflow-hidden w-24 h-24 bg-slate-100">
+<img class="w-full h-full object-cover" data-alt="Product thumbnail dark mode layout" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVQEb2tQUnEn_C_j42W3l_3xWqxZt2edfXxcSI3AYEVLHyKf8i4bGTfNu-iFXg5JdXzEVWctYD4p1EannlR_hYCrdlsaVqIDc2NL96aqtlfMJTtfOv0i0Ltxu0wtsOF2zdXoYpCf2l5dTP_gD3nC7ziKpvzFTuMUMUGZcoBn5ISn6p3Vv7SwWjrxTRUnjwReEw26dSDTMm8cvbK1Hyc0HxCFMddp9XEpeZxvZtAK-HGoyWjDcBR9x_CO5nIrFxhYXVugsJpOg7Cvr5"/>
+</button>
+</div>
+<!-- Accordion Section -->
+<div class="mt-12 space-y-4">
+<div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+<button class="flex w-full items-center justify-between text-left group">
+<span class="text-lg font-semibold">Description</span>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">expand_more</span>
+</button>
+<div class="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed">
+<p>NovaKur Base is the ultimate foundation for your next high-performance e-commerce store. Built on OpenCart's robust architecture, this theme prioritizes speed, SEO, and developer-friendly customization. Whether you're a small boutique or a global enterprise, NovaKur provides the flexibility you need to scale.</p>
+</div>
+</div>
+<div class="border-b border-slate-200 dark:border-slate-800 py-4">
+<button class="flex w-full items-center justify-between text-left group">
+<span class="text-lg font-semibold">Specifications</span>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">expand_more</span>
+</button>
+</div>
+<div class="border-b border-slate-200 dark:border-slate-800 py-4">
+<button class="flex w-full items-center justify-between text-left group">
+<span class="text-lg font-semibold">Reviews (48)</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-400 fill-current text-sm">star</span>
+<span class="text-sm font-medium">4.9</span>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">expand_more</span>
+</div>
+</button>
+</div>
+</div>
+</div>
+<!-- Sidebar Details (Right - Sticky) -->
+<div class="lg:col-span-5">
+<div class="sticky top-24 space-y-8 bg-white dark:bg-slate-900/50 p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
+<div class="space-y-2">
+<span class="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider rounded-full">New Arrival</span>
+<h1 class="text-3xl font-extrabold text-slate-900 dark:text-white">NovaKur Base Framework</h1>
+<div class="flex items-center gap-4">
+<div class="flex items-center text-yellow-400">
+<span class="material-symbols-outlined fill-current text-lg">star</span>
+<span class="material-symbols-outlined fill-current text-lg">star</span>
+<span class="material-symbols-outlined fill-current text-lg">star</span>
+<span class="material-symbols-outlined fill-current text-lg">star</span>
+<span class="material-symbols-outlined fill-current text-lg">star</span>
+</div>
+<span class="text-sm text-slate-500 dark:text-slate-400">(48 Verified Sales)</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-bold text-slate-900 dark:text-white">$199.00</span>
+<span class="text-lg text-slate-400 line-through">$249.00</span>
+</div>
+<div class="space-y-4">
+<button class="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 rounded-xl transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">shopping_bag</span>
+                                Add to Cart
+                            </button>
+<button class="w-full flex items-center justify-center gap-2 border-2 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 font-bold py-4 px-8 rounded-xl transition-all">
+<span class="material-symbols-outlined">favorite</span>
+                                Add to Wishlist
+                            </button>
+</div>
+<div class="space-y-4 pt-6 border-t border-slate-200 dark:border-slate-800">
+<h3 class="font-bold text-slate-900 dark:text-white uppercase text-xs tracking-widest">Key Features</h3>
+<ul class="space-y-3">
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-primary text-xl">bolt</span>
+<span>Optimized Core for Lightning Fast Loading</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-primary text-xl">smartphone</span>
+<span>Mobile-First Responsive Layouts</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-primary text-xl">brush</span>
+<span>Advanced Theme Customizer Included</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-primary text-xl">verified_user</span>
+<span>Regular Security &amp; Performance Updates</span>
+</li>
+</ul>
+</div>
+<div class="flex items-center gap-4 pt-6 text-xs text-slate-500">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">local_shipping</span>
+                                Instant Digital Delivery
+                            </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">support_agent</span>
+                                12 Months Support
+                            </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Complete The Look / Related Products -->
+<section class="mt-24 border-t border-slate-200 dark:border-slate-800 pt-16">
+<div class="flex items-center justify-between mb-10">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Complete the Look</h2>
+<a class="text-primary font-semibold flex items-center gap-1 hover:underline" href="#">
+                        View All Extension
+                        <span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Related Item 1 -->
+<div class="group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden transition-all hover:shadow-xl">
+<div class="aspect-square relative overflow-hidden bg-slate-100">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="NovaKur Analytics Dashboard addon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCerl2eygZaMavh1XdQvLfnhLtAv4oswoPNKK0Aak30s5BhIR2sWg4Py5UlJqHr29qWsmQHOWafIyiURrwz9GIOXN-do7tliYzHH1tWhLdfX2LVGmUcM3hZzXx5-3cYxWVaNzhtdW8QThEcoXVqHG1web58dpJGZhJ0mTjXvBxjZIc33563SnHk1Pf7eOWVXMvvLTzRAooBNSTv3uvIwDpiTHMwIGKGpCeW_IO32Px5pUBU7s-5PMQcMMGevKBE1HrFfBXryyHTxqwr"/>
+<button class="absolute top-3 right-3 p-2 bg-white/90 rounded-full text-slate-900 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-slate-900 dark:text-white">Advanced Analytics Pack</h3>
+<p class="text-sm text-slate-500 mt-1">$49.00</p>
+</div>
+</div>
+<!-- Related Item 2 -->
+<div class="group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden transition-all hover:shadow-xl">
+<div class="aspect-square relative overflow-hidden bg-slate-100">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="NovaKur SEO Optimizer extension" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEPuNqbHzY0A1cs0odG9rhknj8aip6oLGczy3nagJCZ5DEGN0LesG9CLCtwAEkEyQ_tvGOMkh-oMD83ZoGHp0ZOJ-THAUT_rFhvb9d_4SOTuIDsKF_uPoipafGe1L1VkSQveeKcFY6DgevHd-US9bzh-7oZ_pR_f4MOy3ZRA0lNql1WC1pkBuHs3C1XZDJ5pHhAmwmyoHpb96hGrU72sLRW-gy0rHJxEGug0mg728-LOR4lQBhDbMK77jY1zqxbltju7-cq0QkK6gC"/>
+<button class="absolute top-3 right-3 p-2 bg-white/90 rounded-full text-slate-900 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-slate-900 dark:text-white">SEO Optimizer Pro</h3>
+<p class="text-sm text-slate-500 mt-1">$79.00</p>
+</div>
+</div>
+<!-- Related Item 3 -->
+<div class="group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden transition-all hover:shadow-xl">
+<div class="aspect-square relative overflow-hidden bg-slate-100">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="NovaKur Theme Editor customizer tool" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcgtZoK--DNz5mLaU63AbcS03bQMMgdk31Jrjm57NvqgkDmDXdd_O8gX2kU7V2mhlpGZbyGwVqvWE60LLen6kaG12DlweIvvhLWVJt9HYg-bzpz8cDxc1XxcyaZn7RoUSAD7TWPUpFGx_Fc4Bh_rSDsY91wjJe_gOaZEsEQergg9-NH62MK7JQoMgj1Hq3ypgGgDUUdnU_kTEJf87dBM4hjAxwLco2jUKhOV2W_5dYUksNrfd7JNh8BZFKL9C0PZQqyIaFseIeuH_y"/>
+<button class="absolute top-3 right-3 p-2 bg-white/90 rounded-full text-slate-900 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-slate-900 dark:text-white">Custom Layout Builder</h3>
+<p class="text-sm text-slate-500 mt-1">$129.00</p>
+</div>
+</div>
+<!-- Related Item 4 -->
+<div class="group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden transition-all hover:shadow-xl">
+<div class="aspect-square relative overflow-hidden bg-slate-100">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="NovaKur Multi-language translation kit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhjaMpRoEKuDQrN8g8Fd0mIpQ2cQ9bXNq0sUPjRFqCrf_khhBBWJBkQn9pUHhWgMIQLvtJxwrpjbUrU1lpyi1puY1T9sGxmnLOz2Z4kkyXE2c8RYRUSDOMv4_yNhW_v17rB2Lezo8oh95x0Gh7KSLuhEs_cRVumYuTp-Yju92d14G2HCsKbBDUiBgEeSy_TqOte0hG4KBDCB3JSMWoQKXp35YXuqxg9oo9WG_9mGXpL-ewCwKm_2DKQ1rlWPKiK8gtwTlYIBG2yePD"/>
+<button class="absolute top-3 right-3 p-2 bg-white/90 rounded-full text-slate-900 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-slate-900 dark:text-white">Language Pack Plus</h3>
+<p class="text-sm text-slate-500 mt-1">$29.00</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="mt-24 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark py-12">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-24">
+<div class="col-span-2 md:col-span-1 space-y-4">
+<div class="flex items-center gap-2 text-primary">
+<div class="size-6 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm">layers</span>
+</div>
+<h2 class="text-slate-900 dark:text-white font-bold">NovaKur Base</h2>
+</div>
+<p class="text-sm text-slate-500 leading-relaxed">The premium standard for OpenCart e-commerce experiences. Scale your business with confidence.</p>
+</div>
+<div>
+<h4 class="font-bold text-sm mb-4 uppercase tracking-widest text-slate-900 dark:text-white">Products</h4>
+<ul class="space-y-2 text-sm text-slate-500">
+<li><a class="hover:text-primary" href="#">Themes</a></li>
+<li><a class="hover:text-primary" href="#">Extensions</a></li>
+<li><a class="hover:text-primary" href="#">Services</a></li>
+<li><a class="hover:text-primary" href="#">Licensing</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-sm mb-4 uppercase tracking-widest text-slate-900 dark:text-white">Support</h4>
+<ul class="space-y-2 text-sm text-slate-500">
+<li><a class="hover:text-primary" href="#">Documentation</a></li>
+<li><a class="hover:text-primary" href="#">Community Forum</a></li>
+<li><a class="hover:text-primary" href="#">Help Desk</a></li>
+<li><a class="hover:text-primary" href="#">Contact Us</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-sm mb-4 uppercase tracking-widest text-slate-900 dark:text-white">Subscribe</h4>
+<div class="flex flex-col gap-2">
+<input class="rounded-lg border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-sm py-2 px-3 focus:ring-primary focus:border-primary" placeholder="Email address" type="email"/>
+<button class="bg-primary text-white text-sm font-bold py-2 rounded-lg hover:bg-primary/90 transition-colors">Join</button>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-xs text-slate-400">© 2024 NovaKur Base. All rights reserved.</p>
+<div class="flex items-center gap-6">
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">brand_family</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

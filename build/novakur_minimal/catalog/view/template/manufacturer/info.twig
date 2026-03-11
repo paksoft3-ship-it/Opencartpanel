@@ -1,0 +1,23 @@
+{% include 'extension/novakur_minimal/catalog/view/template/common/header.twig' %}
+{% include 'extension/novakur_minimal/catalog/view/template/common/breadcrumb.twig' %}
+<div class="nm-container nm-listing">
+  <h1 class="nm-listing-title" style="margin-bottom:32px;">{{ heading_1 }}</h1>
+  {% if products %}
+  <div class="nm-product-grid">
+    {% for product in products %}
+    <div class="nm-card">
+      <a href="{{ product.href }}" class="nm-card-image"><img src="{{ product.thumb }}" alt="{{ product.name }}" loading="lazy">{% if product.special %}<span class="nm-card-badge">Sale</span>{% endif %}</a>
+      <div class="nm-card-body">
+        <a href="{{ product.href }}" class="nm-card-name">{{ product.name }}</a>
+        <div class="nm-card-price">{% if product.special %}<span class="nm-price nm-price-sale">{{ product.special }}</span><span class="nm-price-old">{{ product.price }}</span>{% else %}<span class="nm-price">{{ product.price }}</span>{% endif %}</div>
+        <div class="nm-card-cta"><button class="nm-btn nm-btn-primary nm-btn-sm nm-btn-full" data-nm-add-to-cart data-product-id="{{ product.product_id }}">Add to Cart</button></div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% if pagination %}<div class="nm-pagination">{{ pagination }}</div>{% endif %}
+  {% else %}
+  <p style="color:var(--nm-text-muted);">No products found for this brand.</p>
+  {% endif %}
+</div>
+{% include 'extension/novakur_minimal/catalog/view/template/common/footer.twig' %}

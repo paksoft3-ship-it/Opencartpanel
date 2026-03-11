@@ -1,0 +1,50 @@
+{# NovaKur Base section: hero_banner (Tailwind) #}
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6 h-auto lg:h-[500px] mb-8">
+
+  {# Main hero panel #}
+  <div class="lg:col-span-8 relative overflow-hidden rounded-2xl bg-slate-900 group min-h-[320px]">
+    {% if hero_bg is defined and hero_bg %}
+      <img src="{{ hero_bg }}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-60"/>
+    {% else %}
+      <img src="image/catalog/novakur/banners/main_hero_wide.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-60"/>
+    {% endif %}
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-slate-900/40"></div>
+    <div class="relative h-full flex flex-col justify-center px-10 py-12 text-white space-y-6">
+      <span class="bg-primary/20 text-primary border border-primary/30 px-3 py-1 rounded-full text-xs font-bold w-fit uppercase tracking-widest">New Collection</span>
+      <h2 class="text-4xl lg:text-5xl font-extrabold leading-tight max-w-lg">
+        {{ hero_title|default('Premium products,') }}<br/>
+        <span class="text-primary">{{ hero_subtitle|default('unbeatable prices.') }}</span>
+      </h2>
+      <p class="text-slate-300 max-w-md text-lg">{{ hero_lead|default('Discover our curated selection of top-quality products with fast shipping and easy returns.') }}</p>
+      <div class="flex gap-4 flex-wrap">
+        <a href="{{ hero_cta_href|default(home|default('/')) }}" class="px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 no-underline">
+          {{ hero_cta_text|default('Shop Now') }}
+        </a>
+        <a href="{{ home|default('/') }}" class="px-8 py-4 bg-white/10 backdrop-blur-md text-white font-bold rounded-xl hover:bg-white/20 transition-all no-underline">
+          View All
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {# Side panels #}
+  <div class="lg:col-span-4 grid grid-rows-2 gap-6">
+    <div class="relative overflow-hidden rounded-2xl bg-primary/10 border border-primary/20 flex items-center p-8 min-h-[140px]">
+      <img src="image/catalog/novakur/banners/side_panel_1.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-30"/>
+      <div class="relative z-10 space-y-2">
+        <p class="text-primary font-bold text-xs uppercase tracking-widest">Sale</p>
+        <h3 class="text-xl font-bold text-slate-900">{{ hero_panel1_title|default('Featured Deal') }}</h3>
+        <a href="{{ home|default('/') }}" class="text-sm font-semibold text-primary border-b border-primary/30 no-underline">Shop Now</a>
+      </div>
+    </div>
+    <div class="relative overflow-hidden rounded-2xl bg-slate-100 p-8 flex items-center min-h-[140px]">
+      <img src="image/catalog/novakur/banners/side_panel_2.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-30"/>
+      <div class="relative z-10 space-y-2">
+        <p class="text-slate-500 font-bold text-xs uppercase tracking-widest">Trending</p>
+        <h3 class="text-xl font-bold text-slate-900">{{ hero_panel2_title|default('New Arrivals') }}</h3>
+        <a href="{{ home|default('/') }}" class="text-sm font-semibold text-slate-700 border-b border-slate-300 no-underline">Explore</a>
+      </div>
+    </div>
+  </div>
+
+</section>

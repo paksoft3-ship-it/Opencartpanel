@@ -1,0 +1,86 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="float-end">
+        <button type="button" id="button-save" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> {{ text_edit }}</button>
+        <a href="{{ back }}" class="btn btn-light"><i class="fa-solid fa-reply"></i> Back</a>
+      </div>
+      <h1>{{ heading_title }}</h1>
+      <ol class="breadcrumb">{% for breadcrumb in breadcrumbs %}<li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>{% endfor %}</ol>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> {{ error_warning }}<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>{% endif %}
+    <div class="card">
+      <div class="card-header"><i class="fa-solid fa-palette"></i> NovaKur Fashion — Theme Settings</div>
+      <div class="card-body">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-branding">{{ tab_branding }}</a></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-colors">{{ tab_colors }}</a></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-layout">{{ tab_layout }}</a></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-homepage">{{ tab_homepage }}</a></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-typography">{{ tab_typography }}</a></li>
+        </ul>
+        <div class="tab-content pt-3">
+          <div id="tab-branding" class="tab-pane active">
+            <div class="row mb-3"><label class="col-sm-2 col-form-label">{{ entry_logo }}</label><div class="col-sm-10"><input type="text" name="theme_novakur_fashion_logo" value="{{ theme_novakur_fashion_logo }}" class="form-control" /><div class="mt-2"><img src="{{ thumb_logo }}" style="max-height:80px;" /></div></div></div>
+            <div class="row mb-3"><label class="col-sm-2 col-form-label">{{ entry_favicon }}</label><div class="col-sm-10"><input type="text" name="theme_novakur_fashion_favicon" value="{{ theme_novakur_fashion_favicon }}" class="form-control" /><div class="mt-2"><img src="{{ thumb_favicon }}" style="max-height:40px;" /></div></div></div>
+          </div>
+          <div id="tab-colors" class="tab-pane">
+            {% for cname, clabel in {'primary': entry_primary_color, 'secondary': entry_secondary_color, 'accent': entry_accent_color} %}
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label">{{ clabel }}</label>
+              <div class="col-sm-4">
+                <div class="input-group">
+                  <span class="input-group-text"><input type="color" id="{{ cname }}-picker" value="{{ attribute(_context, 'theme_novakur_fashion_' ~ cname ~ '_color') }}" style="width:30px;height:24px;border:none;padding:0;cursor:pointer;"/></span>
+                  <input type="text" name="theme_novakur_fashion_{{ cname }}_color" id="{{ cname }}-hex" value="{{ attribute(_context, 'theme_novakur_fashion_' ~ cname ~ '_color') }}" class="form-control" placeholder="#1a1a1a" />
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <div id="tab-layout" class="tab-pane">
+            <div class="row mb-3"><label class="col-sm-2 col-form-label">{{ entry_container_width }}</label><div class="col-sm-4"><input type="number" name="theme_novakur_fashion_container_width" value="{{ theme_novakur_fashion_container_width }}" class="form-control" min="1200" max="1600" step="20" /><small class="text-muted">{{ help_container_width }}</small></div></div>
+          </div>
+          <div id="tab-homepage" class="tab-pane">
+            {% for key, label in {
+              'enable_hero_banner': entry_enable_hero_banner,
+              'enable_lookbook': entry_enable_lookbook,
+              'enable_featured_products': entry_enable_featured_products,
+              'enable_category_grid': entry_enable_category_grid,
+              'enable_instagram_grid': entry_enable_instagram_grid
+            } %}
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label">{{ label }}</label>
+              <div class="col-sm-10"><div class="form-check form-switch mt-2"><input class="form-check-input" type="checkbox" name="theme_novakur_fashion_{{ key }}" value="1" {{ attribute(_context, 'theme_novakur_fashion_' ~ key) == '1' ? 'checked' : '' }} /></div></div>
+            </div>
+            {% endfor %}
+          </div>
+          <div id="tab-typography" class="tab-pane">
+            <div class="row mb-3"><label class="col-sm-2 col-form-label">{{ entry_heading_font }}</label><div class="col-sm-4"><select name="theme_novakur_fashion_heading_font" class="form-select">{% for opt in font_options %}<option value="{{ opt.value }}" {{ theme_novakur_fashion_heading_font == opt.value ? 'selected' : '' }}>{{ opt.text }}</option>{% endfor %}</select></div></div>
+            <div class="row mb-3"><label class="col-sm-2 col-form-label">{{ entry_base_font }}</label><div class="col-sm-4"><select name="theme_novakur_fashion_base_font" class="form-select">{% for opt in body_font_options %}<option value="{{ opt.value }}" {{ theme_novakur_fashion_base_font == opt.value ? 'selected' : '' }}>{{ opt.text }}</option>{% endfor %}</select></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <input type="hidden" name="theme_novakur_fashion_status" value="{{ theme_novakur_fashion_status }}" />
+  </div>
+</div>
+{{ footer }}
+<script>
+(function(){
+  ['primary','secondary','accent'].forEach(function(n){
+    var picker=document.getElementById(n+'-picker'),hex=document.getElementById(n+'-hex');
+    if(picker&&hex){picker.addEventListener('input',function(){hex.value=picker.value;});hex.addEventListener('input',function(){if(/^#[0-9a-fA-F]{6}$/.test(hex.value))picker.value=hex.value;});}
+  });
+  document.getElementById('button-save').addEventListener('click',function(){
+    var form={};
+    document.querySelectorAll('[name^="theme_novakur_fashion_"]').forEach(function(el){
+      if(el.type==='checkbox'){if(el.checked)form[el.name]=el.value;}else{form[el.name]=el.value;}
+    });
+    fetch('{{ save }}',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(form).toString()})
+    .then(function(r){return r.json();}).then(function(json){if(json.success){location.href='{{ back }}';}else if(json.error){alert(Object.values(json.error).join('\n'));}});
+  });
+})();
+</script>

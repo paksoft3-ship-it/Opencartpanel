@@ -1,0 +1,44 @@
+{# NovaKur Base: Account register route #}
+{{ header }}
+
+{% import 'catalog/view/template/component/ui/form_elements.twig' as form %}
+
+{% include 'catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+<main id="content" class="nk-auth-page nk-auth-page--register">
+  <div class="nk-global-container__inner nk-auth-page__inner">
+    <section class="nk-auth-page__card" aria-label="Register form">
+      <header class="nk-auth-page__head">
+        <h1 class="nk-auth-page__title">{{ heading_title|default('Create Account') }}</h1>
+      </header>
+
+      <form action="{{ action|default('#') }}" method="post" class="nk-auth-page__form">
+        <div class="nk-auth-page__grid">
+          {{ form.input('input-firstname', 'firstname', 'First Name', firstname|default(''), 'text', true, '', error_firstname|default(''), 'First name') }}
+          {{ form.input('input-lastname', 'lastname', 'Last Name', lastname|default(''), 'text', true, '', error_lastname|default(''), 'Last name') }}
+          {{ form.input('input-email', 'email', 'Email', email|default(''), 'email', true, '', error_email|default(''), 'name@example.com') }}
+          {{ form.input('input-telephone', 'telephone', 'Phone', telephone|default(''), 'tel', true, '', error_telephone|default(''), '+1 555 123 4567') }}
+          {{ form.input('input-password', 'password', 'Password', '', 'password', true, '', error_password|default(''), 'Create password') }}
+          {{ form.input('input-confirm', 'confirm', 'Confirm Password', '', 'password', true, '', error_confirm|default(''), 'Confirm password') }}
+        </div>
+
+        {{ form.checkbox('input-agree', 'agree', text_agree|default('I agree to the terms and conditions'), agree|default(false), '1', true, '', error_warning|default('')) }}
+
+        {% include 'catalog/view/template/component/ui/button.twig' with {
+          button_tag: 'button',
+          type: 'submit',
+          button_label: button_continue|default('Create Account'),
+          button_variant: 'primary',
+          button_size: 'md',
+          button_class: 'nk-auth-page__submit'
+        } only %}
+      </form>
+
+      <div class="nk-auth-page__links">
+        <a href="{{ login|default('#') }}">Already have an account? Login</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+{{ footer }}

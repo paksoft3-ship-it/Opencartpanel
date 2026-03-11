@@ -1,0 +1,20 @@
+{% include 'extension/novakur_minimal/catalog/view/template/common/header.twig' %}
+{% include 'extension/novakur_minimal/catalog/view/template/common/breadcrumb.twig' %}
+<div class="nm-container" style="padding:48px 24px;">
+  <h1 style="font-size:32px;font-weight:700;margin-bottom:32px;">Brands</h1>
+  {% if manufacturers %}
+  {% for manufacturer in manufacturers %}
+  <div style="margin-bottom:32px;">
+    <h2 style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--nm-text-muted);padding-bottom:8px;border-bottom:1px solid var(--nm-border);margin-bottom:12px;">{{ manufacturer.name }}</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;">
+      {% for brand in manufacturer.manufacturer %}
+      <a href="{{ brand.href }}" style="font-size:14px;padding:6px 14px;border:1px solid var(--nm-border);color:var(--nm-text);transition:all 200ms ease;">{{ brand.name }}</a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+  {% else %}
+  <p style="color:var(--nm-text-muted);">No brands found.</p>
+  {% endif %}
+</div>
+{% include 'extension/novakur_minimal/catalog/view/template/common/footer.twig' %}

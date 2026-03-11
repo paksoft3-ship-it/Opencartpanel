@@ -1,0 +1,35 @@
+{% include 'extension/novakur_minimal/catalog/view/template/common/header.twig' %}
+{% include 'extension/novakur_minimal/catalog/view/template/common/breadcrumb.twig' %}
+<div class="nm-container nm-listing">
+  <h1 class="nm-listing-title" style="margin-bottom:32px;">Wishlist</h1>
+  {% if products %}
+  <div class="nm-product-grid">
+    {% for product in products %}
+    <div class="nm-card">
+      <a href="{{ product.href }}" class="nm-card-image">
+        <img src="{{ product.thumb }}" alt="{{ product.name }}" loading="lazy">
+        {% if product.special %}<span class="nm-card-badge">Sale</span>{% endif %}
+      </a>
+      <div class="nm-card-body">
+        <a href="{{ product.href }}" class="nm-card-name">{{ product.name }}</a>
+        <div class="nm-card-price">
+          {% if product.special %}<span class="nm-price nm-price-sale">{{ product.special }}</span><span class="nm-price-old">{{ product.price }}</span>
+          {% else %}<span class="nm-price">{{ product.price }}</span>{% endif %}
+        </div>
+        <span style="font-size:12px;color:{% if product.stock == 'In Stock' %}#16a34a{% else %}var(--nm-text-muted){% endif %};">{{ product.stock }}</span>
+        <div class="nm-card-cta">
+          <button class="nm-btn nm-btn-primary nm-btn-sm" style="flex:1;" data-nm-add-to-cart data-product-id="{{ product.product_id }}">Add to Cart</button>
+          <a href="{{ remove_wishlist|default('index.php?route=account/wishlist.remove&wishlist_id=' ~ product.product_id) }}" class="nm-btn nm-btn-ghost nm-btn-sm">✕</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div style="text-align:center;padding:80px 0;">
+    <p style="font-size:16px;color:var(--nm-text-muted);margin-bottom:24px;">Your wishlist is empty.</p>
+    <a href="{{ home }}" class="nm-btn nm-btn-primary">Continue Shopping</a>
+  </div>
+  {% endif %}
+</div>
+{% include 'extension/novakur_minimal/catalog/view/template/common/footer.twig' %}

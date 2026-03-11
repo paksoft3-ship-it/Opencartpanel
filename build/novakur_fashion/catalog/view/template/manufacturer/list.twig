@@ -1,0 +1,12 @@
+{% include 'extension/novakur_fashion/catalog/view/template/common/header.twig' %}
+{% include 'extension/novakur_fashion/catalog/view/template/common/breadcrumb.twig' %}
+<div class="nf-container" style="padding:60px 32px;">
+  <h1 style="font-family:var(--nf-heading-font);font-size:36px;font-weight:700;margin-bottom:40px;">Brands</h1>
+  {% for manufacturer in manufacturers %}
+  <div style="margin-bottom:32px;">
+    <h2 style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--nf-secondary);padding-bottom:10px;border-bottom:1px solid var(--nf-border);margin-bottom:16px;">{{ manufacturer.name }}</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;">{% for brand in manufacturer.manufacturer %}<a href="{{ brand.href }}" style="font-size:13px;padding:8px 18px;border:1px solid var(--nf-border);transition:all 250ms ease;letter-spacing:0.06em;">{{ brand.name }}</a>{% endfor %}</div>
+  </div>
+  {% endfor %}
+</div>
+{% include 'extension/novakur_fashion/catalog/view/template/common/footer.twig' %}

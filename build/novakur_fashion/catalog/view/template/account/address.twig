@@ -1,0 +1,24 @@
+{% include 'extension/novakur_fashion/catalog/view/template/common/header.twig' %}
+{% include 'extension/novakur_fashion/catalog/view/template/common/breadcrumb.twig' %}
+<div class="nf-container" style="padding:48px 32px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;">
+    <h1 style="font-family:var(--nf-heading-font);font-size:32px;font-weight:700;">Addresses</h1>
+    <a href="{{ add }}" class="nf-btn nf-btn-outline">+ New Address</a>
+  </div>
+  {% if addresses %}
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+    {% for address in addresses %}
+    <div style="border:1px solid var(--nf-border);padding:24px;">
+      <p style="font-size:14px;line-height:1.8;color:var(--nf-text-muted);">{{ address.address_1 }}{% if address.address_2 %}, {{ address.address_2 }}{% endif %}<br>{{ address.city }} {{ address.postcode }}<br>{{ address.country }}</p>
+      <div style="display:flex;gap:8px;margin-top:16px;">
+        <a href="{{ address.edit }}" class="nf-btn nf-btn-ghost nf-btn-sm">Edit</a>
+        <a href="{{ address.delete }}" class="nf-btn nf-btn-ghost nf-btn-sm">Delete</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p style="color:var(--nf-text-muted);">No saved addresses.</p>
+  {% endif %}
+</div>
+{% include 'extension/novakur_fashion/catalog/view/template/common/footer.twig' %}

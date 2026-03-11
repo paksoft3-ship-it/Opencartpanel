@@ -1,0 +1,41 @@
+{# NovaKur Base commerce component: product_image_gallery #}
+{% set gallery_id = 'nk-gallery-' ~ (product_id|default('0')) %}
+{% set main_thumb = thumb|default('') %}
+{% set main_popup = popup|default(main_thumb) %}
+{% set gallery_images = images|default([]) %}
+
+<section class="nk-product-image-gallery" aria-label="Product images">
+  <div class="nk-product-image-gallery__viewer">
+    {% if main_thumb or main_popup %}
+      <input class="nk-product-image-gallery__radio" type="radio" name="{{ gallery_id }}" id="{{ gallery_id }}-0" checked />
+      <figure class="nk-product-image-gallery__slide" id="{{ gallery_id }}-0-panel">
+        <a class="nk-product-image-gallery__zoom" href="{{ main_popup|default(main_thumb) }}" target="_blank" rel="noopener">
+          <img class="nk-product-image-gallery__image" src="{{ main_thumb|default(main_popup) }}" alt="{{ heading_title|default('Product image') }}" loading="eager" width="760" height="760" />
+        </a>
+      </figure>
+    {% endif %}
+
+    {% for image in gallery_images %}
+      <input class="nk-product-image-gallery__radio" type="radio" name="{{ gallery_id }}" id="{{ gallery_id }}-{{ loop.index }}" />
+      <figure class="nk-product-image-gallery__slide" id="{{ gallery_id }}-{{ loop.index }}-panel">
+        <a class="nk-product-image-gallery__zoom" href="{{ image.popup|default(image.thumb|default('')) }}" target="_blank" rel="noopener">
+          <img class="nk-product-image-gallery__image" src="{{ image.thumb|default(image.popup|default('')) }}" alt="{{ heading_title|default('Product image') }} {{ loop.index }}" loading="lazy" width="760" height="760" />
+        </a>
+      </figure>
+    {% endfor %}
+
+    <div class="nk-product-image-gallery__thumbs" role="tablist" aria-label="Product thumbnails">
+      {% if main_thumb or main_popup %}
+        <label class="nk-product-image-gallery__thumb" for="{{ gallery_id }}-0" role="tab" aria-controls="{{ gallery_id }}-0-panel">
+          <img src="{{ main_thumb|default(main_popup) }}" alt="Main thumbnail" loading="lazy" width="96" height="96" />
+        </label>
+      {% endif %}
+
+      {% for image in gallery_images %}
+        <label class="nk-product-image-gallery__thumb" for="{{ gallery_id }}-{{ loop.index }}" role="tab" aria-controls="{{ gallery_id }}-{{ loop.index }}-panel">
+          <img src="{{ image.thumb|default(image.popup|default('')) }}" alt="Thumbnail {{ loop.index }}" loading="lazy" width="96" height="96" />
+        </label>
+      {% endfor %}
+    </div>
+  </div>
+</section>

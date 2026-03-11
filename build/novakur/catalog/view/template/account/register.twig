@@ -1,0 +1,74 @@
+{# NovaKur Base: Register page (Tailwind) #}
+{{ header }}
+
+<main class="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+  {% include 'extension/novakur/catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+  <div class="max-w-2xl mx-auto">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+      <div class="mb-8">
+        <h1 class="text-2xl font-black text-slate-900">{{ heading_title|default('Create Account') }}</h1>
+        <p class="text-slate-500 text-sm mt-1">Fill in your details to create a new account</p>
+      </div>
+
+      {% if error_warning is defined and error_warning %}
+        <div class="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm mb-6">{{ error_warning }}</div>
+      {% endif %}
+
+      <form action="{{ action|default('#') }}" method="post" class="space-y-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="input-firstname" class="block text-sm font-semibold text-slate-700 mb-1.5">First Name <span class="text-red-500">*</span></label>
+            <input type="text" id="input-firstname" name="firstname" value="{{ firstname|default('') }}" placeholder="First name" class="w-full rounded-xl border {{ error_firstname is defined and error_firstname ? 'border-red-400' : 'border-slate-200' }} px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+            {% if error_firstname is defined and error_firstname %}<p class="text-red-500 text-xs mt-1">{{ error_firstname }}</p>{% endif %}
+          </div>
+          <div>
+            <label for="input-lastname" class="block text-sm font-semibold text-slate-700 mb-1.5">Last Name <span class="text-red-500">*</span></label>
+            <input type="text" id="input-lastname" name="lastname" value="{{ lastname|default('') }}" placeholder="Last name" class="w-full rounded-xl border {{ error_lastname is defined and error_lastname ? 'border-red-400' : 'border-slate-200' }} px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+            {% if error_lastname is defined and error_lastname %}<p class="text-red-500 text-xs mt-1">{{ error_lastname }}</p>{% endif %}
+          </div>
+        </div>
+        <div>
+          <label for="input-email" class="block text-sm font-semibold text-slate-700 mb-1.5">Email Address <span class="text-red-500">*</span></label>
+          <input type="email" id="input-email" name="email" value="{{ email|default('') }}" placeholder="name@example.com" class="w-full rounded-xl border {{ error_email is defined and error_email ? 'border-red-400' : 'border-slate-200' }} px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+          {% if error_email is defined and error_email %}<p class="text-red-500 text-xs mt-1">{{ error_email }}</p>{% endif %}
+        </div>
+        <div>
+          <label for="input-telephone" class="block text-sm font-semibold text-slate-700 mb-1.5">Phone</label>
+          <input type="tel" id="input-telephone" name="telephone" value="{{ telephone|default('') }}" placeholder="+1 555 123 4567" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="input-password" class="block text-sm font-semibold text-slate-700 mb-1.5">Password <span class="text-red-500">*</span></label>
+            <input type="password" id="input-password" name="password" placeholder="Create password" class="w-full rounded-xl border {{ error_password is defined and error_password ? 'border-red-400' : 'border-slate-200' }} px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+            {% if error_password is defined and error_password %}<p class="text-red-500 text-xs mt-1">{{ error_password }}</p>{% endif %}
+          </div>
+          <div>
+            <label for="input-confirm" class="block text-sm font-semibold text-slate-700 mb-1.5">Confirm Password <span class="text-red-500">*</span></label>
+            <input type="password" id="input-confirm" name="confirm" placeholder="Repeat password" class="w-full rounded-xl border {{ error_confirm is defined and error_confirm ? 'border-red-400' : 'border-slate-200' }} px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 outline-none"/>
+            {% if error_confirm is defined and error_confirm %}<p class="text-red-500 text-xs mt-1">{{ error_confirm }}</p>{% endif %}
+          </div>
+        </div>
+
+        {% if text_agree is defined %}
+        <label class="flex items-start gap-3 cursor-pointer">
+          <input type="checkbox" name="agree" value="1" {{ agree is defined and agree ? 'checked' : '' }} class="mt-0.5 rounded border-slate-300 text-primary focus:ring-primary"/>
+          <span class="text-sm text-slate-600">{{ text_agree|raw }}</span>
+        </label>
+        {% if error_warning is defined and error_warning %}<p class="text-red-500 text-xs">{{ error_warning }}</p>{% endif %}
+        {% endif %}
+
+        <button type="submit" class="w-full bg-primary text-white rounded-xl py-3 font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+          {{ button_continue|default('Create Account') }}
+        </button>
+      </form>
+
+      <p class="text-center text-sm text-slate-500 mt-6">
+        Already have an account?
+        <a href="{{ login|default('#') }}" class="text-primary font-semibold hover:underline no-underline">Sign in</a>
+      </p>
+    </div>
+  </div>
+</main>
+
+{{ footer }}

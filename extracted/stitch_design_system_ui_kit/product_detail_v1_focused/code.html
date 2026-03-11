@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NovaKur Base - Premium OpenCart Theme</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .filled { font-variation-settings: 'FILL' 1; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl">deployed_code</span>
+<h2 class="text-slate-900 dark:text-white text-xl font-black leading-tight tracking-tight">NovaKur</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Shop</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Categories</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Deals</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Support</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<div class="hidden lg:flex w-full max-w-xs relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary focus:bg-white transition-all" placeholder="Search themes..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors relative">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">2</span>
+</button>
+<button class="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-sm text-slate-500 mb-8 overflow-x-auto whitespace-nowrap">
+<a class="hover:text-primary" href="#">Home</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<a class="hover:text-primary" href="#">OpenCart Themes</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">NovaKur Base</span>
+</nav>
+<!-- Product Hero Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+<!-- Image Gallery with Vertical Thumbnails -->
+<div class="lg:col-span-7 flex flex-col-reverse md:flex-row gap-4">
+<div class="flex md:flex-col gap-3 overflow-x-auto md:overflow-y-auto no-scrollbar md:h-[600px] w-full md:w-24 shrink-0">
+<div class="cursor-pointer border-2 border-primary rounded-lg overflow-hidden shrink-0 aspect-square md:aspect-auto">
+<img class="w-full h-full object-cover" data-alt="Dashboard theme preview thumbnail 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_rSNij5Ovl0GHkVrOUWEzpv4XhGYLEeZ6utPY_FH-sn2i-dB7WYDxcOB3VixneM6GEGD2hZbYpzWVvhS-E-4x6AH4K4gRRzCCTzeEtUEuoDIr7yFwsgzdFd0oaJ8j1NZKrUs8sn_9sbjEPuLYaisFYFlxnsbsRHx0JpBxX7s8G1w_XlbLbqqYs1qr3JfBo555TflyqDEGybHLZkPg3Ubux5yULrVO0RQpzt2lWJQ9Y2ec-BK6lEJ7f9cA4Rkir94aZLTMfPNo87rw"/>
+</div>
+<div class="cursor-pointer border-2 border-transparent hover:border-primary/50 rounded-lg overflow-hidden shrink-0 aspect-square md:aspect-auto">
+<img class="w-full h-full object-cover" data-alt="Theme layout preview thumbnail 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXvt4xr5n2wiXFfrzaR0PgEY4TMtS7NP4I_UTtSdMSDlwSDC9GIkTeBUK1KFQY8gPEtvs4XaEVPCPAyJ7pwKtmu0stMmok1pbZ9aCldWE9EZeMqw9-6tjgQRUZuwVxf_ugSNxrMLxyH0WBlpB1yE1_FAWrXqFN3iMk9KLqc3aFU70hZEAbGT6m8-P7fNDgBSTPEsxI68K1DO_OIj_wKkP2x7i0iefRpW0LEsJ5auReGNoWxhGUhnQGXFEYrwP8POUzg8qn_UlTA1zK"/>
+</div>
+<div class="cursor-pointer border-2 border-transparent hover:border-primary/50 rounded-lg overflow-hidden shrink-0 aspect-square md:aspect-auto">
+<img class="w-full h-full object-cover" data-alt="User interface design thumbnail 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuzUTsIMZl6vNHfPlRo6DNN5NTjJAQJA31gs-ZU-Frfqh01f6Kl5dnX-KFxNrvLUXhpiBef5x3s3o3-PsYjoGchlooynuOv8odJlZbxGVYos5W5zxilnkskj8Xvk-_C62zBuUQ6L09l3FQ8zZwTOsoBfwIsopw_k1sAKSnXDhS0B6d07hyQTRtfJsPu4V2sjt3C24O68H3oK8x6HhPUJAbV86n514mhPx8EKFiueIXNdMJW6YA-R94KXsVEUB4hvjnwSHGniCzNCbh"/>
+</div>
+<div class="cursor-pointer border-2 border-transparent hover:border-primary/50 rounded-lg overflow-hidden shrink-0 aspect-square md:aspect-auto">
+<img class="w-full h-full object-cover" data-alt="Mobile responsive view thumbnail 4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAJ4FqUsv4HsuamP21pNObuA6N754tfTAsXsagtvzqVg7HRPmQGNsrubzIq2g4KQYhYMulHfTjTQBGtVBmK67rVXl8vsZjGnxHEx8INLM1yG7JDh8NSQOezFAQzxsknApzMNfkzQArfN-YD5OG2TtCcO9aZNPklrveHf93I0XBts4T3tsvMhOY4I-l5VxAqbBHf4nde1_BCgAAnglMevvbPQkRf6csi2ZficzIq_HtoLODkoGQr0ER3Q_qMZJsLjrQDhZLjygySpVG"/>
+</div>
+</div>
+<div class="flex-1 bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 group relative">
+<img class="w-full h-full object-cover" data-alt="NovaKur Base main product large view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIbVw_RG9IkkLDEsIv9UZcASR13QAtUxm8ewhBXKvaE2bmqReZ1effjYbq-v41BrTFZ7aUVOPVW7_nvjVr7dlUuG0n2K5J0gKT6tim5ua-h2ngpotTkaAZKBAcy6iqv7SzrFDsXCCkVL7jrSOt5nMwvifMfccmykC5keb0bFByJaqwX6HSNRkJSwQMLXLDu6t11jW06h99Z0N-d5LQwc3xEJ8fD7RAUC-ukTiObyZv5dAPD-sBXxGcL811bCDrAXHCKjXaLj5SROUm"/>
+<div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Sale</div>
+</div>
+</div>
+<!-- Product Info -->
+<div class="lg:col-span-5 flex flex-col">
+<div class="mb-6">
+<h1 class="text-3xl md:text-4xl font-black text-slate-900 dark:text-white mb-2 leading-tight">NovaKur Base Premium OpenCart Theme</h1>
+<div class="flex items-center gap-4">
+<div class="flex text-yellow-400">
+<span class="material-symbols-outlined filled text-xl">star</span>
+<span class="material-symbols-outlined filled text-xl">star</span>
+<span class="material-symbols-outlined filled text-xl">star</span>
+<span class="material-symbols-outlined filled text-xl">star</span>
+<span class="material-symbols-outlined filled text-xl">star</span>
+</div>
+<span class="text-sm text-slate-500">(128 reviews)</span>
+<span class="text-sm text-green-600 font-semibold uppercase">In Stock</span>
+</div>
+</div>
+<div class="flex items-baseline gap-4 mb-8">
+<span class="text-4xl font-black text-primary">$199.00</span>
+<span class="text-xl text-slate-400 line-through">$249.00</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+                    NovaKur Base is a highly customizable, SEO-optimized, and lightning-fast OpenCart theme designed for modern e-commerce stores. Features a clean modular architecture and drag-and-drop builder.
+                </p>
+<div class="space-y-6 mb-8">
+<div class="flex items-center gap-4">
+<div class="flex items-center border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden bg-white dark:bg-slate-900">
+<button class="px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-base">remove</span>
+</button>
+<input class="w-12 text-center border-none focus:ring-0 bg-transparent font-bold" type="text" value="1"/>
+<button class="px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-base">add</span>
+</button>
+</div>
+<button class="flex-1 bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg flex items-center justify-center gap-2 transition-all transform active:scale-[0.98]">
+<span class="material-symbols-outlined">shopping_cart</span>
+                            Add to Cart
+                        </button>
+<button class="p-3 border border-slate-200 dark:border-slate-700 rounded-lg hover:text-red-500 hover:border-red-200 transition-all">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+<!-- Shipping Info Block -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-slate-100 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-primary/10 text-primary rounded-lg">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<div>
+<p class="text-sm font-bold">Fast Delivery</p>
+<p class="text-xs text-slate-500">Digital instant access</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="p-2 bg-primary/10 text-primary rounded-lg">
+<span class="material-symbols-outlined">assignment_return</span>
+</div>
+<div>
+<p class="text-sm font-bold">30-Day Returns</p>
+<p class="text-xs text-slate-500">Money back guarantee</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tabbed Section -->
+<div class="mb-16">
+<div class="border-b border-slate-200 dark:border-slate-800 flex gap-8 mb-8 overflow-x-auto no-scrollbar">
+<button class="border-b-2 border-primary pb-4 text-sm font-bold text-slate-900 dark:text-white">Description</button>
+<button class="border-b-2 border-transparent pb-4 text-sm font-bold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">Specifications</button>
+<button class="border-b-2 border-transparent pb-4 text-sm font-bold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">Reviews (128)</button>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+<div class="lg:col-span-2 space-y-6">
+<h3 class="text-2xl font-bold">Product Overview</h3>
+<p class="text-slate-600 dark:text-slate-400">
+                        NovaKur Base is not just a theme; it's a complete toolkit for your OpenCart store. We've optimized every single pixel to ensure your customers have the smoothest shopping experience possible. Built with modern web technologies including Tailwind CSS and Alpine.js.
+                    </p>
+<ul class="space-y-3">
+<li class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
+                            Mobile-first responsive design
+                        </li>
+<li class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
+                            Advanced Mega Menu builder included
+                        </li>
+<li class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
+                            Optimized for PageSpeed and Core Web Vitals
+                        </li>
+<li class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
+                            One-click demo data installation
+                        </li>
+</ul>
+</div>
+<div class="space-y-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
+<h4 class="font-bold mb-4">Features At Glance</h4>
+<div class="space-y-4">
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Version</span>
+<span class="font-medium">2.4.0</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Framework</span>
+<span class="font-medium">Bootstrap 5 + Tailwind</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Support</span>
+<span class="font-medium">6 Months Included</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Compatible with</span>
+<span class="font-medium">OpenCart 3.x, 4.x</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Related Products -->
+<div class="mb-16">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-2xl font-black">Related Products</h3>
+<div class="flex gap-2">
+<button class="p-2 border border-slate-200 dark:border-slate-800 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="p-2 border border-slate-200 dark:border-slate-800 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Related Item 1 -->
+<div class="group">
+<div class="aspect-square rounded-xl overflow-hidden bg-white dark:bg-slate-900 mb-4 border border-slate-200 dark:border-slate-800 relative">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="OpenCart theme variation dark mode" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMNcT5sNsQ1hzZEUL8JTy1HIdIrit32_RuAJHBA-ytxbzTe3eK8s_X8O3gwaIr_DOqSzQbBONPZMnRSBkD4MIirnPjdmzN2znk5SOHWfJLN9fT6FOxFmL7ZlUYAL1QBbLAx2pnPTBe-vbkn7xX2703jKcqNQ8bjbKQDSxx2Ippl6D0Pb7s7bFubKXCJLiE79w3uctmFTBAkikGNjbWr51pPJ-JskjDc9sFHHOAr6zWTj-s7WmekcHE-aFOT5B6zjWcCgYJ0ONxpiPL"/>
+<button class="absolute bottom-4 left-4 right-4 bg-white text-slate-900 py-2 rounded-lg font-bold shadow-lg opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                            Quick View
+                        </button>
+</div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-1">NovaKur Dark Mode Edition</h4>
+<p class="text-primary font-black">$149.00</p>
+</div>
+<!-- Related Item 2 -->
+<div class="group">
+<div class="aspect-square rounded-xl overflow-hidden bg-white dark:bg-slate-900 mb-4 border border-slate-200 dark:border-slate-800 relative">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="E-commerce development tools" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApjoQeYMnNit6ZsZU7ounMxwiJ3Ms2Y2DYD2h8EKPQkffhhO3IyvH_883xkPRZtk_Zlbjenrzroa2fMFe4mQgQ92GcOl9EkACe2NH_SFBITxUnfPwtslrDdlKZ-i6rZTVO2jSucXUEQOIsz7injNgNOWl-FLXnlPV6AK0G-q5VEwVEFo_CeJW2FCadoUwuro3uQICRNt8h2Ixp1aiGvdgyaXwoAu_W7be5XVen6KCnccIMJR3xTwYrVC1T1mD8cq9geLtxTUGo1IWQ"/>
+<button class="absolute bottom-4 left-4 right-4 bg-white text-slate-900 py-2 rounded-lg font-bold shadow-lg opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                            Quick View
+                        </button>
+</div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-1">Developer Expansion Pack</h4>
+<p class="text-primary font-black">$79.00</p>
+</div>
+<!-- Related Item 3 -->
+<div class="group">
+<div class="aspect-square rounded-xl overflow-hidden bg-white dark:bg-slate-900 mb-4 border border-slate-200 dark:border-slate-800 relative">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="Clean code web theme" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD95JbZsQLQMqf3nj7ha3TKf1zKwccuDBXwutykO8IqFrkZqflVcBErxsifC80v_IQeTCLy2XjqJLIhXtSeUtBuboYOXykad0PrCPsqYL58cG718AckmOkVATl8SK_kAFIMwr4xsajQ1BwFqhMg5ooOQpT7j-u8bmGROeBoCZ_DZJ3eTlHN-jON13auXW4DvncH5_12BVhzx2diKTPS9gZHfZcR3HAstOD2qs8Yz4cewcsz5I1PQtpyLYV7wRPwjeK8US6ZhxW21IjW"/>
+<button class="absolute bottom-4 left-4 right-4 bg-white text-slate-900 py-2 rounded-lg font-bold shadow-lg opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                            Quick View
+                        </button>
+</div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-1">NovaKur Minimalist v2</h4>
+<p class="text-primary font-black">$129.00</p>
+</div>
+<!-- Related Item 4 -->
+<div class="group">
+<div class="aspect-square rounded-xl overflow-hidden bg-white dark:bg-slate-900 mb-4 border border-slate-200 dark:border-slate-800 relative">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="Multi-vendor marketplace theme" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMLm8l6vC0-LYjOpKmNmDxEVFm9hgHkMRAVJN0XWTtbGZPhhw7lhyJXpbyI6qIMdP2a7r9oFEdMqB_sMgbDa6ohzyiN09bvvFbrbqJitx8J6kanGgHSIk6QxXNCQ4mcUYdusieWch3ajLxQVmk-FKNTQalHdnU3cU6cC8Fp_pX2G37WBrztDSjsoT58Yl_PwwFO6LKlnMnklEaNsid0qvuOKLCfveGgN_r3yLsA4oc2cp3NhvZ9gbLkIh5QG2DCIilY1QjPUvMqzKb"/>
+<button class="absolute bottom-4 left-4 right-4 bg-white text-slate-900 py-2 rounded-lg font-bold shadow-lg opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                            Quick View
+                        </button>
+</div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-1">MarketPlace Multi-Vendor Pro</h4>
+<p class="text-primary font-black">$299.00</p>
+</div>
+</div>
+</div>
+<!-- Recently Viewed Carousel -->
+<div class="mb-16 pt-12 border-t border-slate-200 dark:border-slate-800">
+<h3 class="text-xl font-bold mb-6">Recently Viewed</h3>
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-4">
+<div class="min-w-[120px] aspect-square rounded-lg overflow-hidden border border-slate-200 dark:border-slate-800">
+<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all cursor-pointer" data-alt="Previously viewed theme 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbM65Bkmdeg-nRKz5zg4_P_xAIBIlbSIGNYai2BAuCzQmq6f6uw7_5N7ShQYcK5E1TMrzrHB153_sdnr5BySJ5Bjw972Q-qSeKOOR97i5y9MaIxkAfeuh0zn0hFJnjIZRzQgTD0annsFjBwXLJT3uRtIfqe5-_d2CNC7qI5FtAfgYX9kXh0gvGvNoEi_WiNG1_phMk44QhrV32KWG8HLuNucYkVIMr9g9kNeLqNwXMT8mOj55B5Q2yzDV3XWw9OAAU2YFIXMPV31PB"/>
+</div>
+<div class="min-w-[120px] aspect-square rounded-lg overflow-hidden border border-slate-200 dark:border-slate-800">
+<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all cursor-pointer" data-alt="Previously viewed theme 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7h5CJJu39cmBYswah8zghmYYKBmwD5bxlCC9AZT-lY5P3BfURLUEMalcjQq8RtBbfNfY4b1GBrwCQAz7yCOdfoF_GhicqFTIkv8YcyfSYVjn1fdtrTrIUhMXtPQH9mVzoXefBkKY-VRKb_DtSOKUkZBBHLFVpyDNj-6YsJzI9EmEvHpN67ocrKS-P-fUNFu5EV9C4WSKOOCUwjcqHLR3Bf8OOfoXa-8CCf5fj5ckozNM0NB60uS3vBPFqJ73A7ZDea3bjdpyVNQoy"/>
+</div>
+<div class="min-w-[120px] aspect-square rounded-lg overflow-hidden border border-slate-200 dark:border-slate-800">
+<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all cursor-pointer" data-alt="Previously viewed theme 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkCXvb8v0D56famhz8YPpnInV43Di04V2D1KSPGB80kwsb9WDZ6P9ypfR9w-J0oS762Tztz4qkT5NsAM2pq-EzEjfAFlULlRZNXVcO5hvRkOcdqPJ9awvTyvW6CJJ8KRUfdsIXRiO6salaLl3AgsJM3yOjaHEA8GJbktZbY4EcHfjtPEfr23_mMcwAFQTwkBTyFzQCsUMYdKowLccptYRekMBpI7KhSnSUS13_XEpWqiOe7vvKgXEN0edXDQxDtsIqqpDYYMQDVXRV"/>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Simple -->
+<footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2 text-primary grayscale opacity-70">
+<span class="material-symbols-outlined text-2xl">deployed_code</span>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold">NovaKur</h2>
+</div>
+<div class="flex gap-8 text-sm text-slate-500">
+<a class="hover:text-primary" href="#">Terms of Service</a>
+<a class="hover:text-primary" href="#">Privacy Policy</a>
+<a class="hover:text-primary" href="#">Refund Policy</a>
+</div>
+<div class="text-sm text-slate-500">
+                    © 2024 NovaKur Themes. All rights reserved.
+                </div>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,25 @@
+{# NovaKur Base section component: newsletter_signup (Tailwind) #}
+{% set heading = heading|default('Stay in the loop') %}
+{% set subheading = subheading|default('Get exclusive deals, new arrivals and more — delivered to your inbox.') %}
+{% set action = action|default('#') %}
+{% set button_text = button_text|default('Subscribe') %}
+<section class="bg-gradient-to-br from-primary to-blue-700 py-16 px-4">
+  <div class="max-w-xl mx-auto text-center">
+    <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-5">
+      <span class="material-symbols-outlined text-white text-2xl">mail</span>
+    </div>
+    <h2 class="text-3xl font-black text-white mb-2">{{ heading }}</h2>
+    <p class="text-white/75 text-sm mb-8">{{ subheading }}</p>
+    <form action="{{ action }}" method="post" data-nk-newsletter>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <input type="email" name="email" placeholder="Enter your email address"
+          class="flex-1 rounded-xl px-4 py-3 text-sm outline-none border-0 focus:ring-2 focus:ring-white/30 bg-white placeholder:text-slate-400"/>
+        <button type="submit"
+          class="bg-white text-primary rounded-xl px-6 py-3 font-bold hover:bg-slate-50 transition-all shrink-0 shadow-lg">
+          {{ button_text }}
+        </button>
+      </div>
+      <p class="text-white/50 text-xs mt-3">No spam. Unsubscribe anytime.</p>
+    </form>
+  </div>
+</section>

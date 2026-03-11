@@ -1,0 +1,45 @@
+{% include 'extension/novakur_fashion/catalog/view/template/common/header.twig' %}
+{% include 'extension/novakur_fashion/catalog/view/template/common/breadcrumb.twig' %}
+<div class="nf-container nf-listing">
+  <div class="nf-listing-header">
+    <div>
+      <h1 class="nf-listing-title">{{ heading_1 }}</h1>
+      {% if description %}<div style="font-size:14px;color:var(--nf-text-muted);margin-top:8px;max-width:600px;">{{ description }}</div>{% endif %}
+      {% if results %}<p class="nf-listing-count" style="margin-top:8px;">{{ results }}</p>{% endif %}
+    </div>
+    <div class="nf-listing-controls">
+      {% if sorts %}<select class="nf-listing-select" onchange="location=this.value">{% for sort in sorts %}<option value="{{ sort.href }}" {% if sort.selected %}selected{% endif %}>{{ sort.text }}</option>{% endfor %}</select>{% endif %}
+      {% if limits %}<select class="nf-listing-select" onchange="location=this.value">{% for limit in limits %}<option value="{{ limit.href }}" {% if limit.selected %}selected{% endif %}>{{ limit.text }}</option>{% endfor %}</select>{% endif %}
+    </div>
+  </div>
+  {% if products %}
+  <div class="nf-product-grid">
+    {% for product in products %}
+    <div class="nf-card">
+      <a href="{{ product.href }}" class="nf-card-image">
+        <img src="{{ product.thumb }}" alt="{{ product.name }}" loading="lazy">
+        {% if product.special %}<span class="nf-card-badge">Sale</span>{% endif %}
+        <div class="nf-card-actions">
+          <button class="nf-card-action" data-nf-add-to-cart data-product-id="{{ product.product_id }}">Add to Cart</button>
+          <button class="nf-card-action nf-card-action-wish" data-nf-wishlist data-product-id="{{ product.product_id }}" aria-label="Wishlist">♡ Wishlist</button>
+        </div>
+      </a>
+      <div class="nf-card-body">
+        <a href="{{ product.href }}" class="nf-card-name">{{ product.name }}</a>
+        <div class="nf-card-price">
+          {% if product.special %}<span class="nf-price nf-price-sale">{{ product.special }}</span><span class="nf-price-old">{{ product.price }}</span>
+          {% else %}<span class="nf-price">{{ product.price }}</span>{% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div style="text-align:center;padding:100px 0;">
+    <p style="font-family:var(--nf-heading-font);font-size:24px;color:var(--nf-text-muted);margin-bottom:32px;">No products in this category yet.</p>
+    <a href="{{ home }}" class="nf-btn nf-btn-outline">Return to Homepage</a>
+  </div>
+  {% endif %}
+  {% if pagination %}<div class="nf-pagination">{{ pagination }}</div>{% endif %}
+</div>
+{% include 'extension/novakur_fashion/catalog/view/template/common/footer.twig' %}

@@ -1,0 +1,27 @@
+{# NovaKur Base section component: brand_logos #}
+{% set section_heading = heading|default('Trusted Brands') %}
+{% set brand_list = brands|default([]) %}
+
+<section class="py-10 border-t border-slate-100">
+  <h2 class="text-xs font-bold uppercase tracking-widest text-slate-400 text-center mb-8">{{ section_heading }}</h2>
+
+  <div class="flex flex-wrap items-center justify-center gap-8">
+    {% if brand_list %}
+      {% for brand in brand_list %}
+        <a href="{{ brand.href|default('#') }}" class="no-underline">
+          {% if brand.image is defined and brand.image %}
+            <img src="{{ brand.image|default('') }}" alt="{{ brand.name|default('Brand') }}" class="h-8 object-contain opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"/>
+          {% else %}
+            <span class="text-lg font-black text-slate-300 hover:text-slate-500 transition-colors">{{ brand.name|default('Brand') }}</span>
+          {% endif %}
+        </a>
+      {% endfor %}
+    {% else %}
+      {% for brand_name in ['Apple', 'Samsung', 'Sony', 'Nike', 'Adidas', 'Canon'] %}
+        <a href="#" class="no-underline">
+          <span class="text-lg font-black text-slate-300 hover:text-slate-500 transition-colors">{{ brand_name|default('Brand') }}</span>
+        </a>
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>

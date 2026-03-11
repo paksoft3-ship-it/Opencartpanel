@@ -1,0 +1,53 @@
+{# NovaKur Base: Product route shell #}
+{{ header }}
+
+{% include 'catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+<main id="content" class="nk-product-page">
+  <div class="nk-global-container__inner">
+    <article class="nk-product-page__layout">
+      <div class="nk-product-page__media">
+        {% include 'catalog/view/template/component/commerce/product_image_gallery.twig' with {
+          product_id: product_id|default('0'),
+          heading_title: heading_title|default('Product'),
+          thumb: thumb|default(''),
+          popup: popup|default(thumb|default('')),
+          images: images|default([])
+        } only %}
+      </div>
+
+      <div class="nk-product-page__summary">
+        <h1 class="nk-product-page__title">{{ heading_title|default('Product') }}</h1>
+
+        {% include 'catalog/view/template/component/ui/price_display.twig' with {
+          price: price|default('$0.00'),
+          special: special|default('')
+        } only %}
+
+        {% include 'catalog/view/template/component/commerce/add_to_cart_button.twig' with {
+          action: action|default('#'),
+          product_id: product_id|default('0'),
+          quantity: quantity|default(0),
+          minimum: minimum|default(1),
+          stock: stock|default(''),
+          entry_qty: entry_qty|default('Qty'),
+          button_cart: button_cart|default('Add to Cart'),
+          button_wishlist: button_wishlist|default('Wishlist')
+        } only %}
+      </div>
+    </article>
+
+    {% include 'catalog/view/template/component/commerce/product_tabs.twig' with {
+      product_id: product_id|default('0'),
+      tab_description: tab_description|default('Description'),
+      tab_attribute: tab_attribute|default('Specifications'),
+      tab_review: tab_review|default('Reviews'),
+      description: description|default(''),
+      attribute_groups: attribute_groups|default([]),
+      review_status: review_status|default(true),
+      reviews: reviews|default('No reviews yet.')
+    } only %}
+  </div>
+</main>
+
+{{ footer }}

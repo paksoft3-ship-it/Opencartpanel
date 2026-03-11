@@ -1,0 +1,29 @@
+{# NovaKur Base UI component: tab_bar (Tailwind) #}
+{% set target_prefix = target_prefix|default('tab-panel') %}
+<div role="tablist" class="flex border-b border-slate-200 gap-1">
+  {% for tab in tabs|default([]) %}
+    <button
+      role="tab"
+      data-tab="{{ tab.id }}"
+      onclick="nkSwitchTab('{{ target_prefix }}', '{{ tab.id }}', this)"
+      class="flex items-center gap-1.5 px-4 py-2.5 text-sm font-semibold border-b-2 transition-colors {{ tab.active|default(false) ? 'border-primary text-primary' : 'border-transparent text-slate-500 hover:text-slate-700' }}">
+      {% if tab.icon is defined and tab.icon %}<span class="material-symbols-outlined text-[16px]">{{ tab.icon }}</span>{% endif %}
+      {{ tab.label }}
+    </button>
+  {% endfor %}
+</div>
+<script>
+if (typeof nkSwitchTab === 'undefined') {
+  window.nkSwitchTab = function(prefix, activeId, btn) {
+    btn.closest('[role="tablist"]').querySelectorAll('[role="tab"]').forEach(function(b) {
+      b.classList.remove('border-primary','text-primary');
+      b.classList.add('border-transparent','text-slate-500');
+    });
+    btn.classList.add('border-primary','text-primary');
+    btn.classList.remove('border-transparent','text-slate-500');
+    document.querySelectorAll('[id^="' + prefix + '-"]').forEach(function(p) { p.classList.add('hidden'); });
+    var panel = document.getElementById(prefix + '-' + activeId);
+    if (panel) panel.classList.remove('hidden');
+  };
+}
+</script>

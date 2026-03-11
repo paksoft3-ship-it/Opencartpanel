@@ -1,0 +1,122 @@
+{# NovaKur Base commerce component: product_tabs #}
+{% import 'extension/novakur/catalog/view/template/component/ui/form_elements.twig' as form %}
+
+{% set tabs_id = 'nk-tabs-' ~ (product_id|default('0')) %}
+{% set attrs = attribute_groups|default([]) %}
+{% set review_list = reviews|default([]) %}
+{% set selected_rating = rating|default(0) %}
+
+<section class="nk-product-tabs" aria-label="Product information tabs">
+  <input class="nk-product-tabs__radio" type="radio" name="{{ tabs_id }}" id="{{ tabs_id }}-description" checked>
+  <input class="nk-product-tabs__radio" type="radio" name="{{ tabs_id }}" id="{{ tabs_id }}-specs">
+  <input class="nk-product-tabs__radio" type="radio" name="{{ tabs_id }}" id="{{ tabs_id }}-reviews">
+
+  <div class="nk-product-tabs__nav" role="tablist" aria-label="Product content tabs">
+    <label class="nk-product-tabs__tab" for="{{ tabs_id }}-description" role="tab">{{ tab_description|default('Description') }}</label>
+    <label class="nk-product-tabs__tab" for="{{ tabs_id }}-specs" role="tab">{{ tab_attribute|default('Specifications') }}</label>
+    <label class="nk-product-tabs__tab" for="{{ tabs_id }}-reviews" role="tab">{{ tab_review|default('Reviews') }}</label>
+  </div>
+
+  <div class="nk-product-tabs__content">
+    <section class="nk-product-tabs__panel nk-product-tabs__panel--description" role="tabpanel">
+      <div class="nk-product-tabs__prose">
+        {{ description|default('No description available.') }}
+      </div>
+    </section>
+
+    <section class="nk-product-tabs__panel nk-product-tabs__panel--specs" role="tabpanel">
+      {% if attrs %}
+        <div class="nk-product-tabs__spec-groups">
+          {% for attribute_group in attrs %}
+            <div class="nk-product-tabs__spec-group">
+              <h3 class="nk-product-tabs__spec-title">{{ attribute_group.name }}</h3>
+              <table class="nk-product-tabs__spec-table">
+                <tbody>
+                  {% for attribute in attribute_group.attribute %}
+                    <tr>
+                      <th>{{ attribute.name }}</th>
+                      <td>{{ attribute.text }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="nk-product-tabs__empty">No specifications available yet.</p>
+      {% endif %}
+    </section>
+
+    <section class="nk-product-tabs__panel nk-product-tabs__panel--reviews" role="tabpanel">
+      <div class="nk-product-tabs__reviews-block">
+        <div class="nk-product-tabs__reviews-list" aria-label="Customer reviews">
+          {% if review_list is iterable and review_list|length %}
+            {% for review_item in review_list %}
+              {% set item_rating = review_item.rating|default(0) %}
+              <article class="nk-product-tabs__review-item">
+                <header class="nk-product-tabs__review-head">
+                  <div class="nk-product-tabs__review-stars" aria-label="{{ item_rating }} out of 5 stars">
+                    {% for i in 1..5 %}
+                      <span class="nk-product-tabs__star{{ i <= item_rating ? ' is-filled' : '' }}">★</span>
+                    {% endfor %}
+                  </div>
+                  <div class="nk-product-tabs__review-meta">
+                    <strong class="nk-product-tabs__review-author">{{ review_item.author|default(author|default('Guest')) }}</strong>
+                    <span class="nk-product-tabs__review-date">{{ review_item.date_added|default(date_added|default('')) }}</span>
+                  </div>
+                </header>
+                <p class="nk-product-tabs__review-text">{{ review_item.text|default(text|default('')) }}</p>
+              </article>
+            {% endfor %}
+          {% elseif review_list is not iterable and review_list %}
+            <p class="nk-product-tabs__reviews-summary">{{ review_list }}</p>
+          {% else %}
+            <p class="nk-product-tabs__empty">No reviews yet.</p>
+          {% endif %}
+        </div>
+
+        {% if review_status is defined and review_status %}
+          {% if review_guest is not defined or review_guest %}
+            <form class="nk-product-tabs__review-form" method="post" action="{{ review_action|default('#') }}" id="nk-review-form">
+              {{ form.input('input-review-author', 'author', 'Name', author|default(''), 'text', true, '', error_author|default(''), 'Your name') }}
+
+              <div class="nk-form-field nk-form-field--rating{{ error_rating is defined and error_rating ? ' has-error' : '' }}">
+                <span class="nk-form-field__label">Rating <span class="nk-form-field__required" aria-hidden="true">*</span></span>
+                <div class="nk-product-tabs__rating-input" role="radiogroup" aria-label="Select a rating">
+                  {% for value in [5, 4, 3, 2, 1] %}
+                    <input
+                      class="nk-product-tabs__rating-radio"
+                      type="radio"
+                      id="{{ tabs_id }}-rating-{{ value }}"
+                      name="rating"
+                      value="{{ value }}"
+                      {{ selected_rating == value ? 'checked' : '' }}
+                    >
+                    <label class="nk-product-tabs__rating-label" for="{{ tabs_id }}-rating-{{ value }}" title="{{ value }} stars">★</label>
+                  {% endfor %}
+                </div>
+                <p class="nk-form-field__error" role="alert">{{ error_rating|default('') }}</p>
+              </div>
+
+              {{ form.textarea('input-review-text', 'text', 'Review', text|default(''), 5, true, '', error_text|default(''), 'Write your review') }}
+
+              {% include 'extension/novakur/catalog/view/template/component/ui/button.twig' with {
+                button_tag: 'button',
+                type: 'submit',
+                button_label: 'Submit Review',
+                button_variant: 'primary',
+                button_size: 'sm',
+                button_class: 'nk-product-tabs__review-submit'
+              } only %}
+            </form>
+          {% else %}
+            <p class="nk-product-tabs__empty">Please login to write a review.</p>
+          {% endif %}
+        {% else %}
+          <p class="nk-product-tabs__empty">Reviews are disabled for this product.</p>
+        {% endif %}
+      </div>
+    </section>
+  </div>
+</section>

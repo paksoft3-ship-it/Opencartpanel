@@ -1,0 +1,26 @@
+{
+  "slug": "novakur-base-theme",
+  "name": "NovaKur Base Theme for OpenCart 4",
+  "shortDescription": "Lightweight component-based OpenCart 4 base theme with Twig templates for product cards, price blocks, cart, and more.",
+  "description": "NovaKur Base is the foundational OpenCart 4 theme providing a clean, component-based Twig template system. It includes templates for product cards, price blocks, discount badges, add-to-cart buttons, wishlist, product tabs, and standard commerce components. Use it as a starter theme or as the foundation for customization.",
+  "price": 0,
+  "categoryId": "themes",
+  "developerId": "novakur",
+  "compatibility": ["OpenCart 4.0", "OpenCart 4.1"],
+  "images": [],
+  "features": [
+    "Component-based Twig templates",
+    "Product card (standard & featured)",
+    "Price block & discount badge",
+    "Add-to-cart & wishlist buttons",
+    "Product tabs",
+    "OCMOD — one-click install",
+    "No core file modifications",
+    "Free / open starter theme"
+  ],
+  "tags": ["theme", "opencart4", "base", "starter", "ocmod", "free"],
+  "version": "1.0.0",
+  "status": "published",
+  "demoUrl": "http://localhost/opencart/",
+  "buildFile": "../../build/novakur_base_oc4_theme.ocmod.zip"
+}

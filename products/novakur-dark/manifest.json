@@ -1,0 +1,27 @@
+{
+  "slug": "novakur-dark-theme",
+  "name": "NovaKur Dark Theme for OpenCart 4",
+  "shortDescription": "A sleek dark-mode OpenCart 4 theme with hero banner, category grid, featured products section, and custom header/footer.",
+  "description": "NovaKur Dark is the dark variant of the NovaKur theme family for OpenCart 4. It features a full dark-mode storefront with a custom hero banner, benefits bar, category grid, featured products carousel, newsletter signup section, and redesigned header and footer. Install via OCMOD — no core file edits required.",
+  "price": 19.99,
+  "categoryId": "themes",
+  "developerId": "novakur",
+  "compatibility": ["OpenCart 4.0", "OpenCart 4.1"],
+  "images": [],
+  "features": [
+    "Full dark-mode storefront",
+    "Hero banner section",
+    "Benefits bar",
+    "Category grid section",
+    "Featured products carousel",
+    "Newsletter signup section",
+    "Custom header & footer",
+    "OCMOD — one-click install",
+    "No core file modifications"
+  ],
+  "tags": ["theme", "opencart4", "dark-mode", "ocmod", "homepage"],
+  "version": "1.0.0",
+  "status": "published",
+  "demoUrl": "http://localhost/opencart/",
+  "buildFile": "../../build/novakur_dark.ocmod.zip"
+}

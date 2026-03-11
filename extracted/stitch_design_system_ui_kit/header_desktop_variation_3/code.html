@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NovaKur Base | Minimalist E-commerce</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Custom thin scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<!-- Announcement Bar -->
+<div class="w-full bg-slate-900 dark:bg-slate-800 py-2.5 px-4 text-center">
+<p class="text-xs font-medium tracking-wide text-white uppercase">
+            Complimentary shipping on orders over $150 • <a class="underline underline-offset-4 hover:text-primary transition-colors" href="#">Join NovaRewards</a>
+</p>
+</div>
+<!-- Header Container -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+<div class="flex items-center justify-between h-16 lg:h-20">
+<!-- Logo Section -->
+<div class="flex items-center gap-12">
+<a class="flex items-center gap-2 group" href="/">
+<div class="size-8 bg-slate-900 dark:bg-slate-100 rounded-lg flex items-center justify-center text-white dark:text-slate-900 group-hover:bg-primary transition-colors">
+<svg class="size-5" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<span class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">NovaKur</span>
+</a>
+<!-- Category Navigation -->
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-sm font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors" href="#">Shop</a>
+<a class="text-sm font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors" href="#">New Arrivals</a>
+<a class="text-sm font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors" href="#">Collections</a>
+<a class="text-sm font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors" href="#">Journal</a>
+</nav>
+</div>
+<!-- Action Group -->
+<div class="flex items-center gap-4">
+<!-- Expandable Search Bar -->
+<div class="relative flex items-center group">
+<div class="flex items-center bg-slate-100 dark:bg-slate-800/50 rounded-full px-4 h-10 transition-all duration-300 ease-in-out w-10 md:w-64 focus-within:w-72 border border-transparent focus-within:border-primary/30">
+<span class="material-symbols-outlined text-slate-500 text-[20px] shrink-0">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-sm placeholder:text-slate-400 text-slate-900 dark:text-slate-100 ml-2 outline-none hidden md:block" placeholder="Search products..." type="text"/>
+</div>
+</div>
+<!-- Icons -->
+<div class="flex items-center gap-1">
+<button class="p-2.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400 group relative">
+<span class="material-symbols-outlined text-[24px] group-hover:text-slate-900 dark:group-hover:text-slate-100">person</span>
+</button>
+<button class="p-2.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400 group relative">
+<span class="material-symbols-outlined text-[24px] group-hover:text-slate-900 dark:group-hover:text-slate-100">shopping_bag</span>
+<span class="absolute top-1.5 right-1.5 size-4 bg-primary text-white text-[10px] font-bold flex items-center justify-center rounded-full ring-2 ring-white dark:ring-background-dark">
+                                2
+                            </span>
+</button>
+<div class="ml-2 pl-4 border-l border-slate-200 dark:border-slate-800 hidden sm:block">
+<div class="size-8 rounded-full bg-gradient-to-tr from-primary to-blue-400 overflow-hidden ring-2 ring-offset-2 ring-transparent hover:ring-primary/20 transition-all cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="User profile avatar portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrqqz2jN-95Fz3WAXXw29QCQbm0mRlUGbePEUU5PdTHIg0gCgFQ649e07kZ-hgyxYUTmPX67GKKQSez0MYWiu9QKcrFHqSThAThltI2XSWjO7QuW8yy3rPXBteSbK9NSRCIbZHBaoZ4DmJgo5y5wl7viQ8j_PRzyt_rmsk2hmdauU4mEHzq5ZTJGSWkalvnsL45y3dsusy1wtFdqMF9UBd4ak4gxcguic5Bujj9XJdRzUTgRZe5oDJb3INdBKLzX-jayfo8mXrYRGJ"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Placeholder for Preview -->
+<main class="max-w-[1440px] mx-auto px-6 lg:px-12 py-12">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Hero Card Example -->
+<div class="col-span-1 md:col-span-2 lg:col-span-4 h-[500px] rounded-2xl bg-slate-900 overflow-hidden relative group">
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent z-10"></div>
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Minimalist modern store interior aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL5YULWfZR7xBGKWjs1hY3X9_y15F5usSLZVFQSpMAA0YJ52DFFIsDC5qI6iIlsbu8yrhEOeY_1Zb8LQRVWugs8gDKRWkj826Jtrbp7LpN08aY7hx9xdsoSvLtUhw9z3rkZUAJBvhuqduJtSWb_G4YVPWQ8wcZ6isPf0fP_TNbnvjjLUORNlaKuvRk27Rj0TPN19ve8BZxHC-LcfvJJhSL2Q8SUiOorN4koJf3KUWPEIYpANuBjQMwx5ZSNDndVzkSITv-O8NuTwnt"/>
+<div class="relative z-20 h-full flex flex-col justify-end p-10 text-white max-w-2xl">
+<span class="text-sm font-semibold tracking-widest uppercase mb-4 text-primary">Summer Collection 2024</span>
+<h1 class="text-5xl md:text-6xl font-bold mb-6 leading-[1.1]">Essentials Redefined.</h1>
+<p class="text-lg text-slate-300 mb-8 max-w-lg">Discover our latest collection of sustainable everyday pieces designed for the modern lifestyle.</p>
+<div class="flex gap-4">
+<button class="bg-primary hover:bg-blue-600 text-white px-8 py-4 rounded-full font-bold transition-all transform active:scale-95 shadow-lg shadow-primary/20">Shop Now</button>
+<button class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-8 py-4 rounded-full font-bold transition-all">Explore Lookbook</button>
+</div>
+</div>
+</div>
+<!-- Product Card Example -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden relative mb-4">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Minimalist beige jacket product photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrPkMomjYE4j8jNI9brNvxclEaScuN6jKI3K9Gnj5p5A-NFKZg6fsVMjqnxKseor7NMAzOqUc-yRSRk2al17IjBjV9NtFag69WtAjjjGXx0s4b2kDxW4M2ycr9ZabVrGbAWKlb1r74PEaZAB1TDwzm0Uz7LRC07v-cpjd0vdSgY2meVaRXChJUquheMxtloOvE0pmeozb_DOU0MK4zQdtFaqrfPCkbtJb96GV-HJIb-LqGLscVoU6gi8NK1kC8G7Y30CX_pTdP7ezS"/>
+<button class="absolute bottom-4 right-4 size-10 bg-white rounded-full flex items-center justify-center shadow-lg opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 text-slate-900">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+<h3 class="font-medium text-slate-900 dark:text-slate-100 mb-1">Standard Utility Jacket</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-2">Essential Outerwear</p>
+<p class="font-bold text-slate-900 dark:text-slate-100">$185.00</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden relative mb-4">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Premium white cotton t-shirt flatlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUQZcZe0i2AfHU2wMnoV55t2icZP_onS7ybpcjF-GeCCzCLQ2eqmj0LpFeutKYof-Yi6Ub5v_7qHyqADFuxoBQ85u6AfFPTya51iQk88Ryv301w6HIlqvX_OOLKLAsPCSb0IfLhsHkzVLgic_eJMKbBi2zmsHTWs-YhB6wI82HSrICs7sqRa1zepqskZuciNpI3H8AlIpKWXrb9bqk6Jaz2MsROhveSELC1qeiIyVAWFM2TUS44F3SCPgcaJ16d3HKhACINoSkPNIY"/>
+<button class="absolute bottom-4 right-4 size-10 bg-white rounded-full flex items-center justify-center shadow-lg opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 text-slate-900">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+<h3 class="font-medium text-slate-900 dark:text-slate-100 mb-1">Premium Heavyweight Tee</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-2">Available in 6 Colors</p>
+<p class="font-bold text-slate-900 dark:text-slate-100">$45.00</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden relative mb-4">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Classic black leather boots close-up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUOga2lfr-Q0g3a0K3ZaXiiN9qGq3KPXw45MiB_IK54pQQm7K4lLr2mLucpPq9_-gUPiSHOaWwchoe9if3IdknJELdBqBXusCt23t7yexOvfVswwJIIsYeDKlshQAAfrz6KWV0knfpx6NpfebYqUJJdDJj4fpztik0Vj7JQtZLHFtPoBDeYh-4C7gIDgmqhKMXzYaeeYV9puhL3FHXyjVsi2BB0xINk0CdOTgSsAPQkgSqZPFxAkahx2tTNsIAuhtnxUxL3oj78dIS"/>
+<button class="absolute bottom-4 right-4 size-10 bg-white rounded-full flex items-center justify-center shadow-lg opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 text-slate-900">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+<h3 class="font-medium text-slate-900 dark:text-slate-100 mb-1">Chelsea Boot L1</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-2">Full Grain Leather</p>
+<p class="font-bold text-slate-900 dark:text-slate-100">$295.00</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden relative mb-4">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Modern high-waisted denim jeans" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZwnhjsasDK8_u8TYOwMg-naGsXib9QLrDp60D5pXBym5nCcMQd5vn_pKU9QIG3Cr0kHQ6TCf3GVn3883rT2ASkZxaIBac4KeY6IppTsUw2kccQjoeokjnPiscFAg3YC-1q-hFas5V-R_eYB-rQydtD1O2bGaSMWIYXhON1b1G3FuD-Ni6opxwX1HyzJnmeLNTC_sOGxL8uXk07Gk6g8XH9UcPmrYOok2rgJseKT38FV4MENDrR0xoXk6V45ueOkqL6V7RPaf1SZne"/>
+<button class="absolute bottom-4 right-4 size-10 bg-white rounded-full flex items-center justify-center shadow-lg opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 text-slate-900">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+<h3 class="font-medium text-slate-900 dark:text-slate-100 mb-1">Raw Denim Tapered</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-2">Selvedge Finish</p>
+<p class="font-bold text-slate-900 dark:text-slate-100">$140.00</p>
+</div>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="border-t border-slate-200 dark:border-slate-800 mt-20 py-12 bg-white dark:bg-background-dark">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2">
+<div class="size-6 bg-slate-900 dark:bg-slate-100 rounded flex items-center justify-center text-white dark:text-slate-900">
+<svg class="size-3.5" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<span class="font-bold tracking-tight text-slate-900 dark:text-slate-100">NovaKur Base</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400">
+                © 2024 NovaKur Base. All rights reserved.
+            </p>
+<div class="flex gap-6">
+<a class="text-sm text-slate-500 hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="text-sm text-slate-500 hover:text-primary transition-colors" href="#">Terms</a>
+<a class="text-sm text-slate-500 hover:text-primary transition-colors" href="#">Accessibility</a>
+</div>
+</div>
+</footer>
+</body></html>

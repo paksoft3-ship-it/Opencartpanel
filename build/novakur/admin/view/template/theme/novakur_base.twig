@@ -1,0 +1,167 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="float-end">
+        <button type="submit" form="form-theme" data-bs-toggle="tooltip" title="{{ button_save|default('Save') }}" class="btn btn-primary"><i class="fa-solid fa-save"></i></button>
+        <a href="{{ back }}" data-bs-toggle="tooltip" title="{{ button_back|default('Back') }}" class="btn btn-light"><i class="fa-solid fa-reply"></i></a>
+      </div>
+      <h1>{{ heading_title }}</h1>
+      <ol class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+          <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header"><i class="fa-solid fa-pencil"></i> {{ text_edit }}</div>
+      <div class="card-body">
+        <form id="form-theme" action="{{ save }}" method="post" data-oc-toggle="ajax" enctype="multipart/form-data">
+          <ul class="nav nav-tabs" id="themeTabs" role="tablist">
+            <li class="nav-item" role="presentation"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-branding"   type="button">{{ tab_branding }}</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link"        data-bs-toggle="tab" data-bs-target="#tab-colors"     type="button">{{ tab_colors }}</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link"        data-bs-toggle="tab" data-bs-target="#tab-layout"     type="button">{{ tab_layout }}</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link"        data-bs-toggle="tab" data-bs-target="#tab-homepage"   type="button">{{ tab_homepage }}</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link"        data-bs-toggle="tab" data-bs-target="#tab-typography" type="button">{{ tab_typography }}</button></li>
+          </ul>
+
+          <div class="tab-content pt-3">
+
+            {# ── Branding ── #}
+            <div class="tab-pane fade show active" id="tab-branding">
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">{{ entry_logo }}</label>
+                <div class="col-sm-10">
+                  <a href="" id="thumb-logo" data-oc-toggle="image" class="img-thumbnail">
+                    <img src="{{ thumb_logo }}" alt="" title="" data-oc-placeholder="{{ placeholder }}" />
+                  </a>
+                  <input type="hidden" name="theme_novakur_base_logo" value="{{ theme_novakur_base_logo }}" id="input-logo" />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">{{ entry_favicon }}</label>
+                <div class="col-sm-10">
+                  <a href="" id="thumb-favicon" data-oc-toggle="image" class="img-thumbnail">
+                    <img src="{{ thumb_favicon }}" alt="" title="" data-oc-placeholder="{{ placeholder }}" />
+                  </a>
+                  <input type="hidden" name="theme_novakur_base_favicon" value="{{ theme_novakur_base_favicon }}" id="input-favicon" />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">{{ entry_status }}</label>
+                <div class="col-sm-10">
+                  <div class="form-check form-switch form-switch-lg">
+                    <input type="hidden" name="theme_novakur_base_status" value="0" />
+                    <input type="checkbox" name="theme_novakur_base_status" value="1" id="input-status" class="form-check-input"{% if theme_novakur_base_status %} checked{% endif %} />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {# ── Colors ── #}
+            <div class="tab-pane fade" id="tab-colors">
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="input-primary-color">{{ entry_primary_color }}</label>
+                <div class="col-sm-10">
+                  <input type="color" name="theme_novakur_base_primary_color" value="{{ theme_novakur_base_primary_color }}" id="input-primary-color" class="form-control form-control-color" />
+                  <div class="form-text">{{ help_color }}</div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="input-secondary-color">{{ entry_secondary_color }}</label>
+                <div class="col-sm-10">
+                  <input type="color" name="theme_novakur_base_secondary_color" value="{{ theme_novakur_base_secondary_color }}" id="input-secondary-color" class="form-control form-control-color" />
+                  <div class="form-text">{{ help_color }}</div>
+                </div>
+              </div>
+            </div>
+
+            {# ── Layout ── #}
+            <div class="tab-pane fade" id="tab-layout">
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="input-container-width">{{ entry_container_width }}</label>
+                <div class="col-sm-10">
+                  <input type="number" name="theme_novakur_base_container_width" value="{{ theme_novakur_base_container_width }}" id="input-container-width" class="form-control" min="960" max="1920" step="10" />
+                  <div class="form-text">{{ help_container_width }}</div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="input-header-layout">{{ entry_header_layout }}</label>
+                <div class="col-sm-10">
+                  <select name="theme_novakur_base_header_layout" id="input-header-layout" class="form-select">
+                    {% for option in header_layouts %}
+                      <option value="{{ option.value }}"{{ option.value == theme_novakur_base_header_layout ? ' selected' : '' }}>{{ option.text }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="input-footer-layout">{{ entry_footer_layout }}</label>
+                <div class="col-sm-10">
+                  <select name="theme_novakur_base_footer_layout" id="input-footer-layout" class="form-select">
+                    {% for option in footer_layouts %}
+                      <option value="{{ option.value }}"{{ option.value == theme_novakur_base_footer_layout ? ' selected' : '' }}>{{ option.text }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            {# ── Homepage ── #}
+            <div class="tab-pane fade" id="tab-homepage">
+              <div class="form-check form-switch mb-3">
+                <input type="hidden" name="theme_novakur_base_enable_hero_banner" value="0" />
+                <input class="form-check-input" type="checkbox" name="theme_novakur_base_enable_hero_banner" value="1" id="input-enable-hero-banner" {{ theme_novakur_base_enable_hero_banner ? 'checked' : '' }} />
+                <label class="form-check-label" for="input-enable-hero-banner">{{ entry_enable_hero_banner }}</label>
+              </div>
+              <div class="form-check form-switch mb-3">
+                <input type="hidden" name="theme_novakur_base_enable_featured_products" value="0" />
+                <input class="form-check-input" type="checkbox" name="theme_novakur_base_enable_featured_products" value="1" id="input-enable-featured-products" {{ theme_novakur_base_enable_featured_products ? 'checked' : '' }} />
+                <label class="form-check-label" for="input-enable-featured-products">{{ entry_enable_featured_products }}</label>
+              </div>
+              <div class="form-check form-switch mb-3">
+                <input type="hidden" name="theme_novakur_base_enable_category_grid" value="0" />
+                <input class="form-check-input" type="checkbox" name="theme_novakur_base_enable_category_grid" value="1" id="input-enable-category-grid" {{ theme_novakur_base_enable_category_grid ? 'checked' : '' }} />
+                <label class="form-check-label" for="input-enable-category-grid">{{ entry_enable_category_grid }}</label>
+              </div>
+              <div class="form-check form-switch mb-3">
+                <input type="hidden" name="theme_novakur_base_enable_benefits_bar" value="0" />
+                <input class="form-check-input" type="checkbox" name="theme_novakur_base_enable_benefits_bar" value="1" id="input-enable-benefits-bar" {{ theme_novakur_base_enable_benefits_bar ? 'checked' : '' }} />
+                <label class="form-check-label" for="input-enable-benefits-bar">{{ entry_enable_benefits_bar }}</label>
+              </div>
+            </div>
+
+            {# ── Typography ── #}
+            <div class="tab-pane fade" id="tab-typography">
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="input-base-font">{{ entry_base_font }}</label>
+                <div class="col-sm-10">
+                  <select name="theme_novakur_base_base_font" id="input-base-font" class="form-select">
+                    {% for option in font_options %}
+                      <option value="{{ option.value }}"{{ option.value == theme_novakur_base_base_font ? ' selected' : '' }}>{{ option.text }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="input-heading-font">{{ entry_heading_font }}</label>
+                <div class="col-sm-10">
+                  <select name="theme_novakur_base_heading_font" id="input-heading-font" class="form-select">
+                    {% for option in font_options %}
+                      <option value="{{ option.value }}"{{ option.value == theme_novakur_base_heading_font ? ' selected' : '' }}>{{ option.text }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{{ footer }}

@@ -1,0 +1,58 @@
+// Commerce: product_card_standard
+.nk-product-card-standard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.nk-product-card-standard__media {
+  position: relative;
+  display: block;
+  background: #f8fafc;
+  text-decoration: none;
+}
+
+.nk-product-card-standard__image,
+.nk-product-card-standard__image-placeholder {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.nk-product-card-standard__image-placeholder {
+  display: grid;
+  place-items: center;
+  color: #64748b;
+}
+
+.nk-product-card-standard__badge {
+  position: absolute;
+  top: 0.625rem;
+  left: 0.625rem;
+}
+
+.nk-product-card-standard__body {
+  display: grid;
+  gap: 0.625rem;
+  padding: 0.875rem;
+}
+
+.nk-product-card-standard__title {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.nk-product-card-standard__title-link {
+  color: #0f172a;
+  text-decoration: none;
+}
+
+.nk-product-card-standard__description {
+  margin: 0;
+  color: #475569;
+  font-size: 0.875rem;
+}

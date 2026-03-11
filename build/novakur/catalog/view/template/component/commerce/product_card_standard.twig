@@ -1,0 +1,57 @@
+{# NovaKur Base commerce component: product_card_standard (Tailwind) #}
+{% set p = product|default({}) %}
+{% set product_name = product_name|default(p.name|default('Product')) %}
+{% set product_href = product_href|default(p.href|default('#')) %}
+{% set product_thumb = product_thumb|default(p.thumb|default('')) %}
+{% set product_price = product_price|default(p.price|default('')) %}
+{% set product_special = product_special|default(p.special|default('')) %}
+{% set product_id = product_id|default(p.product_id|default(0)) %}
+{% set product_lang = product_lang|default(p.lang|default('en-gb')) %}
+
+<article class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg hover:border-primary/20 transition-all">
+  <a href="{{ product_href }}" class="block relative overflow-hidden aspect-square bg-slate-100 no-underline">
+    {% if product_thumb %}
+      <img src="{{ product_thumb }}" alt="{{ product_name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"/>
+    {% else %}
+      <div class="w-full h-full flex items-center justify-center text-slate-300">
+        <span class="material-symbols-outlined text-6xl">image</span>
+      </div>
+    {% endif %}
+    {% if product_special %}
+      <span class="absolute top-3 left-3 bg-primary text-white text-[10px] font-bold uppercase px-2 py-1 rounded-full">Sale</span>
+    {% endif %}
+  </a>
+  <div class="p-4">
+    <h3 class="font-bold text-slate-900 text-sm mb-2 line-clamp-2">
+      <a href="{{ product_href }}" class="hover:text-primary transition-colors no-underline">{{ product_name }}</a>
+    </h3>
+    <div class="flex items-center justify-between gap-2">
+      <div class="min-w-0">
+        {% if product_special %}
+          <span class="text-primary font-bold">{{ product_special }}</span>
+          <span class="text-slate-400 line-through text-xs ml-1">{{ product_price }}</span>
+        {% else %}
+          <span class="text-slate-900 font-bold">{{ product_price }}</span>
+        {% endif %}
+      </div>
+      <div class="flex items-center gap-1 shrink-0">
+        {% if product_id %}
+          <button type="button" onclick="nkWishlistAdd({{ product_id }}, '{{ product_lang }}')"
+            title="Add to wishlist"
+            class="p-2 rounded-xl text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all">
+            <span class="material-symbols-outlined text-[18px]">favorite</span>
+          </button>
+          <button type="button" onclick="nkQuickAdd({{ product_id }}, '{{ product_lang }}')"
+            title="Add to cart"
+            class="p-2 rounded-xl bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all">
+            <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+          </button>
+        {% else %}
+          <a href="{{ product_href }}" class="p-2 rounded-xl bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all no-underline">
+            <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</article>

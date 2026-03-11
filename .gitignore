@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+*.DS_Store
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Build artifacts — keep zips but ignore large binaries if needed
+# build/*.zip  # comment this out — we DO want to track zips
+
+# env
+.env
+.env.local

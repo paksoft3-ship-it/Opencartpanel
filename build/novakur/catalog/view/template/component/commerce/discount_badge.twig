@@ -1,0 +1,11 @@
+{# NovaKur Base commerce component: discount_badge #}
+{% set price_value = price|default(0) %}
+{% set special_value = special|default(0) %}
+{% set label_value = label|default('') %}
+
+{% if special_value > 0 and special_value < price_value %}
+  {% set discount_pct = ((price_value - special_value) / price_value * 100)|round(0, 'common') %}
+  <span class="inline-flex items-center bg-red-500 text-white text-[10px] font-black uppercase px-2 py-0.5 rounded-full">
+    {{ label_value ? label_value : '-' ~ discount_pct ~ '%' }}
+  </span>
+{% endif %}

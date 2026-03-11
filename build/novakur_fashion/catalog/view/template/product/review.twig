@@ -1,0 +1,9 @@
+<div style="margin-top:40px;padding-top:40px;border-top:1px solid var(--nf-border);">
+  <h3 style="font-family:var(--nf-heading-font);font-size:20px;font-weight:700;margin-bottom:24px;">Write a Review</h3>
+  <form id="form-review" action="{{ action }}" method="post" style="max-width:520px;">
+    <div class="nf-form-group"><label>Name *</label><input type="text" name="name" id="input-name" required></div>
+    <div class="nf-form-group"><label>Review *</label><textarea name="text" rows="4" required style="width:100%;padding:12px 14px;border:1px solid var(--nf-border);font-family:inherit;font-size:14px;resize:vertical;background:transparent;outline:none;transition:border-color 250ms;"></textarea></div>
+    <div class="nf-form-group"><label>Rating *</label><div style="display:flex;gap:12px;margin-top:6px;">{% for i in 1..5 %}<label style="cursor:pointer;display:flex;align-items:center;gap:4px;font-size:14px;"><input type="radio" name="rating" value="{{ i }}" required> {{ i }}★</label>{% endfor %}</div></div>
+    <button type="submit" class="nf-btn nf-btn-primary">Submit Review</button>
+  </form>
+</div>

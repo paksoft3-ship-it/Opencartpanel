@@ -1,0 +1,12 @@
+{# NovaKur Base: Common footer route template #}
+{% include 'extension/novakur/catalog/view/template/component/layout/footer.twig' with {
+  store_name: name|default('Store'),
+  novakur_footer_layout: novakur_footer_layout|default('standard')
+} only %}
+
+{# Footer scripts injected by OC extensions #}
+{% for script in scripts %}
+  <script src="{{ script.href }}" type="text/javascript"></script>
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% include 'extension/novakur_fashion/catalog/view/template/common/header.twig' %}
+<div class="nf-container">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;max-width:840px;margin:80px auto;">
+    <div>
+      <h1 class="nf-auth-title">Sign In</h1>
+      <p class="nf-auth-subtitle">Welcome back to {{ store }}.</p>
+      <form action="{{ action }}" method="post">
+        <div class="nf-form-group"><label>Email *</label><input type="email" name="email" required autofocus></div>
+        <div class="nf-form-group"><label>Password *</label><input type="password" name="password" required></div>
+        <div style="display:flex;justify-content:flex-end;margin-bottom:20px;"><a href="{{ forgotten }}" style="font-size:12px;color:var(--nf-text-muted);letter-spacing:0.06em;">Forgot Password?</a></div>
+        <button type="submit" class="nf-btn nf-btn-primary nf-btn-full">Sign In</button>
+      </form>
+    </div>
+    <div style="border-left:1px solid var(--nf-border);padding-left:64px;">
+      <h2 style="font-family:var(--nf-heading-font);font-size:24px;font-weight:700;margin-bottom:12px;">New Customer?</h2>
+      <p style="font-size:14px;color:var(--nf-text-muted);margin-bottom:28px;">Create an account to manage orders, save wishlists, and enjoy a faster checkout.</p>
+      <a href="{{ register }}" class="nf-btn nf-btn-outline nf-btn-full">Create Account</a>
+    </div>
+  </div>
+</div>
+{% include 'extension/novakur_fashion/catalog/view/template/common/footer.twig' %}

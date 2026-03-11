@@ -1,0 +1,140 @@
+{# NovaKur Base: Cart route shell #}
+{{ header }}
+
+{% include 'catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+<main id="content" class="nk-cart-page">
+  <div class="nk-global-container__inner">
+    <header class="nk-cart-page__head">
+      <h1 class="nk-cart-page__title">{{ heading_title|default('Shopping Cart') }}</h1>
+    </header>
+
+    <div class="nk-cart-page__layout">
+      <section class="nk-cart-page__items" aria-label="Cart items">
+        <form action="{{ action|default('#') }}" method="post" class="nk-cart-page__form">
+          <table class="nk-cart-page__table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th aria-label="Remove item"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for product in products|default([]) %}
+                <tr class="nk-cart-page__row">
+                  <td class="nk-cart-page__cell nk-cart-page__cell--product" data-label="Product">
+                    <div class="nk-cart-page__product">
+                      {% if product.thumb is defined and product.thumb %}
+                        <a class="nk-cart-page__thumb" href="{{ product.href|default('#') }}">
+                          <img src="{{ product.thumb }}" alt="{{ product.name|default('Product') }}" loading="lazy" width="96" height="96" />
+                        </a>
+                      {% endif %}
+
+                      <div class="nk-cart-page__product-meta">
+                        <a class="nk-cart-page__product-name" href="{{ product.href|default('#') }}">{{ product.name|default('Product') }}</a>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="nk-cart-page__cell" data-label="Unit Price">
+                    {% include 'catalog/view/template/component/ui/price_display.twig' with { price: product.price|default('$0.00') } only %}
+                  </td>
+
+                  <td class="nk-cart-page__cell" data-label="Quantity">
+                    {% include 'catalog/view/template/component/ui/quantity_selector.twig' %}
+                    <div class="nk-cart-page__qty-wrap">
+                      <input
+                        class="nk-cart-page__qty-input"
+                        type="number"
+                        name="quantity[{{ product.cart_id|default(loop.index) }}]"
+                        value="{{ product.quantity|default(quantity|default(1)) }}"
+                        min="1"
+                        step="1"
+                        inputmode="numeric"
+                      />
+                    </div>
+                  </td>
+
+                  <td class="nk-cart-page__cell" data-label="Total">
+                    {% include 'catalog/view/template/component/ui/price_display.twig' with { price: product.total|default(total|default('$0.00')) } only %}
+                  </td>
+
+                  <td class="nk-cart-page__cell nk-cart-page__cell--remove" data-label="Remove">
+                    {% set remove_href = product.remove|default(remove|default('#')) %}
+                    {% include 'catalog/view/template/component/ui/button.twig' with {
+                      button_tag: 'a',
+                      href: remove_href,
+                      button_label: 'Remove',
+                      button_variant: 'ghost',
+                      button_size: 'sm',
+                      button_class: 'nk-cart-page__remove-btn'
+                    } only %}
+                  </td>
+                </tr>
+              {% else %}
+                <tr>
+                  <td class="nk-cart-page__empty" colspan="5">Your cart is currently empty.</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          {% if products|default([]) %}
+            <div class="nk-cart-page__actions">
+              {% include 'catalog/view/template/component/ui/button.twig' with {
+                button_tag: 'button',
+                type: 'submit',
+                button_label: 'Update Cart',
+                button_variant: 'ghost',
+                button_size: 'sm'
+              } only %}
+            </div>
+          {% endif %}
+        </form>
+      </section>
+
+      <aside class="nk-cart-page__summary" aria-label="Order summary">
+        <h2 class="nk-cart-page__summary-title">Order Summary</h2>
+        <dl class="nk-cart-page__totals">
+          {% for item in totals|default([]) %}
+            <div class="nk-cart-page__total-row{{ loop.last ? ' is-grand-total' : '' }}">
+              <dt>{{ item.title|default('Total') }}</dt>
+              <dd>{{ item.text|default('$0.00') }}</dd>
+            </div>
+          {% else %}
+            <div class="nk-cart-page__total-row">
+              <dt>Subtotal</dt>
+              <dd>$0.00</dd>
+            </div>
+            <div class="nk-cart-page__total-row">
+              <dt>Shipping</dt>
+              <dd>$0.00</dd>
+            </div>
+            <div class="nk-cart-page__total-row">
+              <dt>Tax</dt>
+              <dd>$0.00</dd>
+            </div>
+            <div class="nk-cart-page__total-row is-grand-total">
+              <dt>Total</dt>
+              <dd>$0.00</dd>
+            </div>
+          {% endfor %}
+        </dl>
+
+        {% include 'catalog/view/template/component/ui/button.twig' with {
+          button_tag: 'a',
+          href: checkout|default('#'),
+          button_label: 'Proceed to Checkout',
+          button_variant: 'primary',
+          button_size: 'md',
+          button_class: 'nk-cart-page__checkout-btn'
+        } only %}
+      </aside>
+    </div>
+  </div>
+</main>
+
+{{ footer }}

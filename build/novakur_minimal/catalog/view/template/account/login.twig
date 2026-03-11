@@ -1,0 +1,24 @@
+{% include 'extension/novakur_minimal/catalog/view/template/common/header.twig' %}
+{% include 'extension/novakur_minimal/catalog/view/template/common/breadcrumb.twig' %}
+<div class="nm-container">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;max-width:800px;margin:64px auto;">
+    <div>
+      <h1 style="font-size:24px;font-weight:700;margin-bottom:8px;">Sign In</h1>
+      <p style="font-size:14px;color:var(--nm-text-muted);margin-bottom:32px;">Welcome back.</p>
+      <form action="{{ action }}" method="post">
+        <div class="nm-form-group"><label>Email Address *</label><input type="email" name="email" required autofocus></div>
+        <div class="nm-form-group"><label>Password *</label><input type="password" name="password" required></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+          <a href="{{ forgotten }}" style="font-size:13px;color:var(--nm-text-muted);text-decoration:underline;">Forgot password?</a>
+        </div>
+        <button type="submit" class="nm-btn nm-btn-primary nm-btn-full">Sign In</button>
+      </form>
+    </div>
+    <div style="border-left:1px solid var(--nm-border);padding-left:64px;">
+      <h2 style="font-size:18px;font-weight:700;margin-bottom:8px;">New Customer?</h2>
+      <p style="font-size:14px;color:var(--nm-text-muted);margin-bottom:24px;">Create an account to track orders, save wishlists, and check out faster.</p>
+      <a href="{{ register }}" class="nm-btn nm-btn-outline nm-btn-full">Create Account</a>
+    </div>
+  </div>
+</div>
+{% include 'extension/novakur_minimal/catalog/view/template/common/footer.twig' %}

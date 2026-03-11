@@ -1,0 +1,28 @@
+// Page: product
+.nk-product-page {
+  background: #ffffff;
+  padding: 1rem 0 2rem;
+}
+
+.nk-product-page__layout {
+  display: grid;
+  gap: 1rem;
+}
+
+.nk-product-page__title {
+  margin: 0 0 0.75rem;
+  color: #0f172a;
+  font-size: 1.5rem;
+}
+
+.nk-product-page__summary {
+  display: grid;
+  gap: 0.875rem;
+}
+
+@media (min-width: 1024px) {
+  .nk-product-page__layout {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}

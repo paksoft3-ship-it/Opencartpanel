@@ -1,0 +1,14 @@
+<div id="review-form" style="margin-top:32px;padding-top:32px;border-top:1px solid var(--nm-border);">
+  <h3 style="font-size:16px;font-weight:700;margin-bottom:20px;">Write a Review</h3>
+  <form id="form-review" action="{{ action }}" method="post">
+    <div class="nm-form-group"><label>Name *</label><input type="text" name="name" id="input-name" required></div>
+    <div class="nm-form-group"><label>Review *</label><textarea name="text" id="input-review" rows="4" required style="width:100%;padding:10px 12px;border:1px solid var(--nm-border);font-family:inherit;font-size:14px;resize:vertical;"></textarea></div>
+    <div class="nm-form-group">
+      <label>Rating *</label>
+      <div style="display:flex;gap:8px;margin-top:4px;">
+        {% for i in 1..5 %}<label style="cursor:pointer;display:flex;align-items:center;gap:4px;font-size:14px;"><input type="radio" name="rating" value="{{ i }}" required> {{ i }}★</label>{% endfor %}
+      </div>
+    </div>
+    <button type="submit" class="nm-btn nm-btn-primary">Submit Review</button>
+  </form>
+</div>

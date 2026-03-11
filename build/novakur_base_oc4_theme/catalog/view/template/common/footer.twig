@@ -1,0 +1,5 @@
+{# NovaKur Base: Common footer route template #}
+{% include 'catalog/view/template/component/layout/footer.twig' with {
+  store_name: name|default('NovaKur Base'),
+  novakur_footer_layout: novakur_footer_layout|default('standard')
+} only %}

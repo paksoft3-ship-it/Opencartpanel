@@ -1,0 +1,24 @@
+{% include 'extension/novakur_minimal/catalog/view/template/common/header.twig' %}
+{% include 'extension/novakur_minimal/catalog/view/template/common/breadcrumb.twig' %}
+<div class="nm-container" style="padding:48px 24px;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;max-width:900px;">
+    <div>
+      <h1 style="font-size:32px;font-weight:700;letter-spacing:-0.02em;margin-bottom:32px;">Contact Us</h1>
+      <form action="{{ action }}" method="post">
+        <div class="nm-form-group"><label>Your Name *</label><input type="text" name="name" required></div>
+        <div class="nm-form-group"><label>Email *</label><input type="email" name="email" required></div>
+        <div class="nm-form-group"><label>Message *</label><textarea name="enquiry" rows="5" required style="width:100%;padding:10px 12px;border:1px solid var(--nm-border);font-family:inherit;font-size:14px;resize:vertical;"></textarea></div>
+        <button type="submit" class="nm-btn nm-btn-primary">Send Message</button>
+      </form>
+    </div>
+    <div>
+      <h2 style="font-size:18px;font-weight:700;margin-bottom:24px;">Store Information</h2>
+      {% if store %}<div style="margin-bottom:16px;"><strong style="font-size:13px;text-transform:uppercase;letter-spacing:0.06em;">Store</strong><p style="font-size:14px;color:var(--nm-text-muted);margin-top:4px;">{{ store }}</p></div>{% endif %}
+      {% if address %}<div style="margin-bottom:16px;"><strong style="font-size:13px;text-transform:uppercase;letter-spacing:0.06em;">Address</strong><p style="font-size:14px;color:var(--nm-text-muted);margin-top:4px;">{{ address }}</p></div>{% endif %}
+      {% if telephone %}<div style="margin-bottom:16px;"><strong style="font-size:13px;text-transform:uppercase;letter-spacing:0.06em;">Phone</strong><p style="font-size:14px;color:var(--nm-text-muted);margin-top:4px;">{{ telephone }}</p></div>{% endif %}
+      {% if email %}<div style="margin-bottom:16px;"><strong style="font-size:13px;text-transform:uppercase;letter-spacing:0.06em;">Email</strong><p style="font-size:14px;color:var(--nm-text-muted);margin-top:4px;">{{ email }}</p></div>{% endif %}
+      {% if opening_times %}<div style="margin-bottom:16px;"><strong style="font-size:13px;text-transform:uppercase;letter-spacing:0.06em;">Hours</strong><p style="font-size:14px;color:var(--nm-text-muted);margin-top:4px;">{{ opening_times }}</p></div>{% endif %}
+    </div>
+  </div>
+</div>
+{% include 'extension/novakur_minimal/catalog/view/template/common/footer.twig' %}
