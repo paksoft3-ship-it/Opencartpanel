@@ -1,0 +1,137 @@
+{{ header }}
+
+<main class="nkb-main">
+  {% include 'catalog/view/template/component/layout/breadcrumb.twig' with { breadcrumbs: breadcrumbs|default([]) } only %}
+
+  <div class="nkb-pdp-grid" style="padding: 64px 0;">
+    <section>
+      <div class="nkb-hero__image" style="aspect-ratio: 1; background: #fff; display: flex; align-items: center; justify-content: center; padding: 48px;">
+        <img id="nkb-main-img" src="{{ popup|default(thumb|default('')) }}" alt="{{ heading_title }}" style="width: 100%; height: 100%; object-fit: contain;">
+      </div>
+      
+      {% if images %}
+        <div style="display: flex; gap: 16px; margin-top: 16px; overflow-x: auto; padding-bottom: 8px;">
+          {% if thumb %}
+            <button type="button" style="width: 80px; height: 80px; border-radius: 8px; border: 1px solid var(--nkb-surface); overflow: hidden; background: #fff; cursor: pointer; flex-shrink: 0;" onclick="document.getElementById('nkb-main-img').src='{{ popup }}'">
+              <img src="{{ thumb }}" style="width: 100%; height: 100%; object-fit: contain;">
+            </button>
+          {% endif %}
+          {% for image in images %}
+            <button type="button" style="width: 80px; height: 80px; border-radius: 8px; border: 1px solid var(--nkb-surface); overflow: hidden; background: #fff; cursor: pointer; flex-shrink: 0;" onclick="document.getElementById('nkb-main-img').src='{{ image.popup }}'">
+              <img src="{{ image.thumb }}" style="width: 100%; height: 100%; object-fit: contain;">
+            </button>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if before_image is defined and before_image %}
+        <div style="margin-top: 48px;">
+          {% include 'extension/novakur/catalog/view/template/component/commerce/before_after_slider.twig' with { before_image: before_image, after_image: after_image|default(''), before_label: 'Day 01', after_label: 'Day 28' } only %}
+        </div>
+      {% endif %}
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: 32px;">
+      <div>
+        <span class="nkb-hero__eyebrow">{{ manufacturer|default('NovaKur Atelier') }}</span>
+        <h1 class="nkb-section__title" style="font-size: 48px; margin-top: 12px; line-height: 1.1;">{{ heading_title }}</h1>
+        <div style="font-family: var(--nkb-font-body); font-size: 24px; font-weight: 300; margin-top: 16px; color: var(--nkb-on-surface);">{{ special ?: price }}</div>
+      </div>
+
+      <div style="line-height: 1.7; color: var(--nkb-outline); font-weight: 300;">
+        {{ description }}
+      </div>
+
+      {% if options %}
+        <div style="display: grid; gap: 24px;">
+          {% for option in options %}
+            <div>
+              <label class="nkb-hero__eyebrow" style="font-size: 10px; margin-bottom: 12px; display: block;">{{ option.name }}</label>
+              {% if option.type == 'select' %}
+                <select name="option[{{ option.product_option_id }}]" class="nkb-input" style="width: 100%; border-radius: 12px;">
+                  {% for value in option.product_option_value %}
+                    <option value="{{ value.product_option_value_id }}">{{ value.name }}</option>
+                  {% endfor %}
+                </select>
+              {% elseif option.type == 'radio' %}
+                <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+                  {% for value in option.product_option_value %}
+                    <label class="nkb-swatch" style="padding: 8px 16px; border: 1px solid var(--nkb-outline); border-radius: 999px; font-size: 12px; cursor: pointer;">
+                      <input type="radio" name="option[{{ option.product_option_id }}]" value="{{ value.product_option_value_id }}" style="display: none;">
+                      {{ value.name }}
+                    </label>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <div style="display: flex; gap: 16px; align-items: center; margin-top: 16px;">
+        <div style="display: flex; align-items: center; border: 1px solid var(--nkb-surface); border-radius: 999px; overflow: hidden; background: #fff;">
+          <button type="button" style="padding: 12px 16px; background: none; border: none; cursor: pointer;" onclick="var i=document.getElementById('input-quantity'); i.value=Math.max(1, parseInt(i.value)-1);">&minus;</button>
+          <input type="number" name="quantity" id="input-quantity" value="{{ minimum|default(1) }}" min="{{ minimum|default(1) }}" style="width: 48px; border: none; text-align: center; font-size: 14px; outline: none; background: transparent;">
+          <button type="button" style="padding: 12px 16px; background: none; border: none; cursor: pointer;" onclick="var i=document.getElementById('input-quantity'); i.value=parseInt(i.value)+1;">&plus;</button>
+        </div>
+        <button type="button" id="button-cart" class="nkb-btn-primary" style="flex: 1;">Add to Ritual</button>
+        <button type="button" class="nkb-btn-outline" style="padding: 16px; display: flex; align-items: center; justify-content: center; width: 52px; height: 52px;"><span class="material-symbols-outlined">favorite</span></button>
+      </div>
+
+      {% if ingredient_list|length > 0 %}
+        <div style="margin-top: 24px;">
+          <h4 class="nkb-hero__eyebrow" style="margin-bottom: 16px;">Botanical Ingredients</h4>
+          <div style="display: grid; gap: 12px;">
+            {% for item in ingredient_list %}
+              <div style="padding: 16px; background: var(--nkb-surface); border-radius: 12px;">
+                <div style="font-weight: 600; font-size: 14px; color: var(--nkb-on-surface);">{{ item.name }}</div>
+                <div style="font-size: 12px; color: var(--nkb-outline); margin-top: 4px;">{{ item.desc }}</div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </section>
+  </div>
+
+  {% if products %}
+    <section class="nkb-section" style="border-top: 1px solid rgba(128,117,107,0.1);">
+      <span class="nkb-hero__eyebrow">Complete The Ritual</span>
+      <h2 class="nkb-section__title" style="font-size: 42px; margin-top: 16px; margin-bottom: 40px;">You May Also Like</h2>
+      <div class="nkb-featured__grid">
+        {% for product in products|slice(0, 4) %}
+          {% include 'extension/novakur/catalog/view/template/component/commerce/product_card_beauty.twig' with { product: product } only %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+</main>
+
+<div id="nk-sticky-atc" class="nkb-header" style="position: fixed; bottom: 0; left: 0; right: 0; transform: translateY(100%); transition: transform 0.4s; border-top: 1px solid var(--nkb-surface); padding: 16px 0; background: rgba(251,249,247,0.9); backdrop-filter: blur(12px);">
+  <div class="nkb-main" style="display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <span class="nkb-hero__eyebrow" style="font-size: 10px;">{{ manufacturer|default('NovaKur Atelier') }}</span>
+      <h4 style="font-family: var(--nkb-font-headline); font-size: 20px; font-style: italic; margin: 0;">{{ heading_title }}</h4>
+    </div>
+    <div style="display: flex; align-items: center; gap: 24px;">
+      <span style="font-size: 20px; font-weight: 300;">{{ special ?: price }}</span>
+      <button type="button" onclick="document.getElementById('button-cart').click()" class="nkb-btn-primary">Add to Bag</button>
+    </div>
+  </div>
+</div>
+
+<script>
+window.addEventListener('scroll', function() {
+  const atc = document.getElementById('nk-sticky-atc');
+  const mainBtn = document.getElementById('button-cart');
+  if (!atc || !mainBtn) return;
+  const rect = mainBtn.getBoundingClientRect();
+  if (rect.top < 0) {
+    atc.style.transform = 'translateY(0)';
+  } else {
+    atc.style.transform = 'translateY(100%)';
+  }
+});
+</script>
+
+{{ footer }}

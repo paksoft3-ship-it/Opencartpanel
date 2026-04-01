@@ -1,0 +1,253 @@
+{{ header }}
+
+<style>
+.nkf-hero { display:grid; grid-template-columns:3fr 2fr; background:var(--nkf-surface-white); box-shadow:var(--nkf-shadow); }
+.nkf-hero__media { position:relative; min-height:640px; overflow:hidden; }
+.nkf-hero__media img { width:100%; height:100%; object-fit:cover; }
+.nkf-hero__overlay { position:absolute; inset:0; background:linear-gradient(180deg, rgba(28,28,26,0.1), rgba(28,28,26,0.42)); }
+.nkf-hero__flag { position:absolute; top:28px; left:28px; background:rgba(252,249,245,0.88); padding:10px 12px; }
+.nkf-hero__body { padding:64px; display:flex; flex-direction:column; justify-content:center; background:var(--nkf-surface); }
+.nkf-hero__body h1 { font-size:64px; }
+.nkf-category-editorial { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+.nkf-category-editorial .is-wide { grid-column:span 2; }
+.nkf-category-tile { position:relative; min-height:260px; overflow:hidden; box-shadow:var(--nkf-shadow); }
+.nkf-category-tile img { width:100%; height:100%; object-fit:cover; }
+.nkf-category-tile__overlay { position:absolute; inset:0; background:linear-gradient(180deg, rgba(28,28,26,0.1), rgba(28,28,26,0.76)); padding:24px; display:flex; flex-direction:column; justify-content:flex-end; color:#fff; }
+.nkf-room-band { display:grid; grid-template-columns:7fr 5fr; gap:32px; background:var(--nkf-surface-low); padding:36px; }
+.nkf-room-band__highlights { display:grid; gap:18px; align-content:start; }
+.nkf-pillars { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.nkf-pillar { background:var(--nkf-surface-white); padding:24px; box-shadow:var(--nkf-shadow); }
+.nkf-pillar__icon { width:56px; height:56px; display:inline-flex; align-items:center; justify-content:center; background:var(--nkf-surface-container); color:var(--nkf-secondary); margin-bottom:18px; }
+.nkf-material-story { position:relative; padding:88px 32px; background:var(--nkf-surface-container); text-align:center; overflow:hidden; }
+.nkf-material-story img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.05; }
+.nkf-newsletter { background:var(--nkf-surface-low); padding:64px 32px; text-align:center; }
+.nkf-newsletter form { width:min(100%,520px); margin:28px auto 0; display:flex; gap:16px; align-items:flex-end; }
+@media (max-width: 1024px) {
+  .nkf-hero, .nkf-room-band { grid-template-columns:1fr; }
+  .nkf-category-editorial, .nkf-pillars { grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width: 768px) {
+  .nkf-hero__body { padding:38px 24px; }
+  .nkf-hero__body h1 { font-size:46px; }
+  .nkf-category-editorial, .nkf-pillars, .nkf-grid-4 { grid-template-columns:1fr; }
+  .nkf-category-editorial .is-wide { grid-column:span 1; }
+  .nkf-newsletter form { flex-direction:column; align-items:stretch; }
+}
+</style>
+
+<main>
+  <section class="nkf-section" style="margin-top:140px;">
+    <div class="nkf-container">
+      <div class="nkf-hero">
+        <div class="nkf-hero__media">
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41fa919c?auto=format&fit=crop&w=1600&q=80" alt="Architectural room scene">
+          <div class="nkf-hero__overlay"></div>
+          <div class="nkf-hero__flag"><span class="nkf-micro">The Artisan Series</span></div>
+        </div>
+        <div class="nkf-hero__body">
+          <span class="nkf-micro">Architectural Serenity</span>
+          <h1 class="nkf-heading" style="font-size:56px;line-height:1.1;">Spaces shaped by <span style="font-style:italic;">calm & intent.</span></h1>
+          <p class="nkf-copy" style="margin:24px 0 34px;max-width:460px;">Curated silhouettes, tactile finishes, and editorial compositions for rooms that feel finished before they are filled.</p>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;">
+            <a href="{{ base }}index.php?route=product/category&path=18" class="nkf-btn-primary">Explore Collections</a>
+            <a href="{{ base }}index.php?route=product/category&path=18" class="nkf-btn-secondary">View The Journal</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nkf-section">
+    <div class="nkf-container">
+      <div style="display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:28px;">
+        <div>
+          <span class="nkf-micro">Collections</span>
+          <h2 class="nkf-heading" style="font-size:44px;">Shop by room</h2>
+        </div>
+        <a href="{{ base }}index.php?route=product/category" class="nkf-btn-text">View All Spaces</a>
+      </div>
+      <div class="nkf-category-editorial">
+        {% set furniture_cats = [
+          {'name': 'Living Room', 'image': 'cat_living_room_furniture.png'},
+          {'name': 'Dining', 'image': 'cat_dining_furniture.png'},
+          {'name': 'Bedroom', 'image': 'cat_bedroom_furniture.png'},
+          {'name': 'Outdoor', 'image': 'cat_outdoor_furniture.png'}
+        ] %}
+        {% for cat in furniture_cats %}
+          <a href="{{ base }}index.php?route=product/category" class="nkf-category-tile{% if loop.first %} is-wide{% endif %}">
+            <img src="{{ base }}image/catalog/novakur/furniture/{{ cat.image }}" alt="{{ cat.name }}">
+            <div class="nkf-category-tile__overlay">
+              <span class="nkf-micro" style="color:#f6ead7;">Curated Space</span>
+              <h3 style="margin:10px 0 8px;font-family:var(--nkf-font-heading);font-size:34px;">{{ category.name }}</h3>
+              <span style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;">Explore -></span>
+            </div>
+          </a>
+        {% else %}
+          {% set fallback_tiles = ['Living Room','Dining','Bedroom','Outdoor'] %}
+          {% set fallback_images = ['cat-living-room.png','cat-dining.png','cat-bedroom.png','cat-outdoor.png'] %}
+          {% for title in fallback_tiles %}
+            <a href="{{ base }}index.php?route=product/category" class="nkf-category-tile{% if loop.first %} is-wide{% endif %}">
+              <img src="{{ base }}image/catalog/novakur/furniture/{{ fallback_images[loop.index0] }}" alt="{{ title }}">
+              <div class="nkf-category-tile__overlay">
+                <span class="nkf-micro" style="color:#f6ead7;">Curated Space</span>
+                <h3 style="margin:10px 0 8px;font-family:var(--nkf-font-heading);font-size:34px;">{{ title }}</h3>
+                <span style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;">Explore -></span>
+              </div>
+            </a>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="nkf-section">
+    <div class="nkf-container">
+      <span class="nkf-micro">New Arrivals</span>
+      <h2 class="nkf-heading" style="font-size:44px;margin:10px 0 26px;">Just In</h2>
+      <div class="nkf-grid-4">
+        {% set prod_assets = [
+          {'name': 'Architectural Sofa', 'image': 'prod_sofa_furniture.png'},
+          {'name': 'Marble Dining Table', 'image': 'prod_dining_table_furniture.png'},
+          {'name': 'Atelier Lounge Chair', 'image': 'prod_armchair_furniture.png'},
+          {'name': 'Minimalist Oak Bed', 'image': 'prod_bed_frame_furniture.png'}
+        ] %}
+        {% set labels = ['Solid Oak','Walnut Finish','Boucle Upholstery','Marble Top'] %}
+        {% set dims = ['W120 x D80 x H75cm','W160 x D90 x H74cm','W84 x D88 x H78cm','W44 x D44 x H52cm'] %}
+        {% set swatches = ['#cfb28d','#8f6b43','#e6ddd2'] %}
+        {% for item in prod_assets %}
+          <article class="nkf-card">
+            <div class="nkf-card__media">
+              <img src="{{ base }}image/catalog/novakur/furniture/{{ item.image }}" alt="{{ item.name }}">
+            </div>
+            <div class="nkf-card__body">
+              <span class="nkf-card__label">{{ labels[(loop.index0) % 4] }}</span>
+              <div class="nkf-card__swatch-row">
+                {% for color in swatches %}
+                  <span class="nkf-swatch nkf-swatch--small{% if loop.first %} is-active{% endif %}" style="background:{{ color }};"></span>
+                {% endfor %}
+              </div>
+              <span class="nkf-dim-pill">{{ dims[(loop.index0) % 4] }}</span>
+              <h3 class="nkf-card__title"><a href="{{ product.href }}">{{ product.name }}</a></h3>
+              <div class="nkf-card__price">{{ product.special ?: product.price }}{% if product.special %}<span class="nkf-card__old">{{ product.price }}</span>{% endif %}</div>
+              <button class="nkf-btn-secondary" onclick="addToCart('{{ product.product_id }}', 1)">Add to Collection</button>
+            </div>
+          </article>
+        {% else %}
+          <p class="nkf-copy">New arrivals will appear here once products are available.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="nkf-section">
+    <div class="nkf-container">
+      <div class="nkf-room-band">
+        <div style="min-height:460px;overflow:hidden;">
+          <img src="{{ base }}image/catalog/novakur/furniture/promo-collection.png" alt="Editorial room scene" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='{{ base }}image/catalog/novakur/furniture/hero-room-2.png'">
+        </div>
+        <div class="nkf-room-band__highlights">
+          <span class="nkf-micro">Room Scene Feature</span>
+          <h2 class="nkf-heading" style="font-size:42px;">A softer architecture for gathering and pause.</h2>
+          <p class="nkf-copy">Layered oak, brushed bronze, and warm upholstery turn the room into a quiet composition of texture and proportion.</p>
+          <div class="nkf-card" style="background:rgba(255,255,255,0.6);">
+            <div class="nkf-card__body">
+              <span class="nkf-card__label">Featured Piece</span>
+              <h3 class="nkf-card__title">Oak Dining Table</h3>
+              <div class="nkf-card__price">$2,190</div>
+            </div>
+          </div>
+          <div class="nkf-card" style="background:rgba(255,255,255,0.6);">
+            <div class="nkf-card__body">
+              <span class="nkf-card__label">Editorial Accent</span>
+              <h3 class="nkf-card__title">Linen Lounge Chair</h3>
+              <div class="nkf-card__price">$1,140</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nkf-section">
+    <div class="nkf-container">
+      <div class="nkf-pillars">
+        <div class="nkf-pillar">
+          <div class="nkf-pillar__icon"><span class="material-symbols-outlined">local_shipping</span></div>
+          <h3 class="nkf-heading" style="font-size:28px;">White-Glove Delivery</h3>
+          <p class="nkf-copy">Placement, assembly, and packaging removal included on qualifying pieces.</p>
+        </div>
+        <div class="nkf-pillar">
+          <div class="nkf-pillar__icon"><span class="material-symbols-outlined">chair</span></div>
+          <h3 class="nkf-heading" style="font-size:28px;">Artisan Crafted</h3>
+          <p class="nkf-copy">Every form is finished with material honesty and tactile warmth.</p>
+        </div>
+        <div class="nkf-pillar">
+          <div class="nkf-pillar__icon"><span class="material-symbols-outlined">verified</span></div>
+          <h3 class="nkf-heading" style="font-size:28px;">10-Year Warranty</h3>
+          <p class="nkf-copy">Long-life construction backed by service designed for real interiors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nkf-section">
+    <div class="nkf-container">
+      <span class="nkf-micro">Bestsellers</span>
+      <h2 class="nkf-heading" style="font-size:44px;margin:10px 0 26px;">Our Most Loved Pieces</h2>
+      <div class="nkf-grid-4">
+        {% set featured_images = ['prod-bed-frame.png','prod-sideboard.png','prod-desk.png','prod-ottoman.png'] %}
+        {% for product in best_sellers|slice(0, 4) %}
+          <article class="nkf-card">
+            <a href="{{ product.href }}" class="nkf-card__media">
+              <img src="{{ product.thumb }}" alt="{{ product.name }}" onerror="this.src='{{ base }}image/catalog/novakur/furniture/{{ featured_images[loop.index0] }}'">
+            </a>
+            <div class="nkf-card__body">
+              <span class="nkf-card__label">Studio Selection</span>
+              <div class="nkf-card__swatch-row">
+                <span class="nkf-swatch nkf-swatch--small is-active" style="background:#d3c4b2;"></span>
+                <span class="nkf-swatch nkf-swatch--small" style="background:#8d7458;"></span>
+                <span class="nkf-swatch nkf-swatch--small" style="background:#595248;"></span>
+              </div>
+              <span class="nkf-dim-pill">Architectural Finish</span>
+              <h3 class="nkf-card__title"><a href="{{ product.href }}">{{ product.name }}</a></h3>
+              <div class="nkf-card__price">{{ product.special ?: product.price }}{% if product.special %}<span class="nkf-card__old">{{ product.price }}</span>{% endif %}</div>
+              <button class="nkf-btn-secondary" onclick="addToCart('{{ product.product_id }}', 1)">Add to Collection</button>
+            </div>
+          </article>
+        {% else %}
+          <p class="nkf-copy">Featured pieces will appear here once best sellers are available.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="nkf-section">
+    <div class="nkf-container">
+      <div class="nkf-material-story">
+        <img src="{{ base }}image/catalog/novakur/furniture/linen-texture.png" alt="" onerror="this.style.display='none'">
+        <div style="position:relative;z-index:1;">
+          <span class="nkf-micro">Material Story</span>
+          <h2 class="nkf-heading" style="font-size:46px;margin:12px 0;">Every piece tells a story of craft.</h2>
+          <p class="nkf-copy" style="max-width:560px;margin:0 auto 24px;">Wood grain, tailored seams, and quiet proportions transform utility into atmosphere.</p>
+          <a href="{{ base }}index.php?route=product/category" class="nkf-btn-secondary">Read the Collection Notes</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nkf-section">
+    <div class="nkf-container">
+      <div class="nkf-newsletter">
+        <span class="nkf-micro">Newsletter</span>
+        <h2 class="nkf-heading" style="font-size:44px;margin:10px 0 12px;">Stay close to the next collection.</h2>
+        <p class="nkf-copy" style="max-width:560px;margin:0 auto;">Receive early access to new releases, artisan notes, and editorial room stories.</p>
+        <form action="#" method="post">
+          <input class="nkf-input-line" type="email" placeholder="Email address">
+          <button class="nkf-btn-primary" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+{{ footer }}

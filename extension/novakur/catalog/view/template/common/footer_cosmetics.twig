@@ -1,0 +1,45 @@
+<footer class="nkb-footer" style="background:#2d2926; color:#c9a882; padding:80px 32px 48px;">
+  <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:48px; margin-bottom:80px;">
+    <div style="display:flex; flex-direction:column; gap:24px;">
+      <span style="font-family:'Cormorant Garamond',serif; font-size:24px; font-style:italic; color:#fbf9f7;">{{ name }}</span>
+      <p style="color:#94a3b8; font-size:14px; line-height:1.6; margin:0;">Crafting rituals of luminosity through botanical science and intentional design.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:24px;">
+      <h4 style="font-family:'Cormorant Garamond',serif; font-size:18px; color:#fbf9f7; margin:0;">Shop</h4>
+      <ul style="list-style:none; padding:0; margin:0; display:grid; gap:16px;">
+        <li><a href="#" style="color:#94a3b8; font-size:14px; text-decoration:none; transition:color 0.3s;">Skin Care</a></li>
+        <li><a href="#" style="color:#94a3b8; font-size:14px; text-decoration:none; transition:color 0.3s;">Makeup</a></li>
+        <li><a href="#" style="color:#94a3b8; font-size:14px; text-decoration:none; transition:color 0.3s;">Fragrance</a></li>
+        <li><a href="#" style="color:#94a3b8; font-size:14px; text-decoration:none; transition:color 0.3s;">Gifts</a></li>
+      </ul>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:24px;">
+      <h4 style="font-family:'Cormorant Garamond',serif; font-size:18px; color:#fbf9f7; margin:0;">Company</h4>
+      <ul style="list-style:none; padding:0; margin:0; display:grid; gap:16px;">
+        {% for information in informations %}
+          <li><a href="{{ information.href }}" style="color:#94a3b8; font-size:14px; text-decoration:none; transition:color 0.3s;">{{ information.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:24px;">
+      <h4 style="font-family:'Cormorant Garamond',serif; font-size:18px; color:#fbf9f7; margin:0;">Support</h4>
+      <ul style="list-style:none; padding:0; margin:0; display:grid; gap:16px;">
+        <li><a href="{{ contact }}" style="color:#94a3b8; font-size:14px; text-decoration:none; transition:color 0.3s;">Contact Us</a></li>
+        <li><a href="{{ sitemap }}" style="color:#94a3b8; font-size:14px; text-decoration:none; transition:color 0.3s;">Shipping & Returns</a></li>
+        <li><a href="#" style="color:#94a3b8; font-size:14px; text-decoration:none; transition:color 0.3s;">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="max-width:1280px; margin:0 auto; padding-top:32px; border-top:1px solid rgba(148,163,184,0.1); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;">
+    <span style="font-size:12px; text-transform:uppercase; letter-spacing:0.1em; color:#64748b;">© {{ 'now'|date('Y') }} {{ name }}. The Digital Atelier.</span>
+    <div style="display:flex; gap:32px;">
+      <a href="#" style="font-size:11px; text-transform:uppercase; letter-spacing:0.2em; color:#94a3b8; text-decoration:none;">Instagram</a>
+      <a href="#" style="font-size:11px; text-transform:uppercase; letter-spacing:0.2em; color:#94a3b8; text-decoration:none;">Pinterest</a>
+      <a href="#" style="font-size:11px; text-transform:uppercase; letter-spacing:0.2em; color:#94a3b8; text-decoration:none;">TikTok</a>
+    </div>
+  </div>
+</footer>
+{{ cookie }}
+<script src="{{ bootstrap }}" type="text/javascript"></script>
+{% for script in scripts %}<script src="{{ script }}" type="text/javascript"></script>{% endfor %}
+</body></html>

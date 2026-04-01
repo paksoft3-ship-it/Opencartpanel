@@ -1,0 +1,413 @@
+{{ header }}
+
+<style>
+:root {
+  --nk-bg-main: #0f172a; --nk-bg-surface: #101c22; --nk-bg-card: #162130;
+  --nk-accent: #0da2e7; --nk-text-main: #e2e8f0; --nk-text-muted: #64748b;
+  --nk-border: rgba(226, 232, 240, 0.1); --nk-radius: 2px; --nk-font: 'Inter', sans-serif;
+}
+body { background-color: var(--nk-bg-main); color: var(--nk-text-main); font-family: var(--nk-font); margin: 0; -webkit-font-smoothing: antialiased; }
+*, *::before, *::after { box-sizing: border-box; }
+a { text-decoration: none; color: inherit; transition: color 0.2s, background 0.2s, border-color 0.2s; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; outline: none; transition: all 0.2s; }
+input { font-family: inherit; outline: none; }
+img { max-width: 100%; height: auto; display: block; }
+.nk-elec-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* BREADCRUMB */
+.nk-elec-breadcrumb-bar { background-color: var(--nk-bg-surface); padding: 12px 0; border-bottom: 1px solid var(--nk-border); }
+.nk-elec-breadcrumbs { display: flex; gap: 8px; color: var(--nk-text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+.nk-elec-breadcrumbs a:hover { color: var(--nk-accent); }
+.nk-elec-breadcrumbs span { color: var(--nk-text-main); }
+
+/* PRODUCT HERO GRID */
+.nk-elec-hero { display: grid; grid-template-columns: 55% 45%; gap: 48px; padding: 48px 0; align-items: start; }
+
+/* GALLERY */
+.nk-elec-gallery { display: flex; flex-direction: column; gap: 16px; }
+.nk-elec-main-image { aspect-ratio: 4 / 3; background-color: var(--nk-bg-surface); border: 1px solid #1e3a4a; border-radius: var(--nk-radius); position: relative; display: flex; align-items: center; justify-content: center; padding: 32px; }
+.nk-elec-main-image img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.nk-elec-zoom-link { position: absolute; top: 16px; right: 16px; background: rgba(15,23,42,0.8); color: var(--nk-text-main); padding: 6px 12px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid var(--nk-border); border-radius: var(--nk-radius); }
+.nk-elec-zoom-link:hover { color: var(--nk-accent); border-color: var(--nk-accent); }
+.nk-elec-thumbs { display: flex; gap: 12px; flex-wrap: wrap; }
+.nk-elec-thumb { width: 80px; height: 60px; background-color: var(--nk-bg-surface); border: 1px solid var(--nk-border); border-radius: var(--nk-radius); display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 8px; }
+.nk-elec-thumb img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.nk-elec-thumb.is-active, .nk-elec-thumb:hover { border-color: var(--nk-accent); }
+
+/* PRODUCT INFO */
+.nk-elec-info { display: flex; flex-direction: column; }
+.nk-elec-brand { color: var(--nk-text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 8px; display: inline-block; }
+.nk-elec-brand:hover { color: var(--nk-accent); }
+.nk-elec-title-main { font-size: 28px; font-weight: 600; color: #fff; margin: 0 0 16px 0; line-height: 1.3; }
+.nk-elec-meta-row { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+.nk-elec-rating { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #fbbf24; }
+.nk-elec-review-count { color: var(--nk-text-muted); font-size: 13px; }
+.nk-elec-stock-badge { padding: 4px 10px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; border-radius: var(--nk-radius); }
+.nk-elec-stock-badge.is-in-stock { background: rgba(34,197,94,0.1); color: #22c55e; border: 1px solid rgba(34,197,94,0.2); }
+.nk-elec-stock-badge.is-low-stock { background: rgba(245,158,11,0.1); color: #f59e0b; border: 1px solid rgba(245,158,11,0.2); }
+.nk-elec-price-block { display: flex; align-items: flex-end; gap: 16px; margin-bottom: 28px; }
+.nk-elec-price-current { font-size: 36px; font-weight: 800; color: var(--nk-accent); line-height: 1; }
+.nk-elec-price-old { font-size: 18px; font-weight: 500; color: var(--nk-text-muted); text-decoration: line-through; margin-bottom: 4px; }
+.nk-elec-price-save { background: #ef4444; color: #fff; font-size: 11px; font-weight: 800; padding: 4px 8px; border-radius: var(--nk-radius); text-transform: uppercase; margin-bottom: 6px; display: inline-block; }
+.nk-elec-divider { height: 1px; background: var(--nk-border); margin-bottom: 24px; }
+.nk-elec-opt-group { margin-bottom: 20px; }
+.nk-elec-opt-label { display: block; font-size: 11px; text-transform: uppercase; font-weight: 700; color: var(--nk-text-muted); letter-spacing: 0.1em; margin-bottom: 12px; }
+.nk-elec-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+.nk-elec-pill { border: 1px solid var(--nk-border); background: var(--nk-bg-card); color: var(--nk-text-main); padding: 8px 18px; font-size: 13px; font-weight: 600; border-radius: var(--nk-radius); cursor: pointer; transition: all 0.2s; }
+.nk-elec-pill:hover { border-color: var(--nk-text-muted); }
+.nk-elec-pill.is-active { background: var(--nk-accent); border-color: var(--nk-accent); color: #fff; }
+.nk-elec-colors { display: flex; gap: 16px; }
+.nk-elec-color-swatch { width: 32px; height: 32px; border-radius: 50%; border: 2px solid transparent; padding: 2px; cursor: pointer; transition: all 0.2s; }
+.nk-elec-color-swatch span { display: block; width: 100%; height: 100%; border-radius: 50%; }
+.nk-elec-color-swatch:hover { border-color: var(--nk-text-muted); }
+.nk-elec-color-swatch.is-active { border-color: var(--nk-accent); }
+.nk-elec-color-1 span { background: #475569; }
+.nk-elec-color-2 span { background: #e2e8f0; }
+.nk-elec-color-3 span { background: #0f172a; }
+.nk-elec-actions-row { display: flex; gap: 12px; margin-bottom: 20px; margin-top: 8px; }
+.nk-elec-qty-wrapper { display: flex; align-items: center; background: var(--nk-bg-card); border: 1px solid var(--nk-border); border-radius: var(--nk-radius); height: 48px; }
+.nk-elec-qty-btn { width: 40px; height: 100%; color: var(--nk-text-main); font-size: 18px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+.nk-elec-qty-btn:hover { color: var(--nk-accent); }
+.nk-elec-qty-input { width: 50px; height: 100%; background: transparent; border: none; border-left: 1px solid var(--nk-border); border-right: 1px solid var(--nk-border); color: var(--nk-text-main); text-align: center; font-size: 14px; font-weight: 600; }
+.nk-elec-btn-add { flex: 1; background: var(--nk-accent); color: #fff; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; border-radius: var(--nk-radius); height: 48px; }
+.nk-elec-btn-add:hover { background: #0b8ecb; }
+.nk-elec-secondary-actions { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+.nk-elec-btn-icon { display: flex; align-items: center; gap: 8px; color: var(--nk-text-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 16px; background: var(--nk-bg-surface); border: 1px solid var(--nk-border); border-radius: var(--nk-radius); }
+.nk-elec-btn-icon:hover { color: #fff; border-color: var(--nk-text-muted); }
+.nk-elec-btn-icon svg { width: 16px; height: 16px; }
+.nk-elec-delivery-card { background: var(--nk-bg-surface); border: 1px solid var(--nk-border); padding: 16px 20px; border-radius: var(--nk-radius); display: flex; align-items: flex-start; gap: 16px; }
+.nk-elec-delivery-card svg { color: var(--nk-accent); width: 24px; height: 24px; flex-shrink: 0; }
+.nk-elec-delivery-text { font-size: 13px; line-height: 1.5; }
+.nk-elec-delivery-text strong { display: block; color: var(--nk-text-main); margin-bottom: 2px; }
+.nk-elec-delivery-text span { color: var(--nk-text-muted); }
+
+/* TABS */
+.nk-elec-tabs-section { padding: 0 0 64px; }
+.nk-elec-tab-bar { display: flex; border-bottom: 1px solid var(--nk-border); margin-bottom: 40px; overflow-x: auto; }
+.nk-elec-tab-btn { padding: 16px 28px; font-size: 13px; font-weight: 700; color: var(--nk-text-muted); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap; cursor: pointer; background: none; border-top: none; border-left: none; border-right: none; font-family: inherit; }
+.nk-elec-tab-btn:hover { color: var(--nk-text-main); }
+.nk-elec-tab-btn.is-active { color: var(--nk-accent); border-bottom-color: var(--nk-accent); }
+.nk-elec-tab-content { display: none; }
+.nk-elec-tab-content.is-active { display: block; }
+.nk-elec-specs-table { width: 100%; border-collapse: collapse; }
+.nk-elec-specs-table tr:nth-child(odd) { background-color: var(--nk-bg-card); }
+.nk-elec-specs-table tr:nth-child(even) { background-color: var(--nk-bg-surface); }
+.nk-elec-specs-table td { padding: 14px 20px; border: 1px solid var(--nk-border); font-size: 14px; }
+.nk-elec-specs-table td:first-child { font-weight: 600; width: 28%; color: var(--nk-text-muted); }
+.nk-elec-desc p { font-size: 15px; line-height: 1.8; color: #cad5e2; margin-bottom: 20px; }
+.nk-elec-reviews-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; }
+.nk-elec-review-card { background: var(--nk-bg-card); padding: 24px; border-radius: var(--nk-radius); border: 1px solid var(--nk-border); margin-bottom: 16px; }
+.nk-elec-review-head { display: flex; justify-content: space-between; margin-bottom: 12px; }
+.nk-elec-review-author { font-weight: 600; color: #fff; }
+.nk-elec-review-date { color: var(--nk-text-muted); font-size: 12px; }
+.nk-elec-review-body { font-size: 14px; color: #cad5e2; line-height: 1.6; }
+.nk-elec-qa-input { width: 100%; max-width: 600px; padding: 12px 16px; background: var(--nk-bg-card); border: 1px solid var(--nk-border); color: #fff; border-radius: var(--nk-radius); margin-bottom: 16px; display: block; font-family: inherit; }
+.nk-elec-qa-btn { background: var(--nk-accent); color: #fff; padding: 10px 24px; font-weight: 700; border-radius: var(--nk-radius); text-transform: uppercase; font-size: 12px; cursor: pointer; }
+.nk-elec-qa-item { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--nk-border); }
+.nk-elec-qa-q { font-weight: 600; color: #fff; margin: 0 0 8px; }
+.nk-elec-qa-q span { color: var(--nk-accent); margin-right: 8px; }
+.nk-elec-qa-a { color: #cad5e2; font-size: 14px; line-height: 1.6; margin: 0; }
+.nk-elec-qa-a span { color: var(--nk-text-muted); font-weight: 600; margin-right: 8px; }
+
+/* RELATED */
+.nk-elec-related { padding: 48px 0 80px; border-top: 1px solid var(--nk-border); }
+.nk-elec-related-title { font-size: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 32px; padding-bottom: 16px; border-bottom: 2px solid var(--nk-accent); display: inline-block; color: #fff; }
+.nk-elec-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.nk-elec-cat-card { background: var(--nk-bg-card); border: 1px solid var(--nk-border); border-radius: var(--nk-radius); display: flex; flex-direction: column; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+.nk-elec-cat-card:hover { border-color: var(--nk-accent); transform: translateY(-4px); }
+.nk-elec-card-img { aspect-ratio: 4 / 3; background: var(--nk-bg-surface); display: flex; align-items: center; justify-content: center; padding: 24px; }
+.nk-elec-card-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.nk-elec-card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+.nk-elec-card-title { font-size: 14px; font-weight: 600; margin: 0 0 12px; color: var(--nk-text-main); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.4; height: 38px; }
+.nk-elec-price-row { margin-top: auto; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.nk-elec-price { font-size: 17px; font-weight: 800; color: var(--nk-accent); }
+.nk-elec-price-old { font-size: 13px; text-decoration: line-through; color: var(--nk-text-muted); }
+.nk-elec-btn-cart { width: 100%; background: var(--nk-bg-surface); border: 1px solid var(--nk-accent); color: var(--nk-accent); font-weight: 700; text-transform: uppercase; font-size: 12px; padding: 10px; border-radius: var(--nk-radius); cursor: pointer; transition: all 0.2s; }
+.nk-elec-btn-cart:hover { background: var(--nk-accent); color: #fff; }
+
+@media (max-width: 1024px) {
+  .nk-elec-hero { grid-template-columns: 1fr; gap: 32px; }
+  .nk-elec-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .nk-elec-reviews-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .nk-elec-specs-table td { display: block; width: 100% !important; padding: 12px 16px; }
+  .nk-elec-specs-table td:first-child { border-bottom: none; background: rgba(255,255,255,0.02); }
+  .nk-elec-grid-4 { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+<!-- BREADCRUMB -->
+<div class="nk-elec-breadcrumb-bar">
+  <div class="nk-elec-container">
+    <div class="nk-elec-breadcrumbs">
+      <a href="{{ home|default('#') }}">Home</a>
+      <span>&rsaquo;</span>
+      {% if categories is defined and categories %}
+        {% for category in categories %}
+          <a href="{{ category.href }}">{{ category.name }}</a>
+          <span>&rsaquo;</span>
+        {% endfor %}
+      {% endif %}
+      <span>{{ name|default('Product') }}</span>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT HERO -->
+<div class="nk-elec-container">
+  <div class="nk-elec-hero">
+
+    <!-- GALLERY -->
+    <div class="nk-elec-gallery">
+      <div class="nk-elec-main-image">
+        <a href="#" class="nk-elec-zoom-link">Zoom</a>
+        {% if thumb %}
+          <img src="{{ thumb }}" alt="{{ name }}">
+        {% else %}
+          <img src="{{ base }}extension/novakur/catalog/view/assets/img/electronics/demo-laptop-1.png" alt="Product">
+        {% endif %}
+      </div>
+      <div class="nk-elec-thumbs">
+        {% if images %}
+          {% for image in images %}
+            <div class="nk-elec-thumb {% if loop.first %}is-active{% endif %}">
+              <img src="{{ image.thumb }}" alt="View {{ loop.index }}">
+            </div>
+          {% endfor %}
+        {% else %}
+          {% for i in 1..4 %}
+            <div class="nk-elec-thumb {% if i == 1 %}is-active{% endif %}"></div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- PRODUCT INFO -->
+    <div class="nk-elec-info">
+      {% if manufacturer %}
+        <a href="#" class="nk-elec-brand">{{ manufacturer }}</a>
+      {% else %}
+        <span class="nk-elec-brand">BRAND</span>
+      {% endif %}
+
+      <h1 class="nk-elec-title-main">{{ name|default('Product Name') }}</h1>
+
+      <div class="nk-elec-meta-row">
+        <div class="nk-elec-rating">★★★★½</div>
+        <span class="nk-elec-review-count">({{ reviews|default('0') }} reviews)</span>
+        <span class="nk-elec-stock-badge is-in-stock">● IN STOCK</span>
+      </div>
+
+      <div class="nk-elec-price-block">
+        {% if special %}
+          <span class="nk-elec-price-current">{{ special }}</span>
+          <div style="display:flex;flex-direction:column;">
+            <span class="nk-elec-price-save">SAVE</span>
+            <span class="nk-elec-price-old">{{ price }}</span>
+          </div>
+        {% elseif price %}
+          <span class="nk-elec-price-current">{{ price }}</span>
+        {% else %}
+          <span class="nk-elec-price-current">—</span>
+        {% endif %}
+      </div>
+
+      <div class="nk-elec-divider"></div>
+
+      {% if options %}
+        {% for option in options %}
+          <div class="nk-elec-opt-group">
+            <span class="nk-elec-opt-label">{{ option.name }}</span>
+            {% if option.type == 'select' %}
+              <select name="option[{{ option.product_option_id }}]" style="background:var(--nk-bg-card);border:1px solid var(--nk-border);color:var(--nk-text-main);padding:10px 14px;border-radius:var(--nk-radius);font-size:13px;font-family:inherit;outline:none;">
+                <option value="">— Select {{ option.name }} —</option>
+                {% for value in option.product_option_value %}
+                  <option value="{{ value.product_option_value_id }}">{{ value.name }}</option>
+                {% endfor %}
+              </select>
+            {% elseif option.type == 'radio' %}
+              <div class="nk-elec-pills">
+                {% for value in option.product_option_value %}
+                  <label class="nk-elec-pill {% if loop.first %}is-active{% endif %}" style="cursor:pointer;">
+                    <input type="radio" name="option[{{ option.product_option_id }}]" value="{{ value.product_option_value_id }}" style="display:none;">
+                    {{ value.name }}
+                  </label>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="nk-elec-opt-group">
+          <span class="nk-elec-opt-label">Storage</span>
+          <div class="nk-elec-pills">
+            <button class="nk-elec-pill">256GB</button>
+            <button class="nk-elec-pill is-active">512GB</button>
+            <button class="nk-elec-pill">1TB</button>
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="nk-elec-actions-row">
+        <div class="nk-elec-qty-wrapper">
+          <button class="nk-elec-qty-btn" onclick="const i=this.nextElementSibling;i.value=Math.max(1,parseInt(i.value)-1)">−</button>
+          <input type="text" id="input-quantity" name="quantity" value="1" class="nk-elec-qty-input">
+          <button class="nk-elec-qty-btn" onclick="const i=this.previousElementSibling;i.value=parseInt(i.value)+1">+</button>
+        </div>
+        {% if product_id %}
+          <button class="nk-elec-btn-add" onclick="cart.add('{{ product_id }}', document.getElementById('input-quantity').value);">Add to Cart</button>
+        {% else %}
+          <button class="nk-elec-btn-add">Add to Cart</button>
+        {% endif %}
+      </div>
+
+      <div class="nk-elec-secondary-actions">
+        {% if product_id %}
+          <button class="nk-elec-btn-icon" onclick="wishlist.add('{{ product_id }}');">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            Wishlist
+          </button>
+          <button class="nk-elec-btn-icon" onclick="compare.add('{{ product_id }}');">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+            Compare
+          </button>
+        {% endif %}
+      </div>
+
+      <div class="nk-elec-delivery-card">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+        <div class="nk-elec-delivery-text">
+          <strong>Estimated delivery: 2–4 business days</strong>
+          <span>Free standard shipping on orders over $50.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="nk-elec-tabs-section">
+    <div class="nk-elec-tab-bar">
+      <button class="nk-elec-tab-btn is-active" data-tab="tab-specs">Specifications</button>
+      <button class="nk-elec-tab-btn" data-tab="tab-desc">Description</button>
+      <button class="nk-elec-tab-btn" data-tab="tab-reviews">Reviews</button>
+      <button class="nk-elec-tab-btn" data-tab="tab-qa">Q&amp;A</button>
+    </div>
+
+    <div id="tab-specs" class="nk-elec-tab-content is-active">
+      <table class="nk-elec-specs-table">
+        <tbody>
+          {% if attribute_groups %}
+            {% for attribute_group in attribute_groups %}
+              {% for attribute in attribute_group.attribute %}
+                <tr><td>{{ attribute.name }}</td><td>{{ attribute.text }}</td></tr>
+              {% endfor %}
+            {% endfor %}
+          {% else %}
+            <tr><td>Processor</td><td>Intel Core i7-1355U (10-Core, up to 5.0 GHz)</td></tr>
+            <tr><td>RAM</td><td>32GB LPDDR5</td></tr>
+            <tr><td>Storage</td><td>1TB PCIe Gen4 NVMe SSD</td></tr>
+            <tr><td>Display</td><td>14.0" WUXGA (1920×1200) IPS, 400 nits</td></tr>
+            <tr><td>Battery</td><td>57Whr, up to 14.5 hours</td></tr>
+            <tr><td>OS</td><td>Windows 11 Pro</td></tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+
+    <div id="tab-desc" class="nk-elec-tab-content nk-elec-desc">
+      {% if description %}
+        {{ description }}
+      {% else %}
+        <p style="font-size:15px;line-height:1.8;color:#cad5e2;">This product delivers exceptional performance for demanding workloads. Built with premium materials and engineered for longevity, it sets a new standard in its category.</p>
+      {% endif %}
+    </div>
+
+    <div id="tab-reviews" class="nk-elec-tab-content">
+      <div class="nk-elec-reviews-grid">
+        <div>
+          <h2 style="font-size:32px;color:#fff;margin:0 0 8px;">4.8</h2>
+          <div style="color:#fbbf24;margin-bottom:8px;">★★★★½</div>
+          <p style="color:var(--nk-text-muted);margin:0 0 24px;">Based on {{ reviews|default('0') }} reviews</p>
+          <button class="nk-elec-btn-add" style="width:100%;">Write a Review</button>
+        </div>
+        <div>
+          {% if review_info is defined and review_info %}
+            {% for review in review_info %}
+              <div class="nk-elec-review-card">
+                <div class="nk-elec-review-head">
+                  <span class="nk-elec-review-author">{{ review.author }}</span>
+                  <span class="nk-elec-review-date">{{ review.date_added }}</span>
+                </div>
+                <p class="nk-elec-review-body">{{ review.text }}</p>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="nk-elec-review-card">
+              <div class="nk-elec-review-head"><span class="nk-elec-review-author">Alex D.</span><span class="nk-elec-review-date">Oct 2025</span></div>
+              <p class="nk-elec-review-body">Outstanding build quality and performance. Highly recommend.</p>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-qa" class="nk-elec-tab-content">
+      <div style="margin-bottom:32px;">
+        <input type="text" class="nk-elec-qa-input" placeholder="Type your question here...">
+        <button class="nk-elec-qa-btn">Ask a Question</button>
+      </div>
+      <div class="nk-elec-qa-item">
+        <p class="nk-elec-qa-q"><span>Q:</span> Does this include a warranty?</p>
+        <p class="nk-elec-qa-a"><span>A:</span> Yes, this product includes a 1-year global limited warranty.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RELATED PRODUCTS -->
+  {% if products_related %}
+    <div class="nk-elec-related">
+      <h2 class="nk-elec-related-title">Related Products</h2>
+      <div class="nk-elec-grid-4">
+        {% for related in products_related|slice(0, 4) %}
+          <div class="nk-elec-cat-card">
+            <a href="{{ related.href }}" class="nk-elec-card-img">
+              <img src="{{ related.thumb }}" alt="{{ related.name }}">
+            </a>
+            <div class="nk-elec-card-body">
+              <a href="{{ related.href }}" class="nk-elec-card-title">{{ related.name }}</a>
+              <div class="nk-elec-price-row">
+                {% if related.special %}<span class="nk-elec-price">{{ related.special }}</span><span class="nk-elec-price-old">{{ related.price }}</span>
+                {% else %}<span class="nk-elec-price">{{ related.price }}</span>{% endif %}
+              </div>
+              <button class="nk-elec-btn-cart" onclick="cart.add('{{ related.product_id }}');">Add to Cart</button>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+// Tab switching
+document.querySelectorAll('.nk-elec-tab-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.nk-elec-tab-btn').forEach(function(b) { b.classList.remove('is-active'); });
+    document.querySelectorAll('.nk-elec-tab-content').forEach(function(c) { c.classList.remove('is-active'); });
+    this.classList.add('is-active');
+    var target = document.getElementById(this.dataset.tab);
+    if (target) target.classList.add('is-active');
+  });
+});
+// Pill toggle
+document.querySelectorAll('.nk-elec-pills .nk-elec-pill').forEach(function(pill) {
+  pill.addEventListener('click', function() {
+    var group = this.closest('.nk-elec-pills');
+    group.querySelectorAll('.nk-elec-pill').forEach(function(p) { p.classList.remove('is-active'); });
+    this.classList.add('is-active');
+  });
+});
+</script>
+
+{{ footer }}

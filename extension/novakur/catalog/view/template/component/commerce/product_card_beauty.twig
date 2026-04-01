@@ -1,0 +1,21 @@
+{% set p = product|default({}) %}
+
+<article class="nkb-pdp-card">
+  <div class="nkb-pdp-card__img">
+    <a href="{{ p.href|default('#') }}">
+      {% if p.thumb|default('') %}
+        <img src="{{ p.thumb }}" alt="{{ p.name|default('Beauty Product') }}" loading="lazy">
+      {% else %}
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMaA4FiDNibYBCm8_qnn3gjuy27UCl_13dWdAjGmjOsdUDIouv0q0JXSIRLFlEyqnwc3X7W8Eqbf3qnQgnwezhhbRHOs2Y7aGUdioeGMdAiAmjiXYN8etQ9VHOERTv_6JEdbiwYzpl7TgJiU7C6AGrFWRxf_85zhovtdpK8O8B8SWu-jIksmt5QLyhkAZ6VdUCStqKK7WGDbNuS0t0Kp8NIlA0ai__tiR4i9nlPvvMhdzgmns37QfQk2ZX4iSMdcd-umPoJDRRzgk" alt="Fallback Beauty Product">
+      {% endif %}
+    </a>
+    <button class="nkb-pdp-card__btn" onclick="cart.add('{{ p.product_id }}', '1');">Quick Buy &mdash; {{ p.price|default('$0.00') }}</button>
+  </div>
+  <div class="nkb-pdp-card__body">
+    <h4 style="font-family:var(--nkb-font-body); font-size:14px; font-weight:500; margin:0 0 4px 0; display:flex; justify-content:space-between; align-items:center;">
+      <a href="{{ p.href|default('#') }}" style="text-decoration:none; color:inherit;">{{ p.name|default('Beauty Product') }}</a>
+      <span style="font-weight:400; color:var(--nkb-primary);">{{ p.price|default('$0.00') }}</span>
+    </h4>
+    <p style="font-size:12px; color:var(--nkb-outline); margin:0; font-weight:300;">{{ p.description|striptags|slice(0, 40) }}...</p>
+  </div>
+</article>

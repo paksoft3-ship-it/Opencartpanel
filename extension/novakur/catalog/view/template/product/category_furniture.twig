@@ -1,0 +1,156 @@
+{{ header }}
+
+<main class="nkf-section">
+  <div class="nkf-container nkf-plp">
+    <aside class="nkf-sidebar">
+      <div class="nkf-sidebar-sticky">
+        <section class="nkf-surface-panel">
+          <h2 class="nkf-heading" style="font-size:30px;margin-bottom:18px;">Atelier Spaces</h2>
+          <div class="nkf-filter-group">
+            {% set furniture_menu = [
+              {'name': 'Living Spaces', 'href': base ~ 'index.php?route=product/category&path=18'},
+              {'name': 'Dining Ateliers', 'href': base ~ 'index.php?route=product/category&path=18'},
+              {'name': 'Bedroom Curation', 'href': base ~ 'index.php?route=product/category&path=18'},
+              {'name': 'Architectural Artisan', 'href': base ~ 'index.php?route=product/category&path=18'}
+            ] %}
+            {% for item in furniture_menu %}
+              <a href="{{ item.href }}" style="font-family:var(--nkf-font-heading);font-size:18px;color:var(--nkf-on-surface-body);display:block;margin-bottom:12px;">{{ item.name }}</a>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section class="nkf-surface-panel">
+          <span class="nkf-micro">Filter By</span>
+          <div style="display:grid;gap:14px;margin-top:18px;">
+            <div>
+              <label class="nkf-micro" style="margin-bottom:6px;">Price Range</label>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                <input class="nkf-input-line" type="number" placeholder="Min">
+                <input class="nkf-input-line" type="number" placeholder="Max">
+              </div>
+            </div>
+
+            <div>
+              <label class="nkf-micro" style="margin-bottom:10px;">Material</label>
+              <label class="nkf-checkbox"><input type="checkbox">Oak</label>
+              <label class="nkf-checkbox"><input type="checkbox">Walnut</label>
+              <label class="nkf-checkbox"><input type="checkbox">Marble</label>
+              <label class="nkf-checkbox"><input type="checkbox">Upholstered</label>
+              <label class="nkf-checkbox"><input type="checkbox">Metal</label>
+            </div>
+
+            <div>
+              <label class="nkf-micro" style="margin-bottom:10px;">Style</label>
+              <label class="nkf-checkbox"><input type="checkbox">Minimalist</label>
+              <label class="nkf-checkbox"><input type="checkbox">Industrial</label>
+              <label class="nkf-checkbox"><input type="checkbox">Scandinavian</label>
+              <label class="nkf-checkbox"><input type="checkbox">Classic</label>
+            </div>
+
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;">
+              <span class="nkf-micro" style="color:var(--nkf-on-surface-body);">In Stock Only</span>
+              <label style="display:inline-flex;align-items:center;gap:8px;"><input type="checkbox" checked style="accent-color:var(--nkf-primary);"></label>
+            </div>
+
+            <button class="nkf-btn-secondary" type="button">Apply Filters</button>
+          </div>
+        </section>
+      </div>
+    </aside>
+
+    <section class="nkf-plp-main">
+      {% set clean_title = heading_title|replace({
+        'Laptops & Notebooks': 'The Living Collection', 
+        'Laptops &amp; Notebooks': 'The Living Collection', 
+        'Components': 'Architectural Elements', 
+        'Desktops': 'Workspace Ateliers',
+        'Tablets': 'Artisan Accents'
+      }) %}
+      {% set clean_desc = description|replace({
+        'Shop Laptop feature only the best laptop deals on the market': 'Curated silhouettes, tactile finishes, and architectural compositions designed for unintentional longevity.'
+      }) %}
+      {% if not description or description|length < 10 %}
+         {% set clean_desc = 'A curated selection of architectural forms and tactile materials, designed to bring serenity to the modern home.' %}
+      {% endif %}
+      
+      <span class="nkf-micro">Architectural Portfolio</span>
+      <h1 class="nkf-heading" style="font-size:52px;margin-top:10px;">{{ clean_title }}</h1>
+      <div class="nkf-copy" style="max-width:720px;margin-top:16px;">{{ clean_desc }}</div>
+
+      <div class="nkf-toolbar">
+        <div class="nkf-copy">Showing {{ products|length }} products</div>
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+          <select class="nkf-select-line" style="min-width:220px;">
+            {% for sort in sorts|default([]) %}
+              <option value="{{ sort.href }}">{{ sort.text }}</option>
+            {% else %}
+              <option>Featured</option>
+              <option>Price: Low to High</option>
+              <option>Newest</option>
+            {% endfor %}
+          </select>
+          <div class="nkf-view-toggle">
+            <button type="button" id="nkf-view-grid" class="{% if nkf_default_view|default('grid') != 'list' %}is-active{% endif %}" onclick="setFurnitureView('grid')"><span class="material-symbols-outlined">grid_view</span></button>
+            <button type="button" id="nkf-view-list" class="{% if nkf_default_view|default('grid') == 'list' %}is-active{% endif %}" onclick="setFurnitureView('list')"><span class="material-symbols-outlined">view_list</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="nkf-product-grid{% if nkf_default_view|default('grid') == 'list' %} is-list{% endif %}" id="nkf-plp-grid">
+        {% set furniture_assets = [
+          'prod_sofa_furniture.png',
+          'prod_dining_table_furniture.png',
+          'prod_armchair_furniture.png',
+          'prod_bed_frame_furniture.png',
+          'prod_bookshelf_furniture.png',
+          'prod_sofa_furniture.png'
+        ] %}
+        {% set labels = ['Solid Oak / Walnut Finish','Stone Composite / Oak Base','Linen Blend / Ash Frame','Brushed Brass / Smoked Oak','Marble Veneer / Bronze','Solid Timber / Natural Oil'] %}
+        {% for product in products|default([]) %}
+          <article class="nkf-card">
+            <div class="nkf-card__media">
+              <img src="{{ base }}image/catalog/novakur/furniture/{{ furniture_assets[(loop.index0) % 6] }}" alt="{{ product.name }}">
+            </div>
+            <div class="nkf-card__body">
+              <div class="nkf-card__swatch-row">
+                <span class="nkf-swatch nkf-swatch--small is-active" style="background:#d0c0a6;"></span>
+                <span class="nkf-swatch nkf-swatch--small" style="background:#8c6f52;"></span>
+                <span class="nkf-swatch nkf-swatch--small" style="background:#47423b;"></span>
+              </div>
+              <span class="nkf-dim-pill">W120 x D80 x H75cm</span>
+              <h3 class="nkf-card__title"><a href="{{ product.href }}">{{ product.name }}</a></h3>
+              <span class="nkf-card__label">{{ labels[(loop.index0) % 6] }}</span>
+              <div class="nkf-card__price">{{ product.special ?: product.price }}{% if product.special %}<span class="nkf-card__old">{{ product.price }}</span>{% endif %}</div>
+              <button class="nkf-btn-secondary" onclick="addToCart('{{ product.product_id }}', 1)">Add to Cart</button>
+            </div>
+          </article>
+        {% else %}
+          <div class="nkf-surface-panel" style="grid-column:1/-1;text-align:center;padding:56px 24px;">
+            <span class="material-symbols-outlined" style="font-size:48px;color:var(--nkf-primary);">explore</span>
+            <h3 class="nkf-heading" style="font-size:34px;margin:12px 0 10px;">No pieces found</h3>
+            <p class="nkf-copy">Try broadening your filters or explore the full collection.</p>
+            <a href="{{ base }}index.php?route=product/category" class="nkf-btn-primary" style="margin-top:18px;">Browse Collection</a>
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if pagination %}
+        <div class="nkf-pagination">{{ pagination }}</div>
+      {% endif %}
+    </section>
+  </div>
+</main>
+
+<script>
+function setFurnitureView(mode) {
+  var grid = document.getElementById('nkf-plp-grid');
+  var gridBtn = document.getElementById('nkf-view-grid');
+  var listBtn = document.getElementById('nkf-view-list');
+  if (!grid) return;
+  grid.classList.toggle('is-list', mode === 'list');
+  if (gridBtn) gridBtn.classList.toggle('is-active', mode === 'grid');
+  if (listBtn) listBtn.classList.toggle('is-active', mode === 'list');
+}
+</script>
+
+{{ footer }}

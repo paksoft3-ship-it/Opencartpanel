@@ -1,0 +1,206 @@
+{{ header }}
+
+<style>
+.nkb-main { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+.nkb-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding: 64px 0; }
+.nkb-hero__content { display: flex; flex-direction: column; gap: 32px; }
+.nkb-hero__eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--nkb-secondary); font-weight: 600; }
+.nkb-hero h1 { font-family: var(--nkb-font-headline); font-size: 72px; font-style: italic; line-height: 1.1; margin: 0; color: var(--nkb-on-surface); }
+.nkb-hero p { font-size: 18px; line-height: 1.6; color: rgba(27,28,27,0.7); max-width: 440px; margin: 0; font-weight: 300; }
+.nkb-hero__visual { position: relative; }
+.nkb-hero__image { aspect-ratio: 4/5; border-radius: 16px; overflow: hidden; box-shadow: 0 40px 80px rgba(45,41,38,0.1); }
+.nkb-hero__image img { width: 100%; height: 100%; object-fit: cover; }
+.nkb-hero__detail { position: absolute; bottom: -32px; left: -32px; width: 192px; aspect-ratio: 1; border-radius: 16px; border: 8px solid var(--nkb-bg); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); display: none; }
+@media (min-width: 768px) { .nkb-hero__detail { display: block; } }
+
+.nkb-section { padding: 96px 0; }
+.nkb-section__header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; }
+.nkb-section__title { font-family: var(--nkb-font-headline); font-size: 32px; font-style: italic; margin: 0; }
+.nkb-cat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+@media (min-width: 768px) { .nkb-cat-grid { grid-template-columns: repeat(4, 1fr); } }
+.nkb-cat-card { cursor: pointer; }
+.nkb-cat-card__img { aspect-ratio: 1; border-radius: 16px; overflow: hidden; margin-bottom: 16px; background: var(--nkb-surface); }
+.nkb-cat-card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s; }
+.nkb-cat-card:hover img { transform: scale(1.05); }
+.nkb-cat-card__eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--nkb-outline); display: block; margin-bottom: 4px; }
+.nkb-cat-card h3 { font-family: var(--nkb-font-headline); font-size: 20px; margin: 0; }
+
+.nkb-featured { text-align: center; }
+.nkb-featured__grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 48px; }
+@media (min-width: 640px) { .nkb-featured__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .nkb-featured__grid { grid-template-columns: repeat(4, 1fr); } }
+
+.nkb-ritual { background: rgba(123, 84, 85, 0.05); border-radius: 24px; padding: 80px 48px; display: grid; grid-template-columns: 1fr; gap: 64px; align-items: center; }
+@media (min-width: 1024px) { .nkb-ritual { grid-template-columns: 1fr 1fr; } }
+.nkb-ritual__visual { display: flex; gap: 16px; }
+.nkb-ritual__img { flex: 1; display: flex; flex-direction: column; gap: 16px; align-items: center; }
+.nkb-ritual__img-wrap { aspect-ratio: 3/4; border-radius: 16px; overflow: hidden; width: 100%; }
+.nkb-ritual__img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.nkb-ritual__label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 600; }
+.nkb-ritual__img:last-child { margin-top: 48px; }
+.nkb-ritual__img:last-child .nkb-ritual__img-wrap { box-shadow: 0 32px 64px rgba(0,0,0,0.1); }
+
+.nkb-ingredient-strip { background: #2d2926; color: #f5f3f1; border-radius: 24px; padding: 64px; position: relative; overflow: hidden; }
+.nkb-ingredient-strip h2 { font-family: var(--nkb-font-headline); font-size: 32px; font-style: italic; margin: 0 0 32px 0; position: relative; z-index: 2; }
+.nkb-ingredients { display: flex; flex-wrap: wrap; gap: 48px; position: relative; z-index: 2; }
+.nkb-ingredient h5 { color: #e3c199; font-size: 14px; font-weight: 500; margin: 0 0 4px 0; }
+.nkb-ingredient p { font-size: 12px; color: #80756b; margin: 0; }
+.nkb-ingredient-strip::after { content: ''; position: absolute; right: 0; top: 0; width: 30%; height: 100%; background: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAdSkhiuKUFc6c3PJPT5lXOd-T0ae5l1WXZxQrMgVcsU3TgtREGg-UQh9cOPARK73FLgPn6jSwCGO_JF_j5ek1a5FHnXqsXnWvUV3Fp1WRY119XtukxYe6R7o3OCsuS4i5rWHTGAVAirV6WBZu_0iSYRm4roqynoco_1oJgsnUM3xFTIelC7809gSWzepCTtA77NZUEx8U3nIj3HssBe9JA9g-eIV-IUQ-Mb5WYksAmedKUEXAWq7gnh6hIYpVf4q66UkSFxApWcQw') right/cover no-repeat; opacity: 0.1; }
+
+.nkb-newsletter { text-align: center; max-width: 640px; margin: 0 auto; }
+.nkb-newsletter h2 { font-family: var(--nkb-font-headline); font-size: 32px; font-style: italic; margin-bottom: 16px; }
+.nkb-newsletter p { color: var(--nkb-outline); font-size: 14px; margin-bottom: 40px; }
+.nkb-form { display: flex; flex-direction: column; gap: 16px; }
+@media (min-width: 640px) { .nkb-form { flex-direction: row; } }
+.nkb-btn-primary { background: var(--nkb-primary); color: #fff; border: none; padding: 16px 40px; border-radius: 999px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600; cursor: pointer; transition: opacity 0.3s; }
+.nkb-btn-primary:hover { opacity: 0.9; }
+.nkb-btn-outline { border: 1px solid rgba(116,90,57,0.3); color: var(--nkb-primary); background: transparent; padding: 16px 40px; border-radius: 999px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; }
+.nkb-input { flex: 1; background: #fff; border: 1px solid rgba(128,117,107,0.2); border-radius: 999px; padding: 16px 24px; font-size: 14px; outline: none; }
+.nkb-input:focus { border-color: var(--nkb-primary); }
+
+.nkb-pdp-card { position: relative; text-align: left; }
+.nkb-pdp-card__img { aspect-ratio: 4/5; background: #fff; border-radius: 12px; overflow: hidden; margin-bottom: 20px; position: relative; }
+.nkb-pdp-card__img img { width: 100%; height: 100%; object-fit: contain; padding: 24px; transition: transform 0.5s; }
+.nkb-pdp-card:hover .nkb-pdp-card__img img { transform: scale(1.05); }
+.nkb-pdp-card__btn { position: absolute; bottom: 16px; left: 16px; right: 16px; background: rgba(251,249,247,0.9); backdrop-filter: blur(8px); padding: 12px; border-radius: 999px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; border: none; cursor: pointer; opacity: 0; transform: translateY(10px); transition: all 0.3s; }
+.nkb-pdp-card:hover .nkb-pdp-card__btn { opacity: 1; transform: translateY(0); }
+.nkb-pdp-card h4 { font-size: 14px; font-weight: 500; margin: 0 0 4px 0; display: flex; justify-content: space-between; }
+.nkb-pdp-card p { font-size: 12px; color: var(--nkb-outline); margin: 0; font-weight: 300; }
+</style>
+
+<main class="nkb-main">
+  <section class="nkb-hero">
+    <div class="nkb-hero__content">
+      <span class="nkb-hero__eyebrow">The Radiance Collection</span>
+      <h1>Luminous by<br>Nature's Design.</h1>
+      <p>Discover a ritual where botanical precision meets timeless elegance. Our new Radiance Serum is crafted to illuminate your natural grace.</p>
+      <div style="display:flex; gap:16px; align-items:center;">
+        <a href="{{ base }}index.php?route=product/category" class="nkb-btn-primary">Shop The Collection</a>
+        <a href="#" class="nkb-btn-outline">Our Story</a>
+      </div>
+    </div>
+    <div class="nkb-hero__visual">
+      <div class="nkb-hero__image">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCj6CyfF8TEz0IBltk-tdPiBNFJB8-MzGSqAGzTtGBVf3iEmX30vwkUcLo0b9hkaqJEvu_TFrO06cMg4JMcbWZS_AXH3dU8fhQ8-cuOJ5qPTB0ZR_8ca_lquxPppbIIcrIu-tjjp_Oz6FK0-OgbgugE2lDQMtadLBAfAhNInYytU_5WNY5-UlvekScjH1jbiZ2grjY7OXpttamUlexMgPRDbqOViLdFGrhlVhuqv12hILXEtxDroPDDR5g7zxHMlht7S7ZYuKANTls" alt="Radiance Serum Detail">
+      </div>
+      <div class="nkb-hero__detail">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMiAmX3ciFGx5sbeZMKc3oDK_sJWiAV6q7xCyB_HnlsCjPdVxPjGN8Gy4J2TDJ22Z20QShZDHZ9nuYyP9IrdDfgCLNxNcvwMT0XDmIfU8HoMdAReDYat2IsCx8L9g85N28ioUO3s7Rqu47n9IBEOoLQm_jU3Yvbt9gXeN6YebZVaF5KhrBO5JCnrPVG-EbEUzi-E5FlHsIO9Chqeh66KKeSYyYbOKn0zWygANMpw2vKDMS7uoGaSBjal4wwnygnapFDQVuMVHoATo" alt="Cream Texture Macro">
+      </div>
+    </div>
+  </section>
+
+  <section class="nkb-section">
+    <div class="nkb-section__header">
+      <h2 class="nkb-section__title">Shop by Intent</h2>
+      <a href="{{ base }}index.php?route=product/category" style="font-size:11px; text-transform:uppercase; letter-spacing:0.2em; color:var(--nkb-primary); text-decoration:none; border-bottom: 1px solid rgba(116,90,57,0.2); padding-bottom:2px;">View All Categories</a>
+    </div>
+    <div class="nkb-cat-grid">
+      {% set intents = [
+        {'name': 'Cleanse & Purify', 'ritual': 'Ritual 01', 'img': 'https://lh3.googleusercontent.com/aida-public/AB6AXuAqZUBHtbaKxc-axCnAGJ_Gun-RgkP18P4268u1WwAyFrW95pEC_BHOVf526MeIV1er7x8mu3rR6Ho6Z4obdSCM93sGaanloZjrR9YlHQsAlhC7y9FTQcpHqlt1p5yoa2GIxS-fUwW3r22z8yV-T_ZCbkFqUuqjfcCdxpFx8KiMmzMupERiyKvMXQqz-KcCZvoG2PA85JTrpDZmuxM2qxRUQgMhUyTlmGJZ6TlQ1un4UgjT3xHGWgoS7B06R8W3YFPOWAH5S7eT3DE'},
+        {'name': 'Treat & Repair', 'ritual': 'Ritual 02', 'img': 'https://lh3.googleusercontent.com/aida-public/AB6AXuB-OQhcYCLArOsNl5jPvo0C6VXkR7cs1OZYh6Bjhz8FUYVUOb-Hoyc4kgzbouc_9TPPonARQlKJB38k0NcGo1caF5rg4sVjvADwgY_YZpPKfz3ym19X2qYh02-POQq4F-NKOvvScM0oP2bVIg8PGLYm1HAO7_Jbo2lN-PX3gPnhaSl9g17irvk4d98q6gpxDQ69TV6TfTeyWhfqAk3lqjIUJS7rIl9w8BCjgQ4QXDHKdCkrXtvCq9kX76OAdWKkgIYuBRHtUFq_8fU'},
+        {'name': 'Hydrate & Plump', 'ritual': 'Ritual 03', 'img': 'https://lh3.googleusercontent.com/aida-public/AB6AXuBefxAvlBj_AvcR5Cn2NKWNwyRr7i7-DMYkkYquCXnwQfzNGcu9l1K9pmgVS4N7xG2hWrAYABpEN8Yerc0tV0SgQnmBVB_HNjGqc5obqf_vfjL6kvhhO4yDG9DGZHbkaFQNoqjD7cFEQnymiS9e20z-jox8mGxej_RRDLd2fsadTtgd-BDajgN7hg346Yb6-c1Jbb0vSVJjjg7UsAXPY0v4lg-vpMbGo3I-wqJSCsWUJtX_g5_njvCdeCvn2JjkcHSr1VD_omurMdg'},
+        {'name': 'Sustain & Protect', 'ritual': 'Ritual 04', 'img': 'https://lh3.googleusercontent.com/aida-public/AB6AXuDwf1yimwnxHwrcRljIyvmRH3J0xBImKEgOnrEO45o9H4Zqrn4TjauqkEPkYB4VF2-zJkbO4Eo1CtOg68hV4OVoQUnbu_LB9QXgzRPo3XD5LcnW0RO-C3YaCubeEqxwy-1HDqyuzDoDITCEJbUAipesuLkMIPSzH95BWdrOgKxb1XGrSZZ_EBrf99Oa-5KsKshecy2RqByMLjfQCp2QThSupu3Jj5cqzIdjr_emN4jCE-9SqvKVAHPhOBzGJJl8sxyqqy8_H3LoGLw'}
+      ] %}
+      {% for item in intents %}
+        <div class="nkb-cat-card" onclick="location='{{ base }}index.php?route=product/category'">
+          <div class="nkb-cat-card__img">
+            <img src="{{ item.img }}" alt="{{ item.name }}">
+          </div>
+          <span class="nkb-cat-card__eyebrow">{{ item.ritual }}</span>
+          <h3>{{ item.name }}</h3>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="nkb-section nkb-featured">
+    <span class="nkb-hero__eyebrow" style="background:rgba(116,90,57,0.08); padding:6px 16px; border-radius:99px; font-size:10px;">Most Coveted</span>
+    <h2 class="nkb-section__title" style="font-size:48px; margin-top:24px;">The Signature Essentials</h2>
+    <div class="nkb-featured__grid">
+      {% set featured = [
+        {'name': 'Divine Silk Serum', 'price': '$85', 'desc': 'Age-defying botanical peptides', 'img': 'https://lh3.googleusercontent.com/aida-public/AB6AXuCMaA4FiDNibYBCm8_qnn3gjuy27UCl_13dWdAjGmjOsdUDIouv0q0JXSIRLFlEyqnwc3X7W8Eqbf3qnQgnwezhhbRHOs2Y7aGUdioeGMdAiAmjiXYN8etQ9VHOERTv_6JEdbiwYzpl7TgJiU7C6AGrFWRxf_85zhovtdpK8O8B8SWu-jIksmt5QLyhkAZ6VdUCStqKK7WGDbNuS0t0Kp8NIlA0ai__tiR4i9nlPvvMhdzgmns37QfQk2ZX4iSMdcd-umPoJDRRzgk'},
+        {'name': 'Velvet Night Cream', 'price': '$92', 'desc': 'Intense overnight rejuvenation', 'img': 'https://lh3.googleusercontent.com/aida-public/AB6AXuCPqRSSHvQisAwlYV5t6kzFsNeJNxeN9lDyJUzemQ2xkx4R2VNmVib0llzQa9-xr742HZhqZzaJp_ajTfcmPxWuZwjKIkOgFXV-Yicn9yJckdzJgzJ_uKP8nZ0sroAauuc-hoDEDZ_UhM8Zi3nWCXfLuNmxIoAf5EcCqDAgyNQzMMWOOjCPW_Yol0zI6bTdqTBMqhh5PY7JvaAJzehn-bh5npzH7D2bIXXBIzHHpv9GQohtCnZ0uQ42d8dw85oIRralEIKXliVKrXs'},
+        {'name': 'Rose Petal Mist', 'price': '$48', 'desc': 'Distilled alpine rose petals', 'img': 'https://lh3.googleusercontent.com/aida-public/AB6AXuDedoNOBgnBPAPjWLOMa8G--0R4uqvPvoCJfuciFTL_9czx-swktv455p1l1GI9w8bndwYN33aOZOZxFzY3gAfnSoVLQ7f3h83Nef5ypxzTE8ZjfbR5vC3hWxPt0kgxNapvQ87DL_TbmVu98mHBNRdjWGGP7QvLRtp3DKAx7TAj-FaelKUHqKZVOArtwM2R9XuiDUVnHJ78LKkUpwBrdEOaUKyluJyEW_nkRtXp_Qy2gF_I4MhjVEd_8eefA3ZbRi2wUJxCs_uuS7w'},
+        {'name': 'Celestial Eye Balm', 'price': '$76', 'desc': 'Caffeine and cold-pressed marula', 'img': 'https://lh3.googleusercontent.com/aida-public/AB6AXuBnDvLu1X6pC4zq4z-RR80ZX2fVWQIgg2iKWwz1xm7qruSVQqeC2pYDi7O-br12IBzuHJYbNmVVmfNsoC7s8v1Nb6RaRiz0jOpE1PxyqXLUqr-cy7fEoNgXq3Gp5m4IQQEhGp3O6zVVF7yPdG1TEf6GbunklXWtJeMWRGJbBEGsgI7_J2mvgR0XRRKRvFTH013AdZ_hawv9uhFWdXvW5SUBeNprT-ugMJlyG2kU3b6Snl7Hd4QRiUex9MZBtuS2BEFajG-rWfvJXRI'}
+      ] %}
+      {% for p in featured %}
+        <div class="nkb-pdp-card">
+          <div class="nkb-pdp-card__img">
+            <img src="{{ p.img }}" alt="{{ p.name }}">
+            <button class="nkb-pdp-card__btn">Quick Buy &mdash; {{ p.price }}</button>
+          </div>
+          <h4><span>{{ p.name }}</span> <span>{{ p.price }}</span></h4>
+          <p>{{ p.desc }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="nkb-section">
+    <div class="nkb-ritual">
+      <div class="nkb-ritual__visual">
+        <div class="nkb-ritual__img">
+          <div class="nkb-ritual__img-wrap">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB03eG9MpdrIyLJfqc39k_4nEPxIPb6ccvxmYf2do56Anx8vf0W0y0OX-5Y6Srbs3o-OG5rYsU5Q5rftX5hQ7FEx9AgI7AekqYwne3uWao3kociSjr2FcP50q0kw2yXaKP0NoAB1aAvUlneRpN2do5iUvaWgTG0s8QpByFXEFWcYcLJNsfvOurzTY-KAMk92hQ7sKXcih44iyPO98XkWrAVDePNs6qgs-5BW8vtbb9HzEs9p_h2nsMrHZjup-NTKAw25hZ9Sf8V-_w" alt="Before Treatment">
+          </div>
+          <span class="nkb-ritual__label">Day 01</span>
+        </div>
+        <div class="nkb-ritual__img">
+          <div class="nkb-ritual__img-wrap">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-xxW43qNCvLFbwVP-4GFJK4rfsAH-WR4_ZE9EgY8vkMlFATsaDFv-LCtYnl-g3zis0zffwKQTfZ0p7m9YDqtZJbs8dl3VVNp2LnVAZzhllk0UOsRugArkkrqyMOXlu31LQIfsGSzq-Pt7fBfL1jUNyLqztK8QZh_v987kepzP-8HMzlGNNEY0Yi8Fb6IZrmUMIA44Kuniv82eMzX2xzT0mzGHqpSZjIE4Sdn0NXN_x9QEi8HvcJHCg4pTBP1sf2SqISWYDGu3V9I" alt="After Treatment">
+          </div>
+          <span class="nkb-ritual__label">Day 28</span>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:32px;">
+        <h2 class="nkb-section__title" style="font-size:52px; line-height:1.1;">The 28-Day Ritual<br>Transformation</h2>
+        <p style="font-size:16px; line-height:1.7; color:rgba(27,28,27,0.7); font-weight:300;">Our clinical studies show 94% of users saw a visible increase in radiance and texture smoothness after just four weeks of consistent morning and evening application.</p>
+        <div style="display:grid; gap:16px;">
+          <div style="display:flex; align-items:center; gap:12px; font-size:14px;"><span style="width:8px; height:8px; background:var(--nkb-secondary); border-radius:50%;"></span> +42% Cellular Hydration</div>
+          <div style="display:flex; align-items:center; gap:12px; font-size:14px;"><span style="width:8px; height:8px; background:var(--nkb-secondary); border-radius:50%;"></span> -18% Fine Line Visibility</div>
+          <div style="display:flex; align-items:center; gap:12px; font-size:14px;"><span style="width:8px; height:8px; background:var(--nkb-secondary); border-radius:50%;"></span> 96% Noticed Brighter Complexion</div>
+        </div>
+        <a href="{{ base }}index.php?route=product/category" class="nkb-btn-primary" style="align-self:flex-start; background:var(--nkb-secondary);">Shop The Routine</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="nkb-section">
+    <div class="nkb-ingredient-strip">
+      <span class="nkb-hero__eyebrow" style="color: #e3c199;">The Alchemic Heart</span>
+      <h2>Pure Botanical Potency</h2>
+      <div class="nkb-ingredients">
+        <div class="nkb-ingredient">
+          <h5>Bakuchiol</h5>
+          <p>Nature's Retinol Alternative</p>
+        </div>
+        <div class="nkb-ingredient">
+          <h5>Alpine Rose</h5>
+          <p>Cellular Longevity Booster</p>
+        </div>
+        <div class="nkb-ingredient">
+          <h5>Marula Oil</h5>
+          <p>Omega-Rich Hydration</p>
+        </div>
+        <div class="nkb-ingredient">
+          <h5>Kakadu Plum</h5>
+          <p>Vitamin C Super-Fruit</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nkb-section" style="border-bottom:1px solid rgba(128,117,107,0.1);">
+    <div class="nkb-newsletter">
+      <span class="nkb-hero__eyebrow">The Atelier Notes</span>
+      <h2>Join The Atelier</h2>
+      <p>Subscribe to receive exclusive ritual guides, early access to new collections, and stories from our digital atelier.</p>
+      <form class="nkb-form">
+        <input type="email" class="nkb-input" placeholder="Email Address">
+        <button type="submit" class="nkb-btn-primary">Join Us</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+{{ footer }}

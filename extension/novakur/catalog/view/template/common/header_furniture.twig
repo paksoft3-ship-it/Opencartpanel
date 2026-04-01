@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html dir="{{ direction }}" lang="{{ lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <base href="{{ base }}">
+  {% if description %}<meta name="description" content="{{ description }}">{% endif %}
+  {% if keywords %}<meta name="keywords" content="{{ keywords }}">{% endif %}
+  <script src="{{ jquery }}" type="text/javascript"></script>
+  <link href="{{ bootstrap }}" rel="stylesheet" media="screen">
+  <link href="{{ icons }}" rel="stylesheet" media="screen">
+  <link href="{{ stylesheet }}" rel="stylesheet">
+  {% for style in styles %}<link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}">{% endfor %}
+  {% for script in scripts %}<script src="{{ script.href }}" type="text/javascript"></script>{% endfor %}
+  {% for link in links %}<link href="{{ link.href }}" rel="{{ link.rel }}">{% endfor %}
+  {% for analytic in analytics %}{{ analytic }}{% endfor %}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+  <link rel="stylesheet" href="{{ novakur_main_css }}">
+  <style>
+    :root {
+      --nkf-primary: {{ novakur_primary_color|default('#705731') }};
+      --nkf-secondary: {{ novakur_secondary_color|default('#715b3a') }};
+      --nkf-container: {{ novakur_container_width|default(1200) }}px;
+    }
+    body { padding-top: 0 !important; }
+    .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+    #common-home .container, #product-category .container, #product-product .container, #product-search .container, #checkout-cart .container, #account-login .container, #account-register .container, #account-account .container, #account-order .container, #account-wishlist .container, #error-not-found .container { max-width: 100% !important; padding: 0 !important; }
+    .breadcrumb { display: none; }
+  </style>
+</head>
+<body class="nkf-theme">
+<div class="nkf-announce">Limited Edition: The Artisan Marble Collection — Complimentary White-Glove Delivery on All Orders</div>
+
+<header class="nkf-header">
+  <div class="nkf-header-inner">
+    <div style="display:flex;align-items:center;gap:48px;">
+      <a href="{{ home }}" class="nkf-logo">
+        <span style="font-family:var(--nkf-font-heading);font-weight:700;">CURATOR</span>
+      </a>
+      
+      <nav class="nkf-nav-links">
+        <a href="{{ base }}index.php?route=product/category&path=18" class="nkf-nav-link">LIVING</a>
+        <a href="{{ base }}index.php?route=product/category&path=18" class="nkf-nav-link">DINING</a>
+        <a href="{{ base }}index.php?route=product/category&path=18" class="nkf-nav-link">BEDROOM</a>
+        <a href="{{ base }}index.php?route=product/category&path=18" class="nkf-nav-link">ARTISAN</a>
+        <a href="{{ base }}index.php?route=product/category&path=18" class="nkf-nav-link">JOURNAL</a>
+      </nav>
+    </div>
+
+    <div class="nkf-nav-actions">
+      <a class="nkf-nav-icon" href="{{ base }}index.php?route=product/search" aria-label="Search">
+        <span class="material-symbols-outlined">search</span>
+      </a>
+      <a class="nkf-nav-icon" href="{{ base }}index.php?route=account/account" aria-label="Account">
+        <span class="material-symbols-outlined">person</span>
+      </a>
+      <a class="nkf-nav-icon" href="{{ wishlist|default(base ~ 'index.php?route=account/wishlist') }}" aria-label="Saved">
+        <span class="material-symbols-outlined">favorite</span>
+      </a>
+      <a class="nkf-nav-icon" href="{{ cart|default(base ~ 'index.php?route=checkout/cart') }}" aria-label="Cart">
+        <span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+        <span class="nkf-cart-badge" id="nkf-cart-qty">{{ cart_quantity|default(0) }}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div style="display:none">{{ menu }}</div>
+
+<script>
+function addToCart(productId, qty) {
+  $.ajax({
+    url: 'index.php?route=checkout/cart.add',
+    type: 'post',
+    data: { product_id: productId, quantity: qty || 1 },
+    dataType: 'json',
+    success: function(json) {
+      if (json.success) {
+        var badge = document.getElementById('nkf-cart-qty');
+        if (badge && json.total) {
+          badge.textContent = json.total;
+        }
+      }
+    }
+  });
+}
+
+function addToWishlist(productId) {
+  $.ajax({
+    url: 'index.php?route=account/wishlist.add',
+    type: 'post',
+    data: { product_id: productId },
+    dataType: 'json',
+    success: function(json) {
+      if (json.success) {
+        alert(json.success);
+      }
+    }
+  });
+}
+
+function addAllToCart() {
+  var buttons = document.querySelectorAll('.nkf-wish-atc');
+  var i = 0;
+  function next() {
+    if (i < buttons.length) {
+      buttons[i].click();
+      i++;
+      setTimeout(next, 150);
+    }
+  }
+  next();
+}
+
+function switchTab(btn, panelId) {
+  document.querySelectorAll('.nkf-tab').forEach(function(tab) { tab.classList.remove('active'); });
+  document.querySelectorAll('.nkf-tab-panel').forEach(function(panel) { panel.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById(panelId).classList.add('active');
+}
+
+function switchGallery(thumbEl, imgSrc) {
+  document.querySelectorAll('.nkf-gallery__thumb').forEach(function(thumb) { thumb.classList.remove('is-active'); });
+  thumbEl.classList.add('is-active');
+  document.getElementById('nkf-main-img').src = imgSrc;
+}
+
+function initStickyAtc() {
+  var atcBtn = document.getElementById('nkf-main-atc');
+  var stickyBar = document.getElementById('nkf-sticky-atc');
+  if (!atcBtn || !stickyBar || !window.IntersectionObserver) {
+    return;
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    stickyBar.classList.toggle('is-visible', !entries[0].isIntersecting);
+  }, { threshold: 0 });
+
+  observer.observe(atcBtn);
+}
+
+document.addEventListener('DOMContentLoaded', initStickyAtc);
+</script>

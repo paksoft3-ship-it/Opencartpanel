@@ -1,0 +1,53 @@
+<footer class="nkf-footer">
+  <div class="nkf-container">
+    <div class="nkf-footer-grid">
+      <div class="space-y-6">
+        <h4 style="font-family:var(--nkf-font-heading);font-size:24px;color:#fcf9f5;">CURATOR</h4>
+        <p class="nkf-copy" style="max-width:300px;color:rgba(232,213,184,0.5);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;line-height:2;">Creating architectural serenity through curated materials and artisan craftsmanship since 2012.</p>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h4 style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:#fcf9f5;margin-bottom:8px;">Services</h4>
+        <ul style="display:grid;gap:12px;padding:0;list-style:none;">
+          <li><a href="#" style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:#d1c4b7;">White-Glove Delivery</a></li>
+          <li><a href="#" style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:#d1c4b7;">Artisan Care</a></li>
+          <li><a href="#" style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:#d1c4b7;">Sustainability</a></li>
+          <li><a href="#" style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:#d1c4b7;">Trade Program</a></li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h4 style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:#fcf9f5;margin-bottom:8px;">Company</h4>
+        <ul style="display:grid;gap:12px;padding:0;list-style:none;">
+          <li><a href="{{ return|default(base ~ 'index.php?route=account/returns') }}" style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:#d1c4b7;">Returns</a></li>
+          <li><a href="{{ contact|default(base ~ 'index.php?route=information/contact') }}" style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:#d1c4b7;">Contact</a></li>
+          <li><a href="#" style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:#d1c4b7;">Showrooms</a></li>
+          <li><a href="#" style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:#d1c4b7;">Legal</a></li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h4 style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:#fcf9f5;margin-bottom:8px;">Social</h4>
+        <ul style="display:grid;gap:12px;padding:0;list-style:none;">
+          <li><a href="#" style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:#d1c4b7;">Instagram</a></li>
+          <li><a href="#" style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:#d1c4b7;">Pinterest</a></li>
+          <li><a href="#" style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:#d1c4b7;">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nkf-footer-bottom">
+      <span>&copy; {{ 'now'|date('Y') }} {{ name }}. Crafted for calm interiors.</span>
+      <div class="nkf-socials">
+        <a href="#" aria-label="Instagram"><span class="material-symbols-outlined">photo_camera</span></a>
+        <a href="#" aria-label="Pinterest"><span class="material-symbols-outlined">push_pin</span></a>
+        <a href="#" aria-label="Share"><span class="material-symbols-outlined">share</span></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{{ cookie }}
+<script src="{{ bootstrap }}" type="text/javascript"></script>
+</body>
+</html>
